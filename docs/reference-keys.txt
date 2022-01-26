@@ -1,0 +1,9 @@
+intro
+learn
+setup
+start-on-your-local-computer
+create-your-awesome-book-github-repo
+turn-bookdown-tutorial-into-awesome-book
+publish-awesome-book-last-step
+moving-forward
+write
