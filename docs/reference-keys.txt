@@ -1,9 +1,10 @@
 intro
 learn
 setup
-start-on-your-local-computer
-create-your-awesome-book-github-repo
+start-on-local-computer
+create-awesome-book-github-repo
 turn-bookdown-tutorial-into-awesome-book
 publish-awesome-book-last-step
-moving-forward
+write-local-.rmd-files-update-github-online-book
+哈哈哈
 write

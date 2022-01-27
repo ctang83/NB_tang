@@ -3,8 +3,8 @@ language:
   ui:
     chapter_name: "Chapter "
 rmd_files: [
-  "index.Rmd",
+  "index.Rmd", #index.Rmd is always treated as the first file when merging all Rmd files
   "setup.Rmd",
   "write.Rmd"]
 delete_merged_file: true 
-output_dir: "docs"
+output_dir: "docs"  # output folder 

@@ -1,19 +1,29 @@
+#1) build html uploaded to Github 
 bookdown::gitbook:
   css:
+    #CSS is a language used to define fonts, colors, and positions in HTML
     - lib/css/bootstrap.min.css
     - lib/css/style.css
     - lib/css/lesson.css
   includes:
   config:
-    toc:
-      before: |
-        <li><a href="./">Notebook Tang</a></li>
+    toc:  #table of content
+          #before is top of left Sidebar, after is bottom of left Sidebar
+      before: | 
+        <li><a href="./">Notebook Tang</a></li>  
       after: |
-        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/jules32/bookdown-tutorial/edit/master/%s
-    download: ["pdf"]
+        <li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
+    edit: https://github.com/ctang83/NB_tang/tree/master/%s #click and go to online folder
+    download: ["pdf"] #set up downloading PDF option at the top toolbar 
+    
+
+#2) build PDF form files (if no output here,  then no PDF option in online book website)
 #bookdown::pdf_book:
 #  includes:
 #    in_header: _preamble.tex
 #  latex_engine: xelatex
 #  keep_tex: no
+
+#3) build epub files
+#bookdown::epub_book:
+#  stylesheet: style.css
