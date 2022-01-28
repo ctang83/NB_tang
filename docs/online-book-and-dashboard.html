@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Notebook of Chengxiang Tang</title>
+  <title>Chapter 3 Online book and Dashboard | A Notebook of Chengxiang Tang</title>
   <meta name="description" content="Recording my learning stuff." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Notebook of Chengxiang Tang" />
+  <meta property="og:title" content="Chapter 3 Online book and Dashboard | A Notebook of Chengxiang Tang" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ctang83/NB_tang" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Notebook of Chengxiang Tang" />
+  <meta name="twitter:title" content="Chapter 3 Online book and Dashboard | A Notebook of Chengxiang Tang" />
   
   <meta name="twitter:description" content="Recording my learning stuff." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="bat-excelword-lyxlatex.html"/>
+<link rel="prev" href="bat-excelword-lyxlatex.html"/>
+<link rel="next" href="r.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -131,22 +131,92 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A Notebook of Chengxiang Tang</h1>
-<p class="author"><em>Chengxiang Tang</em></p>
-<p class="date"><em>2022-01-28</em></p>
-</div>
-<div id="intro" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Intro</h1>
-<p>This notebook covers my everyday skill learning.</p>
-<div id="learn" class="section level3" number="1.0.1">
-<h3><span class="header-section-number">1.0.1</span> Learn</h3>
-<ol style="list-style-type: decimal">
-<li>To install <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>
+<div id="online-book-and-dashboard" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Online book and Dashboard</h1>
+<div id="网络抓取和网络数据传输" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 网络抓取和网络数据传输</h2>
 <ul>
-<li>have RStudio linked</li>
+<li><p>R包 rvest: Easily Harvest (Scrape) Web Pages <a href="http://cran.r-project.org/web/packages/rvest/index.html">参考手册</a><br />
+数据抓取两大阶段：网页获取和网页解析<br />
+R主要靠两个包，网页获取是RCurl，解析是靠XML<br />
+python也对应两个包，网磁获取是requests，解析是BeautifulSoup</p></li>
+<li><p>R包 Rfacebook: 提取facebook的数据</p></li>
+<li><p>XML(eXtensible Markup Language)可扩展标记语言, 是一种结构化数据交换语言, 可描述非常复杂的数据结构, 常用于传输和存储数据</p></li>
+</ul>
+</div>
+<div id="building-online-bookbookdown" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Building online book(Bookdown)</h2>
+<p>This tutorial will show us easiest way to build an online book (or a book-style website) through RStudio and GitHub (may also by bookdown.org). We’ll call this book “BB.”</p>
+<p><strong>1) Start on local computer</strong></p>
+<ol style="list-style-type: decimal">
+<li>Copy folder “D:_template”(this version is from Jules32, much easier than Yihui’s bookdown-demo) to a reasonable place</li>
+<li>Rename 2 things from “bookdown_template” to “BB”:
+<ul>
+<li>the folder itself</li>
+<li>the .Rproj file</li>
 </ul></li>
+<li>Double-click the .Rproj file to launch RStudio</li>
+<li>Click on the Build tab in the top right pane to build book</li>
 </ol>
+<p><strong>2) Create “BB” GitHub repo</strong></p>
+<ol style="list-style-type: decimal">
+<li>Go to your GitHub account: github.com/username</li>
+<li>Click on Repositories, and the green button “New” to create a new repo</li>
+<li>Name this new repo “BB” (DO NOT initialize this repo with a README)</li>
+<li>Click the green “create repository” button, then copy URL</li>
+</ol>
+<p><strong>3) Turn “bookdown_template” into “BB”</strong></p>
+<ol style="list-style-type: decimal">
+<li>Go back to RStudio, to your “BB” project</li>
+<li>In the Console, type <code>usethis::use_git()</code> and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.</li>
+<li>Now, click on the Terminal tab next to the Console tab.</li>
+<li>Type <code>git remote add origin URL</code></li>
+<li>Type <code>git push --set-upstream origin master</code></li>
+</ol>
+<p><strong>4) Publish “BB” (Last step)</strong></p>
+<ol style="list-style-type: decimal">
+<li>Refresh github, then files should be there!</li>
+<li>Click Settings</li>
+<li>Scroll down to GitHub Pages, click “Check it out here”</li>
+<li>Change the Source pulldown from “None” to “master branch /docs folder”</li>
+<li>It should say “Your site is ready to be published at <a href="https://username.github.io/BB/" class="uri">https://username.github.io/BB/</a>”</li>
+</ol>
+<p><strong>5) Write local .Rmd, build and update online book in Github</strong></p>
+<ol style="list-style-type: decimal">
+<li>Rstudio to build(knitr) the whole book, including all .Rmd files
+<ul>
+<li>In Build panel, click “Build Book”</li>
+<li>or in Console, type <code>rmarkdown::render_site(encoding = 'UTF-8')</code></li>
+</ul></li>
+<li>In Git panel, select all files, click Commit, appears a new window</li>
+<li>Input “XX changes,” click Commit</li>
+<li>Finally, click Push -&gt; Done!</li>
+</ol>
+<p>PS: we ignore Travis and related continuous integration(持续部署) here, actually now Yihui uses Makefile and _render.R <a href="https://github.com/rstudio/bookdown/tree/main/inst/examples">instead</a>.</p>
+<p><strong>6) Adding chapters and citations</strong></p>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+</div>
+<div id="best-single-page-template" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Best single page (template)</h2>
+<p>In case we don’t need a book, but a single page.
+This is YAML header used in .Rmd, with output a single HTML.
+The template robobook is great for reading.</p>
+<pre><code>---
+title: &quot;啊啊啊&quot;
+date: &quot;2022-01-28&quot;
+output:
+  rmdformats::robobook:
+    code_folding: show
+    self_contained: true
+    default_style: &quot;light&quot;
+    downcute_theme: &quot;default&quot;
+---
+</code></pre>
+</div>
+<div id="building-dashboardshinny" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Building Dashboard(Shinny)</h2>
 
 </div>
 </div>
@@ -155,8 +225,8 @@
           </div>
         </div>
       </div>
-
-<a href="bat-excelword-lyxlatex.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bat-excelword-lyxlatex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -187,7 +257,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ctang83/NB_tang/tree/master/index.Rmd",
+"link": "https://github.com/ctang83/NB_tang/tree/master/02-Rbookdashboard.Rmd",
 "text": "Edit"
 },
 "history": {

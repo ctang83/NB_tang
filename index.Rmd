@@ -8,13 +8,17 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: openscapes/series
-description: "lots of things to."
+github-repo: ctang83/NB_tang
+description: "Recording my learning stuff."
 ---
 
 # Intro {#intro}
 
-1. install [RStudio](https://www.rstudio.com/products/rstudio/download/)
-    - have RStudio linked 
+This notebook covers my everyday skill learning. 
 
-## Learn 
+### Learn 
+
+1. To install [RStudio](https://www.rstudio.com/products/rstudio/download/)
+    - have RStudio linked 
+    
+

@@ -1,0 +1,17 @@
+# Python  
+
+## Network science(complex network)
+
+[NetworKit](https://networkit.github.io/) is a growing open-source toolkit for large-scale network analysis.
+This moduler includes standard measures of network analysis, such as degree sequences, clustering coefficients, centrality measures, and more. 
+
+
+
+## Plot and visualisation
+
+Plotly是一个开源，交互式的Python图形库(同类产品是bokeh)，有在线/离线两种模式(Jupyter Notebook )，基本功能免费，支持Python, MATLAB, R等多语言，
+
+Python绘图组合: 1. cufflinks+express+plotly; 2. bokeh+hvplot
+
+交互式图表: ggplot(移植) -> plotly(封装) -> cufflinks  
+  统计图表: matplotlib(封装) -> seaborn

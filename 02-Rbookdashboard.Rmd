@@ -1,0 +1,90 @@
+# Online book and Dashboard
+
+## 网络抓取和网络数据传输  
+
+- R包 rvest: Easily Harvest (Scrape) Web Pages [参考手册](http://cran.r-project.org/web/packages/rvest/index.html)  
+数据抓取两大阶段：网页获取和网页解析  
+     R主要靠两个包，网页获取是RCurl，解析是靠XML  
+python也对应两个包，网磁获取是requests，解析是BeautifulSoup
+
+- R包 Rfacebook: 提取facebook的数据
+
+- XML(eXtensible Markup Language)可扩展标记语言, 是一种结构化数据交换语言, 可描述非常复杂的数据结构, 常用于传输和存储数据
+
+## Building online book(Bookdown)
+
+This tutorial will show us easiest way to build an online book (or a book-style website) through RStudio and GitHub (may also by bookdown.org). We'll call this book "BB".
+
+**1) Start on local computer**
+
+1. Copy folder "D:\R\bookdown_template"(this version is from Jules32, much easier than Yihui's bookdown-demo) to a reasonable place
+1. Rename 2 things from "bookdown_template" to "BB":
+    - the folder itself
+    - the .Rproj file
+1. Double-click the .Rproj file to launch RStudio 
+1. Click on the Build tab in the top right pane to build book
+    
+**2) Create "BB" GitHub repo**
+
+1. Go to your GitHub account: github.com/username
+1. Click on Repositories, and the green button "New" to create a new repo
+1. Name this new repo "BB" (DO NOT initialize this repo with a README)
+1. Click the green "create repository" button, then copy URL
+
+**3) Turn "bookdown_template" into "BB"**
+
+1. Go back to RStudio, to your "BB" project
+1. In the Console, type `usethis::use_git()` and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.
+1. Now, click on the Terminal tab next to the Console tab. 
+1. Type `git remote add origin URL`
+1. Type `git push --set-upstream origin master`
+
+**4) Publish "BB" (Last step)**
+
+1. Refresh github, then files should be there! 
+1. Click Settings
+1. Scroll down to GitHub Pages, click "Check it out here"
+1. Change the Source pulldown from "None" to "master branch /docs folder"
+1. It should say "Your site is ready to be published at https://username.github.io/BB/"
+
+**5) Write local .Rmd, build and update online book in Github**
+
+1. Rstudio to build(knitr) the whole book, including all .Rmd files
+    - In Build panel, click "Build Book"
+    - or in Console, type `rmarkdown::render_site(encoding = 'UTF-8')`
+1. In Git panel, select all files, click Commit, appears a new window
+1. Input "XX changes", click Commit
+1. Finally, click Push -> Done!
+
+PS: we ignore Travis and related continuous integration(持续部署) here, actually now Yihui uses Makefile and _render.R [instead](https://github.com/rstudio/bookdown/tree/main/inst/examples). 
+
+**6) Adding chapters and citations**
+
+1. 
+
+## Best single page (template)
+
+In case we don't need a book, but a single page. 
+This is YAML header used in .Rmd, with output a single HTML. 
+The template robobook is great for reading. 
+```
+---
+title: "啊啊啊"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::robobook:
+    code_folding: show
+    self_contained: true
+    default_style: "light"
+    downcute_theme: "default"
+---
+```{r setup, include=FALSE}
+## Global options
+knitr::opts_chunk$set(cache = TRUE)
+```
+```
+
+## Building Dashboard(Shinny)
+
+
+

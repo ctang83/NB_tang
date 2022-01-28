@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Writing in Bookdown | A Notebook of Chengxiang Tang</title>
+  <title>Chapter 2 Setting up Bookdown | A Notebook of Chengxiang Tang</title>
   <meta name="description" content="Recording my learning stuff." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Writing in Bookdown | A Notebook of Chengxiang Tang" />
+  <meta property="og:title" content="Chapter 2 Setting up Bookdown | A Notebook of Chengxiang Tang" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Writing in Bookdown | A Notebook of Chengxiang Tang" />
+  <meta name="twitter:title" content="Chapter 2 Setting up Bookdown | A Notebook of Chengxiang Tang" />
   
   <meta name="twitter:description" content="Recording my learning stuff." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="setting-up-bookdown.html"/>
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="write.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -114,17 +114,70 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="write" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Writing in Bookdown</h1>
-<div id="coming-soon" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Coming soon:</h2>
+<div id="setting-up-bookdown" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Setting up Bookdown</h1>
+<p>This tutorial will show us shortest way to build an online book (or a website)</p>
+<p>We’ll call your book “awesome-book.”</p>
+<div id="start-on-local-computer" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Start on local computer</h2>
+<ol style="list-style-type: decimal">
+<li>Copy folder “D:_template” to a reasonable place</li>
+<li>Rename 2 things from “bookdown-tutorial” to “awesome-book”:</li>
+</ol>
 <ul>
-<li>Adding chapters</li>
-<li>Citations</li>
+<li>the folder itself
+<ul>
+<li>the .Rproj file</li>
+</ul></li>
 </ul>
+<ol style="list-style-type: decimal">
+<li>Double-click the .Rproj file to launch RStudio</li>
+<li>Click on the Build tab in the top right pane to build book</li>
+</ol>
 </div>
-<div id="coming-soon-1" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Coming soon:</h2>
+<div id="create-awesome-book-github-repo" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Create “awesome-book” GitHub repo</h2>
+<ol style="list-style-type: decimal">
+<li>Go to your GitHub account: github.com/username</li>
+<li>Click on Repositories, and the green button “New” to create a new repo</li>
+<li>Name this new repo “awesome-book” (DO NOT initialize this repo with a README)</li>
+<li>Click the green “create repository” button</li>
+<li>COPY URL</li>
+</ol>
+</div>
+<div id="turn-bookdown-tutorial-into-awesome-book" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Turn “bookdown-tutorial” into “awesome-book”</h2>
+<ol style="list-style-type: decimal">
+<li>Go back to RStudio, to your “awesome-book” project</li>
+<li>In the Console, type <code>usethis::use_git()</code> and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.</li>
+<li>Now, click on the Terminal tab next to the Console tab.</li>
+<li>Type <code>git remote add origin URL</code></li>
+<li>Type <code>git push --set-upstream origin master</code></li>
+</ol>
+</div>
+<div id="publish-awesome-book-last-step" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Publish “awesome-book” (Last step)</h2>
+<ol style="list-style-type: decimal">
+<li>Refresh github, then files should be there!</li>
+<li>Click Settings</li>
+<li>Scroll down to GitHub Pages, click “Check it out here”</li>
+<li>Change the Source pulldown from “None” to “master branch /docs folder”</li>
+<li>It should say “Your site is ready to be published at <a href="https://username.github.io/awesome-book/" class="uri">https://username.github.io/awesome-book/</a>”</li>
+</ol>
+</div>
+<div id="write-local-.rmd-build-and-update-online-book-in-github" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Write local .Rmd, build and update online book in Github</h2>
+<ol style="list-style-type: decimal">
+<li>Rstudio to build(knitr) the whole book, including all .Rmd files
+<ul>
+<li>In Build panel, click “Build Book”</li>
+<li>or in Console, type <code>rmarkdown::render_site(encoding = 'UTF-8')</code></li>
+</ul></li>
+<li>In Git panel, select all files, click Commit, appear a new window</li>
+<li>Input “XX changes,” click Commit</li>
+<li>Finally, click Push -&gt; Done!</li>
+</ol>
+<p><strong>6) Writing</strong></p>
 <ul>
 <li>Adding chapters</li>
 <li>Citations</li>
@@ -137,8 +190,8 @@
           </div>
         </div>
       </div>
-<a href="setting-up-bookdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="write.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -169,7 +222,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ctang83/NB_tang/tree/master/02-write.Rmd",
+"link": "https://github.com/ctang83/NB_tang/tree/master/01-setup.Rmd",
 "text": "Edit"
 },
 "history": {

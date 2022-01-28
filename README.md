@@ -1,5 +1,2 @@
-# bookdown-tutorial
-Mini tutorial for bookdown 
+# A notebook by CTang
 
-
-afdafadjl
