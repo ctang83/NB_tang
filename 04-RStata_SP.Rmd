@@ -10,7 +10,7 @@ This R package for estimating complex choice models (MXL) on large datasets
 
 - How to refer to a variable name with spaces?  
 答案: backticks `` (反引号), 如模型:
->RES ~ `Indirect payment`+`Direct payment`+strata   
+RES ~ `Indirect payment`+`Direct payment`+strata  
 `~' 这个符号在R里面是建立模型
 
 
@@ -265,6 +265,7 @@ quantile(C3, c(0.025, 0.975))
 - Two methods for constructing choice sets for case 1 BWS:  
 	- OMED - two level orthogonal main-effect design  
 	- BIBD - blanced incomplete block design (每题的number of items固定，所以建议只用这种)BIBD 可用的difference set如下
+
 ```
 find.BIB(trt = 16, k = 6, b = 16 )
 find.BIB(trt = 15, k = 7, b = 15 )
@@ -283,6 +284,7 @@ items <- c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11")
 ```
 
 - Organ donation - Results analysis by R (all output in D:\) , 所有结果输出都Stata化了, 只需要解决第2部分Create dataset: "final" = res + bibd
+
 ```
 rsource, terminator(END_R)
 #######################  下面是成熟的针对13个items的程序，只需加载第2部分的新res数据库（res是来自调查的数据）

@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="r_onlinebookdashboard.html"/>
-<link rel="next" href="python.html"/>
+<link rel="next" href="r.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -102,10 +102,17 @@
 <li class="chapter" data-level="4.2" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html#binary-dceused-as-case-2-bws"><i class="fa fa-check"></i><b>4.2</b> Binary DCE(used as Case 2 BWS)</a></li>
 <li class="chapter" data-level="4.3" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html#case-1-bws"><i class="fa fa-check"></i><b>4.3</b> case 1 BWS</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>5</b> Python</a>
+<li class="chapter" data-level="5" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>5</b> R</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="python.html"><a href="python.html#network-sciencecomplex-network"><i class="fa fa-check"></i><b>5.1</b> Network science(complex network)</a></li>
-<li class="chapter" data-level="5.2" data-path="python.html"><a href="python.html#plot-and-visualisation"><i class="fa fa-check"></i><b>5.2</b> Plot and visualisation</a></li>
+<li class="chapter" data-level="5.1" data-path="r.html"><a href="r.html#workflowreproducible-research"><i class="fa fa-check"></i><b>5.1</b> Workflow/Reproducible research</a></li>
+<li class="chapter" data-level="5.2" data-path="r.html"><a href="r.html#plotgraphvisualisation"><i class="fa fa-check"></i><b>5.2</b> Plot/graph/visualisation</a></li>
+<li class="chapter" data-level="5.3" data-path="r.html"><a href="r.html#data"><i class="fa fa-check"></i><b>5.3</b> Data</a></li>
+<li class="chapter" data-level="5.4" data-path="r.html"><a href="r.html#install-rrstudio"><i class="fa fa-check"></i><b>5.4</b> Install R/RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>6</b> Python</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="python.html"><a href="python.html#network-sciencecomplex-network"><i class="fa fa-check"></i><b>6.1</b> Network science(complex network)</a></li>
+<li class="chapter" data-level="6.2" data-path="python.html"><a href="python.html#plot-and-visualisation"><i class="fa fa-check"></i><b>6.2</b> Plot and visualisation</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
@@ -136,7 +143,7 @@ For details, see <a href="https://cran.r-project.org/web/packages/logitr/vignett
 <li><p>Install.packages(“mixl”)<br />
 This R package for estimating complex choice models (MXL) on large datasets</p></li>
 <li><p>How to refer to a variable name with spaces?<br />
-答案: backticks `<code>(反引号), 如模型: &gt;RES ~</code>Indirect payment<code>+</code>Direct payment<code>+strata</code>~’ 这个符号在R里面是建立模型</p></li>
+答案: backticks `<code>(反引号), 如模型: RES ~</code>Indirect payment<code>+</code>Direct payment<code>+strata</code>~’ 这个符号在R里面是建立模型</p></li>
 </ul>
 <div id="lc潜层模型" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> LC潜层模型</h2>
@@ -389,399 +396,140 @@ quantile(C3, c(0.025, 0.975))</code></pre>
 <ul>
 <li>OMED - two level orthogonal main-effect design<br />
 </li>
-<li>BIBD - blanced incomplete block design (每题的number of items固定，所以建议只用这种)BIBD 可用的difference set如下
-```
-find.BIB(trt = 16, k = 6, b = 16 )
-find.BIB(trt = 15, k = 7, b = 15 )
-find.BIB(trt = 13, k = 4, b = 13 ) # 11 or 13 items is the best!
-find.BIB(trt = 11, k = 5, b = 11 )
-find.BIB(trt = 10, k = 4, b = 15 )
-find.BIB(trt = 9, k = 3, b = 12 )
-find.BIB(trt = 8, k = 4, b = 14 )
-find.BIB(trt = 7, k = 3, b = 7 )
-find.BIB(trt = 6, k = 3, b = 10 ) # 总共6个items，10 个问题，每个问题3个items</li>
+<li>BIBD - blanced incomplete block design (每题的number of items固定，所以建议只用这种)BIBD 可用的difference set如下</li>
 </ul></li>
 </ul>
-<div id="用于7911个items的case-1-bws" class="section level11" number="4.3.0.0.0.0.0.0.0.0.1">
-<p class="heading"><span class="header-section-number">4.3.0.0.0.0.0.0.0.0.1</span> 用于7，9,11个items的case 1 BWS</p>
-<p>items &lt;- c(“1,” “2,” “3,” “4,” “5,” “6,” “7”)
-items &lt;- c(“1,” “2,” “3,” “4,” “5,” “6,” “7,” “8,” “9”)<br />
-items &lt;- c(“1,” “2,” “3,” “4,” “5,” “6,” “7,” “8,” “9,” “10,” “11”)</p>
-<pre><code>
-- Organ donation - Results analysis by R (all output in D:\) , 所有结果输出都Stata化了, 只需要解决第2部分Create dataset: &quot;final&quot; = res + bibd</code></pre>
-<p>rsource, terminator(END_R)
-####################### 下面是成熟的针对13个items的程序，只需加载第2部分的新res数据库（res是来自调查的数据）
+<pre><code>find.BIB(trt = 16, k = 6, b = 16 )
+find.BIB(trt = 15, k = 7, b = 15 )
+find.BIB(trt = 13, k = 4, b = 13 )  # 11 or 13 items is the best!
+find.BIB(trt = 11, k = 5, b = 11 )
+find.BIB(trt = 10, k = 4, b = 15 )
+find.BIB(trt = 9,  k = 3, b = 12 )
+find.BIB(trt = 8,  k = 4, b = 14 )
+find.BIB(trt = 7,  k = 3, b = 7  )
+find.BIB(trt = 6,  k = 3, b = 10 )  # 总共6个items，10 个问题，每个问题3个items
+
+########### 用于7，9,11个items的case 1 BWS  
+items &lt;- c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;)
+items &lt;- c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;)  
+items &lt;- c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;)</code></pre>
+<ul>
+<li>Organ donation - Results analysis by R (all output in D:) , 所有结果输出都Stata化了, 只需要解决第2部分Create dataset: “final” = res + bibd</li>
+</ul>
+<pre><code>rsource, terminator(END_R)
+#######################  下面是成熟的针对13个items的程序，只需加载第2部分的新res数据库（res是来自调查的数据）
 library(DoE.base)
-library(crossdes) # crossdes package中的 find.BIB函数产生BIBD设计
+library(crossdes)  #  crossdes package中的 find.BIB函数产生BIBD设计
 library(support.BWS)
 library(survival)
 library(foreign)
 ###########################################################
 %%% 1. Constructing choice sets &amp; Case 1 BWS questions (BIBD) - organ donation 器官捐献量表
-###########################################################</p>
-<p>set.seed(123)
-bibd &lt;- find.BIB(trt = 13, k = 4, b = 13) # BIBD设计
-isGYD(bibd) # 此函数检查 trt，k，b 搭配是否平衡
+###########################################################
+
+set.seed(123)
+bibd &lt;- find.BIB(trt = 13, k = 4, b = 13)   # BIBD设计
+isGYD(bibd)   # 此函数检查 trt，k，b 搭配是否平衡
 %View(bibd)
-items &lt;- c(“Media,” “Religion,” “Tradition,” “Legislation,” “Family,”
-“Experience,” “Self-decision,” “Consent,” “Withdrawal,” “Death,”
-“Allocation,” “Indirect payment,” “Direct payment”)</p>
-<p>%接下来两步走，准备问卷和创建final数据库是独立的，
-%%% 1). Preparing BWS questions # design.type = 2 means BIBD</p>
-<p>% bws.questionnaire(choice.sets = bibd, design.type = 2, item.names = items )</p>
-<p>%%% 2). Create dataset “final” = res + bibd</p>
-<p>res&lt;-read.dta(“D:/desk/Googledrive/fj_phs/data/res.dta”)</p>
-<p>final &lt;- bws.dataset(respondent.dataset = res,
-response.type = 1, # row number format
-choice.sets = bibd,
-design.type = 2, # BIBD
-item.names = items)
-write.dta(final,“d:/BWS_final.dta”)</p>
-<p>%View(final) # list dat 数据库，此数据库是最终用于分析的库</p>
-<div id="section" class="section level59" number="4.3.0.0.0.0.0.0.0.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1">
-<p class="heading"><span class="header-section-number">4.3.0.0.0.0.0.0.0.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1</span> </p>
-<p>%%% 2. Analyzing responses using “The Counting Approach” (output: 3 graphs)
+items &lt;- c(&quot;Media&quot;, &quot;Religion&quot;, &quot;Tradition&quot;, &quot;Legislation&quot;, &quot;Family&quot;, 
+           &quot;Experience&quot;, &quot;Self-decision&quot;, &quot;Consent&quot;, &quot;Withdrawal&quot;, &quot;Death&quot;, 
+           &quot;Allocation&quot;, &quot;Indirect payment&quot;, &quot;Direct payment&quot;)
+
+%接下来两步走，准备问卷和创建final数据库是独立的，
+%%% 1). Preparing BWS questions   # design.type = 2 means BIBD
+
+% bws.questionnaire(choice.sets = bibd,  design.type = 2,   item.names = items )  
+
+%%% 2). Create dataset &quot;final&quot; = res + bibd
+
+res&lt;-read.dta(&quot;D:/desk/Googledrive/fj_phs/data/res.dta&quot;)
+
+final &lt;- bws.dataset(respondent.dataset = res,
+                   response.type = 1,  # row number format
+                   choice.sets = bibd,
+                   design.type = 2,    # BIBD
+                   item.names = items) 
+write.dta(final,&quot;d:/BWS_final.dta&quot;)
+
+%View(final)   # list dat 数据库，此数据库是最终用于分析的库
+
+###########################################################
+%%% 2. Analyzing responses using &quot;The Counting Approach&quot; (output: 3 graphs)
 % two tables: 1.Disaggregated best-worst scores &amp; 2.Aggregated best-worst scores
 % 表1,2的关系是，表1所有系数乘以n (n是被调查人数)
 % PS: 分析部分需要Stata化，R的分析完全没有过程！
-###########################################################</p>
-<p>scores &lt;- bws.count(data = final)
-scores
-scores$aggregate</p>
-<p>data&lt;-as.data.frame(scores$aggregate) # med是list类型的对象, alt.1是attributes组合的对象
-write.csv(data,“d:/tab_BWS_aggregate_score.csv”) # 这个表待会读入Stata，然后转成Latex表</p>
-<p>%%%%% Figure 1 Distribution of simple BW scores by items
-BW &lt;- data.frame(scores<span class="math inline">\(disaggregate\)</span>BW)
-BW &lt;- lapply(BW, factor, levels = c(-4:4)) # scores are transformed into a factor
-score.tables &lt;- lapply(BW, table) # table for each item
-ylimit &lt;- max(unlist(score.tables)) # max count among items</p>
-<p>pdf(“d:/fig_BWS_bars_items.pdf”) # open .pdf for output
-par(mfrow = c(4,4)) # create 4 x 4 figure regions, otherwise alarm of “out of figure margin”
-for(i in 1:13){ # draw graph for item 1-13
-barplot(height = score.tables[[i]],
-main = items[i], # title
-xlab = c(“BW score”), # label for x-axis
-ylab = c(“Count”), # label for y-axis
-ylim = c(0, ylimit)) # limits for y-axis
-}
-dev.off() # output graph with pdf type</p>
-<p>%%%%%% Figure 2 Relationship between the mean BW score and its standard deviation
-Mean.BW &lt;- colMeans(scores<span class="math inline">\(disaggregate\)</span>BW)
-Standard.Deviation.BW &lt;- apply(scores<span class="math inline">\(disaggregate\)</span>BW, 2, sd)</p>
-<p>pdf(“d:/fig_BWS_mean_SD.pdf”)
-plot(x = Mean.BW, y = Standard.Deviation.BW, xlim = c(-3, 3), ylim = c(1, 2))
-text(x = Mean.BW, y = Standard.Deviation.BW, pos = 4, labels = items)
-dev.off()</p>
-<p>%%%%%% Figure 3 Mean BW score per item in each cluster
-set.seed(123)
-kmeans &lt;- kmeans(x = scores<span class="math inline">\(disaggregate\)</span>BW, centers = 2)
-kmeans$centers</p>
-<p>pdf(“d:/fig_BWS_mean_ranking.pdf”)
-barplot(height = kmeans$centers,
-names.arg = items ,
-beside = TRUE, # draw juxtaposed bar
-legend = c(“cluster.1,” “cluster.2”),
-horiz = TRUE,
-las = 2,
-xlab = “BW score,”
-xlim = c(-4, 4))
-dev.off()</p>
-<p>END_R</p>
-<pre><code>
+###########################################################
 
-- 读入tab_BWS_aggregate_score.csv 然后用mata转成Latex表</code></pre>
-<p>import delim using “d:_BWS_aggregate_score.csv” , clear
-gen att_id=_n
+scores &lt;- bws.count(data = final)
+scores
+scores$aggregate
+
+data&lt;-as.data.frame(scores$aggregate)   # med是list类型的对象, alt.1是attributes组合的对象
+write.csv(data,&quot;d:/tab_BWS_aggregate_score.csv&quot;)  # 这个表待会读入Stata，然后转成Latex表
+
+%%%%% Figure 1 Distribution of simple BW scores by items
+          BW &lt;- data.frame(scores$disaggregate$BW)
+          BW &lt;- lapply(BW, factor,  levels = c(-4:4))  # scores are transformed into a factor
+score.tables &lt;- lapply(BW, table)                      # table for each item
+      ylimit &lt;- max(unlist(score.tables))              # max count among items
+
+pdf(&quot;d:/fig_BWS_bars_items.pdf&quot;)  # open .pdf for output
+par(mfrow = c(4,4))    # create 4 x 4 figure regions, otherwise alarm of &quot;out of figure margin&quot;
+for(i in 1:13){        # draw graph for item 1-13
+  barplot(height = score.tables[[i]],
+          main = items[i], # title
+          xlab = c(&quot;BW score&quot;),  # label for x-axis
+          ylab = c(&quot;Count&quot;),     # label for y-axis
+          ylim = c(0, ylimit))   # limits for y-axis
+}
+dev.off()  # output graph with pdf type
+
+%%%%%% Figure 2 Relationship between the mean BW score and its standard deviation
+              Mean.BW &lt;- colMeans(scores$disaggregate$BW)
+Standard.Deviation.BW &lt;- apply(scores$disaggregate$BW,  2, sd)
+
+pdf(&quot;d:/fig_BWS_mean_SD.pdf&quot;)
+plot(x = Mean.BW,  y = Standard.Deviation.BW,  xlim = c(-3, 3),  ylim = c(1, 2))
+text(x = Mean.BW,  y = Standard.Deviation.BW,  pos = 4,    labels = items)
+dev.off() 
+
+%%%%%% Figure 3 Mean BW score per item in each cluster
+set.seed(123)
+kmeans &lt;- kmeans(x = scores$disaggregate$BW, centers = 2)
+kmeans$centers
+
+pdf(&quot;d:/fig_BWS_mean_ranking.pdf&quot;)
+barplot(height = kmeans$centers, 
+        names.arg = items , 
+        beside = TRUE,     # draw juxtaposed bar
+        legend = c(&quot;cluster.1&quot;, &quot;cluster.2&quot;), 
+        horiz = TRUE,
+        las = 2,
+        xlab = &quot;BW score&quot;, 
+        xlim = c(-4, 4))
+dev.off()
+
+END_R</code></pre>
+<ul>
+<li>读入tab_BWS_aggregate_score.csv 然后用mata转成Latex表</li>
+</ul>
+<pre><code>import delim using &quot;d:\tab_BWS_aggregate_score.csv&quot;  , clear
+gen att_id=_n 
 rename v1 att_name
 order att_id , b(att_name)
 * tex output
-texsave _all using “d:_BWS_aggregate_score.tex” , frag replace ///
-title(Aggregated best-worst scores) ///
-footnote(Note: The number of respondents is 190)</p>
-<pre><code>
-- Analyzing responses using the modeling approach</code></pre>
-<p>use “d:.dta” , clear</p>
-<p>fr &lt;- RES ~ A + B + C + E + F + G + H + I + J + K + L + M + strata(STR)<br />
-% the model exclude D to normalize its coefficient to 0
-clogit(formula = fr, data = dat)</p>
-<pre><code>
+texsave _all using &quot;d:\tab_BWS_aggregate_score.tex&quot; , frag replace  ///
+        title(Aggregated best-worst scores)  ///
+        footnote(Note: The number of respondents is 190)  </code></pre>
+<ul>
+<li>Analyzing responses using the modeling approach</li>
+</ul>
+<pre><code>use  &quot;d:\final.dta&quot; , clear
 
+fr &lt;- RES ~ A + B + C + E + F + G + H + I + J + K + L + M + strata(STR)   
+    % the model exclude D to normalize its coefficient to 0
+clogit(formula = fr, data = dat)</code></pre>
 
-&lt;!--chapter:end:04-RStata_SP.Rmd--&gt;
-
-# R
-
-## Workflow/Reproducible research 
-
-- 为什么需要笔记本界面notebook interface? 答: 人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on.  
-  - Text-based user interface, e.g. Command-line interface -&gt; notebook interface  
-  - Graphical user interfaces (GUIs)  VS. Sonic user interface  
-  - Natural language user interface  
-  - Tangible user interface, e.g. Touch user interface
-
-- Rmd网上有很多模板可用包安装, 如[&quot;stevetemplates&quot;](https://github.com/svmiller/svm-r-markdown-templates), File-&gt; New File-&gt; R Markdown-&gt;From templates增加了很多新模板
-  - R Markdown(脚本文本)比Latex好得多，生成PDF, word, html, slides
-  - R Shiny   (脚本文本交互), 都可以通过github下载各种templates  
-                                                                                                                 
-- 名词比较混  
-Markdown   (markup language): a “lightweight” markup language (like HTML)  
-Markdown   (R package): the predecessor of rmarkdown, converts .Rmd files into HTML  
-R Markdown (R package): 包括两个小包 rmarkdown and knitr  
-R Markdown (markup language): .Rmd file that is an excellent “literate programming” and “reproducible research”
-
-- **Knitr** converts  
-  - An .Rmd   -&gt; .md  
-  - An .Rnw(Sweave) -&gt; .tex  
-  - An .Rhtml   -&gt; .html
-  - After Knitr works, then **Pandoc** converts md/tex/html into various formats as PDF/HTML/Word/.
-
-
-
-## Plot/graph/visualisation
-
-- Install.packages(&quot;Shinytableau&quot;)
-Create Tableau(所有方面比Power BI好的拖动式画图软件) Dashboard Extensions With R Shiny(脚本文本交互) 
-
-- lattice: focus on multivariate data, and in particular to produce &quot;small multiple&quot; plots
-
-- 画图 和 输出图片</code></pre>
-<p>pdf(“d:/xx.pdf”)
-…省略画图命令…
-dev.off()
-// now output tiff(600dpi)
-tiff(file = “C:/test1.tiff,” res = 600, width = 4800, height = 4800, compression = “lzw”)
-plot(1:22, pch = 1:22, cex = 1:3, col = 1:5) #绘图命令在中间
-dev.off()</p>
-<pre><code>
-
-## Data 
-
-- 输入数据</code></pre>
-<p>c() #Combine Values into a Vector or List
-M &lt;- vector(length=8) #vector函数优点是先定义长度，如8，再赋值
-read.table() #读取txt文件</p>
-<pre><code>
-- 输出数据，需要library(foreign)</code></pre>
-<p>write.dta(data,“d:/test.dta”) # 输出Stata12数据库
-write.csv(desmat, file = “D:/desk/UNSW/DCE/haze_desmat.csv”) # csv是常用格式</p>
-<p>rbind(a1,a2) # rows bind 堆积
-cbind(a1,a2) # column 并列</p>
-<p>读写 xls 和 xlsx 格式有几个包可以做到： xlsx / XLConnect</p>
-<pre><code>
-- 控制流  
-分支：    if(condition){}/else if(condition){} /else{}  
-循环：    for(name in expr_1){ expr_2} | while(condition){expr} | repeat { expr;break }  
-中止语句：break  
-空语句：  next
-
-- 矩阵</code></pre>
-<p>A &lt;- matrix(1:15,nrow=2,ncol=4,byrow=TRUE) #默认是按列, 此时A是int整数型
-A<br />
-[,1] [,2] [,3] [,4] #用[1,]和[,1]表示行列
-[1,] 1 2 3 4
-[2,] 5 6 7 8</p>
-<p>cell &lt;- c(3,5,4,5,6,1,1,4,6,7)
-A &lt;- matrix(cell,nrow=2,ncol=4,byrow=TRUE) #此时A是numeric数据型</p>
-<p>x&lt;-1:5; y&lt;-2*1:5 #冒号优先,故是2 4 6 8 10向量
-crossprod(x,y) #求内积,结果是单值110
-outer(x,y) #求外积,结果是5x5方阵
-t(x) #矩阵x转置transpose</p>
-<p>A&lt;-array(1:9,dim=(c(3,3))) #arrays 阵列；数组
-B&lt;-array(9:1,dim=(c(3,3)))
-A<em>B #区别一:各对应元素相乘
-A%</em>%B #区别二:矩阵乘法
-crossprod(A,B) #区别三:等价t(A)%*%B</p>
-<pre><code>可对矩阵某维或者若干维进行运算：apply(M,某维,FUNction)。例：A&lt;-matrix(1:6,nrow=2);apply(A,1,sum)</code></pre>
-<p>x[-3] #显示除第3个以外的其他值
-x[c(3,5)] #显示x的第3和第5个值
-sort(x) #按顺序排列，显示数据
-order(x) #按顺序排列，显示下标
-X1 &lt;- c(21.3, 19.9, 22.4, 24.1, 25.9)
-X2 &lt;- c(32.1, 27.8, 30.1, 29.9, NA) #最后一个缺失值，mean(X2)就算不出来，只能mean(X2,na.rm=TRUE)
-is.na(X2) #显示哪一位值是缺失？
-ID &lt;- rep(1:4,each=8) #rep()产生32个重复数，另有 seq(1, 9, by = 2) 类似rep()
-ID &lt;- rep(c(“X1,”“X2,”“X3”),c(3,2,1)) #重复不同次数</p>
-<pre><code>
-- 向量 .VS. 因子
-  - 简单讲：因子是一个点用于存储分类(categorical)数据，向量是一个有方向的范围。
-  - 在R中，如果把数字作为因子，那么在导入数据之后，需要将向量转换为因子（factor），而因子在整个计算过程中不再作为数值，而是一个&quot;符号&quot;而已。
-  - 因子操作：
-    - 把一个向量编码为一个因子：factor()
-    - 因子的水平（感觉像是不同的值）：levels()
-    - 各类数据的频数：table()
-
-- 操作对象</code></pre>
-<p>是否为数值：is.numeric(X)
-是否为字符：is.character(X)
-类型转换： as.character(X), as.numeric(X)
-改变长度： length(X)&lt;-新长度。用空值填充或去掉多的
-返回对象的属性：attributes(object)
-存储对象的属性：attr(object,”属性名”)</p>
-<pre><code>
-- 探索R对象</code></pre>
-<p>mode(x) #对象类型：
-dim(x) #对象的两维度
-length(x) #对象个数
-e.g. 对象d.med是list
-mode(d.med)
-length(d.med)
-attributes(d.med)
-head(d.med)
-dd&lt;-as.data.frame(d.med<span class="math inline">\(nalternatives\)</span>alt.1) #d.med里有个数据库，提取出来放到数据库dd里面去</p>
-<pre><code>
-- R三种对象类型</code></pre>
-<p>R没有标量
-一、向量（X）
-assign(向量名, X); 向量名&lt;- X; X -&gt;向量名; #赋值
-paste(X,Y) #字符型向量,字符串连接
-complex() #复数向量
-二、数据框 data frame–多个向量组成的二维数据库（类矩阵）
-// 数据框其实就是Stata下的数据库，矩阵要求全是数字，数据框每列可以是不同的mode
-data.frame() #构造数据框
-as.data.frame() #转换为数据框
-attach() # attach()能不用就不用，最好是哪里都不用，如果你非觉得它方便，那么我的建议还是不要用——用with()
-detach() #数据框加属性
-Dfm<span class="math inline">\(We #数据框Dfm中寻找We变量，\)</span>(dollar符号,表at访问)
-DataAll &lt;- list(Bird=bid.8, ID=ID, Z=Z) #list函数中只能用”=“,不能用”&lt;-”
-三、列表 list–包含任何类型的对象
-构造：list()</p>
-<pre><code>
-- attach()用法
-用$ 符号访问对象不是非常的方便，如accountants$statef
-如果键入命令attach(accountants)，那你就可以直接用accountants里的变量，
-
-- 列表</code></pre>
-<p>列表的分量可以是不同的类型，使用list()函数可以创建列表：
-&gt; x = list(name=“Fred,” wife=“Mary,” no.children=3, child.ages=c(4,7,9))
-&gt; x
-$name
-[1] “Fred”</p>
-<p>$wife
-[1] “Mary”</p>
-<p>$no.children
-[1] 3</p>
-<p>$child.ages
-[1] 4 7 9
-列表元素可以通过几种不同的索引进行访问：</p>
-<blockquote>
-<p>x[[1]]
-[1] “Fred”
-x[1][1]
-$name
-[1] “Fred”</p>
-</blockquote>
-<blockquote>
-<p>x[“name”][1]
-<span class="math inline">\(name [1] &quot;Fred&quot; x\)</span>name
-[1] “Fred”</p>
-</blockquote>
-<pre><code>
-- 数据框</code></pre>
-<blockquote>
-<p>L3 = LETTERS[1:3]
-L3
-[1] “A” “B” “C”
-d = data.frame(cbind(x = 1, y = 1:10), fac = sample(L3, 10, replace = TRUE))
-d
-x y fac
-1 1 1 B
-2 1 2 A
-3 1 3 C
-4 1 4 C
-5 1 5 B
-6 1 6 A
-7 1 7 A
-8 1 8 B
-9 1 9 B
-10 1 10 A
-d$x
-[1] 1 1 1 1 1 1 1 1 1 1
-d[[2]]
-[1] 1 2 3 4 5 6 7 8 9 10
-d[1][1]
-x
-1 1
-2 1
-3 1
-4 1
-5 1
-6 1
-7 1
-8 1
-9 1
-10 1</p>
-</blockquote>
-<pre><code>
-
-## Install R/RStudio
-
-- 升级Rstudio  
-Rstudio is IDE of R, needs setup of R before. Rstudio-&gt;tools-&gt;Global options-&gt;[R路径](D:\R\R-Portable\App\R-Portable)
-
-- 升级R, 安装所有packages  
-install.packages(c(&quot;apollo&quot;, &quot;arm&quot;, &quot;backports&quot;, &quot;BayesLCA&quot;, &quot;bibtex&quot;, &quot;bit&quot;, &quot;bit64&quot;, &quot;bitops&quot;, &quot;BMA&quot;, &quot;brio&quot;, &quot;caret&quot;, &quot;caTools&quot;, &quot;cli&quot;, &quot;colorspace&quot;, &quot;curl&quot;, &quot;data.table&quot;, &quot;deSolve&quot;, &quot;diffobj&quot;, &quot;digest&quot;, &quot;dotCall64&quot;, &quot;dplyr&quot;, &quot;e1071&quot;, &quot;effects&quot;, &quot;ellipsis&quot;, &quot;expm&quot;, &quot;fansi&quot;, &quot;farver&quot;, &quot;fastmap&quot;, &quot;fields&quot;, &quot;fs&quot;, &quot;gert&quot;, &quot;git2r&quot;, &quot;glue&quot;, &quot;gmp&quot;, &quot;gower&quot;, &quot;gsynth&quot;, &quot;haven&quot;, &quot;hdrcde&quot;, &quot;Hmisc&quot;, &quot;htmltools&quot;, &quot;httpuv&quot;, &quot;ipred&quot;, &quot;isoband&quot;, &quot;jpeg&quot;, &quot;jsonlite&quot;, &quot;ks&quot;, &quot;later&quot;, &quot;latticeExtra&quot;, &quot;lfe&quot;, &quot;lme4&quot;, &quot;lmtest&quot;, &quot;lubridate&quot;, &quot;magick&quot;, &quot;magrittr&quot;, &quot;maps&quot;, &quot;maptools&quot;, &quot;Matrix&quot;, &quot;matrixStats&quot;, &quot;mclust&quot;, &quot;MCMCpack&quot;, &quot;memisc&quot;, &quot;mime&quot;, &quot;mnormt&quot;, &quot;msm&quot;, &quot;multicool&quot;, &quot;mvtnorm&quot;, &quot;nloptr&quot;, &quot;openssl&quot;, &quot;partitions&quot;, &quot;pcaPP&quot;, &quot;pkgload&quot;, &quot;pROC&quot;, &quot;processx&quot;, &quot;promises&quot;, &quot;proxy&quot;, &quot;ps&quot;, &quot;quantreg&quot;, &quot;randtoolbox&quot;, &quot;rappdirs&quot;, &quot;Rcpp&quot;, &quot;RcppArmadillo&quot;, &quot;RcppEigen&quot;, &quot;RCurl&quot;, &quot;readr&quot;, &quot;readstata13&quot;, &quot;rgl&quot;, &quot;rJava&quot;, &quot;rlang&quot;, &quot;rngWELL&quot;, &quot;robustbase&quot;, &quot;RODBC&quot;, &quot;roxygen2&quot;, &quot;rrcov&quot;, &quot;sass&quot;, &quot;sem&quot;, &quot;slam&quot;, &quot;sp&quot;, &quot;spam&quot;, &quot;SparseM&quot;, &quot;statmod&quot;, &quot;stringi&quot;, &quot;sys&quot;, &quot;testthat&quot;, &quot;tibble&quot;, &quot;tidyr&quot;, &quot;tidyverse&quot;, &quot;tis&quot;, &quot;utf8&quot;, &quot;vctrs&quot;, &quot;VGAM&quot;, &quot;VGAMdata&quot;, &quot;vroom&quot;, &quot;XLConnect&quot;, &quot;XML&quot;, &quot;xml2&quot;, &quot;zip&quot;, &quot;zoo&quot;))
-
-- 安装加载搜索包</code></pre>
-<p>install.packages(“support.CEs”) #support.CEs是一个设计DCE的package，本函数还自动下载附加支持包
-install.packages(“包名字,”lib=“安装目录,”repos=“包所在的网址”)
-search() #查看现在已经读取的扩展包
-detach(”package:扩展包名”) #卸载某个扩展包
-data() #查看当前可使用的数据对象
-data(package = “扩展包名”) #查看在该扩展包中的数据对象
-.libPaths() #查看library安装路径</p>
-<pre><code>
-- 默认情况下，help只会载入内存包中搜索，try.all.package=TRUE 可以在全包中搜索 </code></pre>
-<blockquote>
-<p>help(bs,try.all.package=TRUE); #会显示出对应的包<br />
-Package Library<br />
-splines E:
-help(bs,package=“splines”);<br />
-help.search(“tree”); #搜索所有包含tree的api</p>
-</blockquote>
-<pre><code>
-- 求助符、帮助</code></pre>
-<p>?plot #函数打一个问号 , or help(plot)
-??vegan #包两个问号
-help.search(“rnorm”) # search help files, even wrong spelling
-args(“rnorm”) # get arguments参数
-RSiteSearch(“discrete choice experiment”) #搜索网站（不是搜索本地计算机目录）</p>
-<pre><code>
-- 查看源代码  
-对于普通的函数——function，可以直接键入函数名就可以在console中看到源代码了，比如：</code></pre>
-<blockquote>
-<p>damnN
-有些类函数需要先用methods()函数看看都有什么，再一点一点的查看。
-比如查看summary中的aov命令源代码：
-methods(summary)
-summary.aov</p>
-</blockquote>
-<pre><code>
-- 管理IO环境</code></pre>
-<p>object.size #检查对象使用的内存
-setwd(“D:/R/DCE”) #设置工作文件夹
-getwd() #来查看当前目录working directory
-dir() #查看当前目录里的文件</p>
-<pre><code>
-- Console清屏： ctrl+L
-
-- semi-colon (;) to put multiple statements on one line 一行多句命令
-
-- 认识包  
-Type `library()`就知道已经有什么packages了  
-Type `library(survival)` 加载包,包里经常有数据  
-Type `data()`就知道有什么数据，注意:R语言对大小写敏感
-
-- PATH设置报错-待解决</code></pre>
-<blockquote>
-<p>Sys.getenv(“PATH”)
-Warning message:
-In normalizePath(path.expand(path), winslash, mustWork) :
-path[1]=“D:/????”: The filename, directory name, or volume label syntax is incorrect
-```</p>
-</blockquote>
-
-</div>
-</div>
 </div>
 </div>
             </section>
@@ -790,7 +538,7 @@ path[1]=“D:/????”: The filename, directory name, or volume label syntax is i
         </div>
       </div>
 <a href="r_onlinebookdashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="python.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -821,7 +569,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ctang83/NB_tang/tree/master/05-Rnotes.Rmd",
+"link": "https://github.com/ctang83/NB_tang/tree/master/04-RStata_SP.Rmd",
 "text": "Edit"
 },
 "history": {

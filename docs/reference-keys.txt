@@ -15,6 +15,11 @@ r_stata-run-stated-preference
 lc潜层模型
 binary-dceused-as-case-2-bws
 case-1-bws
+r
+workflowreproducible-research
+plotgraphvisualisation
+data
+install-rrstudio
 python
 network-sciencecomplex-network
 plot-and-visualisation

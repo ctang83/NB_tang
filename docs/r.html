@@ -89,12 +89,12 @@
 <li class="chapter" data-level="2.3.2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#latex"><i class="fa fa-check"></i><b>2.3.2</b> Latex</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html"><i class="fa fa-check"></i><b>3</b> Online book and Dashboard</a>
+<li class="chapter" data-level="3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html"><i class="fa fa-check"></i><b>3</b> R_Onlinebook/Dashboard</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#网络抓取和网络数据传输"><i class="fa fa-check"></i><b>3.1</b> 网络抓取和网络数据传输</a></li>
-<li class="chapter" data-level="3.2" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#building-online-bookbookdown"><i class="fa fa-check"></i><b>3.2</b> Building online book(Bookdown)</a></li>
-<li class="chapter" data-level="3.3" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#best-single-page-template"><i class="fa fa-check"></i><b>3.3</b> Best single page (template)</a></li>
-<li class="chapter" data-level="3.4" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#building-dashboardshinny"><i class="fa fa-check"></i><b>3.4</b> Building Dashboard(Shinny)</a></li>
+<li class="chapter" data-level="3.1" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#online-data-collectiontransfer"><i class="fa fa-check"></i><b>3.1</b> Online data collection/transfer</a></li>
+<li class="chapter" data-level="3.2" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-online-bookbookdown"><i class="fa fa-check"></i><b>3.2</b> Building online book(Bookdown)</a></li>
+<li class="chapter" data-level="3.3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#best-single-page-template"><i class="fa fa-check"></i><b>3.3</b> Best single page (template)</a></li>
+<li class="chapter" data-level="3.4" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-dashboardshinny"><i class="fa fa-check"></i><b>3.4</b> Building Dashboard(Shinny)</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html"><i class="fa fa-check"></i><b>4</b> R_Stata run stated preference</a>
 <ul>
@@ -139,7 +139,7 @@
 <div id="workflowreproducible-research" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Workflow/Reproducible research</h2>
 <ul>
-<li>为什么需要笔记本界面notebook interface? 答: 人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on.
+<li><p>为什么需要笔记本界面notebook interface? 答: 人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on.</p>
 <ul>
 <li>Text-based user interface, e.g. Command-line interface -&gt; notebook interface<br />
 </li>
@@ -149,41 +149,32 @@
 </li>
 <li>Tangible user interface, e.g. Touch user interface</li>
 </ul></li>
-<li>Rmd网上有很多模板可用包安装, 如<a href="https://github.com/svmiller/svm-r-markdown-templates">“stevetemplates”</a>, File-&gt; New File-&gt; R Markdown-&gt;From templates增加了很多新模板
+<li><p>Rmd网上有很多模板可用包安装, 如<a href="https://github.com/svmiller/svm-r-markdown-templates">“stevetemplates”</a>, File-&gt; New File-&gt; R Markdown-&gt;From templates增加了很多新模板</p>
 <ul>
 <li>R Markdown(脚本文本)比Latex好得多，生成PDF, word, html, slides</li>
 <li>R Shiny (脚本文本交互), 都可以通过github下载各种templates</li>
 </ul></li>
-<li>名词比较混<br />
-Markdown (markup language): a “lightweight” markup language (like HTML)</li>
-</ul>
-<p>Markdown (R package): the predecessor of rmarkdown, converts .Rmd files into HTML</p>
-<p>R Markdown (package): 包括两个小包 rmarkdown and knitr</p>
-<p>R Markdown (markup language): .Rmd file that is an excellent “literate programming” and “reproducible research”</p>
-<p>Knitr converts<br />
-1. An .Rmd -&gt; a .md<br />
-1. An .Rnw(Sweave) -&gt; .tex<br />
-1. An .Rhtml -&gt; .html</p>
-<p>Then Pandoc converts md/tex/html into various formats PDF/HTML/Word/.</p>
+<li><p>名词比较混<br />
+Markdown (markup language): a “lightweight” markup language (like HTML)<br />
+Markdown (R package): the predecessor of rmarkdown, converts .Rmd files into HTML<br />
+R Markdown (R package): 包括两个小包 rmarkdown and knitr<br />
+R Markdown (markup language): .Rmd file that is an excellent “literate programming” and “reproducible research”</p></li>
+<li><p><strong>Knitr</strong> converts</p>
 <ul>
-<li>Combine R-Markdown and GitHub</li>
+<li>An .Rmd -&gt; .md<br />
+</li>
+<li>An .Rnw(Sweave) -&gt; .tex<br />
+</li>
+<li>An .Rhtml -&gt; .html</li>
+<li>After Knitr works, then <strong>Pandoc</strong> converts md/tex/html into various formats as PDF/HTML/Word/.</li>
+</ul></li>
 </ul>
-<ol style="list-style-type: decimal">
-<li>open .Rmd</li>
-<li>YAML header 用 “output=github_document”</li>
-<li>knit .rmd to .md (will also generate .docs if including graphs)</li>
-<li>push .md and .docs to GitHub</li>
-</ol>
-<p>multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)</p>
 </div>
 <div id="plotgraphvisualisation" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Plot/graph/visualisation</h2>
 <ul>
-<li><p>Create Tableau Dashboard Extensions With R Shiny<br />
-Shinytableau %R package, RStudio has R Shiny (脚本文本交互) to use directly</p>
-<ul>
-<li>Tableau：所有方面比Power BI好的拖动式画图软件，可以和R integrate</li>
-</ul></li>
+<li><p>Install.packages(“Shinytableau”)
+Create Tableau(所有方面比Power BI好的拖动式画图软件) Dashboard Extensions With R Shiny(脚本文本交互)</p></li>
 <li><p>lattice: focus on multivariate data, and in particular to produce “small multiple” plots</p></li>
 <li><p>画图 和 输出图片</p></li>
 </ul>
@@ -198,9 +189,7 @@ dev.off()</code></pre>
 <div id="data" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Data</h2>
 <ul>
-<li><p>Data infrastructure of Australia<br />
-<a href="https://aurin.org.au/resources/aurin-apis/">AURIN</a> is “Australia’s single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.” This package provides functions to download and search datasets from the AURIN API (it’s free to use!).</p></li>
-<li><p>输入数据</p></li>
+<li>输入数据</li>
 </ul>
 <pre><code>c()                    #Combine Values into a Vector or List
 M &lt;- vector(length=8)  #vector函数优点是先定义长度，如8，再赋值
@@ -472,7 +461,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ctang83/NB_tang/tree/master/03-Rnotes.Rmd",
+"link": "https://github.com/ctang83/NB_tang/tree/master/05-Rnotes.Rmd",
 "text": "Edit"
 },
 "history": {
