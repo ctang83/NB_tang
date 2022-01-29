@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 bws.questionnaire(choice.sets = bibd, design.type = 2, item.names = items ) | My Notebook</title>
+  <meta name="description" content="Recording my learning stuff." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 bws.questionnaire(choice.sets = bibd, design.type = 2, item.names = items ) | My Notebook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Recording my learning stuff." />
+  <meta name="github-repo" content="ctang83/NB_tang" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 bws.questionnaire(choice.sets = bibd, design.type = 2, item.names = items ) | My Notebook" />
+  
+  <meta name="twitter:description" content="Recording my learning stuff." />
+  
+
+<meta name="author" content="CTang" />
+
+
+<meta name="date" content="2022-01-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="opt-out-but-no-common-alternative.-here-in-dce_med_spe-we-choose-2..html"/>
+<link rel="next" href="r.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notebook Tang</a></li>  
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#learn"><i class="fa fa-check"></i><b>1.0.1</b> Learn</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html"><i class="fa fa-check"></i><b>2</b> bat, Excel/Word, Lyx/Latex</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#bat"><i class="fa fa-check"></i><b>2.1</b> bat</a></li>
+<li class="chapter" data-level="2.2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#excelword"><i class="fa fa-check"></i><b>2.2</b> Excel/Word</a></li>
+<li class="chapter" data-level="2.3" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#lyxlatex"><i class="fa fa-check"></i><b>2.3</b> Lyx/Latex</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#lyx"><i class="fa fa-check"></i><b>2.3.1</b> Lyx</a></li>
+<li class="chapter" data-level="2.3.2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#latex"><i class="fa fa-check"></i><b>2.3.2</b> Latex</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html"><i class="fa fa-check"></i><b>3</b> Online book and Dashboard</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#网络抓取和网络数据传输"><i class="fa fa-check"></i><b>3.1</b> 网络抓取和网络数据传输</a></li>
+<li class="chapter" data-level="3.2" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#building-online-bookbookdown"><i class="fa fa-check"></i><b>3.2</b> Building online book(Bookdown)</a></li>
+<li class="chapter" data-level="3.3" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#best-single-page-template"><i class="fa fa-check"></i><b>3.3</b> Best single page (template)</a></li>
+<li class="chapter" data-level="3.4" data-path="online-book-and-dashboard.html"><a href="online-book-and-dashboard.html#building-dashboardshinny"><i class="fa fa-check"></i><b>3.4</b> Building Dashboard(Shinny)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html"><i class="fa fa-check"></i><b>4</b> R_Stata run stated preference</a></li>
+<li class="chapter" data-level="5" data-path="ps-2-blocks-16-questions-in-total-thus-each-one-answer-9-questions-including-one-consistent-test.html"><a href="ps-2-blocks-16-questions-in-total-thus-each-one-answer-9-questions-including-one-consistent-test.html"><i class="fa fa-check"></i><b>5</b> PS: 2 blocks, 16 questions in total, thus each one answer 9 questions (including one consistent test)</a></li>
+<li class="chapter" data-level="6" data-path="because-from-the-above-questionnaire-we-can-create-two-types-of-bdce.html"><a href="because-from-the-above-questionnaire-we-can-create-two-types-of-bdce.html"><i class="fa fa-check"></i><b>6</b> Because from the above questionnaire, we can create two types of BDCE:</a></li>
+<li class="chapter" data-level="7" data-path="no-opt-out-but-include-common-alternative.html"><a href="no-opt-out-but-include-common-alternative.html"><i class="fa fa-check"></i><b>7</b> 1) No opt-out but include common alternative;</a></li>
+<li class="chapter" data-level="8" data-path="opt-out-but-no-common-alternative..html"><a href="opt-out-but-no-common-alternative..html"><i class="fa fa-check"></i><b>8</b> 2) Opt-out but no common alternative.</a></li>
+<li class="chapter" data-level="9" data-path="here-in-dce_med_spe-we-choose-2..html"><a href="here-in-dce_med_spe-we-choose-2..html"><i class="fa fa-check"></i><b>9</b> Here in DCE_med_spe, we choose 2).</a></li>
+<li class="chapter" data-level="10" data-path="ps-2-blocks-16-questions-in-total-thus-each-one-answer-9-questions-including-one-consistent-test-1.html"><a href="ps-2-blocks-16-questions-in-total-thus-each-one-answer-9-questions-including-one-consistent-test-1.html"><i class="fa fa-check"></i><b>10</b> PS: 2 blocks, 16 questions in total, thus each one answer 9 questions (including one consistent test)</a></li>
+<li class="chapter" data-level="11" data-path="because-from-the-above-questionnaire-we-can-create-two-types-of-bdce-1-no-opt-out-but-include-common-alternative.html"><a href="because-from-the-above-questionnaire-we-can-create-two-types-of-bdce-1-no-opt-out-but-include-common-alternative.html"><i class="fa fa-check"></i><b>11</b> Because from the above questionnaire, we can create two types of BDCE: 1) No opt-out but include common alternative;</a></li>
+<li class="chapter" data-level="12" data-path="opt-out-but-no-common-alternative.-here-in-dce_med_spe-we-choose-2..html"><a href="opt-out-but-no-common-alternative.-here-in-dce_med_spe-we-choose-2..html"><i class="fa fa-check"></i><b>12</b> 2) Opt-out but no common alternative. Here in DCE_med_spe, we choose 2).</a></li>
+<li class="chapter" data-level="13" data-path="bws.questionnairechoice.sets-bibd-design.type-2-item.names-items.html"><a href="bws.questionnairechoice.sets-bibd-design.type-2-item.names-items.html"><i class="fa fa-check"></i><b>13</b> bws.questionnaire(choice.sets = bibd, design.type = 2, item.names = items )</a>
+<ul>
+<li class="chapter" data-level="13.0.1" data-path="bws.questionnairechoice.sets-bibd-design.type-2-item.names-items.html"><a href="bws.questionnairechoice.sets-bibd-design.type-2-item.names-items.html#create-dataset-final-res-bibd"><i class="fa fa-check"></i><b>13.0.1</b> 2). Create dataset “final” = res + bibd</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>14</b> R</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="r.html"><a href="r.html#workflowreproducible-research"><i class="fa fa-check"></i><b>14.1</b> Workflow/Reproducible research</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="r.html"><a href="r.html#r-markdown"><i class="fa fa-check"></i><b>14.1.1</b> R markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="r.html"><a href="r.html#plotgraphvisualisation"><i class="fa fa-check"></i><b>14.2</b> Plot/graph/visualisation</a></li>
+<li class="chapter" data-level="14.3" data-path="r.html"><a href="r.html#data"><i class="fa fa-check"></i><b>14.3</b> Data</a></li>
+<li class="chapter" data-level="14.4" data-path="r.html"><a href="r.html#install-rrstudio"><i class="fa fa-check"></i><b>14.4</b> Install R/RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>15</b> Python</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="python.html"><a href="python.html#network-sciencecomplex-network"><i class="fa fa-check"></i><b>15.1</b> Network science(complex network)</a></li>
+<li class="chapter" data-level="15.2" data-path="python.html"><a href="python.html#plot-and-visualisation"><i class="fa fa-check"></i><b>15.2</b> Plot and visualisation</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">My Notebook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bws.questionnairechoice.sets-bibd-design.type-2-item.names-items" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> bws.questionnaire(choice.sets = bibd, design.type = 2, item.names = items )</h1>
+<div id="create-dataset-final-res-bibd" class="section level3" number="13.0.1">
+<h3><span class="header-section-number">13.0.1</span> 2). Create dataset “final” = res + bibd</h3>
+<p>res&lt;-read.dta(“D:/desk/Googledrive/fj_phs/data/res.dta”)</p>
+<p>final &lt;- bws.dataset(respondent.dataset = res,
+response.type = 1, # row number format
+choice.sets = bibd,
+design.type = 2, # BIBD
+item.names = items)
+write.dta(final,“d:/BWS_final.dta”)</p>
+<p>#View(final) # list dat 数据库，此数据库是最终用于分析的库</p>
+<p>###########################################################分析部分需要Stata化，R的分析完全没有过程！
+### 2. Analyzing responses using “The Counting Approach” (including 3 graphs)
+# two tables: 1.Disaggregated best-worst scores &amp; 2.Aggregated best-worst scores
+# 表1,2的关系是，表1所有系数乘以n (n是被调查人数)
+###########################################################
+scores &lt;- bws.count(data = final)
+scores
+scores$aggregate</p>
+<p>data&lt;-as.data.frame(scores$aggregate) # med是list类型的对象, alt.1是attributes组合的对象
+write.csv(data,“d:/tab_BWS_aggregate_score.csv”) # 这个表待会读入Stata，然后转成Latex表</p>
+<div id="figure-1-distribution-of-simple-bw-scores-by-items" class="section level23" number="13.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1">
+<p class="heading"><span class="header-section-number">13.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1</span> Figure 1 Distribution of simple BW scores by items</p>
+<pre><code>      BW &lt;- data.frame(scores$disaggregate$BW)
+      BW &lt;- lapply(BW, factor,  levels = c(-4:4))  # scores are transformed into a factor</code></pre>
+<p>score.tables &lt;- lapply(BW, table) # table for each item
+ylimit &lt;- max(unlist(score.tables)) # max count among items</p>
+<p>pdf(“d:/fig_BWS_bars_items.pdf”) # open .pdf for output
+par(mfrow = c(4,4)) # create 4 x 4 figure regions, otherwise alarm of “out of figure margin”
+for(i in 1:13){ # draw graph for item 1-13
+barplot(height = score.tables[[i]],
+main = items[i], # title
+xlab = c(“BW score”), # label for x-axis
+ylab = c(“Count”), # label for y-axis
+ylim = c(0, ylimit)) # limits for y-axis
+}
+dev.off() # output graph with pdf type</p>
+</div>
+<div id="figure-2-relationship-between-the-mean-bw-score-and-its-standard-deviation" class="section level23" number="13.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2">
+<p class="heading"><span class="header-section-number">13.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2</span> Figure 2 Relationship between the mean BW score and its standard deviation</p>
+<pre><code>          Mean.BW &lt;- colMeans(scores$disaggregate$BW)</code></pre>
+<p>Standard.Deviation.BW &lt;- apply(scores<span class="math inline">\(disaggregate\)</span>BW, 2, sd)</p>
+<p>pdf(“d:/fig_BWS_mean_SD.pdf”)
+plot(x = Mean.BW, y = Standard.Deviation.BW, xlim = c(-3, 3), ylim = c(1, 2))
+text(x = Mean.BW, y = Standard.Deviation.BW, pos = 4, labels = items)
+dev.off()</p>
+</div>
+<div id="figure-3-mean-bw-score-per-item-in-each-cluster" class="section level23" number="13.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3">
+<p class="heading"><span class="header-section-number">13.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3</span> Figure 3 Mean BW score per item in each cluster</p>
+<p>set.seed(123)
+kmeans &lt;- kmeans(x = scores<span class="math inline">\(disaggregate\)</span>BW, centers = 2)
+kmeans$centers</p>
+<p>pdf(“d:/fig_BWS_mean_ranking.pdf”)
+barplot(height = kmeans$centers,
+names.arg = items ,
+beside = TRUE, # draw juxtaposed bar
+legend = c(“cluster.1,” “cluster.2”),
+horiz = TRUE,
+las = 2,
+xlab = “BW score,”
+xlim = c(-4, 4))
+dev.off()</p>
+<p>END_R
+}</p>
+<pre><code>    ***************************************
+    * 读入tab_BWS_aggregate_score.csv 然后用mata转成Latex表
+    ***************************************</code></pre>
+<p>import delim using “d:_BWS_aggregate_score.csv” , clear
+gen att_id=_n
+rename v1 att_name
+order att_id , b(att_name)
+* tex output
+texsave _all using “d:_BWS_aggregate_score.tex” , frag replace ///
+title(Aggregated best-worst scores) ///
+footnote(Note: The number of respondents is 190)</p>
+<pre><code>    ***************************************
+    * Analyzing responses using the modeling approach
+    ***************************************</code></pre>
+<p>use “d:.dta” , clear</p>
+<p>fr &lt;- RES ~ A + B + C + E + F + G + H + I + J + K + L + M + strata(STR) # exclude D to normalize its coefficient to 0
+clogit(formula = fr, data = dat)</p>
+<p>**********grage***********
+{
+res &lt;- data.frame( # 13 choice sets from 10 ID ， 这个导入需要改成搜集到的responses
+ID = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+B1 = c(2, 1, 2, 4, 2, 2, 2, 1, 2, 1),
+W1 = c(3, 4, 3, 3, 1, 3, 3, 2, 3, 3),
+B2 = c(4, 3, 3, 3, 3, 1, 1, 2, 1, 1),
+W2 = c(3, 2, 4, 1, 2, 3, 3, 4, 2, 4),
+B3 = c(3, 1, 1, 1, 1, 1, 1, 1, 2, 1),
+W3 = c(1, 4, 2, 2, 4, 4, 2, 3, 3, 3),
+B4 = c(2, 2, 1, 3, 2, 2, 2, 2, 4, 1),
+W4 = c(4, 4, 3, 4, 1, 3, 4, 1, 2, 4),
+B5 = c(1, 3, 2, 1, 3, 2, 1, 1, 1, 1),
+W5 = c(3, 1, 4, 4, 1, 4, 3, 2, 4, 3),
+B6 = c(2, 1, 1, 3, 2, 4, 4, 3, 3, 3),
+W6 = c(3, 2, 3, 4, 3, 2, 2, 4, 4, 2),
+B7 = c(2, 1, 3, 1, 3, 2, 3, 3, 2, 2),
+W7 = c(4, 4, 4, 4, 4, 1, 4, 1, 4, 4),
+B8 = c(2, 1, 2, 4, 2, 2, 2, 1, 2, 1),
+W8 = c(3, 4, 3, 3, 1, 3, 3, 2, 3, 3),
+B9 = c(4, 3, 3, 3, 3, 1, 1, 2, 1, 1),
+W9 = c(3, 2, 4, 1, 2, 3, 3, 4, 2, 4),
+B10 = c(3, 1, 1, 1, 1, 1, 1, 1, 2, 1),
+W10 = c(1, 4, 2, 2, 4, 4, 2, 3, 3, 3),
+B11 = c(2, 2, 1, 3, 2, 2, 2, 2, 4, 1),
+W11 = c(4, 4, 3, 4, 1, 3, 4, 1, 2, 4),
+B12 = c(1, 3, 2, 1, 3, 2, 1, 1, 1, 1),
+W12 = c(3, 1, 4, 4, 1, 4, 3, 2, 4, 3),
+B13 = c(2, 1, 2, 4, 2, 2, 2, 1, 2, 1),
+W13 = c(3, 4, 3, 3, 1, 3, 3, 2, 3, 3))</p>
+<p>}</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="opt-out-but-no-common-alternative.-here-in-dce_med_spe-we-choose-2..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ctang83/NB_tang/tree/master/02-RStata_SP.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

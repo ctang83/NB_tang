@@ -1,6 +1,6 @@
 --- 
-title: "A Notebook of Chengxiang Tang"
-author: "Chengxiang Tang"
+title: "My Notebook"
+author: "CTang"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 # output: bookdown::gitbook

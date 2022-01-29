@@ -2,51 +2,34 @@
 
 ## Workflow/Reproducible research 
 
-- 为什么需要笔记本界面notebook interface?
-
-人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on.  
-  - Text-based user interface, e.g. Command-line interface -> notebook interface
-  - Graphical user interfaces (GUIs)  VS. Sonic user interface
-  - Natural language user interface
+- 为什么需要笔记本界面notebook interface? 答: 人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on.  
+  - Text-based user interface, e.g. Command-line interface -> notebook interface  
+  - Graphical user interfaces (GUIs)  VS. Sonic user interface  
+  - Natural language user interface  
   - Tangible user interface, e.g. Touch user interface
-
-### R markdown
 
 - Rmd网上有很多模板可用包安装, 如["stevetemplates"](https://github.com/svmiller/svm-r-markdown-templates), File-> New File-> R Markdown->From templates增加了很多新模板
   - R Markdown(脚本文本)比Latex好得多，生成PDF, word, html, slides
   - R Shiny   (脚本文本交互), 都可以通过github下载各种templates  
                                                                                                                  
 - 名词比较混  
-Markdown (markup language): a “lightweight” markup language (like HTML)
-
-Markdown (R package): the predecessor of rmarkdown, converts .Rmd files into HTML
-
-R Markdown (package): 包括两个小包 rmarkdown and knitr
-
+Markdown   (markup language): a “lightweight” markup language (like HTML)  
+Markdown   (R package): the predecessor of rmarkdown, converts .Rmd files into HTML  
+R Markdown (R package): 包括两个小包 rmarkdown and knitr  
 R Markdown (markup language): .Rmd file that is an excellent “literate programming” and “reproducible research”
 
-Knitr converts  
-1. An .Rmd   ->  a .md
-1. An .Rnw(Sweave) -> .tex 
-1. An .Rhtml   -> .html
-
-Then Pandoc converts md/tex/html into various formats PDF/HTML/Word/.
-
-- Combine R-Markdown and GitHub
-1. open .Rmd
-1. YAML header 用 “output=github_document”
-1. knit .rmd to .md (will also generate .docs if including graphs)
-1. push .md and .docs to GitHub
-
-multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)
+- **Knitr** converts  
+  - An .Rmd   -> .md  
+  - An .Rnw(Sweave) -> .tex  
+  - An .Rhtml   -> .html
+  - After Knitr works, then **Pandoc** converts md/tex/html into various formats as PDF/HTML/Word/.
 
 
 
 ## Plot/graph/visualisation
 
-- Create Tableau Dashboard Extensions With R Shiny
-Shinytableau %R package, RStudio has R Shiny (脚本文本交互) to use directly
-  - Tableau：所有方面比Power BI好的拖动式画图软件，可以和R integrate
+- Install.packages("Shinytableau")
+Create Tableau(所有方面比Power BI好的拖动式画图软件) Dashboard Extensions With R Shiny(脚本文本交互) 
 
 - lattice: focus on multivariate data, and in particular to produce "small multiple" plots
 
@@ -63,10 +46,6 @@ dev.off()
 
 
 ## Data 
-
-- Data infrastructure of Australia  
-[AURIN](https://aurin.org.au/resources/aurin-apis/) is "Australia's single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.". This package provides functions to download and search datasets from the AURIN API (it's free to use!).
-
 
 - 输入数据
 ```
