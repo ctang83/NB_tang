@@ -24,7 +24,7 @@
 <meta name="author" content="CTang" />
 
 
-<meta name="date" content="2022-01-29" />
+<meta name="date" content="2022-01-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -77,7 +77,18 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a>
 <ul>
-<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#learn"><i class="fa fa-check"></i><b>1.0.1</b> Learn</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#年"><i class="fa fa-check"></i><b>1.1</b> 2022年</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#月"><i class="fa fa-check"></i><b>1.1.1</b> 1月</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#年-1"><i class="fa fa-check"></i><b>1.2</b> 2010-2012年</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#月25日"><i class="fa fa-check"></i><b>1.2.1</b> 8月25日</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#年5月24日"><i class="fa fa-check"></i><b>1.2.2</b> 2011年5月24日</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#年10月"><i class="fa fa-check"></i><b>1.2.3</b> 2010年10月</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#月25日-1"><i class="fa fa-check"></i><b>1.2.4</b> 8月25日</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#月27日"><i class="fa fa-check"></i><b>1.2.5</b> 6月27日</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html"><i class="fa fa-check"></i><b>2</b> bat, Excel/Word, Lyx/Latex</a>
 <ul>
@@ -93,8 +104,8 @@
 <ul>
 <li class="chapter" data-level="3.1" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#online-data-collectiontransfer"><i class="fa fa-check"></i><b>3.1</b> Online data collection/transfer</a></li>
 <li class="chapter" data-level="3.2" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-online-bookbookdown"><i class="fa fa-check"></i><b>3.2</b> Building online book(Bookdown)</a></li>
-<li class="chapter" data-level="3.3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#best-single-page-template"><i class="fa fa-check"></i><b>3.3</b> Best single page (template)</a></li>
-<li class="chapter" data-level="3.4" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-dashboardshinny"><i class="fa fa-check"></i><b>3.4</b> Building Dashboard(Shinny)</a></li>
+<li class="chapter" data-level="3.3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#best-single-page-robobook"><i class="fa fa-check"></i><b>3.3</b> Best single page (robobook)</a></li>
+<li class="chapter" data-level="3.4" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-dashboardflexboard"><i class="fa fa-check"></i><b>3.4</b> Building Dashboard(flexboard)</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html"><i class="fa fa-check"></i><b>4</b> R_Stata run stated preference</a>
 <ul>
@@ -140,8 +151,11 @@
 <h2><span class="header-section-number">3.1</span> Online data collection/transfer</h2>
 <p>Ideally, or the perfect situation, is that we collect and summarise data from internet, clean data, analyse data, and present outcomes online.</p>
 <ul>
-<li><p>Data infrastructure of Australia<br />
-<a href="https://aurin.org.au/resources/aurin-apis/">library(aurin)</a> is “Australia’s single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.” This package provides functions to download and search datasets from the AURIN API (it’s free to use!).</p></li>
+<li>Data infrastructure of Australia<br />
+<a href="https://aurin.org.au/resources/aurin-apis/">library(aurin)</a> is “Australia’s single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.” This package provides functions to download and search datasets from the AURIN API (it’s free to use!).</li>
+</ul>
+<p>There is an example in aurin website showing access data, obtain data through this API.</p>
+<ul>
 <li><p>R包 rvest: Easily Harvest (Scrape) Web Pages <a href="http://cran.r-project.org/web/packages/rvest/index.html">参考手册</a><br />
 数据抓取两大阶段：网页获取和网页解析<br />
 R主要靠两个包，网页获取是RCurl，解析是靠XML<br />
@@ -173,7 +187,7 @@ python也对应两个包，网磁获取是requests，解析是BeautifulSoup</p><
 </ol>
 <p><strong>3) Turn “bookdown_template” into “BB”</strong></p>
 <ol style="list-style-type: decimal">
-<li>Go back to RStudio, to your “BB” project</li>
+<li>Go back to RStudio, see your “BB” project</li>
 <li>In the Console, type <code>usethis::use_git()</code> and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.</li>
 <li>Now, click on the Terminal tab next to the Console tab.</li>
 <li>Type <code>git remote add origin URL</code></li>
@@ -187,7 +201,7 @@ python也对应两个包，网磁获取是requests，解析是BeautifulSoup</p><
 <li>Change the Source pulldown from “None” to “master branch /docs folder”</li>
 <li>It should say “Your site is ready to be published at <a href="https://username.github.io/BB/" class="uri">https://username.github.io/BB/</a>”</li>
 </ol>
-<p><strong>5) Write local .Rmd, build and update online book in Github</strong></p>
+<p><strong>5) Update online book in Github</strong></p>
 <ol style="list-style-type: decimal">
 <li>Rstudio to build(knitr) the whole book, including all .Rmd files
 <ul>
@@ -199,20 +213,21 @@ python也对应两个包，网磁获取是requests，解析是BeautifulSoup</p><
 <li>Finally, click Push -&gt; Done!</li>
 </ol>
 <p>PS: we ignore Travis and related continuous integration(持续部署) here, actually now Yihui uses Makefile and _render.R <a href="https://github.com/rstudio/bookdown/tree/main/inst/examples">instead</a>.</p>
-<p><strong>6) Adding chapters and citations</strong></p>
+<p><strong>6) Adding chapters(.Rmd) and citations</strong></p>
 <ol style="list-style-type: decimal">
-<li></li>
+<li>Build a new .Rmd file, name it and begin writing. As Index.Rmd is always the first chapter, we start ordering from “02-xx.”</li>
+<li>For citations,</li>
 </ol>
 </div>
-<div id="best-single-page-template" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Best single page (template)</h2>
+<div id="best-single-page-robobook" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Best single page (robobook)</h2>
 <p>In above chapter <em>Building online book(Bookdown)</em>, multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)</p>
-<p>If we don’t need a book structure, but a single page.
-We use YAML header in single .Rmd, with outputing a single HTML.
+<p>If we don’t need a book structure, but a single page with a structured-table(especially good for a report).
+We use 1) YAML header and 2) first code chunk in a single .Rmd, with outputing a single HTML.
 The template robobook is great for reading.</p>
 <pre><code>---
 title: &quot;啊啊啊&quot;
-date: &quot;2022-01-29&quot;
+date: &quot;2022-01-30&quot;
   #这个output部分在multiple .Rmd files中就是_output.yml文件
   #所以 bookdown::gitbook: 对等 rmdformats::robobook:
 output:   
@@ -223,12 +238,43 @@ output:
     downcute_theme: &quot;default&quot;
 ---
 #```{r setup, include=FALSE}
-#Global options
+#First code chunk setting global options
 #knitr::opts_chunk$set(cache = TRUE)
 #```</code></pre>
+<p><strong>How to insert figures?</strong></p>
+<p>For my notebook, all figures are saved in folder /NB_tang/figs. Using codes below:</p>
+<p><code>![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}</code></p>
+<div class="figure">
+<img src="figs/fig_codechunk_opt.jpg" style="width:100.0%" alt="" />
+<p class="caption">First code chunk选项对输出的控制</p>
 </div>
-<div id="building-dashboardshinny" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Building Dashboard(Shinny)</h2>
+</div>
+<div id="building-dashboardflexboard" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Building Dashboard(flexboard)</h2>
+<p><strong>some definitions</strong>
+1. Shiny package aims building interactive web applications
+- <code>File</code> -&gt; <code>New File</code> -&gt; <code>Shiny</code> uses .R file
+1. Flexdashboard package aims building interactive dashboards using Rmarkdown
+- flexdashboard像Bookdown和single page的结合, 适合展示一个topic的数据
+- flexdashboard是single .Rmd(用===分panel, 用—分column, 用###分box区域)
+- .Rmd内结构也是YAML header + first code chunk
+- flexdashboard用_site.yml as a simple site generator(基于rmarkdown, 后来发明了<strong>blogdown</strong>使用third-party site generator like Hugo)</p>
+<p>This tutorial shows us how to build an online dashboard, using flexdashboard, with RStudio and GitHub. We call this project “BB.”</p>
+<p><strong>1) Start on local computer</strong></p>
+<ol style="list-style-type: decimal">
+<li>Copy folder “D:_template” to a reasonable place</li>
+<li>Rename 2 things from “flexdashboard_template” to “BB”:
+<ul>
+<li>the folder itself</li>
+<li>the .Rproj file</li>
+<li>the _site.yml -&gt; name(website)</li>
+</ul></li>
+<li>Double-click the .Rproj file to launch RStudio</li>
+<li>Click on <code>Knit</code> to build website .html</li>
+</ol>
+<p><strong>2) Create “BB” GitHub repo</strong>(see <strong>Building online book</strong>)</p>
+<p><strong>3) Turn “bookdown_template” into “BB”</strong>(see <strong>Building online book</strong>)</p>
+<p><strong>4) Publish “BB” (Last step)</strong></p>
 
 </div>
 </div>

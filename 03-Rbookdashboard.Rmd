@@ -7,6 +7,8 @@ Ideally, or the perfect situation, is that we collect and summarise data from in
 - Data infrastructure of Australia  
 [library(aurin)](https://aurin.org.au/resources/aurin-apis/) is "Australia's single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.". This package provides functions to download and search datasets from the AURIN API (it's free to use!).
 
+There is an example in aurin website showing access data, obtain data through this API. 
+
 - R包 rvest: Easily Harvest (Scrape) Web Pages [参考手册](http://cran.r-project.org/web/packages/rvest/index.html)  
 数据抓取两大阶段：网页获取和网页解析  
      R主要靠两个包，网页获取是RCurl，解析是靠XML  
@@ -38,7 +40,7 @@ This tutorial will show us easiest way to build an online book (or a book-style 
 
 **3) Turn "bookdown_template" into "BB"**
 
-1. Go back to RStudio, to your "BB" project
+1. Go back to RStudio, see your "BB" project
 1. In the Console, type `usethis::use_git()` and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.
 1. Now, click on the Terminal tab next to the Console tab. 
 1. Type `git remote add origin URL`
@@ -52,7 +54,7 @@ This tutorial will show us easiest way to build an online book (or a book-style 
 1. Change the Source pulldown from "None" to "master branch /docs folder"
 1. It should say "Your site is ready to be published at https://username.github.io/BB/"
 
-**5) Write local .Rmd, build and update online book in Github**
+**5) Update online book in Github**
 
 1. Rstudio to build(knitr) the whole book, including all .Rmd files
     - In Build panel, click "Build Book"
@@ -63,16 +65,18 @@ This tutorial will show us easiest way to build an online book (or a book-style 
 
 PS: we ignore Travis and related continuous integration(持续部署) here, actually now Yihui uses Makefile and _render.R [instead](https://github.com/rstudio/bookdown/tree/main/inst/examples). 
 
-**6) Adding chapters and citations**
+**6) Adding chapters(.Rmd) and citations**
 
-1. 
+1. Build a new .Rmd file, name it and begin writing. As Index.Rmd is always the first chapter, we start ordering from "02-xx".
+1. For citations, 
 
-## Best single page (template)
+
+## Best single page (robobook)
 
 In above chapter *Building online book(Bookdown)*, multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)
 
-If we don't need a book structure, but a single page. 
-We use YAML header in single .Rmd, with outputing a single HTML. 
+If we don't need a book structure, but a single page with a structured-table(especially good for a report). 
+We use 1) YAML header and 2) first code chunk in a single .Rmd, with outputing a single HTML. 
 The template robobook is great for reading. 
 ```
 ---
@@ -88,13 +92,47 @@ output:
     downcute_theme: "default"
 ---
 #```{r setup, include=FALSE}
-#Global options
+#First code chunk setting global options
 #knitr::opts_chunk$set(cache = TRUE)
 #```
 ```
 
+**How to insert figures?**
 
-## Building Dashboard(Shinny)
+For my notebook, all figures are saved in folder /NB_tang/figs. Using codes below: 
 
+`![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}`
+
+![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}
+
+
+## Building Dashboard(flexboard)
+
+**some definitions**
+1. Shiny package aims building interactive web applications
+    - `File` -> `New File` -> `Shiny` uses .R file
+1. Flexdashboard package aims building interactive dashboards using Rmarkdown 
+    - flexdashboard像Bookdown和single page的结合, 适合展示一个topic的数据
+    - flexdashboard是single .Rmd(用===分panel, 用---分column, 用###分box区域)
+    - .Rmd内结构也是YAML header + first code chunk
+    - flexdashboard用_site.yml as a simple site generator(基于rmarkdown, 后来发明了**blogdown**使用third-party site generator like Hugo)
+    
+This tutorial shows us how to build an online dashboard, using flexdashboard, with RStudio and GitHub. We call this project "BB".
+
+**1) Start on local computer**
+
+1. Copy folder "D:\R\flexdashboard_template" to a reasonable place
+1. Rename 2 things from "flexdashboard_template" to "BB":
+    - the folder itself
+    - the .Rproj file
+    - the _site.yml -> name(website)
+1. Double-click the .Rproj file to launch RStudio 
+1. Click on `Knit` to build website .html
+    
+**2) Create "BB" GitHub repo**(see **Building online book**)
+
+**3) Turn "bookdown_template" into "BB"**(see **Building online book**)
+
+**4) Publish "BB" (Last step)**
 
 
