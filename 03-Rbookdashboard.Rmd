@@ -71,7 +71,7 @@ PS: we ignore Travis and related continuous integration(持续部署) here, actu
 1. For citations, 
 
 
-## Best single page (robobook)
+## Best single page(robobook)
 
 In above chapter *Building online book(Bookdown)*, multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)
 
@@ -97,6 +97,8 @@ output:
 #```
 ```
 
+PS: Many excellent templates: rticles(journal papers), prettydoc(html), rmdformats(online book, like robobook), tufte
+
 **How to insert figures?**
 
 For my notebook, all figures are saved in folder /NB_tang/figs. Using codes below: 
@@ -109,6 +111,8 @@ For my notebook, all figures are saved in folder /NB_tang/figs. Using codes belo
 ## Building Dashboard(flexboard)
 
 **some definitions**
+
+1. Rmarkdown aims to develop your code and ideas in a reproducible document
 1. Shiny package aims building interactive web applications
     - `File` -> `New File` -> `Shiny` uses .R file
 1. Flexdashboard package aims building interactive dashboards using Rmarkdown 

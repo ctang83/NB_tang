@@ -16,10 +16,10 @@ latex
 r_onlinebookdashboard
 online-data-collectiontransfer
 building-online-bookbookdown
-best-single-page-robobook
+best-single-pagerobobook
 building-dashboardflexboard
-r_stata-run-stated-preference
-lc潜层模型
+rstata_stated-preference
+latent-class潜层模型
 binary-dceused-as-case-2-bws
 case-1-bws
 r

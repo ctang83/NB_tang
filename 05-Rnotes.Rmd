@@ -3,10 +3,10 @@
 ## Workflow/Reproducible research 
 
 - 为什么需要笔记本界面notebook interface? 答: 人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on.  
-  - Text-based user interface, e.g. Command-line interface -> notebook interface  
-  - Graphical user interfaces (GUIs)  VS. Sonic user interface  
-  - Natural language user interface  
-  - Tangible user interface, e.g. Touch user interface  
+* Text-based user interface, e.g. Command-line interface -> notebook interface  
+* Graphical user interfaces (GUIs)  VS. Sonic user interface  
+* Natural language user interface  
+* Tangible user interface, e.g. Touch user interface  
 
 - Rmd网上有很多模板可用包安装, 如["stevetemplates"](https://github.com/svmiller/svm-r-markdown-templates), File-> New File-> R Markdown->From templates增加了很多新模板  
 R Markdown(脚本文本)比Latex好得多，生成PDF, word, html, slides  

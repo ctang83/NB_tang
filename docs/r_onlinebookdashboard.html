@@ -24,7 +24,7 @@
 <meta name="author" content="CTang" />
 
 
-<meta name="date" content="2022-01-30" />
+<meta name="date" content="2022-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="bat-excelword-lyxlatex.html"/>
-<link rel="next" href="r_stata-run-stated-preference.html"/>
+<link rel="next" href="rstata_stated-preference.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -104,14 +104,14 @@
 <ul>
 <li class="chapter" data-level="3.1" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#online-data-collectiontransfer"><i class="fa fa-check"></i><b>3.1</b> Online data collection/transfer</a></li>
 <li class="chapter" data-level="3.2" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-online-bookbookdown"><i class="fa fa-check"></i><b>3.2</b> Building online book(Bookdown)</a></li>
-<li class="chapter" data-level="3.3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#best-single-page-robobook"><i class="fa fa-check"></i><b>3.3</b> Best single page (robobook)</a></li>
+<li class="chapter" data-level="3.3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#best-single-pagerobobook"><i class="fa fa-check"></i><b>3.3</b> Best single page(robobook)</a></li>
 <li class="chapter" data-level="3.4" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-dashboardflexboard"><i class="fa fa-check"></i><b>3.4</b> Building Dashboard(flexboard)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html"><i class="fa fa-check"></i><b>4</b> R_Stata run stated preference</a>
+<li class="chapter" data-level="4" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html"><i class="fa fa-check"></i><b>4</b> R/Stata_Stated Preference</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html#lc潜层模型"><i class="fa fa-check"></i><b>4.1</b> LC潜层模型</a></li>
-<li class="chapter" data-level="4.2" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html#binary-dceused-as-case-2-bws"><i class="fa fa-check"></i><b>4.2</b> Binary DCE(used as Case 2 BWS)</a></li>
-<li class="chapter" data-level="4.3" data-path="r_stata-run-stated-preference.html"><a href="r_stata-run-stated-preference.html#case-1-bws"><i class="fa fa-check"></i><b>4.3</b> case 1 BWS</a></li>
+<li class="chapter" data-level="4.1" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#latent-class潜层模型"><i class="fa fa-check"></i><b>4.1</b> Latent Class(潜层模型)</a></li>
+<li class="chapter" data-level="4.2" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#binary-dceused-as-case-2-bws"><i class="fa fa-check"></i><b>4.2</b> Binary DCE(used as Case 2 BWS)</a></li>
+<li class="chapter" data-level="4.3" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#case-1-bws"><i class="fa fa-check"></i><b>4.3</b> case 1 BWS</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>5</b> R</a>
 <ul>
@@ -219,15 +219,15 @@ python也对应两个包，网磁获取是requests，解析是BeautifulSoup</p><
 <li>For citations,</li>
 </ol>
 </div>
-<div id="best-single-page-robobook" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Best single page (robobook)</h2>
+<div id="best-single-pagerobobook" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Best single page(robobook)</h2>
 <p>In above chapter <em>Building online book(Bookdown)</em>, multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)</p>
 <p>If we don’t need a book structure, but a single page with a structured-table(especially good for a report).
 We use 1) YAML header and 2) first code chunk in a single .Rmd, with outputing a single HTML.
 The template robobook is great for reading.</p>
 <pre><code>---
 title: &quot;啊啊啊&quot;
-date: &quot;2022-01-30&quot;
+date: &quot;2022-02-02&quot;
   #这个output部分在multiple .Rmd files中就是_output.yml文件
   #所以 bookdown::gitbook: 对等 rmdformats::robobook:
 output:   
@@ -241,6 +241,7 @@ output:
 #First code chunk setting global options
 #knitr::opts_chunk$set(cache = TRUE)
 #```</code></pre>
+<p>PS: Many excellent templates: rticles(journal papers), prettydoc(html), rmdformats(online book, like robobook), tufte</p>
 <p><strong>How to insert figures?</strong></p>
 <p>For my notebook, all figures are saved in folder /NB_tang/figs. Using codes below:</p>
 <p><code>![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}</code></p>
@@ -251,14 +252,21 @@ output:
 </div>
 <div id="building-dashboardflexboard" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Building Dashboard(flexboard)</h2>
-<p><strong>some definitions</strong>
-1. Shiny package aims building interactive web applications
-- <code>File</code> -&gt; <code>New File</code> -&gt; <code>Shiny</code> uses .R file
-1. Flexdashboard package aims building interactive dashboards using Rmarkdown
-- flexdashboard像Bookdown和single page的结合, 适合展示一个topic的数据
-- flexdashboard是single .Rmd(用===分panel, 用—分column, 用###分box区域)
-- .Rmd内结构也是YAML header + first code chunk
-- flexdashboard用_site.yml as a simple site generator(基于rmarkdown, 后来发明了<strong>blogdown</strong>使用third-party site generator like Hugo)</p>
+<p><strong>some definitions</strong></p>
+<ol style="list-style-type: decimal">
+<li>Rmarkdown aims to develop your code and ideas in a reproducible document</li>
+<li>Shiny package aims building interactive web applications
+<ul>
+<li><code>File</code> -&gt; <code>New File</code> -&gt; <code>Shiny</code> uses .R file</li>
+</ul></li>
+<li>Flexdashboard package aims building interactive dashboards using Rmarkdown
+<ul>
+<li>flexdashboard像Bookdown和single page的结合, 适合展示一个topic的数据</li>
+<li>flexdashboard是single .Rmd(用===分panel, 用—分column, 用###分box区域)</li>
+<li>.Rmd内结构也是YAML header + first code chunk</li>
+<li>flexdashboard用_site.yml as a simple site generator(基于rmarkdown, 后来发明了<strong>blogdown</strong>使用third-party site generator like Hugo)</li>
+</ul></li>
+</ol>
 <p>This tutorial shows us how to build an online dashboard, using flexdashboard, with RStudio and GitHub. We call this project “BB.”</p>
 <p><strong>1) Start on local computer</strong></p>
 <ol style="list-style-type: decimal">
@@ -284,7 +292,7 @@ output:
         </div>
       </div>
 <a href="bat-excelword-lyxlatex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r_stata-run-stated-preference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rstata_stated-preference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
