@@ -2,11 +2,11 @@
 
 ## Workflow/Reproducible research 
 
-- 为什么需要笔记本界面notebook interface? 答: 人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on.  
-* Text-based user interface, e.g. Command-line interface -> notebook interface  
-* Graphical user interfaces (GUIs)  VS. Sonic user interface  
-* Natural language user interface  
-* Tangible user interface, e.g. Touch user interface  
+- 为什么需要笔记本界面notebook interface? 答: 人机交互human–computer interaction可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on. Some major human-computer interfaces as below:  
+1 Text-based user interface, e.g. Command-line interface -> notebook interface  
+2 Graphical user interfaces (GUIs)  VS. Sonic user interface  
+3 Natural language user interface  
+4 Tangible user interface, e.g. Touch user interface  
 
 - Rmd网上有很多模板可用包安装, 如["stevetemplates"](https://github.com/svmiller/svm-r-markdown-templates), File-> New File-> R Markdown->From templates增加了很多新模板  
 R Markdown(脚本文本)比Latex好得多，生成PDF, word, html, slides  
@@ -28,10 +28,32 @@ After Knitr works, then **Pandoc** converts md/tex/html into various formats as 
 
 ## Plot/graph/visualisation
 
+- install.packages("geofacet")  
+facet小平面, 组成"嵌入变量内容"的[地理拼图](https://cran.r-project.org/web/packages/geofacet/vignettes/geofacet.html). The main function in this package is facet_geo() and its use can be thought of as equivalent to ggplot2’s facet_wrap() except for the output it creates. The facet_geo() works just like ggplot2’s built-in faceting. 
+
+```
+library(geofacet)
+library(ggplot2)
+head(state_ranks)
+get_grid_names()  %% geofacet自带多国多地图
+head(aus_pop)
+
+ %% Geofacet - Australian population by age group
+ggplot(aus_pop, aes(age_group, pop / 1e6, fill = age_group)) +
+  geom_col() +
+  facet_geo(~ code, grid = "aus_grid1") +
+  coord_flip() +
+  labs(
+    title = "Australian Population Breakdown",
+    caption = "Data Source: ABS Labour Force Survey, 12 month average",
+    y = "Population [Millions]") +
+  theme_bw()
+```
+
 - Install.packages("Shinytableau")
 Create Tableau(所有方面比Power BI好的拖动式画图软件) Dashboard Extensions With R Shiny(脚本文本交互) 
 
-- lattice: focus on multivariate data, and in particular to produce "small multiple" plots
+- Install.packages("lattice") % focus on multivariate data, and in particular to produce "small multiple" plots
 
 - 画图 和 输出图片
 ```
@@ -234,7 +256,7 @@ $name
 Rstudio is IDE of R, needs setup of R before. Rstudio->tools->Global options->[R路径](D:\R\R-Portable\App\R-Portable)
 
 - 升级R, 安装所有packages  
-install.packages(c("apollo", "arm", "backports", "BayesLCA", "bibtex", "bit", "bit64", "bitops", "BMA", "brio", "caret", "caTools", "cli", "colorspace", "curl", "data.table", "deSolve", "diffobj", "digest", "dotCall64", "dplyr", "e1071", "effects", "ellipsis", "expm", "fansi", "farver", "fastmap", "fields", "fs", "gert", "git2r", "glue", "gmp", "gower", "gsynth", "haven", "hdrcde", "Hmisc", "htmltools", "httpuv", "ipred", "isoband", "jpeg", "jsonlite", "ks", "later", "latticeExtra", "lfe", "lme4", "lmtest", "lubridate", "magick", "magrittr", "maps", "maptools", "Matrix", "matrixStats", "mclust", "MCMCpack", "memisc", "mime", "mnormt", "msm", "multicool", "mvtnorm", "nloptr", "openssl", "partitions", "pcaPP", "pkgload", "pROC", "processx", "promises", "proxy", "ps", "quantreg", "randtoolbox", "rappdirs", "Rcpp", "RcppArmadillo", "RcppEigen", "RCurl", "readr", "readstata13", "rgl", "rJava", "rlang", "rngWELL", "robustbase", "RODBC", "roxygen2", "rrcov", "sass", "sem", "slam", "sp", "spam", "SparseM", "statmod", "stringi", "sys", "testthat", "tibble", "tidyr", "tidyverse", "tis", "utf8", "vctrs", "VGAM", "VGAMdata", "vroom", "XLConnect", "XML", "xml2", "zip", "zoo"))
+install.packages(c("apollo", "arm", "backports", "BayesLCA", "bibtex", "bit", "bit64", "bitops", "BMA", "brio", "caret", "caTools", "cli", "colorspace", "curl", "data.table", "deSolve", "diffobj", "digest", "dotCall64", "dplyr", "e1071", "effects", "ellipsis", "expm", "fansi", "farver", "fastmap", "fields", "fs", "geofacet", "gert", "git2r", "glue", "gmp", "gower", "gsynth", "haven", "hdrcde", "Hmisc", "htmltools", "httpuv", "ipred", "isoband", "jpeg", "jsonlite", "ks", "later", "latticeExtra", "lfe", "lme4", "lmtest", "lubridate", "magick", "magrittr", "maps", "maptools", "Matrix", "matrixStats", "mclust", "MCMCpack", "memisc", "mime", "mnormt", "msm", "multicool", "mvtnorm", "nloptr", "openssl", "partitions", "pcaPP", "pkgload", "pROC", "processx", "promises", "proxy", "ps", "quantreg", "randtoolbox", "rappdirs", "Rcpp", "RcppArmadillo", "RcppEigen", "RCurl", "readr", "readstata13", "rgl", "rJava", "rlang", "rngWELL", "robustbase", "RODBC", "roxygen2", "rrcov", "sass", "sem", "slam", "sp", "spam", "SparseM", "statmod", "stringi", "sys", "testthat", "tibble", "tidyr", "tidyverse", "tis", "utf8", "vctrs", "VGAM", "VGAMdata", "vroom", "XLConnect", "XML", "xml2", "zip", "zoo"))
 
 - 安装加载搜索包
 ```

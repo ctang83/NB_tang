@@ -1,10 +1,15 @@
 # Python  
 
+## Deepnote
+
+1. The best platform for Python/R, which is cloud-based, real time, no install requirements, with lots of packages already installed. 
+1. Disadvantages: 1) Running speed is low for R, compared to my RStudio. 2) For R, packages combination is not well-supported, so the dockerhub image is required for setting up environment. 
+1. 
+
 ## Network science(complex network)
 
 [NetworKit](https://networkit.github.io/) is a growing open-source toolkit for large-scale network analysis.
 This moduler includes standard measures of network analysis, such as degree sequences, clustering coefficients, centrality measures, and more. 
-
 
 
 ## Plot and visualisation

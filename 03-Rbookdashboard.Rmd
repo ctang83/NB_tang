@@ -71,7 +71,7 @@ PS: we ignore Travis and related continuous integration(持续部署) here, actu
 1. For citations, 
 
 
-## Best single page(robobook)
+## Building single page(robobook)
 
 In above chapter *Building online book(Bookdown)*, multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)
 
@@ -97,7 +97,7 @@ output:
 #```
 ```
 
-PS: Many excellent templates: rticles(journal papers), prettydoc(html), rmdformats(online book, like robobook), tufte
+PS: Rmd has many excellent templates: rticles(journal papers), prettydoc(html), rmdformats(online book, e.g. robobook style), tufte
 
 **How to insert figures?**
 
@@ -108,7 +108,7 @@ For my notebook, all figures are saved in folder /NB_tang/figs. Using codes belo
 ![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}
 
 
-## Building Dashboard(flexboard)
+## Building Dashboard(Flexboard)
 
 **some definitions**
 
@@ -139,4 +139,11 @@ This tutorial shows us how to build an online dashboard, using flexdashboard, wi
 
 **4) Publish "BB" (Last step)**
 
+## Building website wt multi-pages(Blogdown)
+
+**Blogdown** use the third-party site generator, Hugo. 
+
+**1) Start on local computer**
+
+1. Copy folder "D:\R\blog" to a reasonable place
 

@@ -18,7 +18,11 @@ This notebook covers my daily skills learning.
 
 ## 2022年  
 
-### 1月
+### Feb
+
+- Debug: RStudio couldn't work well if R libraries are synchronized, I'm considering transfer the platform to RStudio Cloud, like Deepnote-Python
+
+### Jan
 
 - 以下情况不需要伦理审查 Do I need to apply for ethics approval? In cases where data are collected for the purpose other than research, you might not need to submit an ethics application. This might be the case if your project falls into one of the following categories of data collection or use:
 

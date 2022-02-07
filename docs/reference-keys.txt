@@ -1,6 +1,7 @@
 intro
 年
-月
+feb
+jan
 年-1
 月25日
 年5月24日
@@ -16,8 +17,9 @@ latex
 r_onlinebookdashboard
 online-data-collectiontransfer
 building-online-bookbookdown
-best-single-pagerobobook
+building-single-pagerobobook
 building-dashboardflexboard
+building-website-wt-multi-pagesblogdown
 rstata_stated-preference
 latent-class潜层模型
 binary-dceused-as-case-2-bws
@@ -28,5 +30,10 @@ plotgraphvisualisation
 data
 install-rrstudio
 python
+deepnote
 network-sciencecomplex-network
 plot-and-visualisation
+sql
+sql-1
+tableau
+power-bi

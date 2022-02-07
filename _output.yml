@@ -7,18 +7,18 @@ bookdown::gitbook:
     - lib/css/lesson.css
   includes:
   config:
-    toc:  #table of content
-          #before is top of left Sidebar, after is bottom of left Sidebar
-      before: | 
+    split_by: section
+    toc:  #table of content, before is top of left Sidebar, after is bottom of left Sidebar
+     collapse: section
+     before: | 
         <li><a href="./">Notebook Tang</a></li>  
-      after: |
+     after: |
         <li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
     edit: https://github.com/ctang83/NB_tang/tree/master/%s #click and go to online folder
     download: ["pdf"] #set up downloading PDF option at the top toolbar 
     search:
        engine: fuse
     
-
 #2) build PDF form files (if no output here,  then no PDF option in online book website)
 #bookdown::pdf_book:
 #  includes:
