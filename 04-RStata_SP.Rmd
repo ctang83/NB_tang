@@ -24,7 +24,7 @@ An R package for bayesian latent class analysis : Three methods for fitting the 
 
 - 3.4.3 Organ donation部分 - Binary DCE(Lma method) BDCE可以立即用作 Case 2 BWS  
 这段代码是Stata中运行, 调用R包, 生成DCE原始设计med数据库(med是R中由正交表自动生成的)
-```
+```r
 	rsource, terminator(END_R)
 	library(survival)  
 	library(stats)  
@@ -58,69 +58,69 @@ An R package for bayesian latent class analysis : Three methods for fitting the 
  
 - 3.4.3 护理学生部分 Binary DCE(Lma method) BDCE可以立即用作 case 2 BWS 
 ```
-rsource, terminator(END_R)
+	rsource, terminator(END_R)
 
-library(survival)  
-library(stats)  
-library(support.CEs)  
-library(foreign)    # for Stata dataset output
+	library(survival)  
+	library(stats)  
+	library(support.CEs)  
+	library(foreign)    # for Stata dataset output
 
-################## questionnaire #############################
+	################## questionnaire #############################
 
-med <- Lma.design(
-  attribute.names = list(Place = c("Urban", "Rural"),      Facility = c("Hospital", "CHC"), 
-                         Mgment = c("Fsuppot", "Psuppot"), Material = c("Fully", "Poorly"), 
-                         Style  = c("Required", "Not"),    Career = c("Sufficient", "Limited"), 
-                         Income = c("2000", "4000", "6000", "8000")), 
-  nalternatives = 1,     # create design for a BDCE
-  nblocks = 2,
-  row.renames = FALSE,
-  seed = 987)
+	med <- Lma.design(
+	  attribute.names = list(Place = c("Urban", "Rural"),      Facility = c("Hospital", "CHC"), 
+							 Mgment = c("Fsuppot", "Psuppot"), Material = c("Fully", "Poorly"), 
+							 Style  = c("Required", "Not"),    Career = c("Sufficient", "Limited"), 
+							 Income = c("2000", "4000", "6000", "8000")), 
+	  nalternatives = 1,     # create design for a BDCE
+	  nblocks = 2,
+	  row.renames = FALSE,
+	  seed = 987)
 
-questionnaire(choice.experiment.design = med ) 
-as.data.frame(med$alternatives$alt.1)   # med是list类型的对象, alt.1是attributes组合的对象
+	questionnaire(choice.experiment.design = med ) 
+	as.data.frame(med$alternatives$alt.1)   # med是list类型的对象, alt.1是attributes组合的对象
 
-% PS: 2 blocks, 16 questions in total, thus each one answer 9 questions (including one consistent test)
+	% PS: 2 blocks, 16 questions in total, thus each one answer 9 questions (including one consistent test)
 
-################## design matrix -- dm.med #############################
+	################## design matrix -- dm.med #############################
 
-- Because from the above questionnaire, we can create two types of BDCE: 
-	- 1) No opt-out but include common alternative;
-	- 2) Opt-out but no common alternative. 
-#  Here in DCE_med_spe, we choose 2). 
+	- Because from the above questionnaire, we can create two types of BDCE: 
+		- 1) No opt-out but include common alternative;
+		- 2) Opt-out but no common alternative. 
+	#  Here in DCE_med_spe, we choose 2). 
 
-dm.med <- make.design.matrix(
-  choice.experiment.design = med, 
-  optout = TRUE,    # include opt-out option
-  categorical.attributes = c("Place", "Facility", "Mgment", "Material", "Style", "Career" ), 
-  continuous.attributes = c("Income"), 
-  unlabeled = TRUE, # unlabeled design
-  common = NULL,    # do not include common alternative
-  binary = TRUE)    # BDCEs
+	dm.med <- make.design.matrix(
+	  choice.experiment.design = med, 
+	  optout = TRUE,    # include opt-out option
+	  categorical.attributes = c("Place", "Facility", "Mgment", "Material", "Style", "Career" ), 
+	  continuous.attributes = c("Income"), 
+	  unlabeled = TRUE, # unlabeled design
+	  common = NULL,    # do not include common alternative
+	  binary = TRUE)    # BDCEs
 
-################## Datasets combine: final = res + dm.med #############################
+	################## Datasets combine: final = res + dm.med #############################
 
-data(res)  # Input respondent dataset (clean the consistent test question before input)
-/*  res是这个格式的数据库
-  ID BLOCK q1 q2 q3 q4 
-1  1     1  1  1  0  0    
-2  2     2  1  0  0  1    
-3  3     3  1  0  0  1    
-4  4     4  0  1  0  0    
-5  5     1  0  1  0  0    
-6  6     2  1  1  0  1    
-*/
-final <- make.dataset(
-  respondent.dataset = res,     # respondent dataset
-  design.matrix = dm.med,       # design matrix
-  choice.indicators = c("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"),
-  detail = FALSE)
+	data(res)  # Input respondent dataset (clean the consistent test question before input)
+	/*  res是这个格式的数据库
+	  ID BLOCK q1 q2 q3 q4 
+	1  1     1  1  1  0  0    
+	2  2     2  1  0  0  1    
+	3  3     3  1  0  0  1    
+	4  4     4  0  1  0  0    
+	5  5     1  0  1  0  0    
+	6  6     2  1  1  0  1    
+	*/
+	final <- make.dataset(
+	  respondent.dataset = res,     # respondent dataset
+	  design.matrix = dm.med,       # design matrix
+	  choice.indicators = c("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"),
+	  detail = FALSE)
 
-write.dta(final,"d:/test.dta")   # 输出BDCE attributes组合数据库
+	write.dta(final,"d:/test.dta")   # 输出BDCE attributes组合数据库
 
-################## Analysis ############################# 上面部分全部调试完毕，分析部分以后做
+	################## Analysis ############################# 上面部分全部调试完毕，分析部分以后做
 
-END_R
+	END_R
 ```
 
 - 3.4.3 医学生部分 BDCE , Lma method, BDCE可以立即用作 case 2 BWS

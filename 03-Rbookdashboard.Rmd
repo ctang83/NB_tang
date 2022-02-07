@@ -44,7 +44,7 @@ This tutorial will show us easiest way to build an online book (or a book-style 
 1. In the Console, type `usethis::use_git()` and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.
 1. Now, click on the Terminal tab next to the Console tab. 
 1. Type `git remote add origin URL`
-1. Type `git push --set-upstream origin master`
+1. Type `git push --set-upstream origin master` (this sentence upload files)
 
 **4) Publish "BB" (Last step)**
 
