@@ -1,5 +1,8 @@
 # R/Stata_Stated Preference
 
+
+- Stata mixed logit后计算支付意愿可用 mixlogitwtp 和 bayesmixedlogitwtp
+
 - Install.packages("logitr")  
 This package can estimate [MNL and MXL](https://cran.r-project.org/web/packages/logitr/vignettes/mxl_models.html), derive WTPs from Preference space and WTP space.  
 For details, see [random utility model in two spaces](https://cran.r-project.org/web/packages/logitr/vignettes/utility_models.html) 
@@ -12,6 +15,18 @@ This R package for estimating complex choice models (MXL) on large datasets
 RES ~ `Indirect payment`+`Direct payment`+strata  
 `~' 这个符号在R里面是建立模型
 
+- Hideo Aizaki has an online book [Non-Market Valuation with R](http://lab.agr.hokudai.ac.jp/nmvr/index.html)
+
+## Design & SurveyApp
+
+- Install.packages("idefix")
+this R package combines designning DCE and dashboard implementing survey to collect data, all tasks can be conducted by using R and Github
+
+help dcreate  //DCE设计Efficient designs
+
+## Estimating models
+- Install.packages("apollo")
+Coding and data examples using [Apollo](http://www.apollochoicemodelling.com/examples.html)
 
 ## Latent Class(潜层模型) 
 
@@ -25,39 +40,39 @@ An R package for bayesian latent class analysis : Three methods for fitting the 
 - 3.4.3 Organ donation部分 - Binary DCE(Lma method) BDCE可以立即用作 Case 2 BWS  
 这段代码是Stata中运行, 调用R包, 生成DCE原始设计med数据库(med是R中由正交表自动生成的)
 ```r
-	rsource, terminator(END_R)
-	library(survival)  
-	library(stats)  
-	library(support.CEs)  
-	library(foreign)    # for Stata dataset output
-    
-    % 设计DCE的attrs-levels
-	med <- Lma.design( 
-	  attribute.names = list( consent = c("implicit", "active"),  final = c("no", "yes"), 
-							  reg = c("various","unique"),     quit = c("never", "ask"),
-							  death = c("brain","other"),      priority = c("no","yes"),
-							  acknow = c("no","yes"),   payment = c("0","1w","2w","3w") ),
-	  nalternatives = 1,     # create design for a BDCE
-	  nblocks = 4,
-	  row.renames = FALSE,
-	  seed = 987)  
-	% med是由上面des产生的子数据库36x11，将18个choice set分解成36个alternatives(observations),
-    % 共11个变量(2*5+1,5个离散变量，1个连续变量)描述一个alternative
-    
-	attributes(med)   
-	head(med)  
-	questionnaire(choice.experiment.design = med ) 
-	data<-as.data.frame(med$alternatives$alt.1)   # med是list类型的对象, alt.1是attributes组合的对象
-	write.dta(data,"d:/test.dta")   # 输出BDCE attributes组合数据库
-	q() 
+rsource, terminator(END_R)
+library(survival)  
+library(stats)  
+library(support.CEs)  
+library(foreign)    # for Stata dataset output
+  
+  % 设计DCE的attrs-levels
+med <- Lma.design( 
+  attribute.names = list( consent = c("implicit", "active"),  final = c("no", "yes"), 
+						  reg = c("various","unique"),     quit = c("never", "ask"),
+						  death = c("brain","other"),      priority = c("no","yes"),
+						  acknow = c("no","yes"),   payment = c("0","1w","2w","3w") ),
+  nalternatives = 1,     # create design for a BDCE
+  nblocks = 4,
+  row.renames = FALSE,
+  seed = 987)  
+% med是由上面des产生的子数据库36x11，将18个choice set分解成36个alternatives(observations),
+  % 共11个变量(2*5+1,5个离散变量，1个连续变量)描述一个alternative
+  
+attributes(med)   
+head(med)  
+questionnaire(choice.experiment.design = med ) 
+data<-as.data.frame(med$alternatives$alt.1)   # med是list类型的对象, alt.1是attributes组合的对象
+write.dta(data,"d:/test.dta")   # 输出BDCE attributes组合数据库
+q() 
 
-	END_R
+END_R
 
-	use d:\test.dta , clear
+use d:\test.dta , clear
 ```
  
 - 3.4.3 护理学生部分 Binary DCE(Lma method) BDCE可以立即用作 case 2 BWS 
-```
+```r
 	rsource, terminator(END_R)
 
 	library(survival)  
@@ -124,7 +139,7 @@ An R package for bayesian latent class analysis : Three methods for fitting the 
 ```
 
 - 3.4.3 医学生部分 BDCE , Lma method, BDCE可以立即用作 case 2 BWS
-```
+```r
 rsource, terminator(END_R)
 library(survival)  
 library(stats)  
@@ -266,7 +281,7 @@ quantile(C3, c(0.025, 0.975))
 	- OMED - two level orthogonal main-effect design  
 	- BIBD - blanced incomplete block design (每题的number of items固定，所以建议只用这种)BIBD 可用的difference set如下
 
-```
+```r
 find.BIB(trt = 16, k = 6, b = 16 )
 find.BIB(trt = 15, k = 7, b = 15 )
 find.BIB(trt = 13, k = 4, b = 13 )  # 11 or 13 items is the best!
@@ -285,7 +300,7 @@ items <- c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11")
 
 - Organ donation - Results analysis by R (all output in D:\) , 所有结果输出都Stata化了, 只需要解决第2部分Create dataset: "final" = res + bibd
 
-```
+```r
 rsource, terminator(END_R)
 #######################  下面是成熟的针对13个items的程序，只需加载第2部分的新res数据库（res是来自调查的数据）
 library(DoE.base)
@@ -384,7 +399,7 @@ END_R
 
 
 - 读入tab_BWS_aggregate_score.csv 然后用mata转成Latex表
-```
+```r
 import delim using "d:\tab_BWS_aggregate_score.csv"  , clear
 gen att_id=_n 
 rename v1 att_name
@@ -396,7 +411,7 @@ texsave _all using "d:\tab_BWS_aggregate_score.tex" , frag replace  ///
 ```
 
 - Analyzing responses using the modeling approach
-```
+```r
 use  "d:\final.dta" , clear
 
 fr <- RES ~ A + B + C + E + F + G + H + I + J + K + L + M + strata(STR)   

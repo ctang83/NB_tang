@@ -1,0 +1,510 @@
+# Stata 
+
+## Modelling
+
+- 小聪的DID命令
+```r
+webuse nlswork  //使用系统自带数据库
+xtset idcode year, delta(1)  //设置面板
+xtdescribe   //描述一下这个面板数据情况
+
+gen age2= age^2
+gen ttl_exp2=ttl_exp^2
+gen tenure2=tenure^2
+
+global xlist "grade age age2 ttl_exp ttl_exp2 tenure tenure2 not_smsa south race"
+sum ln_w $xlist  //统计描述相关变量
+
+**DID方法-----------------------------------
+gen time = (year >= 77) & !missing(year)  //政策执行时间为1977年
+gen treated = (idcode >2000)&!missing(idcode) //政策执行地方为idcode大于2000的地方
+gen did = time*treated  //这就是需要估计的DID，也就所交叉项
+
+reg ln_w did time treated $xlist //这就是一个OLS回归，也可以用diff命令
+xtreg ln_w did time treated $xlist i.year, fe //也可以这去做，会省略掉一个虚拟变量
+
+**PSM-DID方法-------------------------------
+
+** PSM的部分
+set seed 0001	//定义种子
+gen tmp = runiform() //生成随机数
+sort tmp //把数据库随机整理
+psmatch2 treated $xlist, out(ln_w) logit ate neighbor(1) common caliper(.05) ties //通过近邻匹配，这里可以要outcome，也可以不要它
+pstest $xlist, both graph  //检验协变量在处理组与控制组之间是否平衡
+gen common=_support
+drop if common == 0  //去掉不满足共同区域假定的观测值
+psgraph
+
+** DID的部分，根据上面匹配好的数据
+reg ln_w did time treated $xlist 
+xtreg ln_w did time treated $xlist i.year, fe
+
+**PSM-DID部分结束--------------------------------------
+
+*交互项 
+help xi 
+**DID方法需要满足的五个条件检验------------------------
+
+**1.共同趋势假设检验
+
+tab year, gen(yrdum) //产生year dummy，即每一年一个dummy变量
+     forval v=1/7{
+gen treated`v'=yrdum`v'*treated
+}                     //这个相当于产生了政策实行前的那些年份与处理虚拟变量的交互项
+xtreg ln_w did treated*  i.year ,fe  //这个没有加控制变量
+xtreg ln_w did treated* $xlist i.year ,fe //如果did依然显著，且treated*这些政策施行前年份交互项并不显著，那就好
+xtreg ln_w did treated* $xlist i.year if union!=1 ,fe //我们认为工会会影响这个处理组和控制组的共同趋势，因此我们看看union=0的情形
+
+**2.政策干预时间的随机性
+gen time1 = (year >= 75) & !missing(year)  //政策执行时间提前到1975年
+capture drop treated1
+gen treated1= (idcode >2000)&!missing(idcode) //政策执行地方为idcode大于2000的地方
+gen did1 = time1*treated1  //这就是需要估计的DID，也就所交叉项
+
+gen time2 = (year >= 76) & !missing(year)  //政策执行时间提前到1976年
+capture drop treated2
+gen treated2= (idcode >2000)&!missing(idcode) //政策执行地方为idcode大于2000的地方
+gen did2 = time2*treated2  //这就是需要估计的DID，也就所交叉项
+
+xtreg ln_w did1 $xlist i.year,fe 
+xtreg ln_w did2 $xlist i.year,fe //看看这两式子里did1和did2显著不,显著为好
+
+**3.控制组将不受到政策的影响
+gen time3 = (year >= 77) & !missing(year) 
+capture drop treated3 
+gen treated3= (idcode<1600 & idcode>1000)&!missing(idcode) //我们考虑一个并没有受政策影响地方假设其受到政策影响
+gen did3 = time3*treated3  
+xtreg ln_w did3 $xlist i.year,fe //最好的情况是did3不显著，证明控制组不受政策影响
+
+
+**4.政策实施的唯一性，至少证明这个政策才是主要影响因素
+gen time4 = (year >= 77) & !missing(year)  
+capture drop treated4
+gen treated4= (idcode<3000 & idcode>2300)&!missing(idcode) //我们寻找某些受到其他政策影响的地方
+gen did4 = time4*treated4  
+xtreg ln_w did4 $xlist i.year,fe //did4可能依然显著，但是系数变小，证明还受到其他政策影响
+
+**5.控制组和政策影响组的分组是随机的
+
+xi:xtivreg2 ln_w (did=hours tenure) $xlist i.year,fe first //用工具变量来替代政策变量，解决因为分组非随机导致的内生性问题
+
+————————————————————————————————
+**附加的，一般而言，我们需要看看这个政策的动态影响-------------
+     forval v=8/15{
+gen treated`v'=yrdum`v'*treated  
+}               //注意，这里yrdum8就相当于year=78
+	
+reg  ln_w treated*  
+
+xtreg  ln_w treated*, fe
+
+xtreg ln_w treated* i.year,fe 
+
+xtreg ln_w treated* $xlist i.year,fe  //一般而言上面这些式子里的treated*应该至少部分显著
+
+
+倍分法 (DID)多个现成命令：
+help diff   //sj16-1
+help ddid   //Pre-post-treatment estimation of the Average Treatment Effect (ATE) with binary time-varying treatment
+didq        //Treatment-effect estimation under alternative assumptions, SJ 15(3):796--808
+help absdid //Semiparametric difference-in-differences estimator of Abadie (2005), SJ16-2, 附数据和范例
+——————————————————————————————————————
+* RDD 多个断点--包括分析、画图、稳健 Analysis of regression-discontinuity designs with multiple cutoffs or multiple scores
+https://journals.sagepub.com/doi/pdf/10.1177/1536867X20976320
+
+**RDD断点回归在这里的应用-------------------
+
+tab treated,missing
+keep if treated==1
+cmogram ln_w year,cut(77) scatter lineat(77) qfitci //绘制断点回归图形
+
+**最优带宽
+set more off
+rdbwselect ln_w year if 60<=year&year<=85,c(77) kernel(uni) //自己下载安装
+rdob ln_w year, c(77)                      //这个命令是imbens新开发的，这里有rdob的程序
+
+reg ln_w time $xlist if 60<year&year<80  //直接对time这个虚拟变量做了ols
+```
+
+### inequality不平等
+/*第一步：计算Gini 或 CI （常常画图）
+  第二步：分解
+	1）动态or面板：decomposition of a change in inequality 
+		   -- Stata命令：dsginideco(2017) - Decomposition of inequality change into pro-poor growth and mobility components
+						 adecomp(2012) - Shapley Decomposition by Components of a Welfare Measure
+	2）截面
+		   -- Stata命令：INEQDECO--Inequality decompositions by subgroup
+						 trnbin0 -- count data Yvar 集中指数非线性分解法
+						 ineqrbd -- Regression-based inequality decomposition, following Fields (2003) 
+						 ineqfac(2009) -- Inequality decomposition by factor components, following Shorrocks (1982a, b)
+						 fgt_ci -- calculates and decomposes Foster–Greer–Thorbecke (and standard) concentration indices
+						 rifireg(2016) - Recentered Influence Function (RIF) for (bivariate) rank dependent indices (I) regression */
+
+1.gini decomp:   "ginidesc" , "ineqdeco" ,  "ineqdec0"
+1.各种系数计算:  "inequal"→ "inequal7"→升级→"ainequal"		 
+								 
+## Plot/graph/visualisation
+
+
+help chinagcode  //利用百度地图获取中国地址的经纬度
+
+help stripplot  //画图比较多个分组的均值和分布
+
+*正态检验画图
+	help diagnostic_plots
+    swilk  x  // z>2.14代表x不服从正态； p<0.01代表不服从正态
+	pnorm  x  // 分布偏离斜线，也不服从正态。
+	gen u=rnormal(8, 3)  //检验一下正态
+
+- 现在的可视化工具webGL(graphical language)：一还是基于我们单机的统计分析；二优点在于"交互性"和"面向网络"；
+  - D3是基于JS：javascript, JSON=JavaScript Object Notation
+  - Plotly绘图底层基于D3
+```r
+help libd3 //a Mata wrapper around the D3 JavaScript library
+help libjson
+help libhtml	
+```
+
+### 改scheme
+help schemes
+
+set scheme plotplain  //我觉得最像R ggplot图风
+set scheme Plottig, permanently  // 对Stata单色模板的改进
+set scheme  s2mono, permanently  //s2monochrome 是我一直用的喜欢scheme
+
+sysuse auto
+histogram price, scheme(michigan) percent title("Automobile Prices")  // 非常漂亮图模
+
+### Output graph
+
+Stata figure出图终极解决方案--使用Ghostscript-gswin64c.exe：win10环境下安装Ghostscript, [Step I](http://fgsservices.co.uk/blog/fred-knows/how-tos/install-ghostscript-windows-10/), [Step II](https://fgsservices.co.uk/blog/fred-knows/how-tos/install-ghostscript-windows-10-step-2/). 
+win10环境下根据[步骤](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)添加 C:\Program Files\gs926\bin
+
+使用方法：Stata出矢量pdf，然后Stata调用!gswin64c.exe 将pdf转tiff (也可设定dpi=r600，和压缩方式lzw)，我包装为程序figen
+
+```r
+  figen, fig(D:\fig1) // 括号中=路径和名称
+  doedit "D:\stata11\ado\myado/figen.ado" //看ado,这个命令已定型，切勿再改
+  
+  cap prog drop figen
+  prog figen 
+  syntax,  [if] [in]  fig(str)
+       graph export "`fig'.pdf"  
+       !gswin64c.exe -dSAFER -dBATCH -dNOPAUSE -r600 -sDEVICE=tiff24nc -sCompression=lzw  -sOutputFile="`fig'.tiff"  "`fig'.pdf"
+       erase "`fig'.pdf" 
+  end
+```
+
+## Connection
+
+### R/Python
+- 使用python语言在Stata中：
+python
+exit()
+shellout python_plugin.pdf //详细介绍
+
+- Stata-R语言联用,方法一: "rsource",我做SP问卷输出和数据处理采用的
+```r
+	doedit "D:\aa\book_Stata_Latex_R\Stata_R_SP.do"
+	已经修改profile.do文件, R-Stata联用设置 这样就可以在Stata中写R代码 调用R的功能
+	global Rterm_path `"D:\R\R-4.0.3beta\bin\x64\Rterm.exe"'   //specify them in order to call R in Stata 
+	global Rterm_options `"--vanilla"'
+	//例子
+	rsource, terminator(END_OF_R)
+        library(foreign);
+        rauto<-read.dta("myauto.dta", convert.f=TRUE);
+        rauto;
+        attributes(rauto);
+        q();
+    END_OF_R
+```
+
+方法二："rcall" 比rsource强的是有interactive模式 
+```r
+	net install Rcall, replace from("d:\rcall")
+	help rcall
+
+	library("foreign", lib.loc="D:/R/R-Portable/App/R-Portable/library")
+	data<-as.data.frame(med$alternatives$alt.1)   # med是list类型的对象, alt.1是attributes组合的对象
+	write.dta(data,"d:/test.dta")
+	* R里面的表格tab_BWS_aggregate_score.csv 输出，再用Stata转成Latex表
+	rcall:data<-as.data.frame(scores$aggregate)   # med是list类型的对象, alt.1是attributes组合的对象
+	rcall:write.csv(data,"d:/tab_BWS_aggregate_score.csv")  # 这个表待会读入Stata，然后用mata转成Latex表
+	insheet using "D:\aa\CLDS\BMI\clds2016_m.csv", clear  	
+	import delim using "d:\tab_BWS_aggregate_score.csv"  , clear
+	texsave _all using "d:\tab_BWS_aggregate_score.tex" , frag replace  ///
+			title(Aggregated best-worst scores)  ///
+			footnote(Note: The number of respondents is xxx)  
+	***例子：综合控制法
+	rcall:data(gsynth)
+	rcall:names(turnout)
+
+	rcall:set.seed(123456)
+	rcall:turnout.ub <- turnout[-c(which(turnout$abb=="WY")[1:15], sample(1:nrow(turnout),50,replace=FALSE)),]
+							 
+	rcall:out <- gsynth(turnout ~ policy_edr + policy_mail_in + policy_motor, ///
+				  data = turnout.ub,  index = c("abb","year"), se = TRUE, inference = "parametric", r = c(0, 5),  ///
+				  CV = TRUE, force = "two-way", parallel = TRUE, min.T0 = 8,  nboots = 1000, seed = 02139)
+
+	rcall:print(out)
+
+	rename var1 t
+	tsset t
+	twoway tsline att cilower ciupper,xline(0) yline(0) scheme(s2mono)
+
+	rcall:out.mc <- gsynth(turnout ~ policy_edr + policy_mail_in + policy_motor, min.T0 = 8, ///
+				  data = turnout.ub,  index = c("abb","year"), estimator = "mc", ///
+				  se = TRUE, nboots = 1000, seed = 02139)
+				  
+	rcall:plot(out.mc, main = "Estimated ATT (MC)")
+	rcall:print(out.mc)
+
+	rename var1 t
+	tsset t
+	twoway tsline att cilower ciupper,xline(0) yline(0) scheme(s2mono)
+```
+
+方法三：在R语言中run Stata
+library("RStata") 
+
+### DOS/shell
+```r
+shell erase do_file.do  //shell (等价"!") allows you to send commands to your operating system
+shell                   // or to enter DOS界面
+!erase      myfile.txt  // DOS命令erase/del一样
+!del        myfile.tex
+!rename try15.dta   final.dta
+
+!rmdir D:\aa\manydoc\bak.stunicode  /s /q   //多运行一遍, 删除整个文件夹
+
+winexec notepad "d:\myfile.txt"   //Stata命令 allows you to open file by using notepad
+```
+
+### Latex/Markdown
+
+- 放弃Stata动态文件编写(stata14终于能完美支持ASCII中文了): markdoc, ketchup
+
+- Stata输出eps图，插入Latex，再编译
+```r
+	cd d:\
+	sysuse auto
+* run reg
+	eststo mytab: reg mpg weight length
+	esttab mytab using "mytable.tex", style(tex) replace
+* draw graph.eps, turn to .pdf
+	scatter mpg length
+	graph export mygraph.eps, replace
+	!epstopdf mygraph.eps  // 将eps图片转pdf,适合在latex中插入
+* compile pdf by latex
+	!pdflatex myoutput.tex -no-shell-escape   /* epstopdf和pdflatex都是MiTex的功能
+                                                   shell-escape是pdflatex的一个选项 */
+	!pdflatex  CTang_CV.tex  -output-directory=.\output\    //定向编译
+	!copy .\output\CTang_CV.pdf      .\             //再copy pdf到本文件夹
+
+% Latex file myoutput.tex
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\section{My table}
+\input{mytable.tex}
+
+\section{My graph}
+\includegraphics{mygraph.pdf}
+
+\end{document}
+````
+
+- Stata回归、制table，插入Latex
+```r
+program main
+    prepare_data
+    run_regressions
+    output_table
+end 
+
+program prepare_data
+    use ../external/tv_potato.dta, clear 
+    xtset countycode year 
+    label variable log_chip_sales "Log Chip Sales" 
+    label variable tv_linear "TV"
+end 
+
+program run_regressions  // 调用下面的 program setup_table
+    local dep_var   "log_chip_sales"
+    local tv_vars   "tv_linear"
+    local vce       "vce(cluster countycode)"
+    
+    eststo: reg `dep_var' `tv_vars', `vce'
+    setup_table, unitvar(countycode) timevar(year)
+    
+    eststo: xtreg `dep_var' `tv_vars', `vce'
+    setup_table, unitvar(countycode) timevar(year)
+    
+    eststo: reg `dep_var' `tv_vars' i.year, `vce'
+    setup_table, unitvar(countycode) timevar(year)
+    
+    eststo: xtreg `dep_var' `tv_vars' i.year, `vce'
+    setup_table, unitvar(countycode) timevar(year)
+end
+
+program setup_table   // 被上面的program run_regressions调用
+    syntax, unitvar(varname) timevar(varname) 
+		if "`e(ivar)'" == "`unitvar'" {
+			estadd local unit_fe "Yes"
+		}
+		else {
+			estadd local unit_fe "No"
+		}
+    local cmdline "`e(cmdline)'"
+    local cmd_substr : subinstr local cmdline "i.`timevar'" "", count(local cmd_time_fe) 
+		if `cmd_time_fe' == 1 {
+			estadd local time_fe "Yes"
+		}
+		else {
+			estadd local time_fe "No"
+		}
+end 
+
+program output_table 
+    esttab using ../output/regressions.tex, ///
+        replace drop(*.year) ///
+        obslast se label nonotes nomtitles collabels(none) ///
+        cells(b(star fmt(4)) se(par fmt(4)))  ///
+        scalars("unit_fe County Fixed Effects" "time_fe Year Fixed Effects") ///
+        mgroups("Log of Chip Sales", pattern(1) prefix(\multicolumn{@span}{c}{) ///
+            suffix(}) span erepeat(\cmidrule(lr){@span})) 
+end 
+
+main  // 启动执行
+```
+
+- Table - r1_mandatory and r2_mandatory's before-after mean comparison - by countries
+```r
+preserve
+     * sample selection 
+ drop if Country=="" | r1==.  // r1 和 r2 的missing obs完全一样
+     * T-test and mean comparison
+ encode Country, gen(country)  // string → numerical, so can be used by next ttab
+	 foreach v in 1 2 {
+	 
+		 ttab r`v'_mandatory, by(post) over(country)      // calculate difference
+		 mat r=r(coefs)
+		 ttab r`v'_mandatory, by(post) // for total
+		 mat t=r(coefs)
+
+		 ttab r`v'_mandatory, by(post) over(country) tshow // calculate t-stat
+		 mat rr=r(coefs)
+		 ttab r`v'_mandatory, by(post) tshow
+		 mat tt=r(coefs)
+
+		 tabstat r`v'_mandatory , by(country) s(mean count) save  // calculate mean and observations
+		 tabstatmat A
+
+		 mat rr=[r\rr]
+		 mat tt=[t\tt]
+		 mat rr=[rr,tt]
+		 mat rr=rr'
+		 mata: st_matrix("rr" , select(st_matrix("rr"),(1,1,1,0,0,1))) //2个mata函数，2个功能
+		 mat out`v'=[rr, A] 
+		 
+	   }
+  mat out=[out1 , out2]
+  mat colnames out = "Before IFRS" "After IFRS" Diff T-stat Total N  "Before IFRS" "After IFRS" Diff T-stat Total N 
+  mat rownames out = AUSTRALIA AUSTRIA BELGIUM CANADA DENMARK FINLAND FRANCE GERMANY GREECE "HONG KONG" INDIA INDONESIA IRELAND ITALY JAPAN KOREA(SOUTH) MALAYSIA NETHERLANDS NORWAY PAKISTAN PHILIPPINES PORTUGAL SINGAPORE "SOUTH AFRICA" SPAIN SWEDEN SWITZERLAND TAIWAN THAILAND "UNITED KINGDOM" "UNITED STATES" Total
+     * 格式化out矩阵，加star
+  local bc = rowsof(out)
+  mat star = J(`bc' , 12 , 0)
+  foreach v in 4 10  {
+   forvalues k = 1/`bc' {
+	  if abs(out[`k' , `v']) <= 1.645  {
+	  mat star[`k' , `v'] = 0
+	  }
+	   else if (abs(out[`k' , `v']) > 1.645 & abs(out[`k' , `v']) <= 1.96 ){
+	  mat star[`k' , `v'] = 1
+	  }
+	   else if (abs(out[`k' , `v']) > 1.96  & abs(out[`k' , `v']) <= 2.58 ){
+	  mat star[`k' , `v'] = 2
+	  }
+	   else if abs(out[`k' , `v']) > 2.58 {
+	  mat star[`k' , `v'] = 3
+	  }
+	  }
+	  }
+     * output word
+  frmttable using output /*in default word */, statmat(out) annotate(star) asymbol(*,**,***) sdec(2,2,2,2,2,0,2,2,2,2,2,0 ) landscape a4  //tex option写成latex文件
+restore
+```
+
+## Data/Big data
+
+- Stata 14 使用了 Unicode（统一码、万国码），之前的dofile只识别UTF-8编码，以前版本dofile都需要convert to UTF-8 by Notepad++。Stata 14 数据库打开时会乱码，转码如下：
+```r
+cd d:\对应目录
+unicode analyze *.do  //或者 .dta数据文件
+unicode encoding set gb18030
+unicode translate *.do
+```
+
+### Time/age
+```r
+drop if date2<date("01jan2010","DMY") | date2>date("30sep2011","DMY") //删除时间段
+
+Age：算age（从单纯的年、月两个变量）
+	gen birthdate=1
+	gen bir=mdy(birthmonth, birthdate, birthyear) // 用原始birthmonth，缺失值少
+	format bir %td
+	gen age=(mdy(9,1,2014)-bir)/365.25
+	drop birthdate bir	
+
+日期: 设变量x是字符型，且格式是"1-aug-02"
+monthly(s1,s2[,Y])
+date(s1,s2[,Y])
+
+g m = monthly(actual_date, "MY")  //这里只能gen,不能replace,因为type mismatch
+format m  %tmNN/CCYY
+
+g d = date(x,"DM20Y")
+form d  %td
+
+//extract month and year component from a variable (dm) with %tm format（e.g.1953m1）
+gen date = dofm(dm)
+format date %d
+gen month=month(date)
+gen yr=year(date)
+
+//一步到位牛逼的直接命令 https://blog.stata.com/2015/12/17/a-tour-of-datetime-in-stata-i/
+help todate
+help anythingtodate 
+
+anythingtodate cysj ,k
+ //出院时间
+hist cysjc12 if cysjc12>date("2015-01-01", "YMD")
+
+// YYYYMM date to "ym" Stata
+gen ndate = 201606
+gen sdate = "201606"
+gen ndate2 = ym(floor(ndate/100), mod(ndate, 100))
+gen sdate2 = ym(real(substr(sdate, 1, 4)), real(substr(sdate, -2,2)))
+format *2 %tm
+l
+     +-----------------------------------+
+     |  ndate    sdate   ndate2   sdate2 |
+     |-----------------------------------|
+  1. | 201606   201606   2016m6   2016m6 |
+     +-----------------------------------+
+// 
+	gen  rysj2 = date(string(rysj,"%8.0f"),"YMD")
+	format %td rysj2
+```
+
+### Big data
+超大数据-内存利用超97%，首先进去drop变量
+https://www.cpc.unc.edu/research/tools/data_analysis/statatutorial/misc/large_files
+describe using "bigfile.dta"  //不打开bigfile
+lookfor and lookfor_all
+use list_of_variables using
+use in
+use if
+use if inrange(runiform(),0,.1) using "bigfile.dta"

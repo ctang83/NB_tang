@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 R | My Notebook</title>
+  <title>Chapter 9 SQL | My Notebook</title>
   <meta name="description" content="Recording my learning stuff." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 R | My Notebook" />
+  <meta property="og:title" content="Chapter 9 SQL | My Notebook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ctang83/NB_tang" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 R | My Notebook" />
+  <meta name="twitter:title" content="Chapter 9 SQL | My Notebook" />
   
   <meta name="twitter:description" content="Recording my learning stuff." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="CTang" />
 
 
-<meta name="date" content="2022-02-10" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstata_stated-preference.html"/>
-<link rel="next" href="stata.html"/>
+<link rel="prev" href="sql.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -217,11 +217,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="python.html"><a href="python.html#network-sciencecomplex-network"><i class="fa fa-check"></i><b>7.2</b> Network science(complex network)</a></li>
 <li class="chapter" data-level="7.3" data-path="python.html"><a href="python.html#plot-and-visualisation"><i class="fa fa-check"></i><b>7.3</b> Plot and visualisation</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html"><i class="fa fa-check"></i><b>8</b> SQL/Tableau/PowerBI</a>
+<li class="chapter" data-level="8" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>8</b> SQL</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html#sql"><i class="fa fa-check"></i><b>8.1</b> SQL</a></li>
-<li class="chapter" data-level="8.2" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html#tableau"><i class="fa fa-check"></i><b>8.2</b> Tableau</a></li>
-<li class="chapter" data-level="8.3" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html#power-bi"><i class="fa fa-check"></i><b>8.3</b> Power BI</a></li>
+<li class="chapter" data-level="8.1" data-path="sql.html"><a href="sql.html#sql-1"><i class="fa fa-check"></i><b>8.1</b> SQL</a></li>
+<li class="chapter" data-level="8.2" data-path="sql.html"><a href="sql.html#tableau"><i class="fa fa-check"></i><b>8.2</b> Tableau</a></li>
+<li class="chapter" data-level="8.3" data-path="sql.html"><a href="sql.html#power-bi"><i class="fa fa-check"></i><b>8.3</b> Power BI</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="sql-2.html"><a href="sql-2.html"><i class="fa fa-check"></i><b>9</b> SQL</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="sql-2.html"><a href="sql-2.html#sql-3"><i class="fa fa-check"></i><b>9.1</b> SQL</a></li>
+<li class="chapter" data-level="9.2" data-path="sql-2.html"><a href="sql-2.html#tableau-1"><i class="fa fa-check"></i><b>9.2</b> Tableau</a></li>
+<li class="chapter" data-level="9.3" data-path="sql-2.html"><a href="sql-2.html#power-bi-1"><i class="fa fa-check"></i><b>9.3</b> Power BI</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
@@ -243,302 +249,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> R</h1>
-<div id="workflowreproducible-research" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Workflow/Reproducible research</h2>
+<div id="sql-2" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> SQL</h1>
+<p>REDCAP is based on MySQL, still a data store and management tool</p>
+<div id="sql-3" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> SQL</h2>
 <ul>
-<li><p>Why do we need notebook interface(笔记本界面)? A:human–computer interaction人-机交互可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on. Some major human-computer interfaces as below:<br />
-1 Text-based user interface, e.g. Command-line interface -&gt; notebook interface<br />
-2 Graphical user interfaces (GUIs) VS. Sonic user interface<br />
-3 Natural language user interface<br />
-4 Tangible user interface, e.g. Touch user interface</p></li>
-<li><p>Rmd网上有很多模板可用包安装, 如<a href="https://github.com/svmiller/svm-r-markdown-templates">“stevetemplates”</a>, File-&gt; New File-&gt; R Markdown-&gt;From templates增加了很多新模板<br />
-R Markdown(脚本文本)比Latex好得多，生成PDF, word, html, slides<br />
-R Shiny (脚本文本交互), 都可以通过github下载各种templates</p></li>
-<li><p>名词比较混<br />
-Markdown (markup language): a “lightweight” markup language (like HTML)<br />
-Markdown (R package): the predecessor of rmarkdown, converts .Rmd files into HTML<br />
-R Markdown (R package): 包括两个小包 rmarkdown and knitr<br />
-R Markdown (markup language): .Rmd file that is an excellent “literate programming” and “reproducible research”</p></li>
-<li><p><strong>Knitr</strong> converts<br />
-.Rmd -&gt; .md<br />
-.Rnw(Sweave) -&gt; .tex<br />
-.Rhtml -&gt; .html<br />
-After Knitr works, then <strong>Pandoc</strong> converts md/tex/html into various formats as PDF/HTML/Word/.</p></li>
+<li>SQL is used to create queries to manipulate the data stored in a database.</li>
+<li>Open Database Connectivity (ODBC) interface makes it possible for applications(Stata/R) to access data from a variety of database management systems (e.g. SQL Server).</li>
 </ul>
+<p>oracle导出导入数据详情</p>
+<p>¬¬¬——————————————Oracle安装备忘录—————————————————
+<em>目前未用（新农合数据）
+oracle11——-11.2.0.1.0
+下载及安装教程：<a href="https://jingyan.baidu.com/article/363872eccfb9266e4aa16f5d.html" class="uri">https://jingyan.baidu.com/article/363872eccfb9266e4aa16f5d.html</a>
+</em>安装在C:
+<em>dmp原始数据在D:
+</em>dmp加载到数仓dbf在D:</p>
+<p>口令通用：XNHsc2018
+sqlplus:用户名 system</p>
+<p><em>使用版本（phis数据—基层卫生信息系统）
+oracle12——-12.1.0.2.0
+用户名：XNH
+口令：XNHsc2018
+</em>基目录D:
+*安装在D:\12.1.0_2
+*数仓在D:
+全局数据库名：oraclebd
+口令：XNHsc2018
+可插入数据库名：pdborcl</p>
+<p>——————————————sql developer安装备忘录——————————————</p>
+<p>下载及安装教程：<a href="https://jingyan.baidu.com/article/546ae185d988971149f28cfc.html" class="uri">https://jingyan.baidu.com/article/546ae185d988971149f28cfc.html</a>
+*登录提示
+用户名：每个区县的具体数据库名字，例如剑阁：PHIS_JGS
+密码：123
+数据库：oraclbd</p>
+<p>——————————————plsql改流水号格式创新新表—————————————
+CREATE
+TABLE
+ZYZDDETAIL_1
+AS</p>
+<p>SELECT
+TO_CHAR(id) id,
+zyid,
+JBBM,
+LOGINUSERID,
+LOGINDATE,
+UPDATE_TIME
+FROM
+ZYZDDETAIL;</p>
+<p>select to_char(id) id from ZYZDDETAIL t</p>
+<p>——————————————————导入数据—————————————————</p>
+<p>1.需要确认需要的表空间
+1.1创建表空间则不需要remap_tablespace
+1.2不创建表空间，可以使用REMAP_TABLESPACE=ehr:users,tbs_phis:users这种语法把ehr和tbs_phis表空间中对象映射到users
+1.3确认表空间可以在导入过程中查看报错，报错日志显示有缺少XXX表空间的情况下，按一次CTRL+C，再输入KILL_JOB，再YES，退出报错的导出，删除导入的用户，重新导入
+1.4常见表空间（不全）SPS_PHIS、TBS_LOG、TBS_PHIS、PHIS_HIS</p>
+<p>2.remap_schema
+数据库已经存在的该同名用户报错，可以使用此参数重命名新导入的用户,remap_schema=phis_jys:phis_jiangyou把phis_jys重命名为phis_jiangyou
+*用户名在导出log文件中，log文件在导出数据中附带。</p>
+<p>3.创建directory
+3.1确认dmp文件所在位置，例如：dmp位于D:，必须直接能读取到dmp的路径；
+3.2用sys/system执行
+create or replace directory full as ‘D:’;
+create or replace directory full as ‘D:’;</p>
+<p>打开sqlplus，执行：
+system/XNHsc2018
+create or replace directory full as ‘D:’;
+*一定要加分号！！！！</p>
+<p>3.导入代码
+cmd执行
+3.1剑阁示例
+impdp <a href="mailto:system/XNHsc2018@localhost" class="email">system/XNHsc2018@localhost</a>/oracledb dumpfile=jg180915_%U.dmplogfile=jg180915_imp.log directory=full remap_tablespace=SPS_PHIS:users,TBS_LOG:users,TBS_PHIS:users,PHIS_HIS:users parallel=6 cluster=n
+*标黄部分：需要根据导出日志进行修改</p>
+<p>3.2东坡示例
+impdp <a href="mailto:system/XNHsc2018@localhost" class="email">system/XNHsc2018@localhost</a>/oracledb dumpfile=dp180914.dmp logfile=dp180914_imp.log directory=full remap_tablespace=SPS_PHIS:users,TBS_LOG:users,TBS_PHIS:users,PHIS_HIS:users parallel=6 cluster=n
+3.3dazhu
+impdp <a href="mailto:system/XNHsc2018@localhost" class="email">system/XNHsc2018@localhost</a>/oracledb dumpfile=dazhu180920_%U.dmp logfile=dazhu180920_imp.log directory=full remap_tablespace=SPS_PHIS:users,TBS_LOG:users,PHIS_DAZHU:users,PHIS_HIS:users parallel=6 cluster=n</p>
+<p>XNHsc2018为system密码；
+oraclebd为正确的实例名；
+修改dmp文件名（Linux平台区分大小写）；
+修改合适的remap_tablespace参数（如果表空间有改变，需要修改）</p>
+<p>————————————————建立ODBC———————————————————
+*建立ODBC是一个公开数据连接，以便stata进行调用。
+1.搜索ODBC管理员，点击系统DNS添加。</p>
+<p>添加后，点击对应的数据目录，本次安装在home2，然后进行数据添加。</p>
+<p>datasourcename:自己命名的调用数据库名，用英文。
+description：数据库描述，可以用中文。
+TNS Service Name：oraclebd就是oracle导入的实例数据库。
+User ID：每个县对应的ID数据库名字，比如如图所示为东坡，可在导出log中查看。
+*每个县有一个数据库，所以要建立相应县个数的ODBC。</p>
+<p>————————————————在stata中调用—————————————————
+odbc list</p>
 </div>
-<div id="plotgraphvisualisation" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Plot/graph/visualisation</h2>
-<ul>
-<li>install.packages(“geofacet”)<br />
-facet小平面, 组成”嵌入变量内容”的<a href="https://cran.r-project.org/web/packages/geofacet/vignettes/geofacet.html">地理拼图</a>. The main function in this package is facet_geo() and its use can be thought of as equivalent to ggplot2’s facet_wrap() except for the output it creates. The facet_geo() works just like ggplot2’s built-in faceting.</li>
-</ul>
-<pre><code>library(geofacet)
-library(ggplot2)
-head(state_ranks)
-get_grid_names()  %% geofacet自带多国多地图
-head(aus_pop)
-
- %% Geofacet - Australian population by age group
-ggplot(aus_pop, aes(age_group, pop / 1e6, fill = age_group)) +
-  geom_col() +
-  facet_geo(~ code, grid = &quot;aus_grid1&quot;) +
-  coord_flip() +
-  labs(
-    title = &quot;Australian Population Breakdown&quot;,
-    caption = &quot;Data Source: ABS Labour Force Survey, 12 month average&quot;,
-    y = &quot;Population [Millions]&quot;) +
-  theme_bw()</code></pre>
-<ul>
-<li><p>Install.packages(“Shinytableau”)
-Create Tableau(所有方面比Power BI好的拖动式画图软件) Dashboard Extensions With R Shiny(脚本文本交互)</p></li>
-<li><p>Install.packages(“lattice”) % focus on multivariate data, and in particular to produce “small multiple” plots</p></li>
-<li><p>画图 和 输出图片, 分辨率dpi和tiff压缩随便调</p></li>
-</ul>
-<pre><code>pdf(&quot;d:/xx.pdf&quot;)
-...省略画图命令...
-dev.off()
- // now output tiff(600dpi)
-tiff(file = &quot;C:/test1.tiff&quot;, res = 600, width = 4800, height = 4800, compression = &quot;lzw&quot;)
-plot(1:22, pch = 1:22, cex = 1:3, col = 1:5) #绘图命令在中间
-dev.off()</code></pre>
+<div id="tableau-1" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Tableau</h2>
+<p>Tableau(所有方面比Power BI好的拖动式画图软件)</p>
 </div>
-<div id="data" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Data</h2>
-<ul>
-<li>输入数据</li>
-</ul>
-<pre><code>c()                    #Combine Values into a Vector or List
-M &lt;- vector(length=8)  #vector函数优点是先定义长度，如8，再赋值
-read.table()  #读取txt文件</code></pre>
-<ul>
-<li>输出数据，需要library(foreign)</li>
-</ul>
-<pre><code>write.dta(data,&quot;d:/test.dta&quot;)  # 输出Stata12数据库
-write.csv(desmat, file = &quot;D:/desk/UNSW/DCE/haze_desmat.csv&quot;)  # csv是常用格式
-
-rbind(a1,a2)  # rows bind 堆积
-cbind(a1,a2)  # column 并列
-
-读写 xls 和 xlsx 格式有几个包可以做到： xlsx / XLConnect</code></pre>
-<ul>
-<li><p>控制流<br />
-分支： if(condition){}/else if(condition){} /else{}<br />
-循环： for(name in expr_1){ expr_2} | while(condition){expr} | repeat { expr;break }<br />
-中止语句：break<br />
-空语句： next</p></li>
-<li><p>矩阵</p></li>
-</ul>
-<pre><code>A &lt;- matrix(1:15,nrow=2,ncol=4,byrow=TRUE) #默认是按列, 此时A是int整数型
-A  
-     [,1] [,2] [,3] [,4]   #用[1,]和[,1]表示行列
-[1,]    1    2    3    4
-[2,]    5    6    7    8
-
-cell &lt;- c(3,5,4,5,6,1,1,4,6,7)
-A &lt;- matrix(cell,nrow=2,ncol=4,byrow=TRUE) #此时A是numeric数据型
-
-x&lt;-1:5; y&lt;-2*1:5   #冒号优先,故是2 4 6 8 10向量
-crossprod(x,y)   #求内积,结果是单值110
-outer(x,y)       #求外积,结果是5x5方阵
-t(x)  #矩阵x转置transpose
-
-A&lt;-array(1:9,dim=(c(3,3)))   #arrays  阵列；数组
-B&lt;-array(9:1,dim=(c(3,3)))
-A*B       #区别一:各对应元素相乘
-A%*%B     #区别二:矩阵乘法
-crossprod(A,B)  #区别三:等价t(A)%*%B</code></pre>
-<p>可对矩阵某维或者若干维进行运算：apply(M,某维,FUNction)。例：A&lt;-matrix(1:6,nrow=2);apply(A,1,sum)</p>
-<pre><code>x[-3]      #显示除第3个以外的其他值
-x[c(3,5)]  #显示x的第3和第5个值
-sort(x)    #按顺序排列，显示数据
-order(x)   #按顺序排列，显示下标
-X1 &lt;- c(21.3, 19.9, 22.4, 24.1, 25.9)
-X2 &lt;- c(32.1, 27.8, 30.1, 29.9, NA) #最后一个缺失值，mean(X2)就算不出来，只能mean(X2,na.rm=TRUE)
-is.na(X2)  #显示哪一位值是缺失？
-ID &lt;- rep(1:4,each=8)  #rep()产生32个重复数，另有 seq(1, 9, by = 2) 类似rep()
-ID &lt;- rep(c(&quot;X1&quot;,&quot;X2&quot;,&quot;X3&quot;),c(3,2,1))  #重复不同次数</code></pre>
-<ul>
-<li>向量 .VS. 因子
-<ul>
-<li>简单讲：因子是一个点用于存储分类(categorical)数据，向量是一个有方向的范围。</li>
-<li>在R中，如果把数字作为因子，那么在导入数据之后，需要将向量转换为因子（factor），而因子在整个计算过程中不再作为数值，而是一个”符号”而已。</li>
-<li>因子操作：
-<ul>
-<li>把一个向量编码为一个因子：factor()</li>
-<li>因子的水平（感觉像是不同的值）：levels()</li>
-<li>各类数据的频数：table()</li>
-</ul></li>
-</ul></li>
-<li>操作对象</li>
-</ul>
-<pre><code>是否为数值：is.numeric(X)
-是否为字符：is.character(X)
-类型转换：  as.character(X), as.numeric(X)
-改变长度：  length(X)&lt;-新长度。用空值填充或去掉多的
-返回对象的属性：attributes(object)
-存储对象的属性：attr(object,”属性名”)</code></pre>
-<ul>
-<li>探索R对象</li>
-</ul>
-<pre><code>mode(x)    #对象类型：
-dim(x)     #对象的两维度
-length(x)  #对象个数
-e.g. 对象d.med是list
-mode(d.med)
-length(d.med)
-attributes(d.med)
-head(d.med)
-dd&lt;-as.data.frame(d.med$nalternatives$alt.1) #d.med里有个数据库，提取出来放到数据库dd里面去</code></pre>
-<ul>
-<li>R三种对象类型</li>
-</ul>
-<pre><code>R没有标量
-一、向量（X）
-assign(向量名, X);  向量名&lt;- X;  X -&gt;向量名;   #赋值
-paste(X,Y)    #字符型向量,字符串连接
-complex()     #复数向量
-二、数据框 data frame--多个向量组成的二维数据库（类矩阵）
- // 数据框其实就是Stata下的数据库，矩阵要求全是数字，数据框每列可以是不同的mode
-data.frame()     #构造数据框
-as.data.frame()  #转换为数据框
-attach()         # attach()能不用就不用，最好是哪里都不用，如果你非觉得它方便，那么我的建议还是不要用——用with()
-detach()         #数据框加属性
-Dfm$We           #数据框Dfm中寻找We变量，$(dollar符号,表at访问)
-DataAll &lt;- list(Bird=bid.8, ID=ID, Z=Z) #list函数中只能用&quot;=&quot;,不能用&quot;&lt;-&quot;
-三、列表 list--包含任何类型的对象
-构造：list()</code></pre>
-<ul>
-<li><p>attach()用法
-用$ 符号访问对象不是非常的方便，如accountants$statef
-如果键入命令attach(accountants)，那你就可以直接用accountants里的变量，</p></li>
-<li><p>列表</p></li>
-</ul>
-<pre><code>列表的分量可以是不同的类型，使用list()函数可以创建列表：
-&gt; x = list(name=&quot;Fred&quot;, wife=&quot;Mary&quot;, no.children=3, child.ages=c(4,7,9))
-&gt; x
-$name
-[1] &quot;Fred&quot;
-
-$wife
-[1] &quot;Mary&quot;
-
-$no.children
-[1] 3
-
-$child.ages
-[1] 4 7 9
-列表元素可以通过几种不同的索引进行访问：
-
-&gt; x[[1]]
-[1] &quot;Fred&quot;
-&gt; x[1][1]
-$name
-[1] &quot;Fred&quot;
-
-&gt; x[&quot;name&quot;][1]
-$name
-[1] &quot;Fred&quot;
-&gt; x$name
-[1] &quot;Fred&quot;</code></pre>
-<ul>
-<li>数据框</li>
-</ul>
-<pre><code>&gt; L3 = LETTERS[1:3]
-&gt; L3
-[1] &quot;A&quot; &quot;B&quot; &quot;C&quot;
-&gt; d = data.frame(cbind(x = 1, y = 1:10), fac = sample(L3, 10, replace = TRUE))
-&gt; d
-   x  y fac
-1  1  1   B
-2  1  2   A
-3  1  3   C
-4  1  4   C
-5  1  5   B
-6  1  6   A
-7  1  7   A
-8  1  8   B
-9  1  9   B
-10 1 10   A
-&gt; d$x
- [1] 1 1 1 1 1 1 1 1 1 1
-&gt; d[[2]]
- [1]  1  2  3  4  5  6  7  8  9 10
-&gt; d[1][1]
-   x
-1  1
-2  1
-3  1
-4  1
-5  1
-6  1
-7  1
-8  1
-9  1
-10 1</code></pre>
-</div>
-<div id="install-rrstudio" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Install R/RStudio</h2>
-<ul>
-<li><p>升级Rstudio<br />
-Rstudio is IDE of R, needs setup of R before. Rstudio-&gt;tools-&gt;Global options-&gt;<a href="D:\R\R-Portable\App\R-Portable">R路径</a></p></li>
-<li><p>升级R, 安装所有packages<br />
-install.packages(c(“apollo,” “arm,” “backports,” “BayesLCA,” “bibtex,” “bit,” “bit64,” “bitops,” “BMA,” “brio,” “caret,” “caTools,” “cli,” “colorspace,” “curl,” “data.table,” “deSolve,” “diffobj,” “digest,” “dotCall64,” “dplyr,” “e1071,” “effects,” “ellipsis,” “expm,” “fansi,” “farver,” “fastmap,” “fields,” “fs,” “geofacet,” “gert,” “git2r,” “glue,” “gmp,” “gower,” “gsynth,” “haven,” “hdrcde,” “Hmisc,” “htmltools,” “httpuv,” “ipred,” “isoband,” “jpeg,” “jsonlite,” “ks,” “later,” “latticeExtra,” “lfe,” “lme4,” “lmtest,” “lubridate,” “magick,” “magrittr,” “maps,” “maptools,” “Matrix,” “matrixStats,” “mclust,” “MCMCpack,” “memisc,” “mime,” “mnormt,” “msm,” “multicool,” “mvtnorm,” “nloptr,” “openssl,” “partitions,” “pcaPP,” “pkgload,” “pROC,” “processx,” “promises,” “proxy,” “ps,” “quantreg,” “randtoolbox,” “rappdirs,” “Rcpp,” “RcppArmadillo,” “RcppEigen,” “RCurl,” “readr,” “readstata13,” “rgl,” “rJava,” “rlang,” “rngWELL,” “robustbase,” “RODBC,” “roxygen2,” “rrcov,” “sass,” “sem,” “slam,” “sp,” “spam,” “SparseM,” “statmod,” “stringi,” “sys,” “testthat,” “tibble,” “tidyr,” “tidyverse,” “tis,” “utf8,” “vctrs,” “VGAM,” “VGAMdata,” “vroom,” “XLConnect,” “XML,” “xml2,” “zip,” “zoo”))</p></li>
-<li><p>安装加载搜索包</p></li>
-</ul>
-<pre><code>install.packages(&quot;support.CEs&quot;)   #support.CEs是一个设计DCE的package，本函数还自动下载附加支持包
-install.packages(&quot;包名字&quot;,lib=&quot;安装目录&quot;,repos=&quot;包所在的网址&quot;)
-search()                         #查看现在已经读取的扩展包 
-detach(”package:扩展包名”)    #卸载某个扩展包 
-data()                           #查看当前可使用的数据对象 
-data(package = “扩展包名”)    #查看在该扩展包中的数据对象
-.libPaths()                      #查看library安装路径</code></pre>
-<ul>
-<li>默认情况下，help只会载入内存包中搜索，try.all.package=TRUE 可以在全包中搜索</li>
-</ul>
-<pre><code>&gt;help(bs,try.all.package=TRUE); #会显示出对应的包  
-    Package     Library  
-    splines     E:\work\R\library  
-&gt;help(bs,package=&quot;splines&quot;);  
-&gt;help.search(&quot;tree&quot;);           #搜索所有包含tree的api</code></pre>
-<ul>
-<li>求助符、帮助</li>
-</ul>
-<pre><code>?plot        #函数打一个问号 , or help(plot)
-??vegan    #包两个问号
-help.search(&quot;rnorm&quot;)   # search help files, even wrong spelling
-args(&quot;rnorm&quot;)               # get arguments参数
-RSiteSearch(&quot;discrete choice experiment&quot;)  #搜索网站（不是搜索本地计算机目录）</code></pre>
-<ul>
-<li>查看源代码<br />
-对于普通的函数——function，可以直接键入函数名就可以在console中看到源代码了，比如：</li>
-</ul>
-<pre><code>&gt;damnN
-有些类函数需要先用methods()函数看看都有什么，再一点一点的查看。
-比如查看summary中的aov命令源代码：
-&gt;methods(summary)
-&gt;summary.aov</code></pre>
-<ul>
-<li>管理IO环境</li>
-</ul>
-<pre><code>object.size            #检查对象使用的内存
-setwd(&quot;D:/R/DCE&quot;)      #设置工作文件夹
-getwd()                #来查看当前目录working directory
-dir()                  #查看当前目录里的文件</code></pre>
-<ul>
-<li><p>Console清屏： ctrl+L</p></li>
-<li><p>semi-colon (;) to put multiple statements on one line 一行多句命令</p></li>
-<li><p>认识包<br />
-Type <code>library()</code>就知道已经有什么packages了<br />
-Type <code>library(survival)</code> 加载包,包里经常有数据<br />
-Type <code>data()</code>就知道有什么数据，注意:R语言对大小写敏感</p></li>
-<li><p>PATH设置报错-待解决</p></li>
-</ul>
-<pre><code>&gt; Sys.getenv(&quot;PATH&quot;)
-Warning message:
-In normalizePath(path.expand(path), winslash, mustWork) :
-  path[1]=&quot;D:/????&quot;: The filename, directory name, or volume label syntax is incorrect</code></pre>
+<div id="power-bi-1" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Power BI</h2>
+<p>Key words: interactive data visualization, Microsoft, business intelligence(BI)</p>
 
 </div>
 </div>
@@ -547,8 +357,8 @@ In normalizePath(path.expand(path), winslash, mustWork) :
           </div>
         </div>
       </div>
-<a href="rstata_stated-preference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="stata.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sql.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -579,7 +389,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ctang83/NB_tang/tree/master/05-Rnotes.Rmd",
+"link": "https://github.com/ctang83/NB_tang/tree/master/08-SQLTableauBI.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -54,21 +54,35 @@ This tutorial will show us easiest way to build an online book (or a book-style 
 1. Change the Source pulldown from "None" to "master branch /docs folder"
 1. It should say "Your site is ready to be published at https://username.github.io/BB/"
 
-**5) Update online book in Github**
+**5) Sync/Update online book in Github**
 
 1. Rstudio to build(knitr) the whole book, including all .Rmd files
     - In Build panel, click "Build Book"
     - or in Console, type `rmarkdown::render_site(encoding = 'UTF-8')`
 1. In Git panel, select all files, click Commit, appears a new window
 1. Input "XX changes", click Commit
+    - Click the staged checkbox for the modified files you want to commit to GitHub repository
 1. Finally, click Push -> Done!
 
-PS: we ignore Travis and related continuous integration(持续部署) here, actually now Yihui uses Makefile and _render.R [instead](https://github.com/rstudio/bookdown/tree/main/inst/examples). 
+PS1: we ignore Travis and related continuous integration(持续部署) here, actually now Yihui uses Makefile and _render.R [instead](https://github.com/rstudio/bookdown/tree/main/inst/examples). 
 
-**6) Adding chapters(.Rmd) and citations**
+PS2: Sync btw local RStudio and RStudio Cloud using Git: 
+    - because there are three copies saved in local/RStudioCloud/GitHub, if we used RStudio Cloud and sync it with GitHub, then we first need to pull/merge at local PC (commit 1), and push local changes to GitHub (commit 2). 
+
+**6) Writing and adding chapters(.Rmd) and citations**
 
 1. Build a new .Rmd file, name it and begin writing. As Index.Rmd is always the first chapter, we start ordering from "02-xx".
 1. For citations, 
+
+The appearance for coding chunks are different btw two types below (the second is more obvious):
+
+%```
+%xx
+%```
+
+%```r
+%xx
+%```
 
 
 ## Building single page(robobook)

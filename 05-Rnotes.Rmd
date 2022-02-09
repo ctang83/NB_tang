@@ -55,7 +55,7 @@ Create Tableau(所有方面比Power BI好的拖动式画图软件) Dashboard Ext
 
 - Install.packages("lattice") % focus on multivariate data, and in particular to produce "small multiple" plots
 
-- 画图 和 输出图片
+- 画图 和 输出图片, 分辨率dpi和tiff压缩随便调
 ```
 pdf("d:/xx.pdf")
 ...省略画图命令...

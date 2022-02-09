@@ -10,7 +10,7 @@ A batch file(批处理文件) is a script file(.bat) in DOS, OS/2 and Microsoft 
 1. 到D:\desk\tools\newproject里面跑1_buildfolder.bat
 
 - 模板
-```
+```r
 SET log=.\output\rundirectory.log
 
 :: Clear output and externals 

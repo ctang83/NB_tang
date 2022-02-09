@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 SQL | My Notebook</title>
+  <title>Chapter 8 SQL | My Notebook</title>
   <meta name="description" content="Recording my learning stuff." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 SQL | My Notebook" />
+  <meta property="og:title" content="Chapter 8 SQL | My Notebook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ctang83/NB_tang" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 SQL | My Notebook" />
+  <meta name="twitter:title" content="Chapter 8 SQL | My Notebook" />
   
   <meta name="twitter:description" content="Recording my learning stuff." />
   
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="python.html"/>
-
+<link rel="next" href="sql-2.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -175,9 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html"><i class="fa fa-check"></i><b>4</b> R/Stata_Stated Preference</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#latent-class潜层模型"><i class="fa fa-check"></i><b>4.1</b> Latent Class(潜层模型)</a></li>
-<li class="chapter" data-level="4.2" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#binary-dceused-as-case-2-bws"><i class="fa fa-check"></i><b>4.2</b> Binary DCE(used as Case 2 BWS)</a></li>
-<li class="chapter" data-level="4.3" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#case-1-bws"><i class="fa fa-check"></i><b>4.3</b> case 1 BWS</a></li>
+<li class="chapter" data-level="4.1" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#design-surveyapp"><i class="fa fa-check"></i><b>4.1</b> Design &amp; SurveyApp</a></li>
+<li class="chapter" data-level="4.2" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#estimating-models"><i class="fa fa-check"></i><b>4.2</b> Estimating models</a></li>
+<li class="chapter" data-level="4.3" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#latent-class潜层模型"><i class="fa fa-check"></i><b>4.3</b> Latent Class(潜层模型)</a></li>
+<li class="chapter" data-level="4.4" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#binary-dceused-as-case-2-bws"><i class="fa fa-check"></i><b>4.4</b> Binary DCE(used as Case 2 BWS)</a></li>
+<li class="chapter" data-level="4.5" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#case-1-bws"><i class="fa fa-check"></i><b>4.5</b> case 1 BWS</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>5</b> R</a>
 <ul>
@@ -186,17 +188,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="r.html"><a href="r.html#data"><i class="fa fa-check"></i><b>5.3</b> Data</a></li>
 <li class="chapter" data-level="5.4" data-path="r.html"><a href="r.html#install-rrstudio"><i class="fa fa-check"></i><b>5.4</b> Install R/RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>6</b> Python</a>
+<li class="chapter" data-level="6" data-path="stata.html"><a href="stata.html"><i class="fa fa-check"></i><b>6</b> Stata</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="python.html"><a href="python.html#deepnote"><i class="fa fa-check"></i><b>6.1</b> Deepnote</a></li>
-<li class="chapter" data-level="6.2" data-path="python.html"><a href="python.html#network-sciencecomplex-network"><i class="fa fa-check"></i><b>6.2</b> Network science(complex network)</a></li>
-<li class="chapter" data-level="6.3" data-path="python.html"><a href="python.html#plot-and-visualisation"><i class="fa fa-check"></i><b>6.3</b> Plot and visualisation</a></li>
+<li class="chapter" data-level="6.1" data-path="stata.html"><a href="stata.html#modelling"><i class="fa fa-check"></i><b>6.1</b> Modelling</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="stata.html"><a href="stata.html#inequality不平等"><i class="fa fa-check"></i><b>6.1.1</b> inequality不平等</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>7</b> SQL</a>
+<li class="chapter" data-level="6.2" data-path="stata.html"><a href="stata.html#plotgraphvisualisation-1"><i class="fa fa-check"></i><b>6.2</b> Plot/graph/visualisation</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="sql.html"><a href="sql.html#sql-1"><i class="fa fa-check"></i><b>7.1</b> SQL</a></li>
-<li class="chapter" data-level="7.2" data-path="sql.html"><a href="sql.html#tableau"><i class="fa fa-check"></i><b>7.2</b> Tableau</a></li>
-<li class="chapter" data-level="7.3" data-path="sql.html"><a href="sql.html#power-bi"><i class="fa fa-check"></i><b>7.3</b> Power BI</a></li>
+<li class="chapter" data-level="6.2.1" data-path="stata.html"><a href="stata.html#改scheme"><i class="fa fa-check"></i><b>6.2.1</b> 改scheme</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stata.html"><a href="stata.html#output-graph"><i class="fa fa-check"></i><b>6.2.2</b> Output graph</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stata.html"><a href="stata.html#connection"><i class="fa fa-check"></i><b>6.3</b> Connection</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="stata.html"><a href="stata.html#rpython"><i class="fa fa-check"></i><b>6.3.1</b> R/Python</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stata.html"><a href="stata.html#dosshell"><i class="fa fa-check"></i><b>6.3.2</b> DOS/shell</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stata.html"><a href="stata.html#latexmarkdown"><i class="fa fa-check"></i><b>6.3.3</b> Latex/Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="stata.html"><a href="stata.html#databig-data"><i class="fa fa-check"></i><b>6.4</b> Data/Big data</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stata.html"><a href="stata.html#timeage"><i class="fa fa-check"></i><b>6.4.1</b> Time/age</a></li>
+<li class="chapter" data-level="6.4.2" data-path="stata.html"><a href="stata.html#big-data"><i class="fa fa-check"></i><b>6.4.2</b> Big data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>7</b> Python</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="python.html"><a href="python.html#deepnote"><i class="fa fa-check"></i><b>7.1</b> Deepnote</a></li>
+<li class="chapter" data-level="7.2" data-path="python.html"><a href="python.html#network-sciencecomplex-network"><i class="fa fa-check"></i><b>7.2</b> Network science(complex network)</a></li>
+<li class="chapter" data-level="7.3" data-path="python.html"><a href="python.html#plot-and-visualisation"><i class="fa fa-check"></i><b>7.3</b> Plot and visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>8</b> SQL</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sql.html"><a href="sql.html#sql-1"><i class="fa fa-check"></i><b>8.1</b> SQL</a></li>
+<li class="chapter" data-level="8.2" data-path="sql.html"><a href="sql.html#tableau"><i class="fa fa-check"></i><b>8.2</b> Tableau</a></li>
+<li class="chapter" data-level="8.3" data-path="sql.html"><a href="sql.html#power-bi"><i class="fa fa-check"></i><b>8.3</b> Power BI</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="sql-2.html"><a href="sql-2.html"><i class="fa fa-check"></i><b>9</b> SQL</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="sql-2.html"><a href="sql-2.html#sql-3"><i class="fa fa-check"></i><b>9.1</b> SQL</a></li>
+<li class="chapter" data-level="9.2" data-path="sql-2.html"><a href="sql-2.html#tableau-1"><i class="fa fa-check"></i><b>9.2</b> Tableau</a></li>
+<li class="chapter" data-level="9.3" data-path="sql-2.html"><a href="sql-2.html#power-bi-1"><i class="fa fa-check"></i><b>9.3</b> Power BI</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
@@ -218,22 +249,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sql" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> SQL</h1>
+<div id="sql" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> SQL</h1>
 <p>REDCAP is based on MySQL, still a data store and management tool</p>
-<div id="sql-1" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> SQL</h2>
+<div id="sql-1" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> SQL</h2>
 <ul>
-<li>SQL is used to create queries to manipulate the data stored in a database.</li>
+<li><p>SQL(Structured Query Language) is used to create queries to manipulate the data stored in a database.</p></li>
+<li><p>Oracle SQL, is one like Microsoft SQL Server, PL/SQL</p></li>
+<li><p>Case: Oracle安装备忘录</p></li>
+</ul>
+<pre><code>*新农合数据 oracle 11.2.0.1.0
+下载及安装教程：https://jingyan.baidu.com/article/363872eccfb9266e4aa16f5d.html
+*安装在C:\Oracle
+*dmp原始数据在D:\Oracle\XXX
+*dmp加载到数仓dbf在D:\app\XNH\oradata\oracledb
+
+口令通用：XNHsc2018   sqlplus用户名 system
+
+*基层卫生信息系统(phis数据) oracle 12.1.0.2.0
+用户名：XNH   口令：XNHsc2018
+*基目录D:\app\XNH
+*安装在D:\app\XNH\product\12.1.0\dbhome_2
+*数仓在D:\app\XNH\oradata
+全局数据库名：oraclebd   口令：XNHsc2018    可插入数据库名：pdborcl
+*登录提示
+用户名：每个区县的具体数据库名字，例如剑阁：PHIS_JGS
+密码：123</code></pre>
+<ul>
+<li>Case: plsql改流水号格式 建表和查询</li>
+</ul>
+<pre><code>CREATE
+TABLE
+ZYZDDETAIL_1
+AS
+
+SELECT
+TO_CHAR(id) id, zyid, JBBM, LOGINUSERID, LOGINDATE, UPDATE_TIME
+FROM
+ZYZDDETAIL;</code></pre>
+<ul>
+<li>Case: sqlplus导入数据(麻烦，后来转Stata+ODBC )</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="sql.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span>需要确认需要的表空间</span>
+<span id="cb54-2"><a href="sql.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.1</span>创建表空间则不需要remap_tablespace</span>
+<span id="cb54-3"><a href="sql.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.2</span>不创建表空间，可以使用REMAP_TABLESPACE<span class="ot">=</span>ehr<span class="sc">:</span>users,tbs_phis<span class="sc">:</span>users这种语法把ehr和tbs_phis表空间中对象映射到users</span>
+<span id="cb54-4"><a href="sql.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.3</span>确认表空间可以在导入过程中查看报错，报错日志显示有缺少XXX表空间的情况下，按一次CTRL<span class="sc">+</span>C，再输入KILL_JOB，再YES，退出报错的导出，删除导入的用户，重新导入</span>
+<span id="cb54-5"><a href="sql.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.4</span>常见表空间（不全）SPS_PHIS、TBS_LOG、TBS_PHIS、PHIS_HIS</span>
+<span id="cb54-6"><a href="sql.html#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="sql.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="fl">2.</span>创建directory </span>
+<span id="cb54-8"><a href="sql.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fl">2.1</span>确认dmp文件所在位置，例如：dmp位于D<span class="sc">:</span>\bak，必须直接能读取到dmp的路径；</span>
+<span id="cb54-9"><a href="sql.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="fl">2.2</span>打开sqlplus，执行：system<span class="sc">/</span>XNHsc2018</span>
+<span id="cb54-10"><a href="sql.html#cb54-10" aria-hidden="true" tabindex="-1"></a>create or replace directory full as <span class="st">&#39;D:</span><span class="sc">\b</span><span class="st">ak&#39;</span>;</span>
+<span id="cb54-11"><a href="sql.html#cb54-11" aria-hidden="true" tabindex="-1"></a>create or replace directory full as <span class="st">&#39;D:\Oracle\jiange&#39;</span>;  <span class="sc">/</span><span class="er">/</span>一定要加分号！</span>
+<span id="cb54-12"><a href="sql.html#cb54-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-13"><a href="sql.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="fl">3.</span>导入代码 cmd执行<span class="st">&quot;剑阁示例&quot;</span></span>
+<span id="cb54-14"><a href="sql.html#cb54-14" aria-hidden="true" tabindex="-1"></a>impdp system<span class="sc">/</span>XNHsc2018<span class="sc">@</span>localhost<span class="sc">/</span>oracledb dumpfile<span class="ot">=</span>jg180915_%U.dmplogfile<span class="ot">=</span>jg180915_imp.log directory<span class="ot">=</span>full remap_tablespace<span class="ot">=</span>SPS_PHIS<span class="sc">:</span>users,TBS_LOG<span class="sc">:</span>users,TBS_PHIS<span class="sc">:</span>users,PHIS_HIS<span class="sc">:</span>users parallel<span class="ot">=</span><span class="dv">6</span> cluster<span class="ot">=</span>n</span></code></pre></div>
+<ul>
 <li>Open Database Connectivity (ODBC) interface makes it possible for applications(Stata/R) to access data from a variety of database management systems (e.g. SQL Server).</li>
 </ul>
+<p>首先，搜索ODBC管理员，点击系统DNS添加。
+<img src="figs/fig_ODBC1.jpg" style="width:60.0%" alt="Stata中ODBC查询" /></p>
+<p>然后，添加后点击对应的数据目录，本次安装在home2，然后进行数据添加。
+<img src="figs/fig_ODBC2.jpg" style="width:60.0%" alt="Stata中ODBC查询" /></p>
+<p>datasourcename:自己命名的调用数据库名，用英文。
+description：数据库描述，可以用中文。
+TNS Service Name：oraclebd就是oracle导入的实例数据库。
+User ID：每个县对应的ID数据库名字，比如如图所示为东坡，可在导出log中查看。
+*每个县有一个数据库，所以要建立相应县个数的ODBC。
+<img src="figs/fig_ODBC3.jpg" style="width:60.0%" alt="Stata中ODBC查询" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="sql.html#cb55-1" aria-hidden="true" tabindex="-1"></a>odbc list <span class="sc">/</span><span class="er">/</span>Stata通过ODBC查询调用任意SQL数据</span>
+<span id="cb55-2"><a href="sql.html#cb55-2" aria-hidden="true" tabindex="-1"></a>help odbc</span></code></pre></div>
+<div class="figure">
+<img src="figs/fig_ODBC_stata.jpg" style="width:60.0%" alt="" />
+<p class="caption">Stata中ODBC查询</p>
 </div>
-<div id="tableau" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Tableau</h2>
+</div>
+<div id="tableau" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Tableau</h2>
 <p>Tableau(所有方面比Power BI好的拖动式画图软件)</p>
 </div>
-<div id="power-bi" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Power BI</h2>
+<div id="power-bi" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Power BI</h2>
 <p>Key words: interactive data visualization, Microsoft, business intelligence(BI)</p>
 
 </div>
@@ -243,8 +340,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="python.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sql-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

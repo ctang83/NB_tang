@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Stata | My Notebook</title>
+  <meta name="description" content="Recording my learning stuff." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Stata | My Notebook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Recording my learning stuff." />
+  <meta name="github-repo" content="ctang83/NB_tang" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Stata | My Notebook" />
+  
+  <meta name="twitter:description" content="Recording my learning stuff." />
+  
+
+<meta name="author" content="CTang" />
+
+
+<meta name="date" content="2022-02-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r.html"/>
+<link rel="next" href="python.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notebook Tang</a></li>  
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#年"><i class="fa fa-check"></i><b>1.1</b> 2022年</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#feb"><i class="fa fa-check"></i><b>1.1.1</b> Feb</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#jan"><i class="fa fa-check"></i><b>1.1.2</b> Jan</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#年-1"><i class="fa fa-check"></i><b>1.2</b> 2010-2012年</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#月25日"><i class="fa fa-check"></i><b>1.2.1</b> 8月25日</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#年5月24日"><i class="fa fa-check"></i><b>1.2.2</b> 2011年5月24日</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#年10月"><i class="fa fa-check"></i><b>1.2.3</b> 2010年10月</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#月25日-1"><i class="fa fa-check"></i><b>1.2.4</b> 8月25日</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#月27日"><i class="fa fa-check"></i><b>1.2.5</b> 6月27日</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html"><i class="fa fa-check"></i><b>2</b> bat, Excel/Word, Lyx/Latex</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#bat"><i class="fa fa-check"></i><b>2.1</b> bat</a></li>
+<li class="chapter" data-level="2.2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#excelword"><i class="fa fa-check"></i><b>2.2</b> Excel/Word</a></li>
+<li class="chapter" data-level="2.3" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#lyxlatex"><i class="fa fa-check"></i><b>2.3</b> Lyx/Latex</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#lyx"><i class="fa fa-check"></i><b>2.3.1</b> Lyx</a></li>
+<li class="chapter" data-level="2.3.2" data-path="bat-excelword-lyxlatex.html"><a href="bat-excelword-lyxlatex.html#latex"><i class="fa fa-check"></i><b>2.3.2</b> Latex</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html"><i class="fa fa-check"></i><b>3</b> R_Onlinebook/Dashboard</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#online-data-collectiontransfer"><i class="fa fa-check"></i><b>3.1</b> Online data collection/transfer</a></li>
+<li class="chapter" data-level="3.2" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-online-bookbookdown"><i class="fa fa-check"></i><b>3.2</b> Building online book(Bookdown)</a></li>
+<li class="chapter" data-level="3.3" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-single-pagerobobook"><i class="fa fa-check"></i><b>3.3</b> Building single page(robobook)</a></li>
+<li class="chapter" data-level="3.4" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-dashboardflexboard"><i class="fa fa-check"></i><b>3.4</b> Building Dashboard(Flexboard)</a></li>
+<li class="chapter" data-level="3.5" data-path="r_onlinebookdashboard.html"><a href="r_onlinebookdashboard.html#building-website-wt-multi-pagesblogdown"><i class="fa fa-check"></i><b>3.5</b> Building website wt multi-pages(Blogdown)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html"><i class="fa fa-check"></i><b>4</b> R/Stata_Stated Preference</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#design-surveyapp"><i class="fa fa-check"></i><b>4.1</b> Design &amp; SurveyApp</a></li>
+<li class="chapter" data-level="4.2" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#estimating-models"><i class="fa fa-check"></i><b>4.2</b> Estimating models</a></li>
+<li class="chapter" data-level="4.3" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#latent-class潜层模型"><i class="fa fa-check"></i><b>4.3</b> Latent Class(潜层模型)</a></li>
+<li class="chapter" data-level="4.4" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#binary-dceused-as-case-2-bws"><i class="fa fa-check"></i><b>4.4</b> Binary DCE(used as Case 2 BWS)</a></li>
+<li class="chapter" data-level="4.5" data-path="rstata_stated-preference.html"><a href="rstata_stated-preference.html#case-1-bws"><i class="fa fa-check"></i><b>4.5</b> case 1 BWS</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>5</b> R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="r.html"><a href="r.html#workflowreproducible-research"><i class="fa fa-check"></i><b>5.1</b> Workflow/Reproducible research</a></li>
+<li class="chapter" data-level="5.2" data-path="r.html"><a href="r.html#plotgraphvisualisation"><i class="fa fa-check"></i><b>5.2</b> Plot/graph/visualisation</a></li>
+<li class="chapter" data-level="5.3" data-path="r.html"><a href="r.html#data"><i class="fa fa-check"></i><b>5.3</b> Data</a></li>
+<li class="chapter" data-level="5.4" data-path="r.html"><a href="r.html#install-rrstudio"><i class="fa fa-check"></i><b>5.4</b> Install R/RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stata.html"><a href="stata.html"><i class="fa fa-check"></i><b>6</b> Stata</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stata.html"><a href="stata.html#modelling"><i class="fa fa-check"></i><b>6.1</b> Modelling</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="stata.html"><a href="stata.html#inequality不平等"><i class="fa fa-check"></i><b>6.1.1</b> inequality不平等</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stata.html"><a href="stata.html#plotgraphvisualisation-1"><i class="fa fa-check"></i><b>6.2</b> Plot/graph/visualisation</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="stata.html"><a href="stata.html#改scheme"><i class="fa fa-check"></i><b>6.2.1</b> 改scheme</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stata.html"><a href="stata.html#output-graph"><i class="fa fa-check"></i><b>6.2.2</b> Output graph</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stata.html"><a href="stata.html#connection"><i class="fa fa-check"></i><b>6.3</b> Connection</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="stata.html"><a href="stata.html#rpython"><i class="fa fa-check"></i><b>6.3.1</b> R/Python</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stata.html"><a href="stata.html#dosshell"><i class="fa fa-check"></i><b>6.3.2</b> DOS/shell</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stata.html"><a href="stata.html#latexmarkdown"><i class="fa fa-check"></i><b>6.3.3</b> Latex/Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="stata.html"><a href="stata.html#databig-data"><i class="fa fa-check"></i><b>6.4</b> Data/Big data</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stata.html"><a href="stata.html#timeage"><i class="fa fa-check"></i><b>6.4.1</b> Time/age</a></li>
+<li class="chapter" data-level="6.4.2" data-path="stata.html"><a href="stata.html#big-data"><i class="fa fa-check"></i><b>6.4.2</b> Big data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>7</b> Python</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="python.html"><a href="python.html#deepnote"><i class="fa fa-check"></i><b>7.1</b> Deepnote</a></li>
+<li class="chapter" data-level="7.2" data-path="python.html"><a href="python.html#network-sciencecomplex-network"><i class="fa fa-check"></i><b>7.2</b> Network science(complex network)</a></li>
+<li class="chapter" data-level="7.3" data-path="python.html"><a href="python.html#plot-and-visualisation"><i class="fa fa-check"></i><b>7.3</b> Plot and visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html"><i class="fa fa-check"></i><b>8</b> SQL/Tableau/PowerBI</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html#sql"><i class="fa fa-check"></i><b>8.1</b> SQL</a></li>
+<li class="chapter" data-level="8.2" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html#tableau"><i class="fa fa-check"></i><b>8.2</b> Tableau</a></li>
+<li class="chapter" data-level="8.3" data-path="sqltableaupowerbi.html"><a href="sqltableaupowerbi.html#power-bi"><i class="fa fa-check"></i><b>8.3</b> Power BI</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">My Notebook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stata" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Stata</h1>
+<div id="modelling" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Modelling</h2>
+<ul>
+<li>小聪的DID命令</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="stata.html#cb41-1" aria-hidden="true" tabindex="-1"></a>webuse nlswork  <span class="sc">/</span><span class="er">/</span>使用系统自带数据库</span>
+<span id="cb41-2"><a href="stata.html#cb41-2" aria-hidden="true" tabindex="-1"></a>xtset idcode year, <span class="fu">delta</span>(<span class="dv">1</span>)  <span class="sc">/</span><span class="er">/</span>设置面板</span>
+<span id="cb41-3"><a href="stata.html#cb41-3" aria-hidden="true" tabindex="-1"></a>xtdescribe   <span class="sc">/</span><span class="er">/</span>描述一下这个面板数据情况</span>
+<span id="cb41-4"><a href="stata.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="stata.html#cb41-5" aria-hidden="true" tabindex="-1"></a>gen age2<span class="ot">=</span> age<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb41-6"><a href="stata.html#cb41-6" aria-hidden="true" tabindex="-1"></a>gen ttl_exp2<span class="ot">=</span>ttl_exp<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb41-7"><a href="stata.html#cb41-7" aria-hidden="true" tabindex="-1"></a>gen tenure2<span class="ot">=</span>tenure<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb41-8"><a href="stata.html#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="stata.html#cb41-9" aria-hidden="true" tabindex="-1"></a>global xlist <span class="st">&quot;grade age age2 ttl_exp ttl_exp2 tenure tenure2 not_smsa south race&quot;</span></span>
+<span id="cb41-10"><a href="stata.html#cb41-10" aria-hidden="true" tabindex="-1"></a>sum ln_w <span class="sc">$</span>xlist  <span class="sc">/</span><span class="er">/</span>统计描述相关变量</span>
+<span id="cb41-11"><a href="stata.html#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="stata.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>DID方法<span class="sc">-----------------------------------</span></span>
+<span id="cb41-13"><a href="stata.html#cb41-13" aria-hidden="true" tabindex="-1"></a>gen time <span class="ot">=</span> (year <span class="sc">&gt;=</span> <span class="dv">77</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">missing</span>(year)  <span class="sc">/</span><span class="er">/</span>政策执行时间为1977年</span>
+<span id="cb41-14"><a href="stata.html#cb41-14" aria-hidden="true" tabindex="-1"></a>gen treated <span class="ot">=</span> (idcode <span class="sc">&gt;</span><span class="dv">2000</span>)<span class="sc">&amp;!</span><span class="fu">missing</span>(idcode) <span class="sc">/</span><span class="er">/</span>政策执行地方为idcode大于2000的地方</span>
+<span id="cb41-15"><a href="stata.html#cb41-15" aria-hidden="true" tabindex="-1"></a>gen did <span class="ot">=</span> time<span class="sc">*</span>treated  <span class="sc">/</span><span class="er">/</span>这就是需要估计的DID，也就所交叉项</span>
+<span id="cb41-16"><a href="stata.html#cb41-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="stata.html#cb41-17" aria-hidden="true" tabindex="-1"></a>reg ln_w did time treated <span class="sc">$</span>xlist <span class="sc">/</span><span class="er">/</span>这就是一个OLS回归，也可以用diff命令</span>
+<span id="cb41-18"><a href="stata.html#cb41-18" aria-hidden="true" tabindex="-1"></a>xtreg ln_w did time treated <span class="sc">$</span>xlist i.year, fe <span class="sc">/</span><span class="er">/</span>也可以这去做，会省略掉一个虚拟变量</span>
+<span id="cb41-19"><a href="stata.html#cb41-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="stata.html#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>PSM<span class="sc">-</span>DID方法<span class="sc">-------------------------------</span></span>
+<span id="cb41-21"><a href="stata.html#cb41-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-22"><a href="stata.html#cb41-22" aria-hidden="true" tabindex="-1"></a><span class="er">**</span> PSM的部分</span>
+<span id="cb41-23"><a href="stata.html#cb41-23" aria-hidden="true" tabindex="-1"></a>set seed <span class="dv">0001</span>   <span class="sc">/</span><span class="er">/</span>定义种子</span>
+<span id="cb41-24"><a href="stata.html#cb41-24" aria-hidden="true" tabindex="-1"></a>gen tmp <span class="ot">=</span> <span class="fu">runiform</span>() <span class="sc">/</span><span class="er">/</span>生成随机数</span>
+<span id="cb41-25"><a href="stata.html#cb41-25" aria-hidden="true" tabindex="-1"></a>sort tmp <span class="sc">/</span><span class="er">/</span>把数据库随机整理</span>
+<span id="cb41-26"><a href="stata.html#cb41-26" aria-hidden="true" tabindex="-1"></a>psmatch2 treated <span class="sc">$</span>xlist, <span class="fu">out</span>(ln_w) logit ate <span class="fu">neighbor</span>(<span class="dv">1</span>) common <span class="fu">caliper</span>(.<span class="dv">05</span>) ties <span class="sc">/</span><span class="er">/</span>通过近邻匹配，这里可以要outcome，也可以不要它</span>
+<span id="cb41-27"><a href="stata.html#cb41-27" aria-hidden="true" tabindex="-1"></a>pstest <span class="sc">$</span>xlist, both graph  <span class="sc">/</span><span class="er">/</span>检验协变量在处理组与控制组之间是否平衡</span>
+<span id="cb41-28"><a href="stata.html#cb41-28" aria-hidden="true" tabindex="-1"></a>gen common<span class="ot">=</span>_support</span>
+<span id="cb41-29"><a href="stata.html#cb41-29" aria-hidden="true" tabindex="-1"></a>drop <span class="cf">if</span> common <span class="sc">==</span> <span class="dv">0</span>  <span class="sc">/</span><span class="er">/</span>去掉不满足共同区域假定的观测值</span>
+<span id="cb41-30"><a href="stata.html#cb41-30" aria-hidden="true" tabindex="-1"></a>psgraph</span>
+<span id="cb41-31"><a href="stata.html#cb41-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-32"><a href="stata.html#cb41-32" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span> DID的部分，根据上面匹配好的数据</span>
+<span id="cb41-33"><a href="stata.html#cb41-33" aria-hidden="true" tabindex="-1"></a>reg ln_w did time treated <span class="sc">$</span>xlist </span>
+<span id="cb41-34"><a href="stata.html#cb41-34" aria-hidden="true" tabindex="-1"></a>xtreg ln_w did time treated <span class="sc">$</span>xlist i.year, fe</span>
+<span id="cb41-35"><a href="stata.html#cb41-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-36"><a href="stata.html#cb41-36" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>PSM<span class="sc">-</span>DID部分结束<span class="sc">--------------------------------------</span></span>
+<span id="cb41-37"><a href="stata.html#cb41-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-38"><a href="stata.html#cb41-38" aria-hidden="true" tabindex="-1"></a><span class="er">*</span>交互项 </span>
+<span id="cb41-39"><a href="stata.html#cb41-39" aria-hidden="true" tabindex="-1"></a>help xi </span>
+<span id="cb41-40"><a href="stata.html#cb41-40" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>DID方法需要满足的五个条件检验<span class="sc">------------------------</span></span>
+<span id="cb41-41"><a href="stata.html#cb41-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-42"><a href="stata.html#cb41-42" aria-hidden="true" tabindex="-1"></a><span class="er">**</span><span class="fl">1.</span>共同趋势假设检验</span>
+<span id="cb41-43"><a href="stata.html#cb41-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-44"><a href="stata.html#cb41-44" aria-hidden="true" tabindex="-1"></a>tab year, <span class="fu">gen</span>(yrdum) <span class="sc">/</span><span class="er">/</span>产生year dummy，即每一年一个dummy变量</span>
+<span id="cb41-45"><a href="stata.html#cb41-45" aria-hidden="true" tabindex="-1"></a>     forval v<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>{</span>
+<span id="cb41-46"><a href="stata.html#cb41-46" aria-hidden="true" tabindex="-1"></a>gen treated<span class="st">`</span><span class="at">v&#39;=yrdum</span><span class="st">`</span>v<span class="st">&#39;*treated</span></span>
+<span id="cb41-47"><a href="stata.html#cb41-47" aria-hidden="true" tabindex="-1"></a><span class="st">}                     //这个相当于产生了政策实行前的那些年份与处理虚拟变量的交互项</span></span>
+<span id="cb41-48"><a href="stata.html#cb41-48" aria-hidden="true" tabindex="-1"></a><span class="st">xtreg ln_w did treated*  i.year ,fe  //这个没有加控制变量</span></span>
+<span id="cb41-49"><a href="stata.html#cb41-49" aria-hidden="true" tabindex="-1"></a><span class="st">xtreg ln_w did treated* $xlist i.year ,fe //如果did依然显著，且treated*这些政策施行前年份交互项并不显著，那就好</span></span>
+<span id="cb41-50"><a href="stata.html#cb41-50" aria-hidden="true" tabindex="-1"></a><span class="st">xtreg ln_w did treated* $xlist i.year if union!=1 ,fe //我们认为工会会影响这个处理组和控制组的共同趋势，因此我们看看union=0的情形</span></span>
+<span id="cb41-51"><a href="stata.html#cb41-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-52"><a href="stata.html#cb41-52" aria-hidden="true" tabindex="-1"></a><span class="st">**2.政策干预时间的随机性</span></span>
+<span id="cb41-53"><a href="stata.html#cb41-53" aria-hidden="true" tabindex="-1"></a><span class="st">gen time1 = (year &gt;= 75) &amp; !missing(year)  //政策执行时间提前到1975年</span></span>
+<span id="cb41-54"><a href="stata.html#cb41-54" aria-hidden="true" tabindex="-1"></a><span class="st">capture drop treated1</span></span>
+<span id="cb41-55"><a href="stata.html#cb41-55" aria-hidden="true" tabindex="-1"></a><span class="st">gen treated1= (idcode &gt;2000)&amp;!missing(idcode) //政策执行地方为idcode大于2000的地方</span></span>
+<span id="cb41-56"><a href="stata.html#cb41-56" aria-hidden="true" tabindex="-1"></a><span class="st">gen did1 = time1*treated1  //这就是需要估计的DID，也就所交叉项</span></span>
+<span id="cb41-57"><a href="stata.html#cb41-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-58"><a href="stata.html#cb41-58" aria-hidden="true" tabindex="-1"></a><span class="st">gen time2 = (year &gt;= 76) &amp; !missing(year)  //政策执行时间提前到1976年</span></span>
+<span id="cb41-59"><a href="stata.html#cb41-59" aria-hidden="true" tabindex="-1"></a><span class="st">capture drop treated2</span></span>
+<span id="cb41-60"><a href="stata.html#cb41-60" aria-hidden="true" tabindex="-1"></a><span class="st">gen treated2= (idcode &gt;2000)&amp;!missing(idcode) //政策执行地方为idcode大于2000的地方</span></span>
+<span id="cb41-61"><a href="stata.html#cb41-61" aria-hidden="true" tabindex="-1"></a><span class="st">gen did2 = time2*treated2  //这就是需要估计的DID，也就所交叉项</span></span>
+<span id="cb41-62"><a href="stata.html#cb41-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-63"><a href="stata.html#cb41-63" aria-hidden="true" tabindex="-1"></a><span class="st">xtreg ln_w did1 $xlist i.year,fe </span></span>
+<span id="cb41-64"><a href="stata.html#cb41-64" aria-hidden="true" tabindex="-1"></a><span class="st">xtreg ln_w did2 $xlist i.year,fe //看看这两式子里did1和did2显著不,显著为好</span></span>
+<span id="cb41-65"><a href="stata.html#cb41-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-66"><a href="stata.html#cb41-66" aria-hidden="true" tabindex="-1"></a><span class="st">**3.控制组将不受到政策的影响</span></span>
+<span id="cb41-67"><a href="stata.html#cb41-67" aria-hidden="true" tabindex="-1"></a><span class="st">gen time3 = (year &gt;= 77) &amp; !missing(year) </span></span>
+<span id="cb41-68"><a href="stata.html#cb41-68" aria-hidden="true" tabindex="-1"></a><span class="st">capture drop treated3 </span></span>
+<span id="cb41-69"><a href="stata.html#cb41-69" aria-hidden="true" tabindex="-1"></a><span class="st">gen treated3= (idcode&lt;1600 &amp; idcode&gt;1000)&amp;!missing(idcode) //我们考虑一个并没有受政策影响地方假设其受到政策影响</span></span>
+<span id="cb41-70"><a href="stata.html#cb41-70" aria-hidden="true" tabindex="-1"></a><span class="st">gen did3 = time3*treated3  </span></span>
+<span id="cb41-71"><a href="stata.html#cb41-71" aria-hidden="true" tabindex="-1"></a><span class="st">xtreg ln_w did3 $xlist i.year,fe //最好的情况是did3不显著，证明控制组不受政策影响</span></span>
+<span id="cb41-72"><a href="stata.html#cb41-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-73"><a href="stata.html#cb41-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-74"><a href="stata.html#cb41-74" aria-hidden="true" tabindex="-1"></a><span class="st">**4.政策实施的唯一性，至少证明这个政策才是主要影响因素</span></span>
+<span id="cb41-75"><a href="stata.html#cb41-75" aria-hidden="true" tabindex="-1"></a><span class="st">gen time4 = (year &gt;= 77) &amp; !missing(year)  </span></span>
+<span id="cb41-76"><a href="stata.html#cb41-76" aria-hidden="true" tabindex="-1"></a><span class="st">capture drop treated4</span></span>
+<span id="cb41-77"><a href="stata.html#cb41-77" aria-hidden="true" tabindex="-1"></a><span class="st">gen treated4= (idcode&lt;3000 &amp; idcode&gt;2300)&amp;!missing(idcode) //我们寻找某些受到其他政策影响的地方</span></span>
+<span id="cb41-78"><a href="stata.html#cb41-78" aria-hidden="true" tabindex="-1"></a><span class="st">gen did4 = time4*treated4  </span></span>
+<span id="cb41-79"><a href="stata.html#cb41-79" aria-hidden="true" tabindex="-1"></a><span class="st">xtreg ln_w did4 $xlist i.year,fe //did4可能依然显著，但是系数变小，证明还受到其他政策影响</span></span>
+<span id="cb41-80"><a href="stata.html#cb41-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-81"><a href="stata.html#cb41-81" aria-hidden="true" tabindex="-1"></a><span class="st">**5.控制组和政策影响组的分组是随机的</span></span>
+<span id="cb41-82"><a href="stata.html#cb41-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-83"><a href="stata.html#cb41-83" aria-hidden="true" tabindex="-1"></a><span class="st">xi:xtivreg2 ln_w (did=hours tenure) $xlist i.year,fe first //用工具变量来替代政策变量，解决因为分组非随机导致的内生性问题</span></span>
+<span id="cb41-84"><a href="stata.html#cb41-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-85"><a href="stata.html#cb41-85" aria-hidden="true" tabindex="-1"></a><span class="st">————————————————————————————————</span></span>
+<span id="cb41-86"><a href="stata.html#cb41-86" aria-hidden="true" tabindex="-1"></a><span class="st">**附加的，一般而言，我们需要看看这个政策的动态影响-------------</span></span>
+<span id="cb41-87"><a href="stata.html#cb41-87" aria-hidden="true" tabindex="-1"></a><span class="st">     forval v=8/15{</span></span>
+<span id="cb41-88"><a href="stata.html#cb41-88" aria-hidden="true" tabindex="-1"></a><span class="st">gen treated`v&#39;</span><span class="ot">=</span>yrdum<span class="st">`</span><span class="at">v&#39;*treated  </span></span>
+<span id="cb41-89"><a href="stata.html#cb41-89" aria-hidden="true" tabindex="-1"></a><span class="at">}               //注意，这里yrdum8就相当于year=78</span></span>
+<span id="cb41-90"><a href="stata.html#cb41-90" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
+<span id="cb41-91"><a href="stata.html#cb41-91" aria-hidden="true" tabindex="-1"></a><span class="at">reg  ln_w treated*  </span></span>
+<span id="cb41-92"><a href="stata.html#cb41-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-93"><a href="stata.html#cb41-93" aria-hidden="true" tabindex="-1"></a><span class="at">xtreg  ln_w treated*, fe</span></span>
+<span id="cb41-94"><a href="stata.html#cb41-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-95"><a href="stata.html#cb41-95" aria-hidden="true" tabindex="-1"></a><span class="at">xtreg ln_w treated* i.year,fe </span></span>
+<span id="cb41-96"><a href="stata.html#cb41-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-97"><a href="stata.html#cb41-97" aria-hidden="true" tabindex="-1"></a><span class="at">xtreg ln_w treated* $xlist i.year,fe  //一般而言上面这些式子里的treated*应该至少部分显著</span></span>
+<span id="cb41-98"><a href="stata.html#cb41-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-99"><a href="stata.html#cb41-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-100"><a href="stata.html#cb41-100" aria-hidden="true" tabindex="-1"></a><span class="at">倍分法 (DID)多个现成命令：</span></span>
+<span id="cb41-101"><a href="stata.html#cb41-101" aria-hidden="true" tabindex="-1"></a><span class="at">help diff   //sj16-1</span></span>
+<span id="cb41-102"><a href="stata.html#cb41-102" aria-hidden="true" tabindex="-1"></a><span class="at">help ddid   //Pre-post-treatment estimation of the Average Treatment Effect (ATE) with binary time-varying treatment</span></span>
+<span id="cb41-103"><a href="stata.html#cb41-103" aria-hidden="true" tabindex="-1"></a><span class="at">didq        //Treatment-effect estimation under alternative assumptions, SJ 15(3):796--808</span></span>
+<span id="cb41-104"><a href="stata.html#cb41-104" aria-hidden="true" tabindex="-1"></a><span class="at">help absdid //Semiparametric difference-in-differences estimator of Abadie (2005), SJ16-2, 附数据和范例</span></span>
+<span id="cb41-105"><a href="stata.html#cb41-105" aria-hidden="true" tabindex="-1"></a><span class="at">——————————————————————————————————————</span></span>
+<span id="cb41-106"><a href="stata.html#cb41-106" aria-hidden="true" tabindex="-1"></a><span class="at">* RDD 多个断点--包括分析、画图、稳健 Analysis of regression-discontinuity designs with multiple cutoffs or multiple scores</span></span>
+<span id="cb41-107"><a href="stata.html#cb41-107" aria-hidden="true" tabindex="-1"></a><span class="at">https://journals.sagepub.com/doi/pdf/10.1177/1536867X20976320</span></span>
+<span id="cb41-108"><a href="stata.html#cb41-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-109"><a href="stata.html#cb41-109" aria-hidden="true" tabindex="-1"></a><span class="at">**RDD断点回归在这里的应用-------------------</span></span>
+<span id="cb41-110"><a href="stata.html#cb41-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-111"><a href="stata.html#cb41-111" aria-hidden="true" tabindex="-1"></a><span class="at">tab treated,missing</span></span>
+<span id="cb41-112"><a href="stata.html#cb41-112" aria-hidden="true" tabindex="-1"></a><span class="at">keep if treated==1</span></span>
+<span id="cb41-113"><a href="stata.html#cb41-113" aria-hidden="true" tabindex="-1"></a><span class="at">cmogram ln_w year,cut(77) scatter lineat(77) qfitci //绘制断点回归图形</span></span>
+<span id="cb41-114"><a href="stata.html#cb41-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-115"><a href="stata.html#cb41-115" aria-hidden="true" tabindex="-1"></a><span class="at">**最优带宽</span></span>
+<span id="cb41-116"><a href="stata.html#cb41-116" aria-hidden="true" tabindex="-1"></a><span class="at">set more off</span></span>
+<span id="cb41-117"><a href="stata.html#cb41-117" aria-hidden="true" tabindex="-1"></a><span class="at">rdbwselect ln_w year if 60&lt;=year&amp;year&lt;=85,c(77) kernel(uni) //自己下载安装</span></span>
+<span id="cb41-118"><a href="stata.html#cb41-118" aria-hidden="true" tabindex="-1"></a><span class="at">rdob ln_w year, c(77)                      //这个命令是imbens新开发的，这里有rdob的程序</span></span>
+<span id="cb41-119"><a href="stata.html#cb41-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-120"><a href="stata.html#cb41-120" aria-hidden="true" tabindex="-1"></a><span class="at">reg ln_w time $xlist if 60&lt;year&amp;year&lt;80  //直接对time这个虚拟变量做了ols</span></span></code></pre></div>
+<div id="inequality不平等" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> inequality不平等</h3>
+<p>/<em>第一步：计算Gini 或 CI （常常画图）
+第二步：分解
+1）动态or面板：decomposition of a change in inequality
+– Stata命令：dsginideco(2017) - Decomposition of inequality change into pro-poor growth and mobility components
+adecomp(2012) - Shapley Decomposition by Components of a Welfare Measure
+2）截面
+– Stata命令：INEQDECO–Inequality decompositions by subgroup
+trnbin0 – count data Yvar 集中指数非线性分解法
+ineqrbd – Regression-based inequality decomposition, following Fields (2003)
+ineqfac(2009) – Inequality decomposition by factor components, following Shorrocks (1982a, b)
+fgt_ci – calculates and decomposes Foster–Greer–Thorbecke (and standard) concentration indices
+rifireg(2016) - Recentered Influence Function (RIF) for (bivariate) rank dependent indices (I) regression </em>/</p>
+<p>1.gini decomp: “ginidesc” , “ineqdeco” , “ineqdec0”
+1.各种系数计算: “inequal”→ “inequal7”→升级→“ainequal”</p>
+</div>
+</div>
+<div id="plotgraphvisualisation-1" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Plot/graph/visualisation</h2>
+<p>help chinagcode //利用百度地图获取中国地址的经纬度</p>
+<p>help stripplot //画图比较多个分组的均值和分布</p>
+<p>*正态检验画图
+help diagnostic_plots
+swilk x // z&gt;2.14代表x不服从正态； p&lt;0.01代表不服从正态
+pnorm x // 分布偏离斜线，也不服从正态。
+gen u=rnormal(8, 3) //检验一下正态</p>
+<ul>
+<li>现在的可视化工具webGL(graphical language)：一还是基于我们单机的统计分析；二优点在于”交互性”和”面向网络”；
+<ul>
+<li>D3是基于JS：javascript, JSON=JavaScript Object Notation</li>
+<li>Plotly绘图底层基于D3</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="stata.html#cb42-1" aria-hidden="true" tabindex="-1"></a>help libd3 <span class="sc">/</span><span class="er">/</span>a Mata wrapper around the D3 JavaScript library</span>
+<span id="cb42-2"><a href="stata.html#cb42-2" aria-hidden="true" tabindex="-1"></a>help libjson</span>
+<span id="cb42-3"><a href="stata.html#cb42-3" aria-hidden="true" tabindex="-1"></a>help libhtml    </span></code></pre></div></li>
+</ul>
+<div id="改scheme" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> 改scheme</h3>
+<p>help schemes</p>
+<p>set scheme plotplain //我觉得最像R ggplot图风
+set scheme Plottig, permanently // 对Stata单色模板的改进
+set scheme s2mono, permanently //s2monochrome 是我一直用的喜欢scheme</p>
+<p>sysuse auto
+histogram price, scheme(michigan) percent title(“Automobile Prices”) // 非常漂亮图模</p>
+</div>
+<div id="output-graph" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Output graph</h3>
+<p>Stata figure出图终极解决方案–使用Ghostscript-gswin64c.exe：win10环境下安装Ghostscript, <a href="http://fgsservices.co.uk/blog/fred-knows/how-tos/install-ghostscript-windows-10/">Step I</a>, <a href="https://fgsservices.co.uk/blog/fred-knows/how-tos/install-ghostscript-windows-10-step-2/">Step II</a>.
+win10环境下根据<a href="https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/">步骤</a>添加 C:Files</p>
+<p>使用方法：Stata出矢量pdf，然后Stata调用!gswin64c.exe 将pdf转tiff (也可设定dpi=r600，和压缩方式lzw)，我包装为程序figen</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="stata.html#cb43-1" aria-hidden="true" tabindex="-1"></a>  figen, <span class="fu">fig</span>(D<span class="sc">:</span>\fig1) <span class="sc">/</span><span class="er">/</span> 括号中<span class="ot">=</span>路径和名称</span>
+<span id="cb43-2"><a href="stata.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  doedit <span class="st">&quot;D:\stata11</span><span class="sc">\a</span><span class="st">do\myado/figen.ado&quot;</span> <span class="sc">/</span><span class="er">/</span>看ado,这个命令已定型，切勿再改</span>
+<span id="cb43-3"><a href="stata.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-4"><a href="stata.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  cap prog drop figen</span>
+<span id="cb43-5"><a href="stata.html#cb43-5" aria-hidden="true" tabindex="-1"></a>  prog figen </span>
+<span id="cb43-6"><a href="stata.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  syntax,  [<span class="cf">if</span>] [<span class="cf">in</span>]  <span class="fu">fig</span>(str)</span>
+<span id="cb43-7"><a href="stata.html#cb43-7" aria-hidden="true" tabindex="-1"></a>       graph export <span class="st">&quot;`fig&#39;.pdf&quot;</span>  </span>
+<span id="cb43-8"><a href="stata.html#cb43-8" aria-hidden="true" tabindex="-1"></a>       <span class="sc">!</span>gswin64c.exe <span class="sc">-</span>dSAFER <span class="sc">-</span>dBATCH <span class="sc">-</span>dNOPAUSE <span class="sc">-</span>r600 <span class="sc">-</span>sDEVICE<span class="ot">=</span>tiff24nc <span class="sc">-</span>sCompression<span class="ot">=</span>lzw  <span class="sc">-</span>sOutputFile<span class="ot">=</span><span class="st">&quot;`fig&#39;.tiff&quot;</span>  <span class="st">&quot;`fig&#39;.pdf&quot;</span></span>
+<span id="cb43-9"><a href="stata.html#cb43-9" aria-hidden="true" tabindex="-1"></a>       erase <span class="st">&quot;`fig&#39;.pdf&quot;</span> </span>
+<span id="cb43-10"><a href="stata.html#cb43-10" aria-hidden="true" tabindex="-1"></a>  end</span></code></pre></div>
+</div>
+</div>
+<div id="connection" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Connection</h2>
+<div id="rpython" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> R/Python</h3>
+<ul>
+<li><p>使用python语言在Stata中：
+python
+exit()
+shellout python_plugin.pdf //详细介绍</p></li>
+<li><p>Stata-R语言联用,方法一: “rsource,”我做SP问卷输出和数据处理采用的</p></li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="stata.html#cb44-1" aria-hidden="true" tabindex="-1"></a>    doedit <span class="st">&quot;D:</span><span class="sc">\a</span><span class="st">a</span><span class="sc">\b</span><span class="st">ook_Stata_Latex_R\Stata_R_SP.do&quot;</span></span>
+<span id="cb44-2"><a href="stata.html#cb44-2" aria-hidden="true" tabindex="-1"></a>    已经修改profile.do文件, R<span class="sc">-</span>Stata联用设置 这样就可以在Stata中写R代码 调用R的功能</span>
+<span id="cb44-3"><a href="stata.html#cb44-3" aria-hidden="true" tabindex="-1"></a>    global Rterm_path <span class="st">`</span><span class="at">&quot;D:\R\R-4.0.3beta</span><span class="sc">\b</span><span class="at">in</span><span class="sc">\x64</span><span class="at">\Rterm.exe&quot;&#39;   //specify them in order to call R in Stata </span></span>
+<span id="cb44-4"><a href="stata.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="at">    global Rterm_options </span><span class="st">`&quot;--vanilla&quot;&#39;</span></span>
+<span id="cb44-5"><a href="stata.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="st">    //例子</span></span>
+<span id="cb44-6"><a href="stata.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="st">    rsource, terminator(END_OF_R)</span></span>
+<span id="cb44-7"><a href="stata.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="st">        library(foreign);</span></span>
+<span id="cb44-8"><a href="stata.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="st">        rauto&lt;-read.dta(&quot;myauto.dta&quot;, convert.f=TRUE);</span></span>
+<span id="cb44-9"><a href="stata.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="st">        rauto;</span></span>
+<span id="cb44-10"><a href="stata.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="st">        attributes(rauto);</span></span>
+<span id="cb44-11"><a href="stata.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="st">        q();</span></span>
+<span id="cb44-12"><a href="stata.html#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="st">    END_OF_R</span></span></code></pre></div>
+<p>方法二：“rcall” 比rsource强的是有interactive模式</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="stata.html#cb45-1" aria-hidden="true" tabindex="-1"></a>    net install Rcall, replace <span class="fu">from</span>(<span class="st">&quot;d:</span><span class="sc">\r</span><span class="st">call&quot;</span>)</span>
+<span id="cb45-2"><a href="stata.html#cb45-2" aria-hidden="true" tabindex="-1"></a>    help rcall</span>
+<span id="cb45-3"><a href="stata.html#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="stata.html#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(<span class="st">&quot;foreign&quot;</span>, <span class="at">lib.loc=</span><span class="st">&quot;D:/R/R-Portable/App/R-Portable/library&quot;</span>)</span>
+<span id="cb45-5"><a href="stata.html#cb45-5" aria-hidden="true" tabindex="-1"></a>    data<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(med<span class="sc">$</span>alternatives<span class="sc">$</span>alt<span class="fl">.1</span>)   <span class="co"># med是list类型的对象, alt.1是attributes组合的对象</span></span>
+<span id="cb45-6"><a href="stata.html#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write.dta</span>(data,<span class="st">&quot;d:/test.dta&quot;</span>)</span>
+<span id="cb45-7"><a href="stata.html#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">*</span> R里面的表格tab_BWS_aggregate_score.csv 输出，再用Stata转成Latex表</span>
+<span id="cb45-8"><a href="stata.html#cb45-8" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span>data<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(scores<span class="sc">$</span>aggregate)   <span class="co"># med是list类型的对象, alt.1是attributes组合的对象</span></span>
+<span id="cb45-9"><a href="stata.html#cb45-9" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span><span class="fu">write.csv</span>(data,<span class="st">&quot;d:/tab_BWS_aggregate_score.csv&quot;</span>)  <span class="co"># 这个表待会读入Stata，然后用mata转成Latex表</span></span>
+<span id="cb45-10"><a href="stata.html#cb45-10" aria-hidden="true" tabindex="-1"></a>    insheet using <span class="st">&quot;D:</span><span class="sc">\a</span><span class="st">a\CLDS\BMI\clds2016_m.csv&quot;</span>, clear    </span>
+<span id="cb45-11"><a href="stata.html#cb45-11" aria-hidden="true" tabindex="-1"></a>    import delim using <span class="st">&quot;d:</span><span class="sc">\t</span><span class="st">ab_BWS_aggregate_score.csv&quot;</span>  , clear</span>
+<span id="cb45-12"><a href="stata.html#cb45-12" aria-hidden="true" tabindex="-1"></a>    texsave _all using <span class="st">&quot;d:</span><span class="sc">\t</span><span class="st">ab_BWS_aggregate_score.tex&quot;</span> , frag replace  <span class="sc">/</span><span class="er">//</span></span>
+<span id="cb45-13"><a href="stata.html#cb45-13" aria-hidden="true" tabindex="-1"></a>            <span class="fu">title</span>(Aggregated best<span class="sc">-</span>worst scores)  <span class="sc">/</span><span class="er">//</span></span>
+<span id="cb45-14"><a href="stata.html#cb45-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">footnote</span>(Note<span class="sc">:</span> The number of respondents is xxx)  </span>
+<span id="cb45-15"><a href="stata.html#cb45-15" aria-hidden="true" tabindex="-1"></a>    <span class="sc">**</span><span class="er">*</span>例子：综合控制法</span>
+<span id="cb45-16"><a href="stata.html#cb45-16" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span><span class="fu">data</span>(gsynth)</span>
+<span id="cb45-17"><a href="stata.html#cb45-17" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span><span class="fu">names</span>(turnout)</span>
+<span id="cb45-18"><a href="stata.html#cb45-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-19"><a href="stata.html#cb45-19" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
+<span id="cb45-20"><a href="stata.html#cb45-20" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span>turnout.ub <span class="ot">&lt;-</span> turnout[<span class="sc">-</span><span class="fu">c</span>(<span class="fu">which</span>(turnout<span class="sc">$</span>abb<span class="sc">==</span><span class="st">&quot;WY&quot;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>], <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(turnout),<span class="dv">50</span>,<span class="at">replace=</span><span class="cn">FALSE</span>)),]</span>
+<span id="cb45-21"><a href="stata.html#cb45-21" aria-hidden="true" tabindex="-1"></a>                             </span>
+<span id="cb45-22"><a href="stata.html#cb45-22" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span>out <span class="ot">&lt;-</span> <span class="fu">gsynth</span>(turnout <span class="sc">~</span> policy_edr <span class="sc">+</span> policy_mail_in <span class="sc">+</span> policy_motor, <span class="sc">/</span><span class="er">//</span></span>
+<span id="cb45-23"><a href="stata.html#cb45-23" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> turnout.ub,  <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;abb&quot;</span>,<span class="st">&quot;year&quot;</span>), <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">inference =</span> <span class="st">&quot;parametric&quot;</span>, <span class="at">r =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>),  <span class="sc">/</span><span class="er">//</span></span>
+<span id="cb45-24"><a href="stata.html#cb45-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">CV =</span> <span class="cn">TRUE</span>, <span class="at">force =</span> <span class="st">&quot;two-way&quot;</span>, <span class="at">parallel =</span> <span class="cn">TRUE</span>, <span class="at">min.T0 =</span> <span class="dv">8</span>,  <span class="at">nboots =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">02139</span>)</span>
+<span id="cb45-25"><a href="stata.html#cb45-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-26"><a href="stata.html#cb45-26" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span><span class="fu">print</span>(out)</span>
+<span id="cb45-27"><a href="stata.html#cb45-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-28"><a href="stata.html#cb45-28" aria-hidden="true" tabindex="-1"></a>    rename var1 t</span>
+<span id="cb45-29"><a href="stata.html#cb45-29" aria-hidden="true" tabindex="-1"></a>    tsset t</span>
+<span id="cb45-30"><a href="stata.html#cb45-30" aria-hidden="true" tabindex="-1"></a>    twoway tsline att cilower ciupper,<span class="fu">xline</span>(<span class="dv">0</span>) <span class="fu">yline</span>(<span class="dv">0</span>) <span class="fu">scheme</span>(s2mono)</span>
+<span id="cb45-31"><a href="stata.html#cb45-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-32"><a href="stata.html#cb45-32" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span>out.mc <span class="ot">&lt;-</span> <span class="fu">gsynth</span>(turnout <span class="sc">~</span> policy_edr <span class="sc">+</span> policy_mail_in <span class="sc">+</span> policy_motor, <span class="at">min.T0 =</span> <span class="dv">8</span>, <span class="sc">/</span><span class="er">//</span></span>
+<span id="cb45-33"><a href="stata.html#cb45-33" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> turnout.ub,  <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;abb&quot;</span>,<span class="st">&quot;year&quot;</span>), <span class="at">estimator =</span> <span class="st">&quot;mc&quot;</span>, <span class="sc">/</span><span class="er">//</span></span>
+<span id="cb45-34"><a href="stata.html#cb45-34" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">nboots =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">02139</span>)</span>
+<span id="cb45-35"><a href="stata.html#cb45-35" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb45-36"><a href="stata.html#cb45-36" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span><span class="fu">plot</span>(out.mc, <span class="at">main =</span> <span class="st">&quot;Estimated ATT (MC)&quot;</span>)</span>
+<span id="cb45-37"><a href="stata.html#cb45-37" aria-hidden="true" tabindex="-1"></a>    rcall<span class="sc">:</span><span class="fu">print</span>(out.mc)</span>
+<span id="cb45-38"><a href="stata.html#cb45-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-39"><a href="stata.html#cb45-39" aria-hidden="true" tabindex="-1"></a>    rename var1 t</span>
+<span id="cb45-40"><a href="stata.html#cb45-40" aria-hidden="true" tabindex="-1"></a>    tsset t</span>
+<span id="cb45-41"><a href="stata.html#cb45-41" aria-hidden="true" tabindex="-1"></a>    twoway tsline att cilower ciupper,<span class="fu">xline</span>(<span class="dv">0</span>) <span class="fu">yline</span>(<span class="dv">0</span>) <span class="fu">scheme</span>(s2mono)</span></code></pre></div>
+<p>方法三：在R语言中run Stata
+library(“RStata”)</p>
+</div>
+<div id="dosshell" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> DOS/shell</h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="stata.html#cb46-1" aria-hidden="true" tabindex="-1"></a>shell erase do_file.do  <span class="sc">/</span><span class="er">/</span><span class="fu">shell</span> (等价<span class="st">&quot;!&quot;</span>) allows you to send commands to your operating system</span>
+<span id="cb46-2"><a href="stata.html#cb46-2" aria-hidden="true" tabindex="-1"></a>shell                   <span class="sc">/</span><span class="er">/</span> or to enter DOS界面</span>
+<span id="cb46-3"><a href="stata.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>erase      myfile.txt  <span class="sc">/</span><span class="er">/</span> DOS命令erase<span class="sc">/</span>del一样</span>
+<span id="cb46-4"><a href="stata.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>del        myfile.tex</span>
+<span id="cb46-5"><a href="stata.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>rename try15.dta   final.dta</span>
+<span id="cb46-6"><a href="stata.html#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="stata.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>rmdir D<span class="sc">:</span>\aa\manydoc\bak.stunicode  <span class="sc">/</span>s <span class="sc">/</span>q   <span class="sc">/</span><span class="er">/</span>多运行一遍, 删除整个文件夹</span>
+<span id="cb46-8"><a href="stata.html#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="stata.html#cb46-9" aria-hidden="true" tabindex="-1"></a>winexec notepad <span class="st">&quot;d:\myfile.txt&quot;</span>   <span class="sc">/</span><span class="er">/</span>Stata命令 allows you to open file by using notepad</span></code></pre></div>
+</div>
+<div id="latexmarkdown" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Latex/Markdown</h3>
+<ul>
+<li><p>放弃Stata动态文件编写(stata14终于能完美支持ASCII中文了): markdoc, ketchup</p></li>
+<li><p>Stata输出eps图，插入Latex，再编译</p></li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="stata.html#cb47-1" aria-hidden="true" tabindex="-1"></a>    cd d<span class="sc">:</span>\</span>
+<span id="cb47-2"><a href="stata.html#cb47-2" aria-hidden="true" tabindex="-1"></a>    sysuse auto</span>
+<span id="cb47-3"><a href="stata.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> run reg</span>
+<span id="cb47-4"><a href="stata.html#cb47-4" aria-hidden="true" tabindex="-1"></a>    eststo mytab<span class="sc">:</span> reg mpg weight length</span>
+<span id="cb47-5"><a href="stata.html#cb47-5" aria-hidden="true" tabindex="-1"></a>    esttab mytab using <span class="st">&quot;mytable.tex&quot;</span>, <span class="fu">style</span>(tex) replace</span>
+<span id="cb47-6"><a href="stata.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> draw graph.eps, turn to .pdf</span>
+<span id="cb47-7"><a href="stata.html#cb47-7" aria-hidden="true" tabindex="-1"></a>    scatter mpg length</span>
+<span id="cb47-8"><a href="stata.html#cb47-8" aria-hidden="true" tabindex="-1"></a>    graph export mygraph.eps, replace</span>
+<span id="cb47-9"><a href="stata.html#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>epstopdf mygraph.eps  <span class="sc">/</span><span class="er">/</span> 将eps图片转pdf,适合在latex中插入</span>
+<span id="cb47-10"><a href="stata.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> compile pdf by latex</span>
+<span id="cb47-11"><a href="stata.html#cb47-11" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>pdflatex myoutput.tex <span class="sc">-</span>no<span class="sc">-</span>shell<span class="sc">-</span>escape   <span class="sc">/</span><span class="er">*</span> epstopdf和pdflatex都是MiTex的功能</span>
+<span id="cb47-12"><a href="stata.html#cb47-12" aria-hidden="true" tabindex="-1"></a>                                                   shell<span class="sc">-</span>escape是pdflatex的一个选项 <span class="sc">*</span><span class="er">/</span></span>
+<span id="cb47-13"><a href="stata.html#cb47-13" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>pdflatex  CTang_CV.tex  <span class="sc">-</span>output<span class="sc">-</span>directory<span class="ot">=</span>.\output\    <span class="sc">/</span><span class="er">/</span>定向编译</span>
+<span id="cb47-14"><a href="stata.html#cb47-14" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>copy .\output\CTang_CV.pdf      .\             <span class="sc">/</span><span class="er">/</span>再copy pdf到本文件夹</span>
+<span id="cb47-15"><a href="stata.html#cb47-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-16"><a href="stata.html#cb47-16" aria-hidden="true" tabindex="-1"></a>% Latex file myoutput.tex</span>
+<span id="cb47-17"><a href="stata.html#cb47-17" aria-hidden="true" tabindex="-1"></a>\documentclass[11pt]{article}</span>
+<span id="cb47-18"><a href="stata.html#cb47-18" aria-hidden="true" tabindex="-1"></a>\usepackage{graphicx}</span>
+<span id="cb47-19"><a href="stata.html#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-20"><a href="stata.html#cb47-20" aria-hidden="true" tabindex="-1"></a>\begin{document}</span>
+<span id="cb47-21"><a href="stata.html#cb47-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-22"><a href="stata.html#cb47-22" aria-hidden="true" tabindex="-1"></a>\section{My table}</span>
+<span id="cb47-23"><a href="stata.html#cb47-23" aria-hidden="true" tabindex="-1"></a>\input{mytable.tex}</span>
+<span id="cb47-24"><a href="stata.html#cb47-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-25"><a href="stata.html#cb47-25" aria-hidden="true" tabindex="-1"></a>\section{My graph}</span>
+<span id="cb47-26"><a href="stata.html#cb47-26" aria-hidden="true" tabindex="-1"></a>\includegraphics{mygraph.pdf}</span>
+<span id="cb47-27"><a href="stata.html#cb47-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-28"><a href="stata.html#cb47-28" aria-hidden="true" tabindex="-1"></a>\end{document}</span></code></pre></div>
+<ul>
+<li>Stata回归、制table，插入Latex</li>
+</ul>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="stata.html#cb48-1" aria-hidden="true" tabindex="-1"></a>program main</span>
+<span id="cb48-2"><a href="stata.html#cb48-2" aria-hidden="true" tabindex="-1"></a>    prepare_data</span>
+<span id="cb48-3"><a href="stata.html#cb48-3" aria-hidden="true" tabindex="-1"></a>    run_regressions</span>
+<span id="cb48-4"><a href="stata.html#cb48-4" aria-hidden="true" tabindex="-1"></a>    output_table</span>
+<span id="cb48-5"><a href="stata.html#cb48-5" aria-hidden="true" tabindex="-1"></a>end </span>
+<span id="cb48-6"><a href="stata.html#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="stata.html#cb48-7" aria-hidden="true" tabindex="-1"></a>program prepare_data</span>
+<span id="cb48-8"><a href="stata.html#cb48-8" aria-hidden="true" tabindex="-1"></a>    use ..<span class="sc">/</span>external<span class="sc">/</span>tv_potato.dta, clear </span>
+<span id="cb48-9"><a href="stata.html#cb48-9" aria-hidden="true" tabindex="-1"></a>    xtset countycode year </span>
+<span id="cb48-10"><a href="stata.html#cb48-10" aria-hidden="true" tabindex="-1"></a>    label variable log_chip_sales <span class="st">&quot;Log Chip Sales&quot;</span> </span>
+<span id="cb48-11"><a href="stata.html#cb48-11" aria-hidden="true" tabindex="-1"></a>    label variable tv_linear <span class="st">&quot;TV&quot;</span></span>
+<span id="cb48-12"><a href="stata.html#cb48-12" aria-hidden="true" tabindex="-1"></a>end </span>
+<span id="cb48-13"><a href="stata.html#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="stata.html#cb48-14" aria-hidden="true" tabindex="-1"></a>program run_regressions  <span class="sc">/</span><span class="er">/</span> 调用下面的 program setup_table</span>
+<span id="cb48-15"><a href="stata.html#cb48-15" aria-hidden="true" tabindex="-1"></a>    local dep_var   <span class="st">&quot;log_chip_sales&quot;</span></span>
+<span id="cb48-16"><a href="stata.html#cb48-16" aria-hidden="true" tabindex="-1"></a>    local tv_vars   <span class="st">&quot;tv_linear&quot;</span></span>
+<span id="cb48-17"><a href="stata.html#cb48-17" aria-hidden="true" tabindex="-1"></a>    local vce       <span class="st">&quot;vce(cluster countycode)&quot;</span></span>
+<span id="cb48-18"><a href="stata.html#cb48-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-19"><a href="stata.html#cb48-19" aria-hidden="true" tabindex="-1"></a>    eststo<span class="sc">:</span> reg <span class="st">`</span><span class="at">dep_var&#39; </span><span class="st">`</span>tv_vars<span class="st">&#39;, `vce&#39;</span></span>
+<span id="cb48-20"><a href="stata.html#cb48-20" aria-hidden="true" tabindex="-1"></a>    setup_table, <span class="fu">unitvar</span>(countycode) <span class="fu">timevar</span>(year)</span>
+<span id="cb48-21"><a href="stata.html#cb48-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-22"><a href="stata.html#cb48-22" aria-hidden="true" tabindex="-1"></a>    eststo<span class="sc">:</span> xtreg <span class="st">`</span><span class="at">dep_var&#39; </span><span class="st">`</span>tv_vars<span class="st">&#39;, `vce&#39;</span></span>
+<span id="cb48-23"><a href="stata.html#cb48-23" aria-hidden="true" tabindex="-1"></a>    setup_table, <span class="fu">unitvar</span>(countycode) <span class="fu">timevar</span>(year)</span>
+<span id="cb48-24"><a href="stata.html#cb48-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-25"><a href="stata.html#cb48-25" aria-hidden="true" tabindex="-1"></a>    eststo<span class="sc">:</span> reg <span class="st">`</span><span class="at">dep_var&#39; </span><span class="st">`</span>tv_vars<span class="st">&#39; i.year, `vce&#39;</span></span>
+<span id="cb48-26"><a href="stata.html#cb48-26" aria-hidden="true" tabindex="-1"></a>    setup_table, <span class="fu">unitvar</span>(countycode) <span class="fu">timevar</span>(year)</span>
+<span id="cb48-27"><a href="stata.html#cb48-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-28"><a href="stata.html#cb48-28" aria-hidden="true" tabindex="-1"></a>    eststo<span class="sc">:</span> xtreg <span class="st">`</span><span class="at">dep_var&#39; </span><span class="st">`</span>tv_vars<span class="st">&#39; i.year, `vce&#39;</span></span>
+<span id="cb48-29"><a href="stata.html#cb48-29" aria-hidden="true" tabindex="-1"></a>    setup_table, <span class="fu">unitvar</span>(countycode) <span class="fu">timevar</span>(year)</span>
+<span id="cb48-30"><a href="stata.html#cb48-30" aria-hidden="true" tabindex="-1"></a>end</span>
+<span id="cb48-31"><a href="stata.html#cb48-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-32"><a href="stata.html#cb48-32" aria-hidden="true" tabindex="-1"></a>program setup_table   <span class="sc">/</span><span class="er">/</span> 被上面的program run_regressions调用</span>
+<span id="cb48-33"><a href="stata.html#cb48-33" aria-hidden="true" tabindex="-1"></a>    syntax, <span class="fu">unitvar</span>(varname) <span class="fu">timevar</span>(varname) </span>
+<span id="cb48-34"><a href="stata.html#cb48-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">&quot;`e(ivar)&#39;&quot;</span> <span class="sc">==</span> <span class="st">&quot;`unitvar&#39;&quot;</span> {</span>
+<span id="cb48-35"><a href="stata.html#cb48-35" aria-hidden="true" tabindex="-1"></a>            estadd local unit_fe <span class="st">&quot;Yes&quot;</span></span>
+<span id="cb48-36"><a href="stata.html#cb48-36" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb48-37"><a href="stata.html#cb48-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> {</span>
+<span id="cb48-38"><a href="stata.html#cb48-38" aria-hidden="true" tabindex="-1"></a>            estadd local unit_fe <span class="st">&quot;No&quot;</span></span>
+<span id="cb48-39"><a href="stata.html#cb48-39" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb48-40"><a href="stata.html#cb48-40" aria-hidden="true" tabindex="-1"></a>    local cmdline <span class="st">&quot;`e(cmdline)&#39;&quot;</span></span>
+<span id="cb48-41"><a href="stata.html#cb48-41" aria-hidden="true" tabindex="-1"></a>    local cmd_substr <span class="sc">:</span> subinstr local cmdline <span class="st">&quot;i.`timevar&#39;&quot;</span> <span class="st">&quot;&quot;</span>, <span class="fu">count</span>(local cmd_time_fe) </span>
+<span id="cb48-42"><a href="stata.html#cb48-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">`</span><span class="at">cmd_time_fe&#39; == 1 {</span></span>
+<span id="cb48-43"><a href="stata.html#cb48-43" aria-hidden="true" tabindex="-1"></a><span class="at">            estadd local time_fe &quot;Yes&quot;</span></span>
+<span id="cb48-44"><a href="stata.html#cb48-44" aria-hidden="true" tabindex="-1"></a><span class="at">        }</span></span>
+<span id="cb48-45"><a href="stata.html#cb48-45" aria-hidden="true" tabindex="-1"></a><span class="at">        else {</span></span>
+<span id="cb48-46"><a href="stata.html#cb48-46" aria-hidden="true" tabindex="-1"></a><span class="at">            estadd local time_fe &quot;No&quot;</span></span>
+<span id="cb48-47"><a href="stata.html#cb48-47" aria-hidden="true" tabindex="-1"></a><span class="at">        }</span></span>
+<span id="cb48-48"><a href="stata.html#cb48-48" aria-hidden="true" tabindex="-1"></a><span class="at">end </span></span>
+<span id="cb48-49"><a href="stata.html#cb48-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-50"><a href="stata.html#cb48-50" aria-hidden="true" tabindex="-1"></a><span class="at">program output_table </span></span>
+<span id="cb48-51"><a href="stata.html#cb48-51" aria-hidden="true" tabindex="-1"></a><span class="at">    esttab using ../output/regressions.tex, ///</span></span>
+<span id="cb48-52"><a href="stata.html#cb48-52" aria-hidden="true" tabindex="-1"></a><span class="at">        replace drop(*.year) ///</span></span>
+<span id="cb48-53"><a href="stata.html#cb48-53" aria-hidden="true" tabindex="-1"></a><span class="at">        obslast se label nonotes nomtitles collabels(none) ///</span></span>
+<span id="cb48-54"><a href="stata.html#cb48-54" aria-hidden="true" tabindex="-1"></a><span class="at">        cells(b(star fmt(4)) se(par fmt(4)))  ///</span></span>
+<span id="cb48-55"><a href="stata.html#cb48-55" aria-hidden="true" tabindex="-1"></a><span class="at">        scalars(&quot;unit_fe County Fixed Effects&quot; &quot;time_fe Year Fixed Effects&quot;) ///</span></span>
+<span id="cb48-56"><a href="stata.html#cb48-56" aria-hidden="true" tabindex="-1"></a><span class="at">        mgroups(&quot;Log of Chip Sales&quot;, pattern(1) prefix(\multicolumn{@span}{c}{) ///</span></span>
+<span id="cb48-57"><a href="stata.html#cb48-57" aria-hidden="true" tabindex="-1"></a><span class="at">            suffix(}) span erepeat(\cmidrule(lr){@span})) </span></span>
+<span id="cb48-58"><a href="stata.html#cb48-58" aria-hidden="true" tabindex="-1"></a><span class="at">end </span></span>
+<span id="cb48-59"><a href="stata.html#cb48-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-60"><a href="stata.html#cb48-60" aria-hidden="true" tabindex="-1"></a><span class="at">main  // 启动执行</span></span></code></pre></div>
+<ul>
+<li>Table - r1_mandatory and r2_mandatory’s before-after mean comparison - by countries</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="stata.html#cb49-1" aria-hidden="true" tabindex="-1"></a>preserve</span>
+<span id="cb49-2"><a href="stata.html#cb49-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">*</span> sample selection </span>
+<span id="cb49-3"><a href="stata.html#cb49-3" aria-hidden="true" tabindex="-1"></a> drop <span class="cf">if</span> Country<span class="sc">==</span><span class="st">&quot;&quot;</span> <span class="sc">|</span> r1<span class="sc">==</span>.  <span class="sc">/</span><span class="er">/</span> r1 和 r2 的missing obs完全一样</span>
+<span id="cb49-4"><a href="stata.html#cb49-4" aria-hidden="true" tabindex="-1"></a>     <span class="sc">*</span> T<span class="sc">-</span>test and mean comparison</span>
+<span id="cb49-5"><a href="stata.html#cb49-5" aria-hidden="true" tabindex="-1"></a> encode Country, <span class="fu">gen</span>(country)  <span class="sc">/</span><span class="er">/</span> string → numerical, so can be used by <span class="cf">next</span> ttab</span>
+<span id="cb49-6"><a href="stata.html#cb49-6" aria-hidden="true" tabindex="-1"></a>     foreach v <span class="cf">in</span> <span class="dv">1</span> <span class="dv">2</span> {</span>
+<span id="cb49-7"><a href="stata.html#cb49-7" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb49-8"><a href="stata.html#cb49-8" aria-hidden="true" tabindex="-1"></a>         ttab r<span class="st">`</span><span class="at">v&#39;_mandatory, by(post) over(country)      // calculate difference</span></span>
+<span id="cb49-9"><a href="stata.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="at">         mat r=r(coefs)</span></span>
+<span id="cb49-10"><a href="stata.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="at">         ttab r</span><span class="st">`</span>v<span class="st">&#39;_mandatory, by(post) // for total</span></span>
+<span id="cb49-11"><a href="stata.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="st">         mat t=r(coefs)</span></span>
+<span id="cb49-12"><a href="stata.html#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="stata.html#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="st">         ttab r`v&#39;</span>_mandatory, <span class="fu">by</span>(post) <span class="fu">over</span>(country) tshow <span class="sc">/</span><span class="er">/</span> calculate t<span class="sc">-</span>stat</span>
+<span id="cb49-14"><a href="stata.html#cb49-14" aria-hidden="true" tabindex="-1"></a>         mat rr<span class="ot">=</span><span class="fu">r</span>(coefs)</span>
+<span id="cb49-15"><a href="stata.html#cb49-15" aria-hidden="true" tabindex="-1"></a>         ttab r<span class="st">`</span><span class="at">v&#39;_mandatory, by(post) tshow</span></span>
+<span id="cb49-16"><a href="stata.html#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="at">         mat tt=r(coefs)</span></span>
+<span id="cb49-17"><a href="stata.html#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="stata.html#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="at">         tabstat r</span><span class="st">`</span>v<span class="st">&#39;_mandatory , by(country) s(mean count) save  // calculate mean and observations</span></span>
+<span id="cb49-19"><a href="stata.html#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="st">         tabstatmat A</span></span>
+<span id="cb49-20"><a href="stata.html#cb49-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-21"><a href="stata.html#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="st">         mat rr=[r</span><span class="sc">\r</span><span class="st">r]</span></span>
+<span id="cb49-22"><a href="stata.html#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="st">         mat tt=[t</span><span class="sc">\t</span><span class="st">t]</span></span>
+<span id="cb49-23"><a href="stata.html#cb49-23" aria-hidden="true" tabindex="-1"></a><span class="st">         mat rr=[rr,tt]</span></span>
+<span id="cb49-24"><a href="stata.html#cb49-24" aria-hidden="true" tabindex="-1"></a><span class="st">         mat rr=rr&#39;</span></span>
+<span id="cb49-25"><a href="stata.html#cb49-25" aria-hidden="true" tabindex="-1"></a>         mata<span class="sc">:</span> <span class="fu">st_matrix</span>(<span class="st">&quot;rr&quot;</span> , <span class="fu">select</span>(<span class="fu">st_matrix</span>(<span class="st">&quot;rr&quot;</span>),(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>))) <span class="sc">/</span><span class="er">/</span>2个mata函数，2个功能</span>
+<span id="cb49-26"><a href="stata.html#cb49-26" aria-hidden="true" tabindex="-1"></a>         mat out<span class="st">`</span><span class="at">v&#39;=[rr, A] </span></span>
+<span id="cb49-27"><a href="stata.html#cb49-27" aria-hidden="true" tabindex="-1"></a><span class="at">         </span></span>
+<span id="cb49-28"><a href="stata.html#cb49-28" aria-hidden="true" tabindex="-1"></a><span class="at">       }</span></span>
+<span id="cb49-29"><a href="stata.html#cb49-29" aria-hidden="true" tabindex="-1"></a><span class="at">  mat out=[out1 , out2]</span></span>
+<span id="cb49-30"><a href="stata.html#cb49-30" aria-hidden="true" tabindex="-1"></a><span class="at">  mat colnames out = &quot;Before IFRS&quot; &quot;After IFRS&quot; Diff T-stat Total N  &quot;Before IFRS&quot; &quot;After IFRS&quot; Diff T-stat Total N </span></span>
+<span id="cb49-31"><a href="stata.html#cb49-31" aria-hidden="true" tabindex="-1"></a><span class="at">  mat rownames out = AUSTRALIA AUSTRIA BELGIUM CANADA DENMARK FINLAND FRANCE GERMANY GREECE &quot;HONG KONG&quot; INDIA INDONESIA IRELAND ITALY JAPAN KOREA(SOUTH) MALAYSIA NETHERLANDS NORWAY PAKISTAN PHILIPPINES PORTUGAL SINGAPORE &quot;SOUTH AFRICA&quot; SPAIN SWEDEN SWITZERLAND TAIWAN THAILAND &quot;UNITED KINGDOM&quot; &quot;UNITED STATES&quot; Total</span></span>
+<span id="cb49-32"><a href="stata.html#cb49-32" aria-hidden="true" tabindex="-1"></a><span class="at">     * 格式化out矩阵，加star</span></span>
+<span id="cb49-33"><a href="stata.html#cb49-33" aria-hidden="true" tabindex="-1"></a><span class="at">  local bc = rowsof(out)</span></span>
+<span id="cb49-34"><a href="stata.html#cb49-34" aria-hidden="true" tabindex="-1"></a><span class="at">  mat star = J(</span><span class="st">`</span>bc<span class="st">&#39; , 12 , 0)</span></span>
+<span id="cb49-35"><a href="stata.html#cb49-35" aria-hidden="true" tabindex="-1"></a><span class="st">  foreach v in 4 10  {</span></span>
+<span id="cb49-36"><a href="stata.html#cb49-36" aria-hidden="true" tabindex="-1"></a><span class="st">   forvalues k = 1/`bc&#39;</span> {</span>
+<span id="cb49-37"><a href="stata.html#cb49-37" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="fu">abs</span>(out[<span class="st">`</span><span class="at">k&#39; , </span><span class="st">`</span>v<span class="st">&#39;]) &lt;= 1.645  {</span></span>
+<span id="cb49-38"><a href="stata.html#cb49-38" aria-hidden="true" tabindex="-1"></a><span class="st">      mat star[`k&#39;</span> , <span class="st">`</span><span class="at">v&#39;] = 0</span></span>
+<span id="cb49-39"><a href="stata.html#cb49-39" aria-hidden="true" tabindex="-1"></a><span class="at">      }</span></span>
+<span id="cb49-40"><a href="stata.html#cb49-40" aria-hidden="true" tabindex="-1"></a><span class="at">       else if (abs(out[</span><span class="st">`</span>k<span class="st">&#39; , `v&#39;</span>]) <span class="sc">&gt;</span> <span class="fl">1.645</span> <span class="sc">&amp;</span> <span class="fu">abs</span>(out[<span class="st">`</span><span class="at">k&#39; , </span><span class="st">`</span>v<span class="st">&#39;]) &lt;= 1.96 ){</span></span>
+<span id="cb49-41"><a href="stata.html#cb49-41" aria-hidden="true" tabindex="-1"></a><span class="st">      mat star[`k&#39;</span> , <span class="st">`</span><span class="at">v&#39;] = 1</span></span>
+<span id="cb49-42"><a href="stata.html#cb49-42" aria-hidden="true" tabindex="-1"></a><span class="at">      }</span></span>
+<span id="cb49-43"><a href="stata.html#cb49-43" aria-hidden="true" tabindex="-1"></a><span class="at">       else if (abs(out[</span><span class="st">`</span>k<span class="st">&#39; , `v&#39;</span>]) <span class="sc">&gt;</span> <span class="fl">1.96</span>  <span class="sc">&amp;</span> <span class="fu">abs</span>(out[<span class="st">`</span><span class="at">k&#39; , </span><span class="st">`</span>v<span class="st">&#39;]) &lt;= 2.58 ){</span></span>
+<span id="cb49-44"><a href="stata.html#cb49-44" aria-hidden="true" tabindex="-1"></a><span class="st">      mat star[`k&#39;</span> , <span class="st">`</span><span class="at">v&#39;] = 2</span></span>
+<span id="cb49-45"><a href="stata.html#cb49-45" aria-hidden="true" tabindex="-1"></a><span class="at">      }</span></span>
+<span id="cb49-46"><a href="stata.html#cb49-46" aria-hidden="true" tabindex="-1"></a><span class="at">       else if abs(out[</span><span class="st">`</span>k<span class="st">&#39; , `v&#39;</span>]) <span class="sc">&gt;</span> <span class="fl">2.58</span> {</span>
+<span id="cb49-47"><a href="stata.html#cb49-47" aria-hidden="true" tabindex="-1"></a>      mat star[<span class="st">`</span><span class="at">k&#39; , </span><span class="st">`</span>v<span class="st">&#39;] = 3</span></span>
+<span id="cb49-48"><a href="stata.html#cb49-48" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb49-49"><a href="stata.html#cb49-49" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb49-50"><a href="stata.html#cb49-50" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb49-51"><a href="stata.html#cb49-51" aria-hidden="true" tabindex="-1"></a><span class="st">     * output word</span></span>
+<span id="cb49-52"><a href="stata.html#cb49-52" aria-hidden="true" tabindex="-1"></a><span class="st">  frmttable using output /*in default word */, statmat(out) annotate(star) asymbol(*,**,***) sdec(2,2,2,2,2,0,2,2,2,2,2,0 ) landscape a4  //tex option写成latex文件</span></span>
+<span id="cb49-53"><a href="stata.html#cb49-53" aria-hidden="true" tabindex="-1"></a><span class="st">restore</span></span></code></pre></div>
+</div>
+</div>
+<div id="databig-data" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Data/Big data</h2>
+<ul>
+<li>Stata 14 使用了 Unicode（统一码、万国码），之前的dofile只识别UTF-8编码，以前版本dofile都需要convert to UTF-8 by Notepad++。Stata 14 数据库打开时会乱码，转码如下：</li>
+</ul>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="stata.html#cb50-1" aria-hidden="true" tabindex="-1"></a>cd d<span class="sc">:</span>\对应目录</span>
+<span id="cb50-2"><a href="stata.html#cb50-2" aria-hidden="true" tabindex="-1"></a>unicode analyze <span class="sc">*</span>.do  <span class="sc">/</span><span class="er">/</span>或者 .dta数据文件</span>
+<span id="cb50-3"><a href="stata.html#cb50-3" aria-hidden="true" tabindex="-1"></a>unicode encoding set gb18030</span>
+<span id="cb50-4"><a href="stata.html#cb50-4" aria-hidden="true" tabindex="-1"></a>unicode translate <span class="sc">*</span>.do</span></code></pre></div>
+<div id="timeage" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Time/age</h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="stata.html#cb51-1" aria-hidden="true" tabindex="-1"></a>drop <span class="cf">if</span> date2<span class="sc">&lt;</span><span class="fu">date</span>(<span class="st">&quot;01jan2010&quot;</span>,<span class="st">&quot;DMY&quot;</span>) <span class="sc">|</span> date2<span class="sc">&gt;</span><span class="fu">date</span>(<span class="st">&quot;30sep2011&quot;</span>,<span class="st">&quot;DMY&quot;</span>) <span class="sc">/</span><span class="er">/</span>删除时间段</span>
+<span id="cb51-2"><a href="stata.html#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="stata.html#cb51-3" aria-hidden="true" tabindex="-1"></a>Age：算age（从单纯的年、月两个变量）</span>
+<span id="cb51-4"><a href="stata.html#cb51-4" aria-hidden="true" tabindex="-1"></a>    gen birthdate<span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb51-5"><a href="stata.html#cb51-5" aria-hidden="true" tabindex="-1"></a>    gen bir<span class="ot">=</span><span class="fu">mdy</span>(birthmonth, birthdate, birthyear) <span class="sc">/</span><span class="er">/</span> 用原始birthmonth，缺失值少</span>
+<span id="cb51-6"><a href="stata.html#cb51-6" aria-hidden="true" tabindex="-1"></a>    format bir %td</span>
+<span id="cb51-7"><a href="stata.html#cb51-7" aria-hidden="true" tabindex="-1"></a>    gen age<span class="ot">=</span>(<span class="fu">mdy</span>(<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2014</span>)<span class="sc">-</span>bir)<span class="sc">/</span><span class="fl">365.25</span></span>
+<span id="cb51-8"><a href="stata.html#cb51-8" aria-hidden="true" tabindex="-1"></a>    drop birthdate bir  </span>
+<span id="cb51-9"><a href="stata.html#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-10"><a href="stata.html#cb51-10" aria-hidden="true" tabindex="-1"></a>日期<span class="sc">:</span> 设变量x是字符型，且格式是<span class="st">&quot;1-aug-02&quot;</span></span>
+<span id="cb51-11"><a href="stata.html#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">monthly</span>(s1,s2[,Y])</span>
+<span id="cb51-12"><a href="stata.html#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span>(s1,s2[,Y])</span>
+<span id="cb51-13"><a href="stata.html#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="stata.html#cb51-14" aria-hidden="true" tabindex="-1"></a>g m <span class="ot">=</span> <span class="fu">monthly</span>(actual_date, <span class="st">&quot;MY&quot;</span>)  <span class="sc">/</span><span class="er">/</span>这里只能gen,不能replace,因为type mismatch</span>
+<span id="cb51-15"><a href="stata.html#cb51-15" aria-hidden="true" tabindex="-1"></a>format m  %tmNN<span class="sc">/</span>CCYY</span>
+<span id="cb51-16"><a href="stata.html#cb51-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-17"><a href="stata.html#cb51-17" aria-hidden="true" tabindex="-1"></a>g d <span class="ot">=</span> <span class="fu">date</span>(x,<span class="st">&quot;DM20Y&quot;</span>)</span>
+<span id="cb51-18"><a href="stata.html#cb51-18" aria-hidden="true" tabindex="-1"></a>form d  %td</span>
+<span id="cb51-19"><a href="stata.html#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-20"><a href="stata.html#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">/</span>extract month and year component from a <span class="fu">variable</span> (dm) with %tm format（e.g<span class="fl">.1953</span>m1）</span>
+<span id="cb51-21"><a href="stata.html#cb51-21" aria-hidden="true" tabindex="-1"></a>gen date <span class="ot">=</span> <span class="fu">dofm</span>(dm)</span>
+<span id="cb51-22"><a href="stata.html#cb51-22" aria-hidden="true" tabindex="-1"></a>format date %d</span>
+<span id="cb51-23"><a href="stata.html#cb51-23" aria-hidden="true" tabindex="-1"></a>gen month<span class="ot">=</span><span class="fu">month</span>(date)</span>
+<span id="cb51-24"><a href="stata.html#cb51-24" aria-hidden="true" tabindex="-1"></a>gen yr<span class="ot">=</span><span class="fu">year</span>(date)</span>
+<span id="cb51-25"><a href="stata.html#cb51-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-26"><a href="stata.html#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">/</span>一步到位牛逼的直接命令 https<span class="sc">:</span><span class="er">//</span>blog.stata.com<span class="sc">/</span><span class="dv">2015</span><span class="sc">/</span><span class="dv">12</span><span class="sc">/</span><span class="dv">17</span><span class="sc">/</span>a<span class="sc">-</span>tour<span class="sc">-</span>of<span class="sc">-</span>datetime<span class="sc">-</span><span class="cf">in</span><span class="sc">-</span>stata<span class="sc">-</span>i<span class="sc">/</span></span>
+<span id="cb51-27"><a href="stata.html#cb51-27" aria-hidden="true" tabindex="-1"></a>help todate</span>
+<span id="cb51-28"><a href="stata.html#cb51-28" aria-hidden="true" tabindex="-1"></a>help anythingtodate </span>
+<span id="cb51-29"><a href="stata.html#cb51-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-30"><a href="stata.html#cb51-30" aria-hidden="true" tabindex="-1"></a>anythingtodate cysj ,k</span>
+<span id="cb51-31"><a href="stata.html#cb51-31" aria-hidden="true" tabindex="-1"></a> <span class="sc">/</span><span class="er">/</span>出院时间</span>
+<span id="cb51-32"><a href="stata.html#cb51-32" aria-hidden="true" tabindex="-1"></a>hist cysjc12 <span class="cf">if</span> cysjc12<span class="sc">&gt;</span><span class="fu">date</span>(<span class="st">&quot;2015-01-01&quot;</span>, <span class="st">&quot;YMD&quot;</span>)</span>
+<span id="cb51-33"><a href="stata.html#cb51-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-34"><a href="stata.html#cb51-34" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">/</span> YYYYMM date to <span class="st">&quot;ym&quot;</span> Stata</span>
+<span id="cb51-35"><a href="stata.html#cb51-35" aria-hidden="true" tabindex="-1"></a>gen ndate <span class="ot">=</span> <span class="dv">201606</span></span>
+<span id="cb51-36"><a href="stata.html#cb51-36" aria-hidden="true" tabindex="-1"></a>gen sdate <span class="ot">=</span> <span class="st">&quot;201606&quot;</span></span>
+<span id="cb51-37"><a href="stata.html#cb51-37" aria-hidden="true" tabindex="-1"></a>gen ndate2 <span class="ot">=</span> <span class="fu">ym</span>(<span class="fu">floor</span>(ndate<span class="sc">/</span><span class="dv">100</span>), <span class="fu">mod</span>(ndate, <span class="dv">100</span>))</span>
+<span id="cb51-38"><a href="stata.html#cb51-38" aria-hidden="true" tabindex="-1"></a>gen sdate2 <span class="ot">=</span> <span class="fu">ym</span>(<span class="fu">real</span>(<span class="fu">substr</span>(sdate, <span class="dv">1</span>, <span class="dv">4</span>)), <span class="fu">real</span>(<span class="fu">substr</span>(sdate, <span class="sc">-</span><span class="dv">2</span>,<span class="dv">2</span>)))</span>
+<span id="cb51-39"><a href="stata.html#cb51-39" aria-hidden="true" tabindex="-1"></a>format <span class="sc">*</span><span class="dv">2</span> %tm</span>
+<span id="cb51-40"><a href="stata.html#cb51-40" aria-hidden="true" tabindex="-1"></a>l</span>
+<span id="cb51-41"><a href="stata.html#cb51-41" aria-hidden="true" tabindex="-1"></a>     <span class="sc">+-----------------------------------+</span></span>
+<span id="cb51-42"><a href="stata.html#cb51-42" aria-hidden="true" tabindex="-1"></a>     <span class="er">|</span>  ndate    sdate   ndate2   sdate2 <span class="sc">|</span></span>
+<span id="cb51-43"><a href="stata.html#cb51-43" aria-hidden="true" tabindex="-1"></a>     <span class="er">|</span><span class="sc">-----------------------------------</span><span class="er">|</span></span>
+<span id="cb51-44"><a href="stata.html#cb51-44" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.</span> <span class="sc">|</span> <span class="dv">201606</span>   <span class="dv">201606</span>   2016m6   2016m6 <span class="sc">|</span></span>
+<span id="cb51-45"><a href="stata.html#cb51-45" aria-hidden="true" tabindex="-1"></a>     <span class="sc">+-----------------------------------+</span></span>
+<span id="cb51-46"><a href="stata.html#cb51-46" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> </span>
+<span id="cb51-47"><a href="stata.html#cb51-47" aria-hidden="true" tabindex="-1"></a>    gen  rysj2 <span class="ot">=</span> <span class="fu">date</span>(<span class="fu">string</span>(rysj,<span class="st">&quot;%8.0f&quot;</span>),<span class="st">&quot;YMD&quot;</span>)</span>
+<span id="cb51-48"><a href="stata.html#cb51-48" aria-hidden="true" tabindex="-1"></a>    format %td rysj2</span></code></pre></div>
+</div>
+<div id="big-data" class="section level3" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Big data</h3>
+<p>超大数据-内存利用超97%，首先进去drop变量
+<a href="https://www.cpc.unc.edu/research/tools/data_analysis/statatutorial/misc/large_files" class="uri">https://www.cpc.unc.edu/research/tools/data_analysis/statatutorial/misc/large_files</a>
+describe using “bigfile.dta” //不打开bigfile
+lookfor and lookfor_all
+use list_of_variables using
+use in
+use if
+use if inrange(runiform(),0,.1) using “bigfile.dta”</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="python.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ctang83/NB_tang/tree/master/06-Stata.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"split_by": "section"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
