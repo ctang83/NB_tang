@@ -18,6 +18,10 @@ python也对应两个包，网磁获取是requests，解析是BeautifulSoup
 
 - XML(eXtensible Markup Language)可扩展标记语言, 是一种结构化数据交换语言, 可描述非常复杂的数据结构, 常用于传输和存储数据
 
+- YAML(.yml files, Yet Another Markup Language) is the metadata that tells R Markdown, pandoc, and other software exactly how to process or display the document
+
+- What is the difference between YAML and JSON? YAML is a superset(超集.VS subset) of JSON
+
 ## Building online book(Bookdown)
 
 This tutorial will show us easiest way to build an online book (or a book-style website) through RStudio and GitHub (may also by bookdown.org). We'll call this book "BB".

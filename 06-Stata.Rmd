@@ -2,6 +2,47 @@
 
 ## Modelling
 
+- 分析幂律, 私人组件 powerlaw（已装） http://coin.wne.uw.edu.pl/mbrzezinski/software
+```r
+doedit example.do //使用powerlaw，没有help文件，但有例子example.do
+见NoteExpress： Brzezinski, M. 2014. Do wealth distributions follow power laws? Evidence from `rich lists'. Physica A 406: 155-162.
+
+- Fitting Data into Power Distribution: Estimating alpha and x0. 
+It's not a matter of estimating the 2 parameters together in one step
+Fit your model using -paretofit- for multiple thresholds over a plausible range, and from this, calculate the K-S statistics.
+
+* 分析分布
+help pwlaw  //基于一个变量，计算power统计量Stata journal  D:\aa\LITERATURE\POOL-2014\10.1177@1536867X20953571.pdf
+help    qplot //有power law, 见NoteExpress：Speaking Stata: The protean quantile plot. Stata Journal, 2005. 5(3): p. 442-460.
+help distplot	//Do wealth distributions follow power laws?  D:\aa\LITERATURE\分级诊疗-自科\幂律和zipf\brzezinski2014.pdf
+
+- R
+poweRlaw: Analysis of Heavy Tailed Distributions
+```
+
+- zero inflated regression (most Y zero)
+help zinb //Zero-inflated negative binomial regression (Y is a nonnegative count var)  
+help zip  //Zero-inflated Poisson regression
+
+- Stata已经发展了一套"截断时序回归"命令
+```r
+`help itsa  
+help itsamatch
+help itsaperm
+```
+
+- event study事件研究
+help eventdd  //画图特别好  
+其他命令  estudy  eventstudy  eventstudy2   
+help eventstudy2
+
+- 处理多期的一般DID, for causal analysis with varying treatment time and duration
+help flexpaneldid
+help flexpaneldid_preprocessing
+help bacondecomp  //Bacon decomposition of DID estimation with variation in treatment timing
+
+- help forecast  // a suite of commands for obtaining forecasts/projection by solving models
+
 - 小聪的DID命令
 ```r
 webuse nlswork  //使用系统自带数据库
@@ -145,12 +186,9 @@ reg ln_w time $xlist if 60<year&year<80  //直接对time这个虚拟变量做了
 								 
 ## Plot/graph/visualisation
 
-
-help chinagcode  //利用百度地图获取中国地址的经纬度
-
 help stripplot  //画图比较多个分组的均值和分布
 
-*正态检验画图
+- 正态检验画图
 	help diagnostic_plots
     swilk  x  // z>2.14代表x不服从正态； p<0.01代表不服从正态
 	pnorm  x  // 分布偏离斜线，也不服从正态。
@@ -163,6 +201,67 @@ help stripplot  //画图比较多个分组的均值和分布
 help libd3 //a Mata wrapper around the D3 JavaScript library
 help libjson
 help libhtml	
+```
+
+- Longitudinal data可视化
+help xtline
+help xtgraph
+
+- boxplot箱线图，https://wiki.mbalib.com/wiki/%E7%AE%B1%E7%BA%BF%E5%9B%BE
+gr box x1 x2  //看几个变量(样本)是否具有有对称性，分布的分散程度。
+
+- 3个命令Plots of mean CI over time - twoway lfitci ; caterpillar; ciplot
+twoway lfitci yvar xvar
+
+help caterpillar 
+help ciplot  //这种图也叫 Caterpillar 
+
+ciplot yhb , by(ym) //医护比
+
+- graph combine 1.gph 2.gph , ysize(2) xsize(4)  //合并时，调整graph图的纵横比
+
+sixplot var //精简散点图, 一次出6连图（描述分布、正态、柱状）：
+
+binscatter  //一个相见恨晚的stata命令
+
+- 将这句three-way画图：tab ym hoslev , sum(wt) nost nofre 
+```r
+egen meanwt=mean(wt), by(ym hoslev)
+	separate meanwt, by(hoslev) 
+	twoway connected meanwt? ym2, c(L L) sort
+	
+	egen meancmi=mean(cmi), by(ym hoslev) //分类分组求均数，然后按年月画图连线
+	separate meancmi, by(hoslev) 
+	twoway connected meanwt? ym2, c(L L) sort title(DRG相对权重) xtitle(年月) ytitle(平均值) msymbol(S Oh) xline(201803) legend(label(1 "二级医院")label(2 "三级医院"))
+```	
+
+### 地理地图map
+
+- Extracting Chinese geographic data from Baidu Map API [中国地图地理](https://journals.sagepub.com/doi/pdf/10.1177/1536867X20976313)
+```r
+help cngcode //定位
+help cnaddress  //经纬度转中文地址
+
+help cnmapsearch //根据关键词搜索给定经纬度周边的兴趣点，返回兴趣点的名称、中文地址、距离、标签等。 
+help chinagcode  //利用百度地图获取中国地址的经纬度
+
+help cntraveltime 
+help grmap  //12以前叫spmap
+```
+
+- 以spmap例子解释
+```r
+ use "Italy-RegionsData.dta", clear  //打开"数据-库"
+ spmap relig1 using "Italy-RegionsCoordinates.dta", id(id) //"底图库" 和 "数据-库"以id变量唯一识别link
+                                                           // 原理：将"数据-库"中 relig1 变量 plot在"底图库"上面
+*转地理数据into Stata库
+shp2dta  -- reads a shape (.shp) and dBase (.dbf) file //栅栏文件shp和dbf都需要
+mif2dta  -- converts MapInfo Interchange Format files (aka MIF files) to Stata 
+
+*地理经纬
+geocode3 -- google升级到API3了, 其利用insheetjson和libjson(json library)两包解析网页,再返回给mata
+geocode3命令不认汉字, 只认拼音或汉字的utf-8编码
+nearstat //计算距离distance命令
 ```
 
 ### 改scheme
@@ -196,6 +295,16 @@ win10环境下根据[步骤](https://www.architectryan.com/2018/03/17/add-to-the
 ```
 
 ## Connection
+
+### Stata & Mplus 联用调用
+ -- dta格式转Mplus的dat格式：
+stata2mplus using c:\data\hsb2.dta  // this creates c:\data\hsb2.dat and c:\data\hsb2.inp 
+ -- Stata中运行Mplus
+help runmplus  // see:  http://www.lvmworkshop.org/home/runmplus-stuff
+
+
+### epidata文件导出
+- 6数据导出 -> Stata格式 -> 选择.rec文件
 
 ### R/Python
 - 使用python语言在Stata中：
@@ -437,6 +546,7 @@ preserve
 restore
 ```
 
+## EDA探索性分析
 ## Data/Big data
 
 - Stata 14 使用了 Unicode（统一码、万国码），之前的dofile只识别UTF-8编码，以前版本dofile都需要convert to UTF-8 by Notepad++。Stata 14 数据库打开时会乱码，转码如下：
@@ -447,7 +557,13 @@ unicode encoding set gb18030
 unicode translate *.do
 ```
 
+- help getsymbols //API data from Quandl, Google Finance, Yahoo Finance, and Alpha Vantage
+
 ### Time/age
+
+if year==1960     //don't do this!
+if year[1]==1960  // right, first observation is 1960
+
 ```r
 drop if date2<date("01jan2010","DMY") | date2>date("30sep2011","DMY") //删除时间段
 
@@ -499,6 +615,146 @@ l
 	format %td rysj2
 ```
 
+### Stata矩阵和Mata
+
+
+mat l e(b) //查看系数矩阵,矩阵导出到excel
+matlist 比 matrix list 更方便display矩阵
+
+- matrix -> variables 
+```r
+svmat      //
+svmat2 A , rnames(ym) full //可把所有rownames save into a variable
+mkmat  // variables -> matrix
+xsvmat
+```
+
+- 将统计频数转入mat，再mat转variables，再画图
+```r
+tab  edu urban, matcell(aa)  // 频数直接存入矩阵aa,此命令不会抹掉existing data，而是自动列在后面
+svmat aa
+gen n=_n in 1/6
+label define edu2 1"High_school" 2"SVD" 3"College" 4"Bachelor" 5"Master" 6"PhD"
+label values n edu2
+graph bar aa1 aa2 , over(n) ytitle(Number of physicians) b1title(Education) legend(label(1 Rural hospitals) label(2 Urban hospitals))
+
+	svmat A  //矩阵画图-连线图
+	drop in 24
+	gen n=_n
+	graph twoway connected A1 n
+```
+
+- Speaking Stata between tables and graphs
+```r
+help taboutgraph  //a wrapper for tabout, plot output of two-way tab function
+taboutgraph var1 var2 [aw=weight] using "filename_to_savedatato.csv", ///
+  gc("graph bar") ta(cells(col) f(2 2 2 2)) replace go( note("Source: XXX") ///
+	b1title("Quintile") title(`"Composition of Population"') ytitle("Percent of population in the quntile"))
+```
+
+- 互换矩阵和descriptive statistcs
+```r
+gen a=1  //为了两年间数据均衡，删掉某一年没数据的医院
+bysort hos: gen pn=sum(a)
+bysort hos: egen b=max(pn)
+drop if b<10
+drop if regexm(hos,"漳平市妇幼保健院")
+replace hos=subinstr(hos,char(10),"",.) //去除hos字符断行问题
+encode hos, generate(hos1) //encode是为了下句mean的over选项
+
+方法一 倒数-> 哈氏乘法
+label drop hos1
+quietly: mean lfdc if year==2010,over(hos1) //over只能用numeric变量
+mat lfdc1=e(b)
+quietly: mean lfdc if year==2011,over(hos1)
+mat lfdc2=e(b)
+quietly:mean drugout if year==2010,over(hos1)
+mat drug1=e(b)
+quietly:mean drugout if year==2011,over(hos1)
+mat drug2=e(b)
+
+mat xx=[lfdc1\lfdc2]  // 右下斜杠是分行，逗号是并列。
+mat yy=(drug1\drug2)
+
+local aa=rowsof(yy)      //本loop将矩阵各值取倒数
+local bb=colsof(yy)
+forval x=1/`aa' {
+forval y=1/`bb' {
+mat yy[`x',`y']=1/yy[`x',`y']
+}
+}
+mat ld=hadamard(xx,yy)   //哈氏乘法--元素*元素，且乘以倒数==相除
+                       
+local cn=e(over_labels)  //问题2，引用e(over_labels)赋值给ld 
+mat rownames ld=2010 2011 
+mat colnames ld="`cn'"
+mat ldt=ld'
+mat l ldt
+local  : rownames ld
+
+方法二  tabstatmat  
+tabstat lfdc drugout if year==2010, by(hos) s(mean) save //save选项将结果存入r()
+tabstatmat A  //关键命令
+tabstat lfdc drugout if year==2011, by(hos) s(mean) save //save选项将结果存入r()
+tabstatmat B
+
+local cc=rowsof(A)
+forval x=1/`cc'{
+mat A[`x',1] = A[`x',1]/A[`x',2]
+mat A[`x',2] = B[`x',1]/B[`x',2]
+}
+mat colnames A=2010 2011
+mat l A
+
+方法三 statsmat //Produce matrix of descriptive statistics
+   foreach x in 1 2 3{  // 先按三个病种Loop
+     foreach v  of varlist day fee feeday drug drugday{  // 再每个病种的变量
+	    statsmat `v' if case==`x', by(own) mat(`v'`x') s(mean sd) f(%3.2f) xpose
+        }
+		}
+```
+
+- Stata矩阵区别于mata矩阵，得互相调用
+```r
+st_view() make Mata matrices "x" from a Stata dataset "varname"
+st_data() Load copy of current Stata dataset
+st_numscalar() obtain value from colsum(x) and put into r(sum)
+    // mata里面用Stata的矩阵切记加双引号""
+ mata: st_matrix("rr" , select(st_matrix("rr"),(1,1,1,0,0,1))) //3个mata函数，3个功能，st_matrix()将stata中的matrix转给mata
+ mata: st_matrix("temp"):/st_matrix("xiaono")  //element-by-element相除， 相乘用 :*
+ mata: st_matrix("JJ", st_matrix("aa"):/st_matrix("minorno"))  //JJ是Stata矩阵不是mata矩阵
+ 
+mata矩阵A，直接type矩阵名就list矩阵（不像Stata矩阵需要mat list命令）
+A
+```
+
+方式一
+>mata: istmt   //for programmers,单行不要end
+>mata: Z[., .]=X:-mean(X)  //每个ob减mean(X)就是center a variable on the mean
+
+方式二
+>mata          //if an error occurs, still stay in mata
+>    istmt   
+>end  
+
+Mata最大优点：可任意自编函数 → 问题来了：很多函数如何储存？  
+help mata mlib //a group of functions, like library
+
+```r
+help max()      //两命令不同
+help mata max()
+mata query  // mata setting
+mata describe  //最常用两mata命令
+mata drop
+mata clear
+
+viewsource diag.mata
+help moremata  //see extra mata function, especially their source code
+```
+
+
+
+
 ### Big data
 超大数据-内存利用超97%，首先进去drop变量
 https://www.cpc.unc.edu/research/tools/data_analysis/statatutorial/misc/large_files
@@ -508,3 +764,8 @@ use list_of_variables using
 use in
 use if
 use if inrange(runiform(),0,.1) using "bigfile.dta"
+
+help ftools  //Stata处理大数据的新套件  
+help gtools
+
+help parallel  //stata并行处理多个文件
