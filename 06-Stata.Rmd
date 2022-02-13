@@ -1,6 +1,140 @@
 # Stata 
 
+基于putdocx的4个命令： reg2docx, sum2docx, t2docx，corr2docx
+
+help cfvars 文件1 文件2  //自动比较两个数据库的变量
+
+labelbook   //列所有标签
+
+findname //List variables matching name patterns or other properties
+
+ssc install mkduration //create duration variables in binary cross-sectional time-series data
+
+notes: xxxx //把xxxx加到当前dta
+
+gsort +xx 或者 -xx  //排序时sort只能一个方向，gsort可以两个
+
+by group,sort: sum age  //按组group统计age
+
+gen no=_n   //编号
+
+browse if oops>1    //窗口查看,替代list命令
+
+cap noisily reg y x  //声明错误,但程序继续运行完
+
+viewsource XXX.ado  //看源程序
+
+f(%3.2f)  //小数点后两位数格式
+
+duplicates drop XXX, force  //删除重复values检测
+
+clonevar newvar = varname  //复制创建新变量, var label和value label也一起复制过去
+
+## Debug问题集
+
+set trace on  //debug
+set trace off
+
+- 粘贴导入excel数据库时，遇到不将first row treat as var name原因：1. 第一行变量名有空格，2. 或用了long等Stata保留词
+
+- 用tab icd10遇到unique值太多的时候，又只想看频率最多的前10个
+```r
+groups icd10, order(h) select(10)
+groups  xx  ,  saving(tab1, replace) //生成唯一值表，用于合并
+
+help icdpic   //处理ICD 9-10 命令族, 最下面有一系列Also see
+```
+
+- missing data 缺失值/数据
+```r
+mdesc _all //关注缺失组和整体组的核心变量是否有显著性差异, 以此简单判断-缺失是否具有选择性
+fmiss  varlist, detail
+
+把缺失值转换成数值，以便于数据的各种转换
+mvencode _all, mv(999)    //Translate missing values in the data to 999
+mvdecode _all, mv(999)    //Change 999 values back to missing values
+
+Stata 多个变量找缺失值
+egen nmis=rmiss2(landval improval totval salepric saltoapr)
+tab nmis   //4个obs没有缺失值, 9个obs有1个缺失值  http://www.ats.ucla.edu/stat/stata/faq/nummiss_stata.htm
+```
+
+- 合并/match/merge/系列命名dta
+```r
+	qui fs xx.dta      //先list文件名，存进r(files)
+	foreach f in `r(files)' {   
+	qui append using `f'
+	}
+
+- 3个命令模糊match or fuzzy merge:
+  reclink  2010
+  strgroup  2012 , 使用了merge后,针对_merge==3用strgroup
+  nearmrg   2012
+
+tempfile  master  part1  // 使用
+save "`master'" , replace
+append using "`part1'" 
+
+mmerge   //多文件匹配
+```
+
+- levelsof varname [if] [in] [, options] // 显示变量values,并排序levels
+```r
+//e.g.按每个变量值（880种病）导出
+	cd  "d:\icd"
+	levelsof icd10c , local(levels)
+	qui foreach l of local levels {
+		export excel using "`l'.xlsx"  if icd10c=="`l'" , first(var) replace 	
+		drop  if icd10c=="`l'" 
+	}
+	
+//e.g.
+  sysuse auto
+  replace make=substr(make, 1, 4)
+  levelsof make , clean separate(;) local(make) matcell(freq)
+  display "`make'"
+  matrix l freq
+```
+
+- 数出每个单位有几个医生spe<4，赋值给各单位医生数变量pn。其a和b是中间产生的变量。
+```r
+gen a=1 if spe<4
+bysort org: replace pn=sum(a) if spe<4
+bysort org: egen b=max(pn)     //egen是bysort org全部加总
+bysort org:  gen b=max(pn)      //gen是逐个加总
+replace pn=b
+drop a b
+
+//另一方法:用egen
+egen     abc=group(date hour shi)
+egen racesex=group(race sex) //racesex 交叉组, and containing missing if race or sex are missing
+
+egen zong=noccur(c),s(",")  //counting number of times a string appears in the variable某字符在变量中出现的次数
+egen store_occupy_mean_price=mean(price)			  , by(store_id  occupy_id)
+egen f_dropout_kids_only=count(student_id) if f_edu<12, by(school)
+egen f_dropout_kids_only=tag(student_id)   if f_edu<12, by(school)  //create dummy var
+
+egen g=group(x)
+sum g
+list r(max)
+```
+
 ## Modelling
+
+help simex  // 做policy simulation，还有help simexplot
+
+help meta  //元分析Stata-summary estimates Forest plot of study-specific estimates 合并效应值的森林图
+
+coefplot -- plotting regression coefficients and other estimates
+
+- 转平衡面板from unbalanced to balanced
+```r
+	encode hosid , gen(hid)  //字符hosid转数值hid
+	xtset hid ym   //定义面板 hosid ym
+	xtpatternvar, gen(pattern) //转平衡面板
+	codebook patt
+	fre patt , as
+```
 
 - 分析幂律, 私人组件 powerlaw（已装） http://coin.wne.uw.edu.pl/mbrzezinski/software
 ```r
@@ -24,11 +158,68 @@ poweRlaw: Analysis of Heavy Tailed Distributions
 help zinb //Zero-inflated negative binomial regression (Y is a nonnegative count var)  
 help zip  //Zero-inflated Poisson regression
 
+Durbin–Watson test 自相关autocorrelation检测
+```r
+estat dwatson // Performs Durbin-Watson test of residual autocorrelation following regress. The data must be tsset
+因为自相关系数ρ的值介于-1和1之间，所以 0≤DW≤４
+DW＝ O   ＜＝＞  ρ＝１　　即存在正自相关性
+DW＝４   ＜＝＞  ρ＝-１　即存在负自相关性
+DW＝２   ＜＝＞  ρ＝０　　即不存在（一阶）自相关性
+　　因此，当DW值显著的接近于O或４时，则存在自相关性，而接近于２时，则不存在（一阶）自相关性。
+```
+
+- logit回归，输出表格以Odds ratio (OR) 即 exponentiated coefficient形式加z检验系数（eform）或输出 Confidence Interval (CI), 
+```r
+esttab urban  urbanfe  $usertf ,  $tab replace  nonum  mtitles("Logit model" "Logit model with FE") ///
+            cells(b(star fmt(%9.3f)) ci(par))  keep(2.edu 3.edu age gender)    eform z   
+
+经过比较后,感觉很好的输出格式: (但, eform表示mlogit输出RRR-自然对数, tex输出Latex格式)
+
+esttab m2 , drop(o.* 1b.* 2o.* 3o.* 4o.*)  [eform] unstack replace  [tex]  ///
+            cells(b(star fmt(%9.3f)) se(par))   starlevels(* 0.10 ** 0.05 *** 0.01)  ///
+            stats(N chi2 bic, star(chi2) fmt(%9.0g %9.3f))   varlabels(_cons Constant) 
+            
+如果输出 margins
+margins, dydx(_all) post  // post option that tells margins to leave the results behind as if it were an estimation command
+esttab using x.tex, label  
+
+esttab  , r2 ar2 pr2  //可以调出显示model的R2，Adj-R2，Pseudo-R2
+
+```
+
+            
+- FE固定效应
+```r
+大于2-level fixed effect in one model：
+egen industry_firm=group(industry firm)  // or more FE var
+方法一
+regress y x1 x2 x3 x4  i.industry_firm
+方法二
+areg y x1 x2 x3 x4, absorb(industry_firm) // 交叉项产生2-level FE，8x9type=72 个dummies
+方法三(可2个以上dummy变量)
+aareg y x1 x2 x3 x4, absorb(industry firm) // 分开不等于交叉项， 8+9type=17 个dummies 
+areg -- Linear regression with a large dummy-variable set
+
+
+tabulate province,gen(dumy)  // 就可以产生dumy1－dumy31变量，
+reg y x1 x2 dumy2-dumy31   // 或者不产生，在回归的时候用xi命令
+xi: reg y x1 x2 i.province
+```
+
 - Stata已经发展了一套"截断时序回归"命令
 ```r
 `help itsa  
 help itsamatch
 help itsaperm
+```
+
+- help regcheck  //同时检验所有回归假设
+
+- 标记参与了回归的样本
+```r
+reg price rep78 weight length foreign
+gen esample=1 if e(sample) //标记参与了回归的样本
+su price rep78 weight length foreign if esample==1
 ```
 
 - event study事件研究
@@ -189,10 +380,13 @@ reg ln_w time $xlist if 60<year&year<80  //直接对time这个虚拟变量做了
 help stripplot  //画图比较多个分组的均值和分布
 
 - 正态检验画图
+  - sktest var    // 正态检验, p<0.00 则var不是正态
+```r
 	help diagnostic_plots
     swilk  x  // z>2.14代表x不服从正态； p<0.01代表不服从正态
 	pnorm  x  // 分布偏离斜线，也不服从正态。
 	gen u=rnormal(8, 3)  //检验一下正态
+```
 
 - 现在的可视化工具webGL(graphical language)：一还是基于我们单机的统计分析；二优点在于"交互性"和"面向网络"；
   - D3是基于JS：javascript, JSON=JavaScript Object Notation
@@ -210,13 +404,14 @@ help xtgraph
 - boxplot箱线图，https://wiki.mbalib.com/wiki/%E7%AE%B1%E7%BA%BF%E5%9B%BE
 gr box x1 x2  //看几个变量(样本)是否具有有对称性，分布的分散程度。
 
-- 3个命令Plots of mean CI over time - twoway lfitci ; caterpillar; ciplot
+- 3个命令Plots of mean CI over time 
+```r
 twoway lfitci yvar xvar
-
 help caterpillar 
 help ciplot  //这种图也叫 Caterpillar 
 
 ciplot yhb , by(ym) //医护比
+```
 
 - graph combine 1.gph 2.gph , ysize(2) xsize(4)  //合并时，调整graph图的纵横比
 
@@ -234,6 +429,50 @@ egen meanwt=mean(wt), by(ym hoslev)
 	separate meancmi, by(hoslev) 
 	twoway connected meanwt? ym2, c(L L) sort title(DRG相对权重) xtitle(年月) ytitle(平均值) msymbol(S Oh) xline(201803) legend(label(1 "二级医院")label(2 "三级医院"))
 ```	
+
+
+- 画图 + code修图
+```r
+sysuse auto, clear
+twoway scatter mpg rep78, msize(small) ||, graphregion(margin(r+50)) yti("里程数") xti("1978年的维修次数")
+
+gr_edit AddTextBox added_text editor `=82+8' `=101'
+gr_edit added_text_new = 1
+gr_edit added_text[1].text = {}
+gr_edit added_text[1].text.Arrpush "Mean mpg by rep78"
+gr_edit AddTextBox added_text editor `=82+2' `=112'
+gr_edit added_text_rec = 2
+gr_edit added_text[2].text = {}
+gr_edit added_text[2].text.Arrpush "rep78  mpg"
+```
+
+- 常用画图
+```r
+twoway (scatter read write) (lfit read write) (kdensity pr1) //散点分布，回归拟合图
+
+help mrgraph  //分类变量画图
+help mrtab
+
+- 同时显示多个窗口graph
+grss twoway histogram price, frequency bin(20)
+grss twoway histogram weight, frequency bin(20)
+
+茂睿的类似阴阳hist图
+sysuse nlsw88
+twoway (hist wage if union==1, frequency color(gs11) lwidth(none)) ///
+			 (hist wage if union==0, frequency color(none) lwidth(medium) lcolor(navy)  legend(order(2 "Non-union" 1 "Union")))
+
+单变量--探索分布时，可用画图hist命令，非常直观
+hist fee if own==1 & icd10=="O80.901" & fee<6000 , bin(500) kden  name(a)
+hist fee if own==1 & icd10=="O80.001" & fee<6000 , bin(500) kden  name(b)
+gr combine  a b c d e f , row(3) col(2)
+
+help kdensity  //画kernel图更好，两个命令，第一个是官方命令
+help kdens
+
+第一次用stata做直方图，其实命令比想象中简单，开始搞复杂了，而且发现也可以跟随stata的界面操作学习命令！直方图命令：
+graph bar (count) city1, over(city, gap(20))   ytitle("卫生人员数量") b1title("各设区市") blabel(bar)
+```
 
 ### 地理地图map
 
@@ -292,6 +531,120 @@ win10环境下根据[步骤](https://www.architectryan.com/2018/03/17/add-to-the
        !gswin64c.exe -dSAFER -dBATCH -dNOPAUSE -r600 -sDEVICE=tiff24nc -sCompression=lzw  -sOutputFile="`fig'.tiff"  "`fig'.pdf"
        erase "`fig'.pdf" 
   end
+```
+
+## EDA探索性分析
+
+三适合探索新变量: 
+des _all
+sum _all
+tab xx  
+fre xx
+ins xx
+
+codebook xx  ////怎么探索字符变量？告诉missing值、有多少unique values
+
+order varlist  //左下框内变量排位置用order和move命令
+
+sort name year //在排序的时候可以用上两个变量，这样先name后year就不会乱了year
+
+sort X, stable //而sort加选项stable可以使排序最简洁最快
+
+- 比较灵活的fsum
+fsum transaction  if n==600578 & date>date("2007-05-20","YMD") & date<date("2007-05-31","YMD") ,f(11.0)  //日期
+fsum , stats(n) label //输出所有var和var label
+
+- 描述性分析：  
+```r
+	cap !erase 2.csv // 省去手动删excel文件
+	 // categorical var
+	foreach v of varlist hl hisb_hc age edu gender marital $ill { 
+		quiet estpost tab `v' if !mi($nomis)
+		quiet esttab using 2.csv, cells(" b(label(freq)) pct(fmt(2))") unstack nonumber noobs append 
+	    } 
+	 // continuous var
+	quiet estpost sum w if !mi($nomis)
+	quiet esttab using 2.csv, cells(" mean(fmt(2)) sd(fmt(2)) ") unstack nonumber noobs append 
+```
+
+### Output输出
+
+table输出Excel(csv)终极解决方案：
+```r
+`	foreach v of varlist $covs { 
+		  estpost tab `v' cl , chi2  // cl=cluster，是分层指示变量
+	quiet esttab  using "$path\BWS_organ\new_survey\tab_BWS_aggregate_score.csv", cells("b(label(freq)) colpct(fmt(2))") unstack nonumber noobs append 
+			} 
+	esttab  CL   using 2.csv, mtitles("Conditional Logit")  nogaps pr2 scalars(ll r2_p ) nodep nonum se unstack append
+```
+
+table输出Word(rtf)终极解决方案：
+```r
+`	esttab urban  using 2.rtf  ,  unstack replace  nonum    ///
+		mtitles("Logit model")   ///
+		starlevels(* 0.10 ** 0.05 *** 0.01)   addnotes("* p<0.10, ** p<0.05, *** p<0.01")   ///
+        cells(b(star fmt(%9.3f)) se(par))      ///
+		stats(N ll chi2 r2_p bic, star(chi2) fmt(%9.0g %9.3f))   ///
+		varlabels(edu "Higher education"  age "Age"  gender "Male"  _cons Constant) 
+
+
+esttab 导出latex table，需要\label{tab2}, 直接在esttab选项里 title(...\label{tab2})
+```
+
+- 读入tab_BWS_aggregate_score.csv 然后用mata转成Latex表
+```r
+`import delim using "d:\tab_BWS_aggregate_score.csv"  , clear
+gen att_id=_n 
+rename v1 att_name
+order att_id , b(att_name)
+* tex output :  texsave把Stata数据库中数据做成latex表格
+texsave _all using "d:\tab_BWS_aggregate_score.tex" , frag replace  ///
+		title(Aggregated best-worst scores)  ///
+		footnote(Note: The number of respondents is xxx) 
+```
+
+- 输出表格table命令汇总：
+1) summary矩阵表格化tabulating matrix as publication  
+frmttable 其可以利用outreg的选项，如annotate(pcts) asymbol("\%")加百分号，还可以自由改表头
+
+2) estimates矩阵表格化          
+estout 或者 frmttable, outreg - outreg太多bugs，常需要run几次才能出一个表格  
+esttab最推荐*****，因为esttab可以调用estout(太麻烦不推荐)的选项
+```r
+Summary statistics → plain text and LATEX files  with tabout (Watson 2007), outreg2, estpost(distributed with the estout)
+estimation tables  → Word and LATEX tables       with outreg (which uses frmttable for formatting) 
+                   → plain text and LATEX tables with outreg2 (Wada 2005), estout(Jann 2007), esttab(a wrapper for estout)
+                   → formatted Excel file        with xml-tab (Lokshin and Sajaia 2008) ，选择性输出改动excel： putexcel(Stata 13)
+ * 最强的(可将matrix完美输出成table)：
+estimation/Summary → Word and LATEX tables       with frmttable (gallup 2012) , outtable (Baum and Azevedo 2008)
+                                                 outreg(gallup 2013)是frmttable的升级包装版，outreg可用frmttable的选项
+
+ * 教你各种表格（可自动run命令）
+help tabletutorial
+ * 输出后各类型文件转换、编译
+help translate  //-- Print and translate logs
+help texify   // 等价于 !pdflatex myoutput.tex -no-shell-escape
+help ttab   // ttab is basically a wrapper for ttest and estout. 大规模ttest时用
+
+• The "estout package" contains four commands:
+esttab: User-friendly command to produce publication-style regression tables for screen display or in various export(CSV, RTF, HTML, or LaTeX)
+estout: Generic program to compile regression tables (engine behind esttab)
+estadd: Program to add extra results (such as beta coefficients) to e() so that they can be tabulated.
+eststo: Improved version of estimates store.
+```
+
+- LaTeX and Stata integration: 很漂亮的表
+```r
+今天自编gr2tex(利用texdoc) ：一输出graph为pdf保存；二将引用latex code插入draft
+global path  D:\desk\Googledrive\fj_pilot_organ
+cd $path 
+sysuse auto
+scatter price wei
+gr2tex , pdf($path\draft\output\aa)  draft($path\draft\bws_organ)
+
+
+tex3pt -- creates LaTeX documents from esttab output using the LaTeX package threeparttable.
+texdoc -- write into tex file. (texdoc 用Stata14跑一直出错，只能13跑)
 ```
 
 ## Connection
@@ -376,7 +729,7 @@ shellout python_plugin.pdf //详细介绍
 方法三：在R语言中run Stata
 library("RStata") 
 
-### DOS/shell
+### DOS/shell/web
 ```r
 shell erase do_file.do  //shell (等价"!") allows you to send commands to your operating system
 shell                   // or to enter DOS界面
@@ -387,6 +740,24 @@ shell                   // or to enter DOS界面
 !rmdir D:\aa\manydoc\bak.stunicode  /s /q   //多运行一遍, 删除整个文件夹
 
 winexec notepad "d:\myfile.txt"   //Stata命令 allows you to open file by using notepad
+```
+
+- Stata以keyword为字符变量，逐个代入网页，拷贝网页内容 
+```r
+levelsof keyword,local(levels)
+foreach c of local levels {
+    copy "http://www.baidu.com/s?wd=`c'" "D:\temp.txt",replace
+    infix strL v 1-200000 using "D:\temp.txt",clear
+    keep if index(v," 百度为您找到相关结果约")
+    replace v = ustrregexs(1) if ustrregexm(v," 约(.+?)个")
+    local date = c(current_date)
+    local time = c(current_time)
+    post baidu ("`date'") ("`time'")("`c'") (v[1])
+}
+postclose baidu
+use"D:\baidu.dta",clear
+replace baidu = ustrregexra(baidu,",","")
+destring baidu,replace
 ```
 
 ### Latex/Markdown
@@ -546,8 +917,66 @@ preserve
 restore
 ```
 
-## EDA探索性分析
 ## Data/Big data
+
+- 随机数
+```r
+set seed ####   //给定初始数值，相同的初始数值生成的伪随机数列完全一致。
+runiform() or rnormal(m, s) //随机正态, uniform() is for Stata 10
+help rnd       //random number generators -- 包括各种分布
+```
+
+- 节省行数
+```r
+#delimit; 
+gen lnpergas=ln(pergas);gen lngasp=ln(gasp);
+#delimit cr
+```
+
+- local/macro用法
+```r
+macro list       // 查看
+macro drop _all  // 清除
+
+local a: display %6.2f ln(10)  // local a: 后接命令， 类似 bysort hos: 
+
+local cs 1  //while的loop好处是结果最终一起显示
+while `cs' == 1 {
+replace xxx省略xxx
+local cf=0      // 归0，否则会无限循环，或者用exit
+}
+所以还是用 if 更好
+if   `cs' ==1 {
+}
+```
+
+- 查看返回结果:
+```r
+`return list      //看r()
+ereturn list     //看e()
+r()中的数据导入矩阵：
+mat ic=nullmat(ic) \ r(wtp)
+mat ic=nullmat(ic) \ r(wtp)   //column-join (\) operators 可向下连续扩展矩阵
+                                row-joinn 逗号 ，
+egen max=max(groupid_total)  //提取var的最大值
+```
+
+- 区分
+1. <缺失值>用.表示,比任何自然数都大，所以>60会包括缺失值, 所以一定要限制上限!
+1. <空字符>是one string missing value，程序中用""代替
+
+- 区分 "/" 和 "-" 的用法
+1. 一个变量内数字用1/7250，
+1. 一个变量到另一个变量用pro1-pro7
+
+- 区分
+1. tab和table命令的输出格式很不一样！
+1. tab type if num==1, sum(pro1)  //按分类求均值，如9种卫生机构，各自的pro1的均值
+
+- 区分Type和Format：
+1. Format指显示格式，并不改变数据大小。（如日期也是以数字存储的，可用format改成日期，而且日期变量赋值给别的变量会变成数字，因为没有指定format）
+1. Type指数据存储格式, e.g.如计算年龄age：gen age=(mdy(12,1,2009)-bir)/365.25，mdy是日期格式吗？
+
 
 - Stata 14 使用了 Unicode（统一码、万国码），之前的dofile只识别UTF-8编码，以前版本dofile都需要convert to UTF-8 by Notepad++。Stata 14 数据库打开时会乱码，转码如下：
 ```r
@@ -558,6 +987,126 @@ unicode translate *.do
 ```
 
 - help getsymbols //API data from Quandl, Google Finance, Yahoo Finance, and Alpha Vantage
+
+### 数据预处理
+
+- 单纯转置stata数据库（非矩阵）
+help xpose  
+help sxpose //Transpose of string variable dataset
+
+- 填充/替代/
+
+recode alt (1=1)(2=0), gen(ASC)  //赋值神令,不用gen和replace；赋值规则是 gen ASC=0 if alt==2  |  ASC=1 if alt==1
+
+```r
+rename _all, lower  //变量名称全部是英文小写
+
+tsset Year    //序列填充
+tsappend , add(21)
+
+carryforward  //分组填充
+xfill
+bysort id: replace number=number[1]    //组内第一个替代每一个
+
+同一个变量前一个值赋给下一个：
+forvalues var=1/7250 {
+replace var=var[_n-1]  if var==.
+}
+drop if _n==_N //drop the last obs
+
+复制数据
+expand 2 if ...     // if范围内obs翻2倍
+expand n , gen(id)  // 所有obs翻n倍，同时产生id区分新旧obs
+
+截取
+gen y=mod(x,10)  //截取数字的个位数, 同理可退后二位,三位,四位数
+winsor & truncate   缩尾 & 截尾;  缩尾e.g.ln(1) → ln(1.01) 避免ln(1)=0
+replace x=1.01      //目的是将离群值变成1%或99%分位值
+```
+
+- loop over all the observations
+```r
+   gen y=.
+   forvalues i=1/`=_N' {
+   replace y=x[`i'] if _n==`i'
+       }
+you'll get the exact same result far more quickly and easily with:
+   gen y=x  
+```
+
+- Stata命令前缀prefix, 如产生交互
+```r
+i.  to specify indicators for each level (category) of the variable
+c.  to interact a continuous variable with a factor variable
+L.  lag  x_t-1
+F.  lead x_t+1
+D.  diff (x_t)-(x_t-1)
+S.  diff (x_t)-(x_t-1) (seasonal)
+
+help fvvarlist  //interaction–indicators交互项 factor variable，直接full factorial
+```
+
+- 筛选
+```r
+有了inlist，你还在一直用if吗？
+if语句：    gen x=1 if rep78==1|rep==3|rep==4|rep==5
+inlist函数：gen x=1 if inlist(rep78,1,3,4,5)
+            gen y=1 if inlist(make,"AMC Concord","AMC Pacer","Buick","Ford")
+            keep if inlist(icd10,"O80.901","O82.901","700001","O80.001","H25.901","H26.901")  
+```
+   
+### 字符
+
+subinstr(s1,s2,s3,n)函数的应用--在s1中剔除s2，依次替换成n个s3，e.g.
+replace hos=subinstr(hos,char(10),"",.)
+char(10)就是这个可恶的ASCII为10的Line Feed符号
+另有妙用：
+	count if length(subinstr(pattern, "1", "", .))==1  //Counting substrings within strings
+
+
+gen x= y + z  //合并字符
+replace ctown = subinstr(ctown, "meizhou",  "putian", 1) // 替换变量ctown中的 meizhou 为 putian.
+
+tostring  
+destring v17, gen(vv17) force   // 如果没有异常则实施强制转换
+
+fdta _all , from("AMC") to("SUV")  // 专门替代(字符变量)字符的命令，比subinstr()函数好用太多
+fdta _all , from("AMC")  // 替代性删除
+
+substr(s,2,4)    //截取字符函数, 从s的第2个字符开始截取4个字符
+replace town=subinstr(town, "*" , "" , .)    //修改字符变量,删除字符中的星号* 或空格
+
+字符变量转数值变量
+encode hosid , gen(hid) //encode可以完美的将字符型的factor变量 转换成 数值型的factor变量，而且带 label
+decode  //vise verse
+
+- 解决--csv含20位ID和中文字符，后缀1,2,4表示第1,2,4个变量 字符型导入。
+  PS：Stata无法加载16位以上数字digits并保持精度(会损失尾数精度)，这种情况只能以字符型处理
+import delimited D:\aa\桌面\aa.csv, stringc(1,2,4) encoding(gb2312) clear 
+import excel using "$path\temp_tab.xlsx", clear sheet("医学专业招生在校毕业数52-2014") cellrange(:o45) sheet("SALC")
+
+```r
+replace xxx= strlower(xxx)  //字符串变小写, 注意：replace命令在使用时，如果赋值和原值相等，则不会计算在（？real changes made） 今天在计算1397个医院的人数时，结果只替代了1356个，就发现原来有41个医院前后人数相同。
+
+从字符串最后面开始删掉两个字符:
+  replace county=reverse(county)
+  replace county=reverse(substr(county,3,8))
+  
+replace v=1  if regexm(id,"福建省")  //检查<字符串变量>是否含所需字符
+replace v=3  if regexm(id,"县") | regexm(id,"区")
+
+destring var, replace   //字符转数字出现问题
+出現"var contains nonnumeric characters"
+解决办法:
+gen byte notnumeric=real(var)==.    //real()是函数,里面放出问题的变量名
+tab notnumeric
+br if notnumeric==1                          //==1 where nonnumeric characters
+
+
+字符中的dot .
+count if regexm(pattern, "\.")  不能用 count if regexm(pattern, ".")
+通配符 regexm(str, "[0-9]+\.[0-9]*[%]$") 
+```
 
 ### Time/age
 
@@ -645,11 +1194,27 @@ graph bar aa1 aa2 , over(n) ytitle(Number of physicians) b1title(Education) lege
 ```
 
 - Speaking Stata between tables and graphs
+  - tabout--属于Stata自带基本命令，是基本统计量表格输出的好命令
+  - tabstat v11-v16, by(v3) s(mean) //tabstat妙用--做多个变量按同一分组统计均数
 ```r
 help taboutgraph  //a wrapper for tabout, plot output of two-way tab function
 taboutgraph var1 var2 [aw=weight] using "filename_to_savedatato.csv", ///
   gc("graph bar") ta(cells(col) f(2 2 2 2)) replace go( note("Source: XXX") ///
 	b1title("Quintile") title(`"Composition of Population"') ytitle("Percent of population in the quntile"))
+```
+
+- 用统计table画图命令 collapse/contract：Make dataset of summary/freq statistics这个命令太好了
+```r
+preserve
+  collapse draft, by(timing year) //Make dataset of summary statistics
+  gen ldraft=log(draft)
+  twoway(connect ldraft year if timing==1955, lcolor(black)) ///
+	(connect ldraft year if timing==1956,msymbol(diamond) lcolor(pink) lpattern(dash)), legend(off) ///
+	text(10.49 1955.5 "Collectivization in 1955 (569 counties)", color(black)) ///
+	text(10.58 1955.7 "Collectivization in 1956 (1031 counties)", color(pink)) ///
+	xline(1954, lcolor(black)) xline(1955, lcolor(pink) lpattern(dash)) ///
+	xtitle("year") ytitle("log(number of draft animals)")
+restore
 ```
 
 - 互换矩阵和descriptive statistcs
@@ -756,9 +1321,9 @@ help moremata  //see extra mata function, especially their source code
 
 
 ### Big data
-超大数据-内存利用超97%，首先进去drop变量
-https://www.cpc.unc.edu/research/tools/data_analysis/statatutorial/misc/large_files
-describe using "bigfile.dta"  //不打开bigfile
+[超大数据](https://www.cpc.unc.edu/research/tools/data_analysis/statatutorial/misc/large_files
+)-电脑内存利用超97%，首先进去drop变量
+describe using "bigfile.dta"  //不加载bigfile进内存
 lookfor and lookfor_all
 use list_of_variables using
 use in

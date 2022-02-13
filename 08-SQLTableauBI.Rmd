@@ -5,9 +5,10 @@ REDCAP is based on MySQL, still a data store and management tool
 ## SQL 
 
 - SQL(Structured Query Language) is used to create queries to manipulate the data stored in a database.
-
-- Oracle SQL, is one like Microsoft SQL Server, PL/SQL
-
+    - Oracle SQL, is one like Microsoft SQL Server, PL/SQL
+    - 声明式编程(Declarative programming, e.g. SQL) VS. 命令式编程(Imperative programming), however Python is usually coded in an imperative way but can use the declarative style if necessary.
+    - 声明式编程 allow users to focus more on the desired outcome than the exact computational steps required to achieve that outcome. This can increase efficiency and code readability
+    
 - Case: Oracle安装备忘录
 ```
 *新农合数据 oracle 11.2.0.1.0
