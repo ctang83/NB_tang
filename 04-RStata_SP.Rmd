@@ -1,6 +1,5 @@
 # R/Stata_Stated Preference
 
-
 - Stata mixed logit后计算支付意愿可用 mixlogitwtp 和 bayesmixedlogitwtp
 
 - Install.packages("logitr")  
@@ -32,7 +31,6 @@ Coding and data examples using [Apollo](http://www.apollochoicemodelling.com/exa
 
 - Install.packages("BayesLCA")  
 An R package for bayesian latent class analysis : Three methods for fitting the model are provided, incorporating an expectation-maximization (EM) algorithm, Gibbs sampling and a variational Bayes approximation.
-
 
 
 ## Binary DCE(used as Case 2 BWS) 

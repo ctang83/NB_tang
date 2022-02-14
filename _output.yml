@@ -6,15 +6,16 @@ bookdown::gitbook:
     - lib/css/style.css
     - lib/css/lesson.css
   includes:
+
   config:
-    split_by: section
-    toc:  #table of content, before is top of left Sidebar, after is bottom of left Sidebar
-     collapse: section
+    split_by: section #Rmd文件和section
+    toc:    #table of content, before is top of left Sidebar, after is bottom of left Sidebar
+     collapse: section  #toc只显示一级标题
      before: | 
-        <li><a href="./">Notebook Tang</a></li>  
+        <li><a href="./">Notebook CTang</a></li>  
      after: |
         <li><a href="https://bookdown.org" target="blank">With bookdown</a></li>
-    edit: https://github.com/ctang83/NB_tang/tree/master/%s #click and go to online folder
+    edit: https://github.com/ctang83/NB_tang/tree/master/%s  #click and go to online folder
     download: ["pdf"] #set up downloading PDF option at the top toolbar 
     search:
        engine: fuse

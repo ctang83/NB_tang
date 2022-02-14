@@ -12,14 +12,13 @@ github-repo: ctang83/NB_tang
 description: "Recording my learning stuff."
 ---
 
-# Intro {#intro}
+# Intro & Daily records {#intro}
 
 This notebook covers my daily improvements in both knowledges and skills.
 
 ## 2022年  
 
 ### Feb
-
 
 - Debug: RStudio couldn't work well if R libraries are synchronized, I'm considering transfer the platform to RStudio Cloud, like Deepnote-Python.
 
