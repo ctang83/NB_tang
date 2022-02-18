@@ -26,7 +26,7 @@ To resolve these issues, I propose an automated and integrated solution using fr
     - formr利用OpenCPU和Google form, 可能更稳定
 	- 给formr邮件申请admin账户启动survey功能, 没有回复
 	- 如果formr无法用, 就直接用Google Forms吧
-1. Google form可以实现DCE的[问题随机化](https://support.google.com/a/users/answer/9308764?hl=en), 也可以survey
+  - Google form可以实现DCE的[问题随机化](https://support.google.com/a/users/answer/9308764?hl=en), 也可以survey
 
 ** TODO:** 
 1. randomization in displaying of attributes for each choice task
