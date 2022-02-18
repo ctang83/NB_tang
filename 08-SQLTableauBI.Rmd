@@ -82,6 +82,20 @@ help odbc
 ```
 ![Stata中ODBC查询](figs/fig_ODBC_stata.jpg){width=60%}
 
+### R_SQL
+
+Searching **SQL** on the website **R bloggers** will get collections of studying R_SQL
+
+1. Datasets are in different forms, places, access, pls use a config file
+		- [Connect R with SQL](https://www.r-bloggers.com/2020/09/how-to-connect-r-with-sql/)
+1. Writing large datasets to SQL Server can be very slow using the DBI package with an ODBC connection
+		- [Fast SQL Server Imports with R](https://www.r-bloggers.com/2021/08/fast-sql-server-imports-with-r/)
+1. PowerBI Desktop can directly get Data>SQL Server raw Database to visualize, but it less cautious
+		- [SQL Server, Power BI, and R](https://www.r-bloggers.com/2016/07/sql-server-power-bi-and-r/)
+1. SQL is declarative, so the lack of control flow produce redundancy用更精简的imperative编程代替啰嗦的SQL语言
+		- [generating readable SQL queries using {dbplyr} and {sqlfluff}](https://www.r-bloggers.com/2021/01/generating-sql-with-dbplyr-and-sqlfluff/)
+
+								
 ## Tableau
 
 Tableau(所有方面比Power BI好的拖动式画图软件)

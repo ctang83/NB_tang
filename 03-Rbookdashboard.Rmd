@@ -19,10 +19,53 @@ To resolve these issues, I propose an automated and integrated solution using fr
 
 我继续找到3个资源, 1和2重名但无overlap
 
-1. Aaron R. Kaufman has a [Plos ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0232424) and [GitHub](https://github.com/aaronrkaufman/shinySurveys) with focus on DCE ShinySurveys
-1. Jonathan Trattner has a formal R package [shinysurveys](https://cran.r-project.org/web/packages/shinysurveys/) aims create and deploy surveys in 'Shiny'
-1. John Paul Helveston used formr.org to create a specific [formr4conjoint](https://github.com/ctang83/formr4conjoint)
-  
+1. Kaufman has a [Plos ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0232424) and [GitHub](https://github.com/aaronrkaufman/shinySurveys) with focus on DCE ShinySurveys
+    - 文章里实现4个功能,如DCE问题随机化, 但在RStudio Cloud和RStudio都页面闪退, 因此以后网调稳定还是很重要
+1. Jonathan Trattner has a formal R package [shinysurveys](https://shinysurveys.jdtrat.com/) aims create and deploy surveys in 'Shiny'
+1. John Paul Helveston used formr.org to create a specific [formr4conjoint](https://github.com/ctang83/formr4conjoint)  
+    - formr利用OpenCPU和Google form, 可能更稳定
+	- 给formr邮件申请admin账户启动survey功能, 没有回复
+	- 如果formr无法用, 就直接用Google Forms吧
+1. Google form可以实现DCE的[问题随机化](https://support.google.com/a/users/answer/9308764?hl=en), 也可以survey
+
+** TODO:** 
+1. randomization in displaying of attributes for each choice task
+	- 这点在questionnaire上面手动修改就能达到
+1. randomization of respondents across blocks, e.g. A-B-testing or experiments
+
+
+
+### Publish
+
+RStudio directly link to two ways: RStudio Connect and Shinyapps.io
+	- Shinyapps网站点击右上角用户名->token->copy后到RStudio publish粘贴, 本地和Shinyapps自动connect, 完成deploy
+	- Shinyapps有9-299$ plans, 应该可以提高稳定和响应
+	- [comparison](https://www.rstudio.com/pricing/comparison/), 直接用RStudio Connect(价格上千)
+
+Cloud Deployment for apps不难, 查了一下MQ大学没有云,但MQ网页推荐了[AUS Research Data Commons](https://ardc.edu.au/services/nectar-research-cloud/)
+
+### Shiny
+
+Shiny app主要包括两个关键组件：1) UI(user interface)前端外观; 2) server：app后台运行
+
+- simplest app.R file, or ui/server functions divided into two files
+```r
+library(shiny)     #加载shiny包
+
+ui <- fluidPage(   #定义ui，这里是一个界面显示Hello, World!
+  "Hello, world!"
+) 
+                   #定义app如何运行，这里是空的，不做任何事情
+server <- function(input, output, session) {
+} 
+
+shinyApp(ui, server) #创建并启动app
+```
+
+- 维护是一种负担，在shiny中尽量使用响应表达式(reactive expression)来精简代码, reactive expression用reactive({})封装代码并赋值给一个变量，它只在启动app的时候运行并将结果缓存
+
+
+
 ## Online data collection/transfer  
 
 Ideally, or the perfect situation, is that we collect and summarise data from internet, clean data, analyse data, and present outcomes online. 

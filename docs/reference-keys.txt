@@ -16,13 +16,15 @@ lyx
 latex
 r_onlinebookdashboard
 automationintegration-of-dces-design-survey-and-analysis
+publish
+shiny
 online-data-collectiontransfer
 building-online-bookbookdown
 building-single-pagerobobook
 building-dashboardflexboard
 building-website-wt-multi-pagesblogdown
 rstata_stated-preference
-design-surveyapp
+design-sp
 estimating-models
 latent-class潜层模型
 binary-dceused-as-case-2-bws
@@ -60,5 +62,6 @@ network-sciencecomplex-network
 plot-and-visualisation
 sqltableaupowerbi
 sql
+r_sql
 tableau
 power-bi

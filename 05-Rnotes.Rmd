@@ -1,5 +1,18 @@
 # R
 
+- R资源汇总
+1. An updating online-book [R for Data Science](https://r4ds.had.co.nz/index.html), 搜关键词
+1. [Databases using R](https://db.rstudio.com/)
+1. RStudio [精选包](https://www.rstudio.com/products/rpackages/): 
+		- **Analyse & Explore**: tidyverse(dplyr数据框 tidyr等价Stata), ggplot2, purrr函数, stringr字符
+		- **Model & Predict**: TensorFlow, tidymodels, Sparklyr 
+		- **Communicate & Interact**: shiny, Rmarkdown, flexdashboard
+		- **Connect & Integrate**: Sparklyr(interface to Apache Spark), Plumber(create API), reticulate(interface to Python)
+
+PS: Apache Spark is an open-source unified analytics engine for large-scale data processing
+![Spark core](figs/fig_spark.jpg){width=60%}
+
+
 ## Workflow/Reproducible research 
 
 - Why do we need notebook interface(笔记本界面)? A:human–computer interaction人-机交互可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on. Some major human-computer interfaces as below:  
@@ -24,14 +37,19 @@ R Markdown (markup language): .Rmd file that is an excellent “literate program
 .Rhtml   -> .html  
 After Knitr works, then **Pandoc** converts md/tex/html into various formats as PDF/HTML/Word/.
 
-
+- 数字下面插入小点, 空两个tab键
+```r
+1. Rename 2 things from "bookdown_template" to "BB":
+    - the folder itself
+    - the .Rproj file
+```
 
 ## Plot/graph/visualisation
 
 - install.packages("geofacet")  
 facet小平面, 组成"嵌入变量内容"的[地理拼图](https://cran.r-project.org/web/packages/geofacet/vignettes/geofacet.html). The main function in this package is facet_geo() and its use can be thought of as equivalent to ggplot2’s facet_wrap() except for the output it creates. The facet_geo() works just like ggplot2’s built-in faceting. 
 
-```
+```r
 library(geofacet)
 library(ggplot2)
 head(state_ranks)
@@ -56,7 +74,7 @@ Create Tableau(所有方面比Power BI好的拖动式画图软件) Dashboard Ext
 - Install.packages("lattice") % focus on multivariate data, and in particular to produce "small multiple" plots
 
 - 画图 和 输出图片, 分辨率dpi和tiff压缩随便调
-```
+```r
 pdf("d:/xx.pdf")
 ...省略画图命令...
 dev.off()
@@ -70,14 +88,14 @@ dev.off()
 ## Data 
 
 - 输入数据
-```
+```r
 c()                    #Combine Values into a Vector or List
 M <- vector(length=8)  #vector函数优点是先定义长度，如8，再赋值
 read.table()  #读取txt文件
 ```
 
 - 输出数据，需要library(foreign)
-```
+```r
 write.dta(data,"d:/test.dta")  # 输出Stata12数据库
 write.csv(desmat, file = "D:/desk/UNSW/DCE/haze_desmat.csv")  # csv是常用格式
 
@@ -94,7 +112,7 @@ cbind(a1,a2)  # column 并列
 空语句：  next
 
 - 矩阵
-```
+```r
 A <- matrix(1:15,nrow=2,ncol=4,byrow=TRUE) #默认是按列, 此时A是int整数型
 A  
      [,1] [,2] [,3] [,4]   #用[1,]和[,1]表示行列
@@ -116,7 +134,7 @@ A%*%B     #区别二:矩阵乘法
 crossprod(A,B)  #区别三:等价t(A)%*%B
 ```
 可对矩阵某维或者若干维进行运算：apply(M,某维,FUNction)。例：A<-matrix(1:6,nrow=2);apply(A,1,sum)
-```
+```r
 x[-3]      #显示除第3个以外的其他值
 x[c(3,5)]  #显示x的第3和第5个值
 sort(x)    #按顺序排列，显示数据
@@ -137,7 +155,7 @@ ID <- rep(c("X1","X2","X3"),c(3,2,1))  #重复不同次数
     - 各类数据的频数：table()
 
 - 操作对象
-```
+```r
 是否为数值：is.numeric(X)
 是否为字符：is.character(X)
 类型转换：  as.character(X), as.numeric(X)
@@ -147,7 +165,7 @@ ID <- rep(c("X1","X2","X3"),c(3,2,1))  #重复不同次数
 ```
 
 - 探索R对象
-```
+```r
 mode(x)    #对象类型：
 dim(x)     #对象的两维度
 length(x)  #对象个数
@@ -160,7 +178,7 @@ dd<-as.data.frame(d.med$nalternatives$alt.1) #d.med里有个数据库，提取�
 ```
 
 - R三种对象类型
-```
+```r
 R没有标量
 一、向量（X）
 assign(向量名, X);  向量名<- X;  X ->向量名;   #赋值
@@ -183,7 +201,7 @@ DataAll <- list(Bird=bid.8, ID=ID, Z=Z) #list函数中只能用"=",不能用"<-"
 如果键入命令attach(accountants)，那你就可以直接用accountants里的变量，
 
 - 列表
-```
+```r
 列表的分量可以是不同的类型，使用list()函数可以创建列表：
 > x = list(name="Fred", wife="Mary", no.children=3, child.ages=c(4,7,9))
 > x
@@ -214,7 +232,7 @@ $name
 ```
 
 - 数据框
-```
+```r
 > L3 = LETTERS[1:3]
 > L3
 [1] "A" "B" "C"
@@ -252,6 +270,9 @@ $name
 
 ## Install R/RStudio
 
+- **installr::** A nice function in RStudio to install everything
+  - installr::install.Rtools() % Rtools always required
+
 - 升级Rstudio  
 Rstudio is IDE of R, needs setup of R before. Rstudio->tools->Global options->[R路径](D:\R\R-Portable\App\R-Portable)
 
@@ -259,7 +280,7 @@ Rstudio is IDE of R, needs setup of R before. Rstudio->tools->Global options->[R
 install.packages(c("apollo", "arm", "backports", "BayesLCA", "bibtex", "bit", "bit64", "bitops", "BMA", "brio", "caret", "caTools", "cli", "colorspace", "curl", "data.table", "deSolve", "diffobj", "digest", "dotCall64", "dplyr", "e1071", "effects", "ellipsis", "expm", "fansi", "farver", "fastmap", "fields", "fs", "geofacet", "gert", "git2r", "glue", "gmp", "gower", "gsynth", "haven", "hdrcde", "Hmisc", "htmltools", "httpuv", "ipred", "isoband", "jpeg", "jsonlite", "ks", "later", "latticeExtra", "lfe", "lme4", "lmtest", "lubridate", "magick", "magrittr", "maps", "maptools", "Matrix", "matrixStats", "mclust", "MCMCpack", "memisc", "mime", "mnormt", "msm", "multicool", "mvtnorm", "nloptr", "openssl", "partitions", "pcaPP", "pkgload", "pROC", "processx", "promises", "proxy", "ps", "quantreg", "randtoolbox", "rappdirs", "Rcpp", "RcppArmadillo", "RcppEigen", "RCurl", "readr", "readstata13", "rgl", "rJava", "rlang", "rngWELL", "robustbase", "RODBC", "roxygen2", "rrcov", "sass", "sem", "slam", "sp", "spam", "SparseM", "statmod", "stringi", "sys", "testthat", "tibble", "tidyr", "tidyverse", "tis", "utf8", "vctrs", "VGAM", "VGAMdata", "vroom", "XLConnect", "XML", "xml2", "zip", "zoo"))
 
 - 安装加载搜索包
-```
+```r
 install.packages("support.CEs")   #support.CEs是一个设计DCE的package，本函数还自动下载附加支持包
 install.packages("包名字",lib="安装目录",repos="包所在的网址")
 search()                         #查看现在已经读取的扩展包 
@@ -270,7 +291,7 @@ data(package = “扩展包名”)    #查看在该扩展包中的数据对象
 ```
 
 - 默认情况下，help只会载入内存包中搜索，try.all.package=TRUE 可以在全包中搜索 
-```
+```r
 >help(bs,try.all.package=TRUE); #会显示出对应的包  
     Package     Library  
     splines     E:\work\R\library  
@@ -279,7 +300,7 @@ data(package = “扩展包名”)    #查看在该扩展包中的数据对象
 ```
 
 - 求助符、帮助
-```
+```r
 ?plot        #函数打一个问号 , or help(plot)
 ??vegan    #包两个问号
 help.search("rnorm")   # search help files, even wrong spelling
@@ -289,7 +310,7 @@ RSiteSearch("discrete choice experiment")  #搜索网站（不是搜索本地计
 
 - 查看源代码  
 对于普通的函数——function，可以直接键入函数名就可以在console中看到源代码了，比如：
-```
+```r
 >damnN
 有些类函数需要先用methods()函数看看都有什么，再一点一点的查看。
 比如查看summary中的aov命令源代码：
@@ -298,7 +319,7 @@ RSiteSearch("discrete choice experiment")  #搜索网站（不是搜索本地计
 ```
 
 - 管理IO环境
-```
+```r
 object.size            #检查对象使用的内存
 setwd("D:/R/DCE")      #设置工作文件夹
 getwd()                #来查看当前目录working directory
@@ -314,8 +335,8 @@ Type `library()`就知道已经有什么packages了
 Type `library(survival)` 加载包,包里经常有数据  
 Type `data()`就知道有什么数据，注意:R语言对大小写敏感
 
-- PATH设置报错-待解决
-```
+- PATH设置报错-待解决? A: 同步导致的，希望早点升级R源程序
+```r
 > Sys.getenv("PATH")
 Warning message:
 In normalizePath(path.expand(path), winslash, mustWork) :

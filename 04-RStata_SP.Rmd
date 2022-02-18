@@ -16,12 +16,18 @@ RES ~ `Indirect payment`+`Direct payment`+strata
 
 - Hideo Aizaki has an online book [Non-Market Valuation with R](http://lab.agr.hokudai.ac.jp/nmvr/index.html)
 
-## Design & SurveyApp
+## Design SP
 
 - Install.packages("idefix")
 this R package combines designning DCE and dashboard implementing survey to collect data, all tasks can be conducted by using R and Github
 
-help dcreate  //DCE设计Efficient designs
+- [conjointTools](https://github.com/jhelvy/conjointTools), designing surveys and conducting power analyses for DCE,可以D-optimal设计,安装如下
+```r
+# install.packages("remotes")
+remotes::install_github("jhelvy/conjointTools")
+```
+
+- help dcreate  //DCE设计Efficient designs
 
 ## Estimating models
 - Install.packages("apollo")

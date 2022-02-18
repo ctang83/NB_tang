@@ -12,7 +12,7 @@ github-repo: ctang83/NB_tang
 description: "Recording my learning stuff."
 ---
 
-# Intro & Daily records {#intro}
+# Intro & Records {#intro}
 
 This notebook covers my daily improvements in both knowledges and skills.
 
