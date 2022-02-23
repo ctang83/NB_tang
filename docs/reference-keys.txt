@@ -6,8 +6,6 @@ jan
 月25日
 年5月24日
 年10月
-月25日-1
-月27日
 bat-excelword-lyxlatex
 bat
 excelword
@@ -16,6 +14,7 @@ lyx
 latex
 r_onlinebookdashboard
 automationintegration-of-dces-design-survey-and-analysis
+docker搭建环境
 publish
 shiny
 online-data-collectiontransfer
