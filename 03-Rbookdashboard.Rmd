@@ -165,6 +165,17 @@ PS1: we ignore Travis and related continuous integration(持续部署) here, act
 PS2: Sync btw local RStudio and RStudio Cloud using Git: 
     - because there are three copies saved in local/RStudioCloud/GitHub, if we used RStudio Cloud and sync it with GitHub, then we first need to pull/merge at local PC (commit 1), and push local changes to GitHub (commit 2). 
 
+PS3: 只删除远程仓库/文件夹，不删除本地仓库/文件夹, RStudio->terminal输入
+```r
+dir # 查看有哪些文件夹
+
+git rm -r --cached target  #你要删除的文件名称，这里是删除target文件夹
+
+git commit -m '删除了target' # 提交,添加操作说明
+
+git push -u origin master #重新提交（若需要对其他分支进行操作，则把master换为对应分支，如:git push -u origin dev）
+```
+
 **6) Writing and adding chapters(.Rmd) and citations**
 
 1. Build a new .Rmd file, name it and begin writing. As Index.Rmd is always the first chapter, we start ordering from "02-xx".

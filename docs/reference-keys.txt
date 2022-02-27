@@ -24,6 +24,7 @@ building-dashboardflexboard
 building-website-wt-multi-pagesblogdown
 rstata_stated-preference
 design-sp
+survey
 estimating-models
 latent-class潜层模型
 binary-dceused-as-case-2-bws
@@ -64,3 +65,6 @@ sql
 r_sql
 tableau
 power-bi
+survey-1
+sojump
+文本录入模板

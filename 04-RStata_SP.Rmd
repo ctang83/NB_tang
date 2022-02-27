@@ -29,6 +29,13 @@ remotes::install_github("jhelvy/conjointTools")
 
 - help dcreate  //DCE设计Efficient designs
 
+## Survey
+
+- install.packages("DCEtool")   
+A complete package for creating, surveying, and analysing DCEs on local machine, which was built on top of the -idefix- package by Traets et al. (2020)
+
+
+
 ## Estimating models
 - Install.packages("apollo")
 Coding and data examples using [Apollo](http://www.apollochoicemodelling.com/examples.html)
