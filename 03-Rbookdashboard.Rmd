@@ -1,39 +1,9 @@
 # R_Onlinebook/Dashboard
 
-## Automation/Integration of DCEs design, survey and analysis
 
-For typical DCEs, we usually undertake the experimental design using Ngene, then hire a company such as SurveyEgine to program the survey and collect data, and finally analyse data using Stata or R. This process has several disadvantages as below:
 
-1. disintegrated workflow, and thus needs coordinators at different stages;
-1. generating lots of documents and files in different forms, e.g. words, excel, html files, coding files;
-1. difficult to debug when unexpected results arise;
-1. substantial costs by using external services from, e.g., Ngene and SurveyEgine.
 
-To resolve these issues, I propose an automated and integrated solution using free and open source as listed below:
-
-1. Step I, the project is built and synchronised between GitHub website and R local machine, and all files are using Rmarkdown language for both writing and coding;
-1. Step II, we design a simple DCE (for pilot purposes) with orthogonal main-effect arrays using "support.CEs" package in R, or we design a DCEs with Bayesian adaptive designs for the mixed logit model using **idefix** package in R (**DCEtool**包装了idefix);
-1. Step III, after generating choice sets and questionnaire, we create interactive dashboard html files using "idefix" and shiny application in R;
-1. Step IV, all files are sychronised and deployed by the GitHub, then we obtained the website link for survey and data collection (using our own database or pay a data panel provider to do it);
-1. Step V, we analyse choice data and do estimation by using either packages in R directly, or Stata coding (both inline and from a .do file) from R.
-
-我继续找到3个资源, 1和2重名但无overlap
-
-1. Kaufman has a [Plos ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0232424) and [GitHub](https://github.com/aaronrkaufman/shinySurveys) with focus on DCE ShinySurveys
-    - 文章里实现4个功能,如DCE问题随机化, 但在RStudio Cloud和RStudio都页面闪退, 因此以后网调稳定还是很重要
-1. Jonathan Trattner has a formal R package [shinysurveys](https://shinysurveys.jdtrat.com/) aims create and deploy surveys in 'Shiny'
-1. John Paul Helveston used formr.org to create a specific [formr4conjoint](https://github.com/ctang83/formr4conjoint)  
-    - formr利用OpenCPU和Google form, 可能更稳定
-	- 给formr邮件申请admin账户启动survey功能, 没有回复
-	- 如果formr无法用, 就直接用Google Forms吧
-  - Google form可以实现DCE的[问题随机化](https://support.google.com/a/users/answer/9308764?hl=en), 也可以survey
-
-** TODO:** 
-1. randomization in displaying of attributes for each choice task
-	- 这点在questionnaire上面手动修改就能达到
-1. randomization of respondents across blocks, e.g. A-B-testing or experiments
-
-### Docker搭建环境
+### Docker-setting env
 
 For automation/integration, the first step is building an environment. 
 1. Historically, virtual machine 虚拟机是最早的带环境安装, 缺点-慢/资源多

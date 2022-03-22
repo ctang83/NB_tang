@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 R_Onlinebook/Dashboard | My Notebook</title>
+  <title>Chapter 4 DCEs Automation/Integration | My Notebook</title>
   <meta name="description" content="Recording my learning stuff." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 R_Onlinebook/Dashboard | My Notebook" />
+  <meta property="og:title" content="Chapter 4 DCEs Automation/Integration | My Notebook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ctang83/NB_tang" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 R_Onlinebook/Dashboard | My Notebook" />
+  <meta name="twitter:title" content="Chapter 4 DCEs Automation/Integration | My Notebook" />
   
   <meta name="twitter:description" content="Recording my learning stuff." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="bat-excelword-lyxlatex.html"/>
-<link rel="next" href="dces-automationintegration.html"/>
+<link rel="prev" href="r_onlinebookdashboard.html"/>
+<link rel="next" href="rstata_stated-preference.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -272,220 +272,148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r_onlinebookdashboard" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> R_Onlinebook/Dashboard</h1>
-<div id="docker-setting-env" class="section level3" number="3.0.1">
-<h3><span class="header-section-number">3.0.1</span> Docker-setting env</h3>
-<p>For automation/integration, the first step is building an environment.
-1. Historically, virtual machine 虚拟机是最早的带环境安装, 缺点-慢/资源多
-1. Linux 发展出了另一种虚拟化技术: Linux Containers (LXC), 优点-进程级别/快, 像轻量级虚拟机</p>
-<p>Docker是Linux容器的一种封装, 平时是一个<strong>image</strong>镜像文件, 运行时产生一个<strong>container</strong>容器文件, 给app提供接口让app像在虚拟机运行一样
-- 所以一般用别人image, 从仓库(Repository, 一般为DockerHub)下载(pull)一个镜像, 加些个人设置就用
-- DockerHub上比较流行R相关的两个组<a href="https://hub.docker.com/u/rstudio">rstudio</a>和<a href="https://hub.docker.com/u/rocker">rocker</a>
-- 用久了, 通过编写Dockerfile来配置image
-- 可多个容器运行, 各容器互不影响</p>
-<p>Docker有3种方法将数据挂载(mount)到容器: volumes容器卷，bind mounts和tmpfs mounts。一般来说，volumes总是最好的选择</p>
-<p>5篇实操中英教程(经过筛选)
-- <a href="https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html">阮一峰</a>
-- Deepnote可用docker, 但RStudio Cloud和docker冲突, RStudio Cloud本身就是一种image<a href="https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/">Running RStudio Server with Docker</a>
--</p>
-<p><strong>How to start using Docker</strong>
-1. Docker网站下载Desktop-&gt;安装(提示装x64的Linux支持)-&gt;重启-&gt;Docker账户ctang83登录
-1. 另一边, Win-&gt;cmd, 输入
-- <code>docker run --rm -p 127.0.0.1:8787:8787 -e DISABLE_AUTH=true rocker/rstudio</code>免密登录, 用户名rstudio
-- <code>docker run --rm -p           8787:8787 -e PASSWORD=xxx      rocker/rstudio</code>设密码, 用户名同上
-- If setting no password before, 在Win-&gt;cmd中输入<code>docker log xx(container name)</code>查找, 密码随时设定
-1. Docker desktop -&gt; open in browse -&gt; login in rstudio/xxx</p>
-</div>
-<div id="publish" class="section level3" number="3.0.2">
-<h3><span class="header-section-number">3.0.2</span> Publish</h3>
-<p>RStudio directly link to two ways: RStudio Connect and Shinyapps.io
-- Shinyapps网站点击右上角用户名-&gt;token-&gt;copy后到RStudio publish粘贴, 本地和Shinyapps自动connect, 完成deploy
-- Shinyapps有9-299$ plans, 应该可以提高稳定和响应
-- <a href="https://www.rstudio.com/pricing/comparison/">comparison</a>, 直接用RStudio Connect(价格上千)</p>
-<p>Cloud Deployment for apps不难, 查了一下MQ大学没有云,但MQ网页推荐了<a href="https://ardc.edu.au/services/nectar-research-cloud/">AUS Research Data Commons</a></p>
-</div>
-<div id="shiny" class="section level3" number="3.0.3">
-<h3><span class="header-section-number">3.0.3</span> Shiny</h3>
-<p>Shiny app主要包括两个关键组件：1) UI(user interface)前端外观; 2) server：app后台运行</p>
+<div id="dces-automationintegration" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> DCEs Automation/Integration</h1>
+<table>
+<caption>Design, survey and analysis</caption>
+<thead>
+<tr class="header">
+<th align="left">pack/func</th>
+<th align="center">Features</th>
+<th align="center">MXL design</th>
+<th align="center">rand exp</th>
+<th align="center">create survey</th>
+<th align="center">run survey</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">formr</td>
+<td align="center">网站/包</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">rand items</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">formr4conjoint</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">conjointTools</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">idefix</td>
+<td align="center"></td>
+<td align="center">Bayesian adaptive</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">DCEtool</td>
+<td align="center">local machine</td>
+<td align="center">包装idefix</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">ExpertChoice</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>通过搜索python conjoint, 终于找到合适工具</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://github.com/astrezhnev/conjointsdt">conjointSDT.exe</a> Conjoint Survey Design Tool一个封装好的软件应用, 能实现attribute order randomization, 但是不知道里面DCE怎么设计的?没有D-optimal</p>
 <ul>
-<li>simplest app.R file, or ui/server functions divided into two files</li>
+<li>conjointSDT.py是文本文件, 试试找里面att order random的代码</li>
+<li>功能代码还是要到四件套里面找R coding</li>
+</ul></li>
+<li><p>上面conjointSDT推荐的估计模型R包<a href="https://cran.r-project.org/web/packages/cjoint/index.html">cjoint</a></p></li>
+<li><p><a href="https://transp-or.epfl.ch/pythonbiogeme/">Pythonbiogeme</a>, an open source freeware designed for discrete choice estimation.</p></li>
+<li><p>Kaufman has a <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0232424">Plos ONE</a> and <a href="https://github.com/aaronrkaufman/shinySurveys">GitHub</a> with focus on DCE ShinySurveys</p>
+<ul>
+<li>文章里实现4个功能,如DCE问题随机化, 但在RStudio Cloud和RStudio都页面闪退, 因此以后网调稳定还是很重要</li>
+</ul></li>
+<li><p>Jonathan Trattner has a formal R package <a href="https://shinysurveys.jdtrat.com/">shinysurveys</a> aims create and deploy surveys in ‘Shiny.’ <em>第1和第2重名但无overlap</em></p></li>
+<li><p>John Paul Helveston used formr.org to create a specific <a href="https://github.com/ctang83/formr4conjoint">formr4conjoint</a></p>
+<ul>
+<li>formr利用OpenCPU和Google form, 可能更稳定</li>
+<li>如果formr无法用, 就直接用Google Forms, which可以实现DCE的<a href="https://support.google.com/a/users/answer/9308764?hl=en">问题随机化</a></li>
+</ul></li>
+</ol>
+<div id="design-sp" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Design SP</h2>
+<p>Basic information for this part:</p>
+<ol style="list-style-type: decimal">
+<li>Orthogonal design</li>
+<li>fractional factorial design</li>
+<li>efficient design (best choice)
+1. D-optimal design (optimal = maximally statistically efficient), 效率系数并非越大越好, 越大会降低<a href="https://doi.org/10.1086/586913">choice consistency</a></li>
+</ol>
+<p><code>install.packages("idefix")</code>
+this R package combines designing DCE and dashboard implementing survey to collect data, all tasks can be conducted by using R and Github</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="dces-automationintegration.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb18-2"><a href="dces-automationintegration.html#cb18-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;jhelvy/conjointTools&quot;</span>)</span></code></pre></div>
+<p><a href="https://github.com/jhelvy/conjointTools">conjointTools</a>, designing surveys and conducting power analyses for DCE,可以D-optimal设计,安装如下
+<em>conjointTools</em>的作者John有一门特别好的课<a href="https://madd.seas.gwu.edu/2021-Fall/c7-utility.html">Marketing Analytics for Design Decisions</a></p>
+<ul>
+<li>help dcreate //DCE设计Efficient designs</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r_onlinebookdashboard.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)     <span class="co">#加载shiny包</span></span>
-<span id="cb15-2"><a href="r_onlinebookdashboard.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="r_onlinebookdashboard.html#cb15-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(   <span class="co">#定义ui，这里是一个界面显示Hello, World!</span></span>
-<span id="cb15-4"><a href="r_onlinebookdashboard.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Hello, world!&quot;</span></span>
-<span id="cb15-5"><a href="r_onlinebookdashboard.html#cb15-5" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb15-6"><a href="r_onlinebookdashboard.html#cb15-6" aria-hidden="true" tabindex="-1"></a>                   <span class="co">#定义app如何运行，这里是空的，不做任何事情</span></span>
-<span id="cb15-7"><a href="r_onlinebookdashboard.html#cb15-7" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb15-8"><a href="r_onlinebookdashboard.html#cb15-8" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb15-9"><a href="r_onlinebookdashboard.html#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="r_onlinebookdashboard.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server) <span class="co">#创建并启动app</span></span></code></pre></div>
-<ul>
-<li>维护是一种负担，在shiny中尽量使用响应表达式(reactive expression)来精简代码, reactive expression用reactive({})封装代码并赋值给一个变量，它只在启动app的时候运行并将结果缓存</li>
-</ul>
 </div>
-<div id="online-data-collectiontransfer" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Online data collection/transfer</h2>
-<p>Ideally, or the perfect situation, is that we collect and summarise data from internet, clean data, analyse data, and present outcomes online.</p>
-<ul>
-<li>Data infrastructure of Australia<br />
-<a href="https://aurin.org.au/resources/aurin-apis/">library(aurin)</a> is “Australia’s single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.” This package provides functions to download and search datasets from the AURIN API (it’s free to use!).</li>
-</ul>
-<p>There is an example in aurin website showing access data, obtain data through this API.</p>
-<ul>
-<li><p>R包 rvest: Easily Harvest (Scrape) Web Pages <a href="http://cran.r-project.org/web/packages/rvest/index.html">参考手册</a><br />
-数据抓取两大阶段：网页获取和网页解析<br />
-R主要靠两个包，网页获取是RCurl，解析是靠XML<br />
-python也对应两个包，网磁获取是requests，解析是BeautifulSoup</p></li>
-<li><p>R包 Rfacebook: 提取facebook的数据</p></li>
-<li><p>XML(eXtensible Markup Language)可扩展标记语言, 是一种结构化数据交换语言, 可描述非常复杂的数据结构, 常用于传输和存储数据</p></li>
-<li><p>YAML(.yml files, Yet Another Markup Language) is the metadata that tells R Markdown, pandoc, and other software exactly how to process or display the document</p></li>
-<li><p>What is the difference between YAML and JSON? YAML is a superset(超集.VS subset) of JSON</p></li>
-</ul>
-</div>
-<div id="building-online-bookbookdown" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Building online book(Bookdown)</h2>
-<p>This tutorial will show us easiest way to build an online book (or a book-style website) through RStudio and GitHub (may also by bookdown.org). We’ll call this book “BB.”</p>
-<p><strong>1) Start on local computer</strong></p>
+<div id="survey" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Survey</h2>
+<p><code>install.packages("DCEtool")</code><br />
+A complete package for creating, surveying, and analysing DCEs on local machine, including:
+1. <em>idefix</em> to create the exp design, and present interactive survey by Traets et al. (2020)
+1. <em>survival</em> and <em>mlogit</em> to analyse results
+1. new code for visual interaction dashboard</p>
+<div id="to-do-list" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> TO-DO-LIST</h3>
 <ol style="list-style-type: decimal">
-<li>Copy folder “D:_template”(this version is from Jules32, much easier than Yihui’s bookdown-demo) to a reasonable place</li>
-<li>Rename 2 things from “bookdown_template” to “BB”:
+<li>randomization in displaying of attributes for each choice task
 <ul>
-<li>the folder itself</li>
-<li>the .Rproj file</li>
+<li>文献里叫attributes ordering effects, Randomize the attribute order, 有几种情况:</li>
+<li>(1)一个respondent加入,其n个choice set的attribute order随机化,实现难度大</li>
+<li>(2)500个respondents,手动分2-5种attribute order版本的questionnaires, 再shuffle respondents随机进各版本</li>
+<li>we can’t do a complete randomization of attribute order, because some attributes are ususally grouped.</li>
 </ul></li>
-<li>Double-click the .Rproj file to launch RStudio</li>
-<li>Click on the Build tab in the top right pane to build book</li>
+<li>formr <a href="https://github.com/rubenarslan/formr.org/wiki/How-to-randomize-items-and-blocks">randomise items/blocks</a></li>
+<li>randomization of respondents across blocks, e.g. A-B-testing or experiments, or<a href="https://github.com/rubenarslan/formr.org/wiki/How-to-adapt-question-texts-to-e.g.-the-participant&#39;s-sex-and-relationship-status">adapt question texts to sex/age</a></li>
 </ol>
-<p><strong>2) Create “BB” GitHub repo</strong></p>
-<ol style="list-style-type: decimal">
-<li>Go to your GitHub account: github.com/username</li>
-<li>Click on Repositories, and the green button “New” to create a new repo</li>
-<li>Name this new repo “BB” (DO NOT initialize this repo with a README)</li>
-<li>Click the green “create repository” button, then copy URL</li>
-</ol>
-<p><strong>3) Turn “bookdown_template” into “BB”</strong></p>
-<ol style="list-style-type: decimal">
-<li>Go back to RStudio, see your “BB” project</li>
-<li>In the Console, type <code>usethis::use_git()</code> and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.</li>
-<li>Now, click on the Terminal tab next to the Console tab.</li>
-<li>Type <code>git remote add origin URL</code></li>
-<li>Type <code>git push --set-upstream origin master</code> (this sentence upload files)</li>
-</ol>
-<p><strong>4) Publish “BB” (Last step)</strong></p>
-<ol style="list-style-type: decimal">
-<li>Refresh github, then files should be there!</li>
-<li>Click Settings</li>
-<li>Scroll down to GitHub Pages, click “Check it out here”</li>
-<li>Change the Source pulldown from “None” to “master branch /docs folder”</li>
-<li>It should say “Your site is ready to be published at <a href="https://username.github.io/BB/" class="uri">https://username.github.io/BB/</a>”</li>
-</ol>
-<p><strong>5) Sync/Update online book in Github</strong></p>
-<ol style="list-style-type: decimal">
-<li>Rstudio to build(knitr) the whole book, including all .Rmd files
-<ul>
-<li>In Build panel, click “Build Book”</li>
-<li>or in Console, type <code>rmarkdown::render_site(encoding = 'UTF-8')</code></li>
-</ul></li>
-<li>In Git panel, select all files, click Commit, appears a new window</li>
-<li>Input “XX changes,” click Commit
-<ul>
-<li>Click the staged checkbox for the modified files you want to commit to GitHub repository</li>
-</ul></li>
-<li>Finally, click Push -&gt; Done!</li>
-</ol>
-<p>PS1: we ignore Travis and related continuous integration(持续部署) here, actually now Yihui uses Makefile and _render.R <a href="https://github.com/rstudio/bookdown/tree/main/inst/examples">instead</a>.</p>
-<p>PS2: Sync btw local RStudio and RStudio Cloud using Git:
-- because there are three copies saved in local/RStudioCloud/GitHub, if we used RStudio Cloud and sync it with GitHub, then we first need to pull/merge at local PC (commit 1), and push local changes to GitHub (commit 2).</p>
-<p>PS3: 只删除远程仓库/文件夹，不删除本地仓库/文件夹, RStudio-&gt;terminal输入</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r_onlinebookdashboard.html#cb16-1" aria-hidden="true" tabindex="-1"></a>dir <span class="co"># 查看有哪些文件夹</span></span>
-<span id="cb16-2"><a href="r_onlinebookdashboard.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="r_onlinebookdashboard.html#cb16-3" aria-hidden="true" tabindex="-1"></a>git rm <span class="sc">-</span>r <span class="sc">--</span>cached target  <span class="co">#你要删除的文件名称，这里是删除target文件夹</span></span>
-<span id="cb16-4"><a href="r_onlinebookdashboard.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="r_onlinebookdashboard.html#cb16-5" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&#39;删除了target&#39;</span> <span class="co"># 提交,添加操作说明</span></span>
-<span id="cb16-6"><a href="r_onlinebookdashboard.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="r_onlinebookdashboard.html#cb16-7" aria-hidden="true" tabindex="-1"></a>git push <span class="sc">-</span>u origin master <span class="co">#重新提交（若需要对其他分支进行操作，则把master换为对应分支，如:git push -u origin dev）</span></span></code></pre></div>
-<p><strong>6) Writing and adding chapters(.Rmd) and citations</strong></p>
-<ol style="list-style-type: decimal">
-<li>Build a new .Rmd file, name it and begin writing. As Index.Rmd is always the first chapter, we start ordering from “02-xx.”</li>
-<li>For citations,</li>
-</ol>
-<p>The appearance for coding chunks are different btw two types below (the second is more obvious):</p>
-<p>%<code>%xx %</code></p>
-<p>%<code>r %xx %</code></p>
-</div>
-<div id="building-single-pagerobobook" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Building single page(robobook)</h2>
-<p>In above chapter <em>Building online book(Bookdown)</em>, multiple *.Rmd and .md files, along with a “site YAML file”(vs. YAML header), as input, a multipage website or book with internal navigation as output. (This is how the course web pages are constructed.)</p>
-<p>If we don’t need a book structure, but a single page with a structured-table(especially good for a report).
-We use 1) YAML header and 2) first code chunk in a single .Rmd, with outputing a single HTML.
-The template robobook is great for reading.</p>
-<pre><code>---
-title: &quot;啊啊啊&quot;
-date: &quot;2022-03-22&quot;
-  #这个output部分在multiple .Rmd files中就是_output.yml文件
-  #所以 bookdown::gitbook: 对等 rmdformats::robobook:
-output:   
-  rmdformats::robobook:
-    code_folding: show
-    self_contained: true
-    default_style: &quot;light&quot;
-    downcute_theme: &quot;default&quot;
----
-#```{r setup, include=FALSE}
-#First code chunk setting global options
-#knitr::opts_chunk$set(cache = TRUE)
-#```</code></pre>
-<p>PS: Rmd has many excellent templates: rticles(journal papers), prettydoc(html), rmdformats(online book, e.g. robobook style), tufte</p>
-<p><strong>How to insert figures?</strong></p>
-<p>For my notebook, all figures are saved in folder /NB_tang/figs. Using codes below:</p>
-<p><code>![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}</code></p>
-<div class="figure">
-<img src="figs/fig_codechunk_opt.jpg" style="width:100.0%" alt="" />
-<p class="caption">First code chunk选项对输出的控制</p>
 </div>
 </div>
-<div id="building-dashboardflexboard" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Building Dashboard(Flexboard)</h2>
-<p><strong>some definitions</strong></p>
+<div id="initiatives" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Initiatives</h2>
+<p>For typical DCEs, we usually undertake the experimental design using Ngene, then hire a company such as SurveyEgine to program the survey and collect data, and finally analyse data using Stata or R. This process has several disadvantages as below:</p>
 <ol style="list-style-type: decimal">
-<li>Rmarkdown aims to develop your code and ideas in a reproducible document</li>
-<li>Shiny package aims building interactive web applications
-<ul>
-<li><code>File</code> -&gt; <code>New File</code> -&gt; <code>Shiny</code> uses .R file</li>
-</ul></li>
-<li>Flexdashboard package aims building interactive dashboards using Rmarkdown
-<ul>
-<li>flexdashboard像Bookdown和single page的结合, 适合展示一个topic的数据</li>
-<li>flexdashboard是single .Rmd(用===分panel, 用—分column, 用###分box区域)</li>
-<li>.Rmd内结构也是YAML header + first code chunk</li>
-<li>flexdashboard用_site.yml as a simple site generator(基于rmarkdown, 后来发明了<strong>blogdown</strong>使用third-party site generator like Hugo)</li>
-</ul></li>
+<li>disintegrated workflow, and thus needs coordinators at different stages;</li>
+<li>generating lots of documents and files in different forms, e.g. words, excel, html files, coding files;</li>
+<li>difficult to debug when unexpected results arise;</li>
+<li>substantial costs by using external services from, e.g., Ngene and SurveyEgine.</li>
 </ol>
-<p>This tutorial shows us how to build an online dashboard, using flexdashboard, with RStudio and GitHub. We call this project “BB.”</p>
-<p><strong>1) Start on local computer</strong></p>
+<p>To resolve these issues, I propose an automated and integrated solution using free and open source as listed below:</p>
 <ol style="list-style-type: decimal">
-<li>Copy folder “D:_template” to a reasonable place</li>
-<li>Rename 2 things from “flexdashboard_template” to “BB”:
-<ul>
-<li>the folder itself</li>
-<li>the .Rproj file</li>
-<li>the _site.yml -&gt; name(website)</li>
-</ul></li>
-<li>Double-click the .Rproj file to launch RStudio</li>
-<li>Click on <code>Knit</code> to build website .html</li>
-</ol>
-<p><strong>2) Create “BB” GitHub repo</strong>(see <strong>Building online book</strong>)</p>
-<p><strong>3) Turn “bookdown_template” into “BB”</strong>(see <strong>Building online book</strong>)</p>
-<p><strong>4) Publish “BB” (Last step)</strong></p>
-</div>
-<div id="building-website-wt-multi-pagesblogdown" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Building website wt multi-pages(Blogdown)</h2>
-<p><strong>Blogdown</strong> use the third-party site generator, Hugo.</p>
-<p><strong>1) Start on local computer</strong></p>
-<ol style="list-style-type: decimal">
-<li>Copy folder “D:” to a reasonable place</li>
+<li>Step I, the project is built and synchronised between GitHub website and R local machine, and all files are using Rmarkdown language for both writing and coding;</li>
+<li>Step II, we design a simple DCE (for pilot purposes) with orthogonal main-effect arrays using “support.CEs” package in R, or we design a DCEs with Bayesian adaptive designs for the mixed logit model using <em>idefix</em> package in R (<em>DCEtool</em>包装了idefix);</li>
+<li>Step III, after generating choice sets and questionnaire, we create interactive dashboard html files using “idefix” and shiny application in R;</li>
+<li>Step IV, all files are sychronised and deployed by the GitHub, then we obtained the website link for survey and data collection (using our own database or pay a data panel provider to do it);</li>
+<li>Step V, we analyse choice data and do estimation by using either packages in R directly, or Stata coding (both inline and from a .do file) from R.</li>
 </ol>
 
 </div>
@@ -495,8 +423,8 @@ output:
           </div>
         </div>
       </div>
-<a href="bat-excelword-lyxlatex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dces-automationintegration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r_onlinebookdashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rstata_stated-preference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -527,7 +455,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ctang83/NB_tang/tree/master/03-Rbookdashboard.Rmd",
+"link": "https://github.com/ctang83/NB_tang/tree/master/04-R_SP_automation.Rmd",
 "text": "Edit"
 },
 "history": {

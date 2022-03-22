@@ -37,4 +37,4 @@ rsconnect/
 .Rproj.user
 .Rdata
 .DS_Store
-figs
+figs  #文件夹figs仅本地储存,不传到GitHub

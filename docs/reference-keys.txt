@@ -13,8 +13,7 @@ lyxlatex
 lyx
 latex
 r_onlinebookdashboard
-automationintegration-of-dces-design-survey-and-analysis
-docker搭建环境
+docker-setting-env
 publish
 shiny
 online-data-collectiontransfer
@@ -22,11 +21,13 @@ building-online-bookbookdown
 building-single-pagerobobook
 building-dashboardflexboard
 building-website-wt-multi-pagesblogdown
-rstata_stated-preference
+dces-automationintegration
 design-sp
 survey
+to-do-list
+initiatives
+rstata_stated-preference
 estimating-models
-latent-class潜层模型
 binary-dceused-as-case-2-bws
 case-1-bws
 r

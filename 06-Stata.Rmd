@@ -453,7 +453,7 @@ twoway (scatter read write) (lfit read write) (kdensity pr1) //散点分布，�
 help mrgraph  //分类变量画图
 help mrtab
 
-- 同时显示多个窗口graph
+同时显示多个窗口graph
 grss twoway histogram price, frequency bin(20)
 grss twoway histogram weight, frequency bin(20)
 
@@ -515,8 +515,9 @@ histogram price, scheme(michigan) percent title("Automobile Prices")  // 非常�
 
 ### Output graph
 
-Stata figure出图终极解决方案--使用Ghostscript-gswin64c.exe：win10环境下安装Ghostscript, [Step I](http://fgsservices.co.uk/blog/fred-knows/how-tos/install-ghostscript-windows-10/), [Step II](https://fgsservices.co.uk/blog/fred-knows/how-tos/install-ghostscript-windows-10-step-2/). 
-win10环境下根据[步骤](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)添加 C:\Program Files\gs926\bin
+Stata figure出图终极解决方案--使用Ghostscript-gswin64c.exe：win10环境下安装Ghostscript, [Step I](https://mile.com/assets/documents/Installing-Ghostscript-on-Windows-10.pdf). 
+win10环境下根据[Step II](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)添加
+"C:\Program Files\gs926\bin"
 
 使用方法：Stata出矢量pdf，然后Stata调用!gswin64c.exe 将pdf转tiff (也可设定dpi=r600，和压缩方式lzw)，我包装为程序figen
 
