@@ -515,11 +515,13 @@ histogram price, scheme(michigan) percent title("Automobile Prices")  // 非常�
 
 ### Output graph
 
-Stata figure出图终极解决方案--使用Ghostscript-gswin64c.exe：win10环境下安装Ghostscript, [Step I](https://mile.com/assets/documents/Installing-Ghostscript-on-Windows-10.pdf). 
-win10环境下根据[Step II](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)添加
-"C:\Program Files\gs926\bin"
+Stata figure出图终极解决方案--使用Ghostscript-gswin64c.exe：
 
-使用方法：Stata出矢量pdf，然后Stata调用!gswin64c.exe 将pdf转tiff (也可设定dpi=r600，和压缩方式lzw)，我包装为程序figen
+win10环境下安装Ghostscript, [Step I](https://mile.com/assets/documents/Installing-Ghostscript-on-Windows-10.pdf). 
+win10环境下根据[Step II](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)添加
+`C:\Program Files\gs926\bin`, 重启电脑就行了
+
+方法：Stata出矢量pdf，然后Stata调用!gswin64c.exe 将pdf转tiff (也可设定dpi=r600，和压缩方式lzw)，我包装为程序figen
 
 ```r
   figen, fig(D:\fig1) // 括号中=路径和名称

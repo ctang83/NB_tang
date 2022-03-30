@@ -18,6 +18,13 @@ This notebook covers my daily improvements in both knowledges and skills.
 
 ## 2022年  
 
+### March
+
+- 要不要建一个图床? 给所有图片外链
+
+Image Hosting Website（或者其他英文名，反正不是什么Image Bed、Photo Bed 之类的）
+
+
 ### Feb
 
 - Debug: RStudio couldn't work well if R libraries are synchronized, I'm considering transfer the platform to RStudio Cloud, like Deepnote-Python.

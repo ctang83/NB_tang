@@ -24,7 +24,7 @@
 <meta name="author" content="CTang" />
 
 
-<meta name="date" content="2022-03-22" />
+<meta name="date" content="2022-03-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,8 +143,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#年"><i class="fa fa-check"></i><b>1.1</b> 2022年</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#feb"><i class="fa fa-check"></i><b>1.1.1</b> Feb</a></li>
-<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#jan"><i class="fa fa-check"></i><b>1.1.2</b> Jan</a></li>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#march"><i class="fa fa-check"></i><b>1.1.1</b> March</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#feb"><i class="fa fa-check"></i><b>1.1.2</b> Feb</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#jan"><i class="fa fa-check"></i><b>1.1.3</b> Jan</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#年-1"><i class="fa fa-check"></i><b>1.2</b> 2010-2012年</a>
 <ul>
@@ -738,10 +739,11 @@ histogram price, scheme(michigan) percent title(“Automobile Prices”) // 非�
 </div>
 <div id="output-graph" class="section level3" number="7.3.3">
 <h3><span class="header-section-number">7.3.3</span> Output graph</h3>
-<p>Stata figure出图终极解决方案–使用Ghostscript-gswin64c.exe：win10环境下安装Ghostscript, <a href="https://mile.com/assets/documents/Installing-Ghostscript-on-Windows-10.pdf">Step I</a>.
+<p>Stata figure出图终极解决方案–使用Ghostscript-gswin64c.exe：</p>
+<p>win10环境下安装Ghostscript, <a href="https://mile.com/assets/documents/Installing-Ghostscript-on-Windows-10.pdf">Step I</a>.
 win10环境下根据<a href="https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/">Step II</a>添加
-“C:Files”</p>
-<p>使用方法：Stata出矢量pdf，然后Stata调用!gswin64c.exe 将pdf转tiff (也可设定dpi=r600，和压缩方式lzw)，我包装为程序figen</p>
+<code>C:\Program Files\gs926\bin</code>, 重启电脑就行了</p>
+<p>方法：Stata出矢量pdf，然后Stata调用!gswin64c.exe 将pdf转tiff (也可设定dpi=r600，和压缩方式lzw)，我包装为程序figen</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="stata.html#cb65-1" aria-hidden="true" tabindex="-1"></a>  figen, <span class="fu">fig</span>(D<span class="sc">:</span>\fig1) <span class="sc">/</span><span class="er">/</span> 括号中<span class="ot">=</span>路径和名称</span>
 <span id="cb65-2"><a href="stata.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  doedit <span class="st">&quot;D:\stata11</span><span class="sc">\a</span><span class="st">do\myado/figen.ado&quot;</span> <span class="sc">/</span><span class="er">/</span>看ado,这个命令已定型，切勿再改</span>
 <span id="cb65-3"><a href="stata.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  </span>
