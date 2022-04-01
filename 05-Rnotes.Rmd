@@ -15,6 +15,12 @@ PS: Apache Spark is an open-source unified analytics engine for large-scale data
 
 ## Workflow/Reproducible research 
 
+- Automate builds with `ghactions`, which will replace other continuous integration tools like Travis CI. GitHub actions just requires a special file in a special directory at the root of your repository to work: `.github/workflows/main.yml`. To quickly set up such a file for frequently used project kinds, run:
+```r
+#remotes::install_github("maxheld83/ghactions") #install
+ghactions::use_ghactions(workflow = ghactions::website())
+```
+
 - Why do we need notebook interface(笔记本界面)? A:human–computer interaction人-机交互可以理解为人-信息交互, 如下有多种方式, 但最好的中间载体是一个笔记本界面notebook interface(文学编程literate programming), which input 文本、代码、公式、图片、数据、PDF, while output HTML, PDF, DOC, dashboard and so on. Some major human-computer interfaces as below:  
 1 Text-based user interface, e.g. Command-line interface -> notebook interface  
 2 Graphical user interfaces (GUIs)  VS. Sonic user interface  
