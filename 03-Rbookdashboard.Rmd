@@ -22,7 +22,7 @@ Docker有3种方法将数据挂载(mount)到容器: volumes容器卷，bind moun
   - Deepnote可用docker, 但RStudio Cloud和docker冲突, RStudio Cloud本身就是一种image[Running RStudio Server with Docker](https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/)
   - 
 
-**How to start using Docker**
+*How to start using Docker*
 1. Docker网站下载Desktop->安装(提示装x64的Linux支持)->重启->Docker账户ctang83登录
 1. 另一边, Win->cmd, 输入
   - `docker run --rm -p 127.0.0.1:8787:8787 -e DISABLE_AUTH=true rocker/rstudio`免密登录, 用户名rstudio

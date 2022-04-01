@@ -270,14 +270,15 @@ $name
 
 ## Install R/RStudio
 
-- **installr::** A nice function in RStudio to install everything
-  -installr::install.Rtools() % Rtools always required
+- **installr::** A nice function in RStudio to install everything  
+`installr::install.Rtools()` # Rtools always required  
+`installr()`  # [弹出对话框,很多软件](https://www.r-project.org/nosvn/pandoc/installr.html)
 
 - 升级Rstudio  
 Rstudio is IDE of R, needs setup of R before. Rstudio->tools->Global options->[R路径](D:\R\R-Portable\App\R-Portable)
 
 - 升级R, 安装所有packages  
-install.packages(c("apollo", "arm", "backports", "BayesLCA", "bibtex", "bit", "bit64", "bitops", "BMA", "bookdown", "brio", "caret", "caTools", "cli", "colorspace", "curl", "data.table", "deSolve", "diffobj", "digest", "dotCall64", "dplyr", "e1071", "effects", "ellipsis", "expm", "fansi", "farver", "fastmap", "fields", "fs", "geofacet", "gert", "git2r", "glue", "gmp", "gower", "gsynth", "haven", "hdrcde", "Hmisc", "htmltools", "httpuv", "ipred", "isoband", "installr", "jpeg", "jsonlite", "ks", "later", "latticeExtra", "lfe", "lme4", "lmtest", "lubridate", "magick", "magrittr", "maps", "maptools", "Matrix", "matrixStats", "mclust", "MCMCpack", "memisc", "mime", "mnormt", "msm", "multicool", "mvtnorm", "nloptr", "openssl", "partitions", "pcaPP", "pkgload", "pROC", "processx", "promises", "proxy", "ps", "quantreg", "randtoolbox", "rappdirs", "Rcpp", "RcppArmadillo", "RcppEigen", "RCurl", "readr", "readstata13", "rgl", "rJava", "rlang", "rngWELL", "robustbase", "RODBC", "roxygen2", "rrcov", "sass", "sem", "shiny", "slam", "sp", "spam", "SparseM", "statmod", "stringi", "sys", "testthat", "tibble", "tidyr", "tidyverse", "tis", "utf8", "vctrs", "VGAM", "VGAMdata", "vroom", "XLConnect", "XML", "xml2", "zip", "zoo"))
+install.packages(c("apollo", "arm", "backports", "BayesLCA", "bibtex", "bit", "bit64", "bitops", "BMA", "bookdown", "brio", "caret", "caTools", "cli", "colorspace", "curl", "data.table", "deSolve", "devtools", "diffobj", "digest", "dotCall64", "dplyr", "e1071", "effects", "ellipsis", "expm", "fansi", "farver", "fastmap", "fields", "fs", "geofacet", "gert", "git2r", "glue", "gmp", "gower", "gsynth", "haven", "hdrcde", "Hmisc", "htmltools", "httpuv", "ipred", "isoband", "installr", "jpeg", "jsonlite", "ks", "later", "latticeExtra", "lfe", "lme4", "lmtest", "lubridate", "magick", "magrittr", "maps", "maptools", "Matrix", "matrixStats", "mclust", "MCMCpack", "memisc", "mime", "mnormt", "msm", "multicool", "mvtnorm", "nloptr", "openssl", "partitions", "pcaPP", "pkgload", "pROC", "processx", "promises", "proxy", "ps", "quantreg", "randtoolbox", "rappdirs", "Rcpp", "RcppArmadillo", "RcppEigen", "RCurl", "readr", "readstata13", "rgl", "rJava", "rlang", "rngWELL", "robustbase", "RODBC", "roxygen2", "rrcov", "sass", "sem", "shiny", "slam", "sp", "spam", "SparseM", "statmod", "stringi", "sys", "testthat", "tibble", "tidyr", "tidyverse", "tis", "utf8", "vctrs", "VGAM", "VGAMdata", "vroom", "XLConnect", "XML", "xml2", "zip", "zoo"))
 
 - 安装加载搜索包
 ```r
