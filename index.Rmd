@@ -18,11 +18,32 @@ This notebook covers my daily improvements in both knowledges and skills.
 
 ## 2022年  
 
+### April
+
+利用blogdown/netlify/hugo自建个人网页
+
+1. 选择Wowchemy的github包为基础 ([Wowchemy多主题](https://wowchemy.com/hugo-themes/):course/网页slides/blog/  
+1. 选择wowchemy的Academic Resumé建个人网页  
+1. 需要装(1)Go语言(网页下载自行安装),(2)Hugo(通过R安装)   
+1. 主要修改 "config" and "content" 文件夹  
+1. 个人网页上可以挂slides, project, notebooks, links, posts, PDF, 成为一个info hub了
+
+开始全面转向VScode编辑器, 界面实在太酷了, 操作太爽了  
+
+1. VScode下面bar可以attach to R/Python/Shell/Stata (各种extensions支持)  
+1. 一个Workspace可以管理多个项目, 对web development和markdown语法特别友好  
+1. 和Github同步协作特别好  
+1. VScode命令`Ctrl+Shift+P`打开命令框  
+
+What is a [value-based health care system](https://veradigm.com/what-is-value-based-healthcare/)?  
+
+1. Value-based healthcare is **a healthcare delivery framework that incentivizes healthcare providers to focus on the quality of services rendered, as opposed to the quantity**. 
+1. Under a value-based healthcare model, healthcare providers (including hospitals and physicians) are compensated based upon patient health outcomes.
+	
 ### March
 
-- 要不要建一个图床? 给所有图片外链
-
-Image Hosting Website（或者其他英文名，反正不是什么Image Bed、Photo Bed 之类的）
+要不要建一个图床? 给所有图片外链  
+    - Image Hosting Website（或者其他英文名，反正不是什么Image Bed、Photo Bed 之类的）
 
 
 ### Feb

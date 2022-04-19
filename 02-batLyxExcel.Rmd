@@ -220,6 +220,12 @@ Excel中“&”这个符号表示“与”
 ## Lyx/Latex
 ### Lyx
 
+- 多行注释 iffalse ... fi
+iffalse
+多
+行
+fi
+
 - Lyx在article（即英文模板）使用中文方法：  
 在setting→Document Class→Class Options中的Custom一栏填入UTF8（这个选项将传送给ctex宏包）, 还要把语言的encoding设置为Unicode(XeTeX) (utf8)  
 

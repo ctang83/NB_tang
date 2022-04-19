@@ -6,21 +6,20 @@
 ### Docker-setting env
 
 For automation/integration, the first step is building an environment.  
-1. Historically, virtual machine 虚拟机是最早的带环境安装, 缺点-慢/资源多
+1. Historically, virtual machine 虚拟机是最早的带环境安装, 缺点-慢/资源多  
 1. Linux 发展出了另一种虚拟化技术: Linux Containers (LXC), 优点-进程级别/快, 像轻量级虚拟机
 
 Docker是Linux容器的一种封装, 平时是一个**image**镜像文件, 运行时产生一个**container**容器文件, 给app提供接口让app像在虚拟机运行一样  
-  - 所以一般用别人image, 从仓库(Repository, 一般为DockerHub)下载(pull)一个镜像, 加些个人设置就用
-  - DockerHub上比较流行R相关的两个组[rstudio](https://hub.docker.com/u/rstudio)和[rocker](https://hub.docker.com/u/rocker)
-  - 用久了, 通过编写Dockerfile来配置image
+  - 所以一般用别人image, 从仓库(Repository, 一般为DockerHub)下载(pull)一个镜像, 加些个人设置就用  
+  - DockerHub上比较流行R相关的两个组[rstudio](https://hub.docker.com/u/rstudio)和[rocker](https://hub.docker.com/u/rocker)  
+  - 用久了, 通过编写Dockerfile来配置image  
   - 可多个容器运行, 各容器互不影响
 
 Docker有3种方法将数据挂载(mount)到容器: volumes容器卷，bind mounts和tmpfs mounts。一般来说，volumes总是最好的选择
 
 5篇实操中英教程(经过筛选)
-  - [阮一峰](https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
-  - Deepnote可用docker, 但RStudio Cloud和docker冲突, RStudio Cloud本身就是一种image[Running RStudio Server with Docker](https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/)
-  - 
+  - [阮一峰](https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)  
+  - Deepnote可用docker, 但RStudio Cloud和docker冲突, RStudio Cloud本身就是一种image[Running RStudio Server with Docker](https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/)  
 
 *How to start using Docker*
 1. Docker网站下载Desktop->安装(提示装x64的Linux支持)->重启->Docker账户ctang83登录
@@ -33,8 +32,8 @@ Docker有3种方法将数据挂载(mount)到容器: volumes容器卷，bind moun
 
 ### Publish
 
-to create a technical description document that should be shared with other people. However is should not be visible for everyone.
-    - use a private GitHub repository
+To create a technical description document that should be shared with other people (not be visible for everyone)  
+    - use a private GitHub repository  
     - If you publish book to bookdown.org, [there is an option](https://github.com/rstudio/bookdown/issues/135#issuecomment-230187149) that allows you to make your book private and share it with specific collaborators (this is free).
 
 
