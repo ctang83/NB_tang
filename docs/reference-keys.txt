@@ -15,8 +15,9 @@ lyxlatex
 lyx
 latex
 r_onlinebookdashboard
+blogdown
 docker-setting-env
-publish
+publishdeployment
 shiny
 online-data-collectiontransfer
 building-online-bookbookdown
@@ -29,6 +30,7 @@ survey
 to-do-list
 initiatives
 rstata_stated-preference
+guidance
 estimating-models
 binary-dceused-as-case-2-bws
 case-1-bws

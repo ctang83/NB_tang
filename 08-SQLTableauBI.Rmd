@@ -64,23 +64,23 @@ impdp system/XNHsc2018@localhost/oracledb dumpfile=jg180915_%U.dmplogfile=jg1809
 - Open Database Connectivity (ODBC) interface makes it possible for applications(Stata/R) to access data from a variety of database management systems (e.g. SQL Server). 
 
 首先，搜索ODBC管理员，点击系统DNS添加。
-![Stata中ODBC查询](figs/fig_ODBC1.jpg){width=60%}
+![Stata中ODBC查询](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC1.jpg){width=60%}
 
 然后，添加后点击对应的数据目录，本次安装在home2，然后进行数据添加。
-![Stata中ODBC查询](figs/fig_ODBC2.jpg){width=60%}
+![Stata中ODBC查询](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC2.jpg){width=60%}
 
 datasourcename:自己命名的调用数据库名，用英文。
 description：数据库描述，可以用中文。
 TNS  Service Name：oraclebd就是oracle导入的实例数据库。
 User ID：每个县对应的ID数据库名字，比如如图所示为东坡，可在导出log中查看。
 *每个县有一个数据库，所以要建立相应县个数的ODBC。
-![Stata中ODBC查询](figs/fig_ODBC3.jpg){width=60%}
+![Stata中ODBC查询](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC3.jpg){width=60%}
 
 ```r
 odbc list //Stata通过ODBC查询调用任意SQL数据
 help odbc
 ```
-![Stata中ODBC查询](figs/fig_ODBC_stata.jpg){width=60%}
+![Stata中ODBC查询](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC_stata.jpg){width=60%}
 
 ### R_SQL
 

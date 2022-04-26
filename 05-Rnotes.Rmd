@@ -10,7 +10,7 @@
 		- **Connect & Integrate**: Sparklyr(interface to Apache Spark), Plumber(create API), reticulate(interface to Python)
 
 PS: Apache Spark is an open-source unified analytics engine for large-scale data processing
-![Spark core](figs/fig_spark.png){width=60%}
+![Spark core](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_spark.png){width=60%}
 
 
 ## Workflow/Reproducible research 

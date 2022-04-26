@@ -171,7 +171,7 @@ C14．您家的房屋类型是[必答题]
 C15．房间数_____[填空题][必答题]
 ```
 
-![问卷星格式](figs/fig_sojump1.jpg){width=100%}
+![问卷星格式](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_sojump1.jpg){width=100%}
 
 
-![问卷星格式](figs/fig_sojump2.jpg){width=100%}
+![问卷星格式](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_sojump2.jpg){width=100%}

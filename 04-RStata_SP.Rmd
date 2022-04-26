@@ -7,7 +7,15 @@ RES ~ `Indirect payment`+`Direct payment`+strata
 
 - Hideo Aizaki online book [Non-Market Valuation with R](http://lab.agr.hokudai.ac.jp/nmvr/index.html)
 
+## Guidance
 
+attributes development [1-2], estimation process [3]
+
+reference:
+
+[1].	Bridges, J.F., et al., Conjoint analysis applications in health—a checklist: a report of the ISPOR Good Research Practices for Conjoint Analysis Task Force. Value in Health, 2011. 14(4): p. 403-413.
+[2].	Reed Johnson, F., et al., Constructing experimental designs for discrete-choice experiments: report of the ISPOR conjoint analysis experimental design good research practices task force. Value in Health, 2013. 16(1): p. 3-13.
+[3].	Lancsar, E., D.G. Fiebig and A.R. Hole, Discrete Choice Experiments: A Guide to Model Specification, Estimation and Software. PharmacoEconomics, 2017: p. 1-20.
 
 ## Estimating models
 

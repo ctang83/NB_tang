@@ -1,7 +1,15 @@
 # R_Onlinebook/Dashboard
 
 
+### Blogdown
 
+1. Static website built on the Blogdown (Hugo, an application .exe) - with multiple template, including personal profile, research group, slides, online course, and project documents(similar to Bookdown) 
+1. I also chose VScode that attached to R language
+  1. Type `blogdown::serve_site` to locally-preview all website updates
+1. How Bookdown works? 
+  1. `bookdown::serve_book()` works in the same way to preview
+  1. `bookdown::preview_chapter()` in less time-consuming
+  1. `bookdown::render_book` build the whole website
 
 ### Docker-setting env
 
@@ -30,11 +38,16 @@ Docker有3种方法将数据挂载(mount)到容器: volumes容器卷，bind moun
 1. Docker desktop -> open in browse -> login in rstudio/xxx
 
 
-### Publish
+### Publish/Deployment
+
+I have used a number of websites for website deployment:
+1. Github (local built, then commits Github repo)
+1. Bookdown website (directly deploy by RStudio, without Github repo)
+1. Netlify (remote building website and automatic updates based on Github repo)
 
 To create a technical description document that should be shared with other people (not be visible for everyone)  
-    - use a private GitHub repository  
-    - If you publish book to bookdown.org, [there is an option](https://github.com/rstudio/bookdown/issues/135#issuecomment-230187149) that allows you to make your book private and share it with specific collaborators (this is free).
+  - use a private GitHub repository  
+  - If you publish books to bookdown.org, [there is an option](https://github.com/rstudio/bookdown/issues/135#issuecomment-230187149) that allows you to make your book private and share it with specific collaborators (this is free).
 
 
 RStudio directly link to two ways: RStudio Connect and Shinyapps.io
@@ -111,8 +124,8 @@ This tutorial will show us easiest way to build an online book (or a book-style 
 **3) Turn "bookdown_template" into "BB"**
 
 1. Go back to RStudio, see your "BB" project
-1. In the Console, type `usethis::use_git()` and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.
-1. Now, click on the Terminal tab next to the Console tab. 
+1. In the **R Console**, type `usethis::use_git()` and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.
+1. Now, transfer to the **Terminal tab**. 
 1. Type `git remote add origin URL`
 1. Type `git push --set-upstream origin master` (this sentence upload files)
 
@@ -200,7 +213,7 @@ For my notebook, all figures are saved in folder /NB_tang/figs. Using codes belo
 
 `![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}`
 
-![First code chunk选项对输出的控制](figs/fig_codechunk_opt.jpg){width=100%}
+![First code chunk选项对输出的控制](https://raw.githubusercontent.com/ctang83/NB_img/main/fig_codechunk_opt.jpg){width=100%}
 
 
 ## Building Dashboard(Flexboard)
