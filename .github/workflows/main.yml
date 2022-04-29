@@ -41,7 +41,7 @@ jobs:
          # Destination path
          path: docs # optional
      - name: Deploy to GitHub Pages
-       uses: ctang83/GitHub-Pages-deploy@v3
+       uses: ctang83/github-pages-deploy-action@3.7.1
        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
