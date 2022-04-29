@@ -46,6 +46,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
           BRANCH: gh-pages
-          build_dir: docs/   # "_site/" by default
+          FOLDER: docs/   # "_site/" by default
           email: ${{ secrets.EMAIL }}  # must be a verified email
           
