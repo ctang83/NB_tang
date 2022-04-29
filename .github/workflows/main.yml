@@ -41,9 +41,11 @@ jobs:
          # Destination path
          path: docs # optional
      - name: Deploy to GitHub Pages
-       uses: ctang83/github-pages-deploy-action@4.3.3
+       uses: ctang83/github-pages-deploy-action@3.7.1
        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
-          build_dir: docs/ # "_site/" by default
+          BRANCH: gh-pages
+          build_dir: docs/   # "_site/" by default
           email: ${{ secrets.EMAIL }}  # must be a verified email
+          
