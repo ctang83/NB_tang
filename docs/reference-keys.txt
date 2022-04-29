@@ -24,13 +24,10 @@ building-online-bookbookdown
 building-single-pagerobobook
 building-dashboardflexboard
 building-website-wt-multi-pagesblogdown
+rstata_stated-preference
 dces-automationintegration
 design-sp
 survey
-to-do-list
-initiatives
-rstata_stated-preference
-guidance
 estimating-models
 binary-dceused-as-case-2-bws
 case-1-bws
