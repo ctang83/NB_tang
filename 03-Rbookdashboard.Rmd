@@ -3,6 +3,10 @@
 
 ### Blogdown
 
+**优点：don't need to build website locally**
+
+build a [personal website (now I treat it as my information hub)](https://ctang.netlify.app/) using a Hugo theme, synchronised on the GitHub, and deployed through netlify (GitHub granted access to the netlify)
+
 1. Static website built on the Blogdown (Hugo, an application .exe) - with multiple template, including personal profile, research group, slides, online course, and project documents(similar to Bookdown) 
 1. I also chose VScode that attached to R language
   1. Type `blogdown::serve_site` to locally-preview all website updates

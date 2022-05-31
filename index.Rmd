@@ -14,19 +14,15 @@ description: "Recording my learning stuff."
 
 # Intro & Records {#intro}
 
-x1 
-
-## dd
-
-This notebook covers my daily improvements in both knowledges and skills.
-
-This notebook covers my daily improvements in both knowledges and skills.
-
-This notebook covers my daily improvements in both knowledges and skills.
-
 This notebook covers my daily improvements in both knowledges and skills.
 
 ## 2022年  
+
+### May
+
+图片居中
+
+<div align=center>![Figure. Various treatments choice for OA](https://raw.githubusercontent.com/ctang83/NB_img/main/EPS_OAtreat.jpg){width=60%} 
 
 ### April
 
@@ -54,6 +50,7 @@ What is a [value-based health care system](https://veradigm.com/what-is-value-ba
 
 要不要建一个图床? 给所有图片外链  
     - Image Hosting Website（或者其他英文名，反正不是什么Image Bed、Photo Bed 之类的）
+    - now I established a image hosting using Github as basis and VScode as a communication software
 
 
 ### Feb
