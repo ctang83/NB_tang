@@ -1,5 +1,6 @@
 intro
 年
+june
 may
 april
 march
@@ -15,6 +16,12 @@ excelword
 lyxlatex
 lyx
 latex
+kpooh
+value-based-healthcarevbh
+what-is-value-based-healthcare
+vlog-in-vbh
+vbh-in-nsw
+how-to-develop-a-dce-embeded-vbh
 r_onlinebookdashboard
 blogdown
 docker-setting-env
@@ -73,7 +80,7 @@ sojump
 文本录入模板
 jobs
 tips
-job-positions
+terms
 world-bank-cover-letter
 cv
 world-bank---terms
@@ -86,3 +93,6 @@ hnp-gp-wbg
 my-story---star-situation-task-actions-results
 interview-questions
 staff
+house
+help-to-buy
+terms-1

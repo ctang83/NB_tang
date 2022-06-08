@@ -1,0 +1,47 @@
+# KPOOH
+
+This is project about "Keeping People out of Hospital". 
+
+1. To develop a DCE, evaluating general public preference towards value-based healthcare initiatives in NSW
+  - literature contribution: it could be the **first DCE project re value-based health reform**
+1. 
+
+## Value-based healthcare(VBH)
+
+### What is value-based healthcare?
+
+1. Elizabeth Koff, the Secretary for NSW Health, has a speech: 
+  1. better value care is one of the key strategic priorities for our NSW health system going forward
+  1. Value-based healthcare is a contemporary model of care where health systems put the patient values(experience+outcomes) at the centre of the care we deliver
+  1. It's not about cost-cutting. It's about appropriate care, It's about not doing unnecessary procedures. It's about doing the right things that achieve the best outcomes for the patients with the most efficient and effective price.
+1. [Glossary of Terms](https://www.cms.gov/files/document/value-based-healthcare-video-series-what-every-clinician-should-know-glossary-terms.pdf)
+1. [What Is Value-Based Healthcare?](https://catalyst.nejm.org/doi/full/10.1056/CAT.17.0558), from NEJM Catalyst Innovations in Care Delivery journal
+  - <div align=center>![Figure. Two VBH delivery models in the US](https://raw.githubusercontent.com/ctang83/NB_img/main/Two_models_of_VBH.jpg){width=50%} 
+
+
+### Vlog in VBH
+
+1. [Exploring value based healthcare in NSW](https://www.youtube.com/watch?v=CWmbu3fgn6I), 2022 animation from NSW
+1. [4 Better value care in NSW: NSW Health and Medical Research Exchange](https://www.youtube.com/watch?v=1Y0XEbQwdoU)
+1. [Adopting a value-based healthcare approach to the scaling and measurement of virtual care](https://www.youtube.com/watch?v=DTtugYFJgSo), the Independent Hospital Pricing Authority's (IHPA) Activity Based Funding Conference 2022, May
+1. [What is value-based health care?](https://www.youtube.com/watch?v=RpSunN_PD_w), from the Australian Healthcare & Hospitals Association.
+1. [The Fundamental Shift to Value-Based Care](https://www.youtube.com/watch?v=Yz4VO2s01cs), from Center for Medicare & Medicaid Innovation (CMMI)
+
+
+## VBH in NSW
+
+1. NSW's priority programs currently accelerating our move to VBH are:
+  - [Leading Better Value Care](https://www.health.nsw.gov.au/Value/Pages/leading-better-value-care.aspx) - identifying and scaling evidence based initiatives statewide for specific conditions.
+  - [Integrated Care](https://www.health.nsw.gov.au/integratedcare/Pages/default.aspx) - statewide strategies to coordinate care and processes within the health system and with other service providers.
+  - [Commissioning for Better Value](https://www.health.nsw.gov.au/Value/Pages/commissioning-for-better-value.aspx) - shifting focus on non-clinical and clinical support projects from outputs to outcomes.
+  - [Collaborative Commissioning](https://www.health.nsw.gov.au/Value/Pages/collaborative-commissioning.aspx) - whole-of-system approach to incentivise local autonomy and accountability for delivering patient-centred and outcome-focused care in the ommunity.
+1. [NSW framework of VBH](https://www.health.nsw.gov.au/Value/Pages/about.aspx), including Vision, Programs, and Enablers. 
+
+## How to develop a DCE embeded VBH? 
+
+The most challenging part of this DCE is to create a choice context where our respondents would understand value based care and make choices based on such principles. In [Yuanyuan's JHE paper](https://www.sciencedirect.com/science/article/pii/S0167629618309573?via%3Dihub#sec0080), the choice context is to choose between funding treatment A and funding treatment B for Australian Medicare based on five criteria. Essentially we asked them to made a decision on which group of patients’ lives are more valuable.
+
+<div align=center>![Figure. How a DCE with QALY developed](https://raw.githubusercontent.com/ctang83/NB_img/main/Yuanyuan2020JHE_DCE.jpg){width=60%} 
+
+
+
