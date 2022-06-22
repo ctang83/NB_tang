@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 SQL/Tableau/PowerBI | My Notebook</title>
+  <title>Chapter 15 Australia | My Notebook</title>
   <meta name="description" content="Recording my learning stuff." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 SQL/Tableau/PowerBI | My Notebook" />
+  <meta property="og:title" content="Chapter 15 Australia | My Notebook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Recording my learning stuff." />
   <meta name="github-repo" content="ctang83/NB_tang" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 SQL/Tableau/PowerBI | My Notebook" />
+  <meta name="twitter:title" content="Chapter 15 Australia | My Notebook" />
   
   <meta name="twitter:description" content="Recording my learning stuff." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="python.html"/>
-<link rel="next" href="survey-1.html"/>
+<link rel="prev" href="notes-2022.html"/>
+<link rel="next" href="sydney.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -332,108 +332,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sqltableaupowerbi" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Chapter 10</span> SQL/Tableau/PowerBI<a href="sqltableaupowerbi.html#sqltableaupowerbi" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>REDCAP is based on MySQL, still a data store and management tool</p>
-<div id="sql" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> SQL<a href="sqltableaupowerbi.html#sql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>SQL(Structured Query Language) is used to create queries to manipulate the data stored in a database.
-<ul>
-<li>Oracle SQL, is one like Microsoft SQL Server, PL/SQL</li>
-<li>声明式编程(Declarative programming, e.g. SQL) VS. 命令式编程(Imperative programming), however Python is usually coded in an imperative way but can use the declarative style if necessary.</li>
-<li>声明式编程 allow users to focus more on the desired outcome than the exact computational steps required to achieve that outcome. This can increase efficiency and code readability</li>
-</ul></li>
-<li>Case: Oracle安装备忘录</li>
-</ul>
-<pre><code>*新农合数据 oracle 11.2.0.1.0
-下载及安装教程：https://jingyan.baidu.com/article/363872eccfb9266e4aa16f5d.html
-*安装在C:\Oracle
-*dmp原始数据在D:\Oracle\XXX
-*dmp加载到数仓dbf在D:\app\XNH\oradata\oracledb
-
-口令通用：XNHsc2018   sqlplus用户名 system
-
-*基层卫生信息系统(phis数据) oracle 12.1.0.2.0
-用户名：XNH   口令：XNHsc2018
-*基目录D:\app\XNH
-*安装在D:\app\XNH\product\12.1.0\dbhome_2
-*数仓在D:\app\XNH\oradata
-全局数据库名：oraclebd   口令：XNHsc2018    可插入数据库名：pdborcl
-*登录提示
-用户名：每个区县的具体数据库名字，例如剑阁：PHIS_JGS
-密码：123</code></pre>
-<ul>
-<li>Case: plsql改流水号格式 建表和查询</li>
-</ul>
-<pre><code>CREATE
-TABLE
-ZYZDDETAIL_1
-AS
-
-SELECT
-TO_CHAR(id) id, zyid, JBBM, LOGINUSERID, LOGINDATE, UPDATE_TIME
-FROM
-ZYZDDETAIL;</code></pre>
-<ul>
-<li>Case: sqlplus导入数据(麻烦，后来转Stata+ODBC )</li>
-</ul>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="sqltableaupowerbi.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span>需要确认需要的表空间</span>
-<span id="cb100-2"><a href="sqltableaupowerbi.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.1</span>创建表空间则不需要remap_tablespace</span>
-<span id="cb100-3"><a href="sqltableaupowerbi.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.2</span>不创建表空间，可以使用REMAP_TABLESPACE<span class="ot">=</span>ehr<span class="sc">:</span>users,tbs_phis<span class="sc">:</span>users这种语法把ehr和tbs_phis表空间中对象映射到users</span>
-<span id="cb100-4"><a href="sqltableaupowerbi.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.3</span>确认表空间可以在导入过程中查看报错，报错日志显示有缺少XXX表空间的情况下，按一次CTRL<span class="sc">+</span>C，再输入KILL_JOB，再YES，退出报错的导出，删除导入的用户，重新导入</span>
-<span id="cb100-5"><a href="sqltableaupowerbi.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.4</span>常见表空间（不全）SPS_PHIS、TBS_LOG、TBS_PHIS、PHIS_HIS</span>
-<span id="cb100-6"><a href="sqltableaupowerbi.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-7"><a href="sqltableaupowerbi.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="fl">2.</span>创建directory </span>
-<span id="cb100-8"><a href="sqltableaupowerbi.html#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="fl">2.1</span>确认dmp文件所在位置，例如：dmp位于D<span class="sc">:</span>\bak，必须直接能读取到dmp的路径；</span>
-<span id="cb100-9"><a href="sqltableaupowerbi.html#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="fl">2.2</span>打开sqlplus，执行：system<span class="sc">/</span>XNHsc2018</span>
-<span id="cb100-10"><a href="sqltableaupowerbi.html#cb100-10" aria-hidden="true" tabindex="-1"></a>create or replace directory full as <span class="st">&#39;D:</span><span class="sc">\b</span><span class="st">ak&#39;</span>;</span>
-<span id="cb100-11"><a href="sqltableaupowerbi.html#cb100-11" aria-hidden="true" tabindex="-1"></a>create or replace directory full as <span class="st">&#39;D:\Oracle\jiange&#39;</span>;  <span class="sc">/</span><span class="er">/</span>一定要加分号！</span>
-<span id="cb100-12"><a href="sqltableaupowerbi.html#cb100-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-13"><a href="sqltableaupowerbi.html#cb100-13" aria-hidden="true" tabindex="-1"></a><span class="fl">3.</span>导入代码 cmd执行<span class="st">&quot;剑阁示例&quot;</span></span>
-<span id="cb100-14"><a href="sqltableaupowerbi.html#cb100-14" aria-hidden="true" tabindex="-1"></a>impdp system<span class="sc">/</span>XNHsc2018<span class="sc">@</span>localhost<span class="sc">/</span>oracledb dumpfile<span class="ot">=</span>jg180915_%U.dmplogfile<span class="ot">=</span>jg180915_imp.log directory<span class="ot">=</span>full remap_tablespace<span class="ot">=</span>SPS_PHIS<span class="sc">:</span>users,TBS_LOG<span class="sc">:</span>users,TBS_PHIS<span class="sc">:</span>users,PHIS_HIS<span class="sc">:</span>users parallel<span class="ot">=</span><span class="dv">6</span> cluster<span class="ot">=</span>n</span></code></pre></div>
-<ul>
-<li>Open Database Connectivity (ODBC) interface makes it possible for applications(Stata/R) to access data from a variety of database management systems (e.g. SQL Server).</li>
-</ul>
-<p>首先，搜索ODBC管理员，点击系统DNS添加。
-<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC1.jpg" style="width:60.0%" alt="Stata中ODBC查询" /></p>
-<p>然后，添加后点击对应的数据目录，本次安装在home2，然后进行数据添加。
-<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC2.jpg" style="width:60.0%" alt="Stata中ODBC查询" /></p>
-<p>datasourcename:自己命名的调用数据库名，用英文。
-description：数据库描述，可以用中文。
-TNS Service Name：oraclebd就是oracle导入的实例数据库。
-User ID：每个县对应的ID数据库名字，比如如图所示为东坡，可在导出log中查看。
-*每个县有一个数据库，所以要建立相应县个数的ODBC。
-<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC3.jpg" style="width:60.0%" alt="Stata中ODBC查询" /></p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="sqltableaupowerbi.html#cb101-1" aria-hidden="true" tabindex="-1"></a>odbc list <span class="sc">/</span><span class="er">/</span>Stata通过ODBC查询调用任意SQL数据</span>
-<span id="cb101-2"><a href="sqltableaupowerbi.html#cb101-2" aria-hidden="true" tabindex="-1"></a>help odbc</span></code></pre></div>
+<div id="australia" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Australia<a href="australia.html#australia" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="figure">
-<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/fig_ODBC_stata.jpg" style="width:60.0%" alt="" />
-<p class="caption">Stata中ODBC查询</p>
+<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/au_map.gif" style="width:100.0%" alt="" />
+<p class="caption">Australia中文</p>
 </div>
-<div id="r_sql" class="section level3 hasAnchor" number="10.1.1">
-<h3><span class="header-section-number">10.1.1</span> R_SQL<a href="sqltableaupowerbi.html#r_sql" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Searching <strong>SQL</strong> on the website <strong>R bloggers</strong> will get collections of studying R_SQL</p>
-<ol style="list-style-type: decimal">
-<li>Datasets are in different forms, places, access, pls use a config file
-- <a href="https://www.r-bloggers.com/2020/09/how-to-connect-r-with-sql/">Connect R with SQL</a></li>
-<li>Writing large datasets to SQL Server can be very slow using the DBI package with an ODBC connection
-- <a href="https://www.r-bloggers.com/2021/08/fast-sql-server-imports-with-r/">Fast SQL Server Imports with R</a></li>
-<li>PowerBI Desktop can directly get Data&gt;SQL Server raw Database to visualize, but it less cautious
-- <a href="https://www.r-bloggers.com/2016/07/sql-server-power-bi-and-r/">SQL Server, Power BI, and R</a></li>
-<li>SQL is declarative, so the lack of control flow produce redundancy用更精简的imperative编程代替啰嗦的SQL语言
-- <a href="https://www.r-bloggers.com/2021/01/generating-sql-with-dbplyr-and-sqlfluff/">generating readable SQL queries using {dbplyr} and {sqlfluff}</a></li>
-</ol>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/au0.jpg" style="width:100.0%" alt="" />
+<p class="caption">Australia中文max</p>
 </div>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/au1.jpg" style="width:100.0%" alt="" />
+<p class="caption">Australia中文地质</p>
 </div>
-<div id="tableau" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> Tableau<a href="sqltableaupowerbi.html#tableau" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Tableau(所有方面比Power BI好的拖动式画图软件)</p>
-</div>
-<div id="power-bi" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Power BI<a href="sqltableaupowerbi.html#power-bi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Key words: interactive data visualization, Microsoft, business intelligence(BI)</p>
-
+<div class="figure">
+<img src="https://raw.githubusercontent.com/ctang83/NB_img/main/au2.jpg" style="width:100.0%" alt="" />
+<p class="caption">Australia中文卫星</p>
 </div>
 </div>
             </section>
@@ -441,8 +356,8 @@ User ID：每个县对应的ID数据库名字，比如如图所示为东坡，�
           </div>
         </div>
       </div>
-<a href="python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="survey-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="notes-2022.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sydney.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -473,7 +388,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ctang83/NB_tang/tree/master/08-SQLTableauBI.Rmd",
+"link": "https://github.com/ctang83/NB_tang/tree/master/12-Jonny.Rmd",
 "text": "Edit"
 },
 "history": {

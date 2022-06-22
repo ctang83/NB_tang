@@ -1,14 +1,19 @@
 # KPOOH
 
-This is project about "Keeping People out of Hospital". 
+This is project about "Keeping People out of Hospital", [for its protocol](https://drive.google.com/file/d/1WhAcMNi4ut-d7qZ6YaeLApvrcxOwXD6g/view?usp=sharing). The project structure is as below: 
 
-1. To develop a DCE, evaluating general public preference towards value-based healthcare initiatives in NSW
+<div align=center>![Figure. Four steps of KPOOH](https://raw.githubusercontent.com/ctang83/NB_img/main/KPOOH1.png){width=50%} 
+
+In this page, to develop a DCE, evaluating general public preference towards value-based healthcare initiatives in NSW
   - literature contribution: it could be the **first DCE project re value-based health reform**
-1. 
 
-## Value-based healthcare(VBH)
+**Two changes for VBH**
 
-### What is value-based healthcare?
+1. 患者满意不是第一 While patient satisfaction is often conflated with value-based care, satisfaction is predicated on the patient's experience of treatment, rather than its medical effectiveness.
+1. 成本不是第一 Cost reduction is a component of this model--for example, by making healthcare cost information more readily available to patients--but it is not the primary goal.
+
+
+## What is value-based healthcare(VBH)?
 
 1. Elizabeth Koff, the Secretary for NSW Health, has a speech: 
   1. better value care is one of the key strategic priorities for our NSW health system going forward
@@ -16,16 +21,13 @@ This is project about "Keeping People out of Hospital".
   1. It's not about cost-cutting. It's about appropriate care, It's about not doing unnecessary procedures. It's about doing the right things that achieve the best outcomes for the patients with the most efficient and effective price.
 1. [Glossary of Terms](https://www.cms.gov/files/document/value-based-healthcare-video-series-what-every-clinician-should-know-glossary-terms.pdf)
 1. [What Is Value-Based Healthcare?](https://catalyst.nejm.org/doi/full/10.1056/CAT.17.0558), from NEJM Catalyst Innovations in Care Delivery journal
-  - <div align=center>![Figure. Two VBH delivery models in the US](https://raw.githubusercontent.com/ctang83/NB_img/main/Two_models_of_VBH.jpg){width=50%} 
-
-
-### Vlog in VBH
-
-1. [Exploring value based healthcare in NSW](https://www.youtube.com/watch?v=CWmbu3fgn6I), 2022 animation from NSW
-1. [4 Better value care in NSW: NSW Health and Medical Research Exchange](https://www.youtube.com/watch?v=1Y0XEbQwdoU)
-1. [Adopting a value-based healthcare approach to the scaling and measurement of virtual care](https://www.youtube.com/watch?v=DTtugYFJgSo), the Independent Hospital Pricing Authority's (IHPA) Activity Based Funding Conference 2022, May
-1. [What is value-based health care?](https://www.youtube.com/watch?v=RpSunN_PD_w), from the Australian Healthcare & Hospitals Association.
-1. [The Fundamental Shift to Value-Based Care](https://www.youtube.com/watch?v=Yz4VO2s01cs), from Center for Medicare & Medicaid Innovation (CMMI)
+  - <div align=center>![Figure. Two VBH delivery models in the US](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_Two_models.jpg){width=50%} 
+1. Vlog of VBH
+  1. [Exploring value based healthcare in NSW](https://www.youtube.com/watch?v=CWmbu3fgn6I), 2022 animation from NSW
+  1. [4 Better value care in NSW: NSW Health and Medical Research Exchange](https://www.youtube.com/watch?v=1Y0XEbQwdoU)
+  1. [Adopting a value-based healthcare approach to the scaling and measurement of virtual care](https://www.youtube.com/watch?v=DTtugYFJgSo), the Independent Hospital Pricing Authority's (IHPA) Activity Based Funding Conference 2022, May
+  1. [What is value-based health care?](https://www.youtube.com/watch?v=RpSunN_PD_w), from the Australian Healthcare & Hospitals Association.
+  1. [The Fundamental Shift to Value-Based Care](https://www.youtube.com/watch?v=Yz4VO2s01cs), from Center for Medicare & Medicaid Innovation (CMMI)
 
 
 ## VBH in NSW
@@ -37,6 +39,7 @@ This is project about "Keeping People out of Hospital".
   - [Collaborative Commissioning](https://www.health.nsw.gov.au/Value/Pages/collaborative-commissioning.aspx) - whole-of-system approach to incentivise local autonomy and accountability for delivering patient-centred and outcome-focused care in the ommunity.
 1. [NSW framework of VBH](https://www.health.nsw.gov.au/Value/Pages/about.aspx), including Vision, Programs, and Enablers. 
 
+
 ## How to develop a DCE embeded VBH? 
 
 The most challenging part of this DCE is to create a choice context where our respondents would understand value based care and make choices based on such principles. In [Yuanyuan's JHE paper](https://www.sciencedirect.com/science/article/pii/S0167629618309573?via%3Dihub#sec0080), the choice context is to choose between funding treatment A and funding treatment B for Australian Medicare based on five criteria. Essentially we asked them to made a decision on which group of patients’ lives are more valuable.
@@ -44,4 +47,59 @@ The most challenging part of this DCE is to create a choice context where our re
 <div align=center>![Figure. How a DCE with QALY developed](https://raw.githubusercontent.com/ctang83/NB_img/main/Yuanyuan2020JHE_DCE.jpg){width=60%} 
 
 
+# KPOOH figures
+
+## Case study 
+
+[Using discrete choice experiments to measure preferences for hard to observe choice attributes to inform health policy decisions](https://healtheconomicsreview.biomedcentral.com/articles/10.1186/s13561-020-00276-x)
+
+SP data can thus be used to get a better understanding of the trade-offs patients or policy makers make in the decision-making process. In the United States, SP data can contribute by measuring patient preferences for hard to observe choice attributes. This is particularly relevant because of efforts to make fundamental changes to the healthcare system, moving from volume-based to value-based healthcare delivery. Existing datasets can help analyze changes in spending and outcomes following these recent reforms but lack data on patients’ willingness to accept value-based care. SP data can fill that gap and address questions related to “patient centered” care, improved communication and the patient-provider relationship.
+
+It is in this context that SP data may be useful to predict acceptance of changes based on attributes of a health product or service. Defining value from the patient perspective is particularly important in health systems where reform is focused on shared decision-making between physicians and patients. In the context of value-based care, SP data can also help analyze how decision-makers prioritize efforts to improve value. For example, when evaluating how community health teams set priorities and how they make trade-offs between considerations related to health, health equity or financial resources.
+
+Applying the right methodology- collecting SP data with a discrete choice experiment
+
+An effective method to collect SP data is a Discrete Choice Experiment (DCE). A DCE provides the opportunity to estimate pair-wise choices and analyze marginal values or the total value of a health service or good. For example, a study examining the effect of reducing waiting times in the provision of rheumatology services used a SP elicitation technique to estimate the monetary value the waiting time reduction (as well as other possible changes) [15]. The unique contribution of a DCE is that it allows researchers to analyze the trade-offs that patients are willing to make including options that may not exist but could in the future.
+
+A DCE is a survey instrument that clearly explains both a baseline or status quo situation and alternatives that can be chosen. The survey starts with a description of a health product or service to be valued, the cost of the service (e.g. a premium for health insurance), the value elicitation questions or discrete choice sets based on attributes and levels, potential follow-up questions (e.g. to check responses or to get information about the way respondents processed the attributes) and auxiliary questions (e.g. demographics or behavioral questions).
+
+Example: optimal health system capacity design
+
+Health systems, especially in the value-based context, are increasingly rewarded for keeping people healthy and out of the hospital, rather than for the volume of services provided. One focus in redesigning care delivery in the value-based context has been on decentralizing services, including higher-acuity care, into the outpatient environment. In this section, we will work through a DCE to inform decision-making regarding the allocation of resources or the restructuring of care delivery systems. In this example, a health system’s goal is to decentralize diagnostic radiology services by offering additional services away from the tertiary care center. The aim is to deliver diagnostic services in a way that is more convenient for the patient and lower cost for the system, while offering the same level of quality. The health system decided to set up a pilot project to test diagnostic services options, where alternative A is a mobile option for diagnostic services, alternative B is a fixed kiosk for diagnostic services and option C is the status quo of services in the medical center. The decision makers want to find out which attributes of diagnostic services patients care about the most. Existing data from electronic health records and claims data cannot predict choices for a product that does not yet exist, which suggests the use of a DCE. The next sections will walk through the steps of setting up a DCE in this example and will briefly explain some estimation methods. 示例：最佳卫生系统容量设计. 卫生系统，尤其是在基于价值的背景下，越来越多地因为让人们保持健康和远离医院而获得回报，而不是因为提供的服务量。在基于价值的背景下重新设计护理服务的一个重点是将服务（包括更高敏锐度的护理）分散到门诊环境中。在本节中，我们将通过 DCE 为有关资源分配或护理提供系统重组的决策提供信息。在此示例中，卫生系统的目标是通过提供远离三级护理中心的额外服务来分散诊断放射学服务。其目的是以一种对患者更方便、系统成本更低的方式提供诊断服务，同时提供相同的质量水平。卫生系统决定建立一个试点项目来测试诊断服务选项，其中选项 A 是用于诊断服务的移动选项，选项 B 是用于诊断服务的固定亭，选项 C 是医疗中心的服务现状。决策者希望找出患者最关心的诊断服务的哪些属性。来自电子健康记录和索赔数据的现有数据无法预测尚不存在的产品的选择，这表明使用 DCE。下一节将介绍本示例中设置 DCE 的步骤，并简要说明一些估计方法。备选方案 B 是用于诊断服务的固定信息亭，备选方案 C 是医疗中心的服务现状。决策者希望找出患者最关心的诊断服务的哪些属性。来自电子健康记录和索赔数据的现有数据无法预测尚不存在的产品的选择，这表明使用 DCE。下一节将介绍本示例中设置 DCE 的步骤，并简要说明一些估计方法。备选方案 B 是用于诊断服务的固定信息亭，备选方案 C 是医疗中心的服务现状。决策者希望找出患者最关心的诊断服务的哪些属性。来自电子健康记录和索赔数据的现有数据无法预测尚不存在的产品的选择，这表明使用 DCE。下一节将介绍本示例中设置 DCE 的步骤，并简要说明一些估计方法。
+
+## Google search "Value-based health care difference"
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_1equation.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_4category.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_4countr.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_4countries.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_BusinessCouncilofAustralia.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_Care_diff.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_Changing-healthcare-model.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_equation.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_FFS.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_Healthcare_Transition.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_IBM.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_models.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_pay.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_Two_models.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_Value_ZS.jpg){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH_Value-Based-Purchasing.png){width=90%} 
+
+<div align=center>![Figure. VBH and FFS](https://raw.githubusercontent.com/ctang83/NB_img/main/VBH-second-curve.jpg){width=90%} 
 
